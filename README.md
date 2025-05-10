@@ -1,3 +1,3 @@
-# preclass readings
+# Pre-class readings
 
-Preclass readings for OCEAN 215, Autumn 2025
+Pre-class readings for OCEAN 215, Autumn 2025
