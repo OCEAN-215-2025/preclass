@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>An overview to numpy &#8212; OCEAN 215 pre-lecture readings</title>
+    <title>An overview of numpy &#8212; OCEAN 215 pre-lecture readings</title>
   
   
   
@@ -199,9 +199,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk04_intro.html">Week 4: One-dimensional numpy array</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">An overview to <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="np_creation_indexing.html">Creating and indexing arrays in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="np_mapping_reduction.html">Mapping and reduction functions in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">An overview of numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reading_documentations.html">Reading documentations and using online resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wk04_glossary.html">Week 4 glossary</a></li>
 </ul>
@@ -384,7 +384,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -395,11 +397,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>An overview to numpy</h1>
+    <h1>An overview of numpy</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-numpy-package">Importing the numpy package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-arithmetics-and-logical-comparisons">Vectorized arithmetics and logical comparisons</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -409,8 +420,161 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="an-overview-to-numpy">
-<h1>An overview to <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#an-overview-to-numpy" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="an-overview-of-numpy">
+<h1>An overview of numpy<a class="headerlink" href="#an-overview-of-numpy" title="Link to this heading">#</a></h1>
+<section id="importing-the-numpy-package">
+<h2>Importing the numpy package<a class="headerlink" href="#importing-the-numpy-package" title="Link to this heading">#</a></h2>
+<p>Numpy is a third-party module of python designed to make numerical computations in python easy and performant. In python, a <strong>module</strong> (a.k.a. <strong>package</strong> or <strong>library</strong>) is essentially a <em>bundle of codes</em> that extends the function of core python. And third-party here just means that you need to install the module on top of the standard python distribution—don’t worry, for your convenience, numpy (and all other third-party packages you’ll encounter in this course) is already pre-installed on our Jupyter Hub.</p>
+<p>The main object introduced by numpy is the N-dimensional arrays <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, which, similar to python <code class="docutils literal notranslate"><span class="pre">list</span></code>, is a sequential collection type. However, it differs from python list in a few important ways:</p>
+<ul class="simple">
+<li><p>Numpy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> is intended for <strong>homogeneous</strong> data (i.e., all data having the same data type), while python <code class="docutils literal notranslate"><span class="pre">list</span></code> can easily accomodate heterogeneous data.</p></li>
+<li><p>Numpy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> is <strong>efficient</strong> in both memory and compute time when its data is numeric, while python <code class="docutils literal notranslate"><span class="pre">list</span></code> can be inefficient in both.</p></li>
+<li><p>Numpy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> support <strong>vectorized operations</strong>, while python <code class="docutils literal notranslate"><span class="pre">list</span></code> needs to be operated on element-by-element.</p></li>
+</ul>
+<p>In addition, numpy also provides a vast array (no pun intended!) of functions to create and operate on <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>’s.</p>
+<p>To use the functionalities provided by the numpy module, we need to first <strong>import</strong> it. Typically, we’ll do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above, the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span></code> part is mandatory, while the <code class="docutils literal notranslate"><span class="pre">as</span> <span class="pre">np</span></code> part is optional. Without the <code class="docutils literal notranslate"><span class="pre">as</span> <span class="pre">np</span></code> part, we’ll have to refer to functions provided by numpy using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> prefix, e.g., <code class="docutils literal notranslate"><span class="pre">numpy.sin()</span></code> for its sine function. With the <code class="docutils literal notranslate"><span class="pre">as</span> <span class="pre">np</span></code> part, we create an alias named <code class="docutils literal notranslate"><span class="pre">np</span></code> for the same purpose, so we just need to write <code class="docutils literal notranslate"><span class="pre">np.sin()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">numpy.sin()</span></code>. By the way, the <code class="docutils literal notranslate"><span class="pre">np</span></code> alias in this case is more or less standard, and you’ll see this import line everywhere.</p>
+<p>Numpy provides a number of functions to create an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, the easiest of which is to just wrap a python list around a <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> call, like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> (say <code class="docutils literal notranslate"><span class="pre">x</span></code>) has a few <strong>attributes</strong> associated with it. An attribute of a python object is accessed using a <code class="docutils literal notranslate"><span class="pre">.</span></code> followed by the attribute name. Unlike <em>methods</em> there is no call <code class="docutils literal notranslate"><span class="pre">()</span></code> at the end.</p>
+<p>The first atrribute of note is the <strong>size</strong> of the <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, which gives the number of elements the array has:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another useful attribute is <strong>shape</strong> of the array. For 1-dimensional <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> this is just the size placed inside a tuple (A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is like a python <code class="docutils literal notranslate"><span class="pre">list</span></code>, except it cannot be overwritten):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we have the <strong>ndim</strong> (number of dimensions) of the array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vectorized-arithmetics-and-logical-comparisons">
+<h2>Vectorized arithmetics and logical comparisons<a class="headerlink" href="#vectorized-arithmetics-and-logical-comparisons" title="Link to this heading">#</a></h2>
+<p>In contrast to python <code class="docutils literal notranslate"><span class="pre">list</span></code>, you can perform vectorized arithmetics on <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>’s. For example,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1  3  9 17 27]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also perform arithmetics between a scalar and an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 2  8 18 32 50]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The operators <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">//</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, and <code class="docutils literal notranslate"><span class="pre">**</span></code> works similarly. Moreover, one can also perform vectorized logical comparison. For exmaple:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True,  True,  True, False, False])
+</pre></div>
+</div>
+</div>
+</div>
+<p>(The reason why you may want to do so will become apparent soon). The operators <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, and <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> work similarly.</p>
+<p>To combine two logicial <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, use <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> for and and <code class="docutils literal notranslate"><span class="pre">|</span></code> for or:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False,  True,  True, False, False])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False, False, False,  True])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, a logical <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> can be negated by <code class="docutils literal notranslate"><span class="pre">~</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="o">~</span><span class="n">u</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False,  True,  True, False, False])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -457,7 +621,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Creating and indexing arrays in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p>
+        <p class="prev-next-title">Creating and indexing arrays in numpy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -467,6 +631,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-numpy-package">Importing the numpy package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-arithmetics-and-logical-comparisons">Vectorized arithmetics and logical comparisons</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

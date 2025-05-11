@@ -12,6 +12,8 @@ Here we provide a short glossary of important syntax features and functions of p
 + `%`: operator for remainder
 + `**`: operator for exponentiation<br><br>
 
++ `()`: for overriding operator precedence and for supplying arguments to function calls<br><br>
+
 + `==`: operator for "equal to" comparisons
 + `!=`: operator for "unequal to" comparisons
 + `>`: operator for "greater than" comparisons

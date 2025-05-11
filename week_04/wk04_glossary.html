@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'week_04/wk04_glossary';</script>
     <link rel="icon" href="../_static/ocean_python_sm.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -199,9 +201,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk04_intro.html">Week 4: One-dimensional numpy array</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="numpy_overview.html">An overview to <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="np_creation_indexing.html">Creating and indexing arrays in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="np_mapping_reduction.html">Mapping and reduction functions in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy_overview.html">An overview of numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reading_documentations.html">Reading documentations and using online resources</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 4 glossary</a></li>
 </ul>
@@ -384,7 +386,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -400,6 +404,28 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-resources">Online resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-syntax">Numpy syntax</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic">arithmetic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-comparison">logical comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array indexing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-constants">Numpy constants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">Numpy functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-functions">Mapping functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-functions">Reduction functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -411,6 +437,95 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="week-4-glossary">
 <h1>Week 4 glossary<a class="headerlink" href="#week-4-glossary" title="Link to this heading">#</a></h1>
+<section id="online-resources">
+<h2>Online resources<a class="headerlink" href="#online-resources" title="Link to this heading">#</a></h2>
+<p>The official numpy documentations can be found at <a class="reference external" href="https://numpy.org/doc/stable/reference/index.html#reference">https://numpy.org/doc/stable/reference/index.html#reference</a>. You may find the page of array creation routines (<a class="reference external" href="https://numpy.org/doc/stable/reference/routines.array-creation.html">https://numpy.org/doc/stable/reference/routines.array-creation.html</a>) and mathematical functions (<a class="reference external" href="https://numpy.org/doc/stable/reference/routines.math.html">https://numpy.org/doc/stable/reference/routines.math.html</a>) especially useful.</p>
+</section>
+<section id="numpy-syntax">
+<h2>Numpy syntax<a class="headerlink" href="#numpy-syntax" title="Link to this heading">#</a></h2>
+<section id="arithmetic">
+<h3>arithmetic<a class="headerlink" href="#arithmetic" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">//</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code>: vectorized arithmetic operators between 2 numpy arrays or between a numpy array and a scalar.</p></li>
+</ul>
+</section>
+<section id="logical-comparison">
+<h3>logical comparison<a class="headerlink" href="#logical-comparison" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>: vectorized comparison operators between 2 numpy arrays or between a numpy array and a scalar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span></code>: vectorized negation on a numpy boolean array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>: vectorized “and” and “or” between two numpy boolean arrays</p></li>
+</ul>
+</section>
+<section id="array-indexing">
+<h3>Array indexing<a class="headerlink" href="#array-indexing" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code>: indexing operator on numpy arrays</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code>: create basic slicing of the form <em>start</em>:<em>stop</em>:<em>step</em></p></li>
+</ul>
+</section>
+</section>
+<section id="numpy-constants">
+<h2>Numpy constants<a class="headerlink" href="#numpy-constants" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.e</span></code>: the natural / Euler / exponential number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.pi</span></code>: the number <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code>: the “not a number” value</p></li>
+</ul>
+</section>
+<section id="numpy-functions">
+<h2>Numpy functions<a class="headerlink" href="#numpy-functions" title="Link to this heading">#</a></h2>
+<section id="array-creation">
+<h3>Array creation<a class="headerlink" href="#array-creation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.array()</span></code>: create an array from a python list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>: create a linearly-spaced array of <span class="math notranslate nohighlight">\(n\)</span> elements from <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(b\)</span> (<span class="math notranslate nohighlight">\(b\)</span> inclusive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code>: create an evenly-spaced array from <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(b\)</span> (<span class="math notranslate nohighlight">\(b\)</span> exclusive) at steps of <span class="math notranslate nohighlight">\(d\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>: create an array of zeros</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.ones()</span></code>: create an array of ones</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.full()</span></code>: create a constant array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code>: concatenate two numpy arrays into one</p></li>
+</ul>
+</section>
+<section id="mapping-functions">
+<h3>Mapping functions<a class="headerlink" href="#mapping-functions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sqrt()</span></code>:  square root</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.exp()</span></code>: exponentiation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.log()</span></code>: natural logarithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.log10()</span></code>: base-10 logarithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.log2()</span></code>: base-2 logrithm<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sin()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.cos()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.tan()</span></code>: trigonometic functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arcsin()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.arccos()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.arctan()</span></code>: inverse trigonometric functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arctan2()</span></code>: arctangent function accepting both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> as arguments</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deg2rad()</span></code>, <code class="docutils literal notranslate"><span class="pre">rad2deg()</span></code>: conversion between radians and degrees<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.round()</span></code>: round values to fixed decimal point</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.floor()</span></code>: round <em>down</em> to the nearest integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.ceil()</span></code>: round <em>up</em> to the nearest integer<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.fabs()</span></code>: absolute value</p></li>
+</ul>
+</section>
+<section id="reduction-functions">
+<h3>Reduction functions<a class="headerlink" href="#reduction-functions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>: calculating average</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.var()</span></code>: calculating variance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.std()</span></code>: calculating standard deviation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.median()</span></code>: calculating median<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.prod()</span></code>: product over elements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>: sum over elements<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.max()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.min()</span></code>: finding extremum <em>value</em> of an array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.argmax()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.argmin()</span></code>: finding the <em>index</em> at which the extremum is attained</p></li>
+</ul>
+</section>
+<section id="other-functions">
+<h3>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sort()</span></code>: sort an array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.argsort()</span></code>: sort the index of an array by the corresponding values</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -467,6 +582,35 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-resources">Online resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-syntax">Numpy syntax</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic">arithmetic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-comparison">logical comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">Array indexing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-constants">Numpy constants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">Numpy functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-functions">Mapping functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-functions">Reduction functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

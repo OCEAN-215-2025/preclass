@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'week_04/np_mapping_reduction';</script>
     <link rel="icon" href="../_static/ocean_python_sm.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -199,9 +201,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk04_intro.html">Week 4: One-dimensional numpy array</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="numpy_overview.html">An overview to <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="np_creation_indexing.html">Creating and indexing arrays in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mapping and reduction functions in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy_overview.html">An overview of numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mapping and reduction functions in numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reading_documentations.html">Reading documentations and using online resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wk04_glossary.html">Week 4 glossary</a></li>
 </ul>
@@ -384,7 +386,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -400,6 +404,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mapping-functions">Numpy mapping functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-constants-in-numpy">Remarks: constants in numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-functions">Reduction functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -410,7 +425,343 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mapping-and-reduction-functions-in-numpy">
-<h1>Mapping and reduction functions in <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#mapping-and-reduction-functions-in-numpy" title="Link to this heading">#</a></h1>
+<h1>Mapping and reduction functions in numpy<a class="headerlink" href="#mapping-and-reduction-functions-in-numpy" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialization: make numpy available</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="numpy-mapping-functions">
+<h2>Numpy mapping functions<a class="headerlink" href="#numpy-mapping-functions" title="Link to this heading">#</a></h2>
+<p>A vast number of numpy functions apply a mathematical mapping on each element of the array. Here we list some of the familiar ones and illustrate each group with some examples</p>
+<p>Power, exponential and logarithmic functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sqrt()</span></code> for calculating square root</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.exp()</span></code> for exponentiation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.log()</span></code> for natural logarithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.log10()</span></code> for base-10 logarithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.log2()</span></code> for base-2 logrithm</p></li>
+</ul>
+<p>Examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.71828183,  7.3890561 , 20.08553692])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.,  1., -1.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Trigonometric functions (note that angles are expressed in radians):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sin()</span></code>: sine function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.cos()</span></code>: cosine function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.tan()</span></code>: tangent function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arcsin()</span></code>: arcsine (inverse sine) function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arccos()</span></code>: arccosine (inverse consine) function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arctan()</span></code>: arctangent (inverse tangent) function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arctan2()</span></code>: arctangent function accepting both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> as arguments</p></li>
+</ul>
+<p>Moreover, the following convenient helper functions are defined:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">deg2rad()</span></code>: convert degrees to radians</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rad2deg()</span></code>: convert radians to degrees</p></li>
+</ul>
+<p>Examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0015926529164868282
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.6179938779914944
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rounding functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.round()</span></code>: round values to fixed decimal point</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.floor()</span></code>: round <em>down</em> to the nearest integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.ceil()</span></code>: round <em>up</em> to the nearest integer</p></li>
+</ul>
+<p>Examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.1415926</span><span class="p">,</span> <span class="mf">2.718281828</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.142, 2.718])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4., 3.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Miscellanous functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.fabs()</span></code>: absolute value</p></li>
+</ul>
+<p>Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2., 1., 0., 1., 2.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="remarks-constants-in-numpy">
+<h2>Remarks: constants in numpy<a class="headerlink" href="#remarks-constants-in-numpy" title="Link to this heading">#</a></h2>
+<p>In addition to functions, numpy also come with a few constants. The most notable ones are <code class="docutils literal notranslate"><span class="pre">np.pi</span></code> (for <span class="math notranslate nohighlight">\(\pi\)</span>) and <code class="docutils literal notranslate"><span class="pre">np.e</span></code> (for the natural / Euler / exponential number). Moreover, there is also the “not a number” value <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>. Note that mathematical operations on <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> generally results in <code class="docutils literal notranslate"><span class="pre">np.nan</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2246467991473532e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reduction-functions">
+<h2>Reduction functions<a class="headerlink" href="#reduction-functions" title="Link to this heading">#</a></h2>
+<p>Other than mapping functions, numpy also implements a number of reduction functions. In brief, these are functions that “reduce” a (1-dimensional) numpy array to a single number. Below we list some familar ones:</p>
+<p>Statistics functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>: the average of an array, <span class="math notranslate nohighlight">\(\overline{x} = (x_1 + \ldots + x_n) / n\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.var()</span></code>: the variance of an array, <span class="math notranslate nohighlight">\(\operatorname{var}(\{x_i\}) = [(x_1 - \overline{x})^2 + \ldots + (x_n - \overline{x})^2]/n \)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.std()</span></code>: the standard deviation of an array, <span class="math notranslate nohighlight">\(\operatorname{std}(\{x_i\}) = \sqrt{\operatorname{var}(\{x_i\})}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.median()</span></code>: the median of an array (the element that ranks half the way between the smallest and the largest values)</p></li>
+</ul>
+<p>Examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7204650534085253
+</pre></div>
+</div>
+</div>
+</div>
+<p>Accumulation functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.prod()</span></code>: product of all elements in the array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>: sum of all elements in the array</p></li>
+</ul>
+<p>Examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Extremum functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.max()</span></code>: finding maximum <em>value</em> of an array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.min()</span></code>: finding minimum <em>value</em> of an array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.argmax()</span></code>: finding the <em>index</em> at which the maximum is attained</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.argmin()</span></code>: finding the <em>index</em> at which the minimum is attained</p></li>
+</ul>
+<p>Examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="other-functions">
+<h2>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h2>
+<p>Some functions in numpy do not fall neatly into the baskets introduced so far. The most important ones are the sorting functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.sort()</span></code>: sort an array (from smallest to largest, by default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.argsort()</span></code>: sort the <em>indices</em> of an array by the value of the corresponding element</p></li>
+</ul>
+<p>Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 3, 4, 6, 8])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 3, 4, 2, 1], dtype=int64)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -449,7 +800,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Creating and indexing arrays in <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p>
+        <p class="prev-next-title">Creating and indexing arrays in numpy</p>
       </div>
     </a>
     <a class="right-next"
@@ -467,6 +818,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mapping-functions">Numpy mapping functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-constants-in-numpy">Remarks: constants in numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-functions">Reduction functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
