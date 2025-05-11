@@ -1,1 +1,0 @@
-# Reading documentations and using online resources

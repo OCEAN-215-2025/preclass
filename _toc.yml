@@ -23,7 +23,7 @@ chapters:
   - file: week_04/numpy_overview.ipynb
   - file: week_04/np_creation_indexing.ipynb
   - file: week_04/np_mapping_reduction.ipynb
-  - file: week_04/reading_documentations.md
+  - file: week_04/reading_documentations.ipynb
   - file: week_04/wk04_glossary.md
 - file: week_05/wk05_intro.md
 - file: week_06/wk06_intro.md
