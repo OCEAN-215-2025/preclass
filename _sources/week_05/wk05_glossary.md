@@ -8,8 +8,7 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 
 ## Numpy syntax
 
-+ `+`, `-`, `*`, `/`, `//`, `%`, `**`: arithmetic operators on multi-dimensional numpy arrays<br><br>
-
++ `+`, `-`, `*`, `/`, `//`, `%`, `**`: arithmetic operators on multi-dimensional numpy arrays`<br><br>`
 + `[]`: indexing operators on multi-dimensional numpy array
 + `:` : operator to create slicing object of form _start_:_stop_:_step_
 
@@ -19,7 +18,7 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 
 + `.reshape()`: reshape an numpy array
 + `.flatten()`: flatten a multi-dimensional array to 1D
-+ `.tranpose()`: transpose the rows and columns of a 2D numpy array
++ `.transpose()`: transpose the rows and columns of a 2D numpy array
 
 ### Numpy mapping functions
 
@@ -34,8 +33,8 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 ### Creating and showing figures and axes
 
 + `plt.figure()`: create a new figure
-+ `fig.add_subplot()`: add new axes object to an existing figure
-+ `plt.show()`: show a figure already created<br><br>
++ `fig.add_subplot()`: add new axes object to an existing figure `fig`
++ `plt.show()`: show a figure already created `<br><br>`
 
 ### Making different types of visualization
 

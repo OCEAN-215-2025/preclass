@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Control flow &#8212; OCEAN 215 pre-lecture readings</title>
+    <title>For loops &#8212; OCEAN 215 pre-lecture readings</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -62,7 +62,7 @@
     <link rel="icon" href="../_static/ocean_python_sm.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Complex control flow" href="complex_control_flow.html" />
+    <link rel="next" title="Conditional statements" href="complex_control_flow.html" />
     <link rel="prev" title="Week 3: Control flow; Debugging code" href="wk03_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,7 +183,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_02/wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using Jupyter notebook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/python_list.html">Collection type: python list</a></li>
@@ -191,10 +191,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk03_intro.html">Week 3: Control flow; Debugging code</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Control flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="complex_control_flow.html">Complex control flow</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ettiquette.html">Coding ettiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ettiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -218,7 +218,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; More matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
 </ul>
 
@@ -405,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Control flow</h1>
+    <h1>For loops</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -415,7 +415,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop">For loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-for-loops">Using for loops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-as-you-loop">Enumerate as you loop</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#range-objects">Range objects</a></li>
 </ul>
@@ -429,10 +429,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="control-flow">
-<h1>Control flow<a class="headerlink" href="#control-flow" title="Link to this heading">#</a></h1>
-<section id="for-loop">
-<h2>For loop<a class="headerlink" href="#for-loop" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="for-loops">
+<h1>For loops<a class="headerlink" href="#for-loops" title="Link to this heading">#</a></h1>
+<section id="using-for-loops">
+<h2>Using for loops<a class="headerlink" href="#using-for-loops" title="Link to this heading">#</a></h2>
 <p>The main advantage of computer over human is that it can do repetitive tasks really well. So to realize the full power of python we’ll have a way to ask a computer to repeat without repeating ourselves. The simplest way to achieve this is via a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <p>Let’s say we have a list <code class="docutils literal notranslate"><span class="pre">a_list</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">7]</span></code>, and we want to print out the values of the list one by one. Our code may look like this:</p>
 <div class="cell docutils container">
@@ -487,7 +487,7 @@ document.write(`
 <p>Notably:</p>
 <ul class="simple">
 <li><p>The colon <code class="docutils literal notranslate"><span class="pre">:</span></code> is part of the syntax. You must end the first line of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop with a colon.</p></li>
-<li><p>We defined a dummy variable <code class="docutils literal notranslate"><span class="pre">val</span></code> in the unintented line of the loop, whose value changes every time we “step forward” in the loop</p></li>
+<li><p>We defined a dummy variable <code class="docutils literal notranslate"><span class="pre">val</span></code> in the unindented line of the loop, whose value changes every time we “step forward” in the loop</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement is indented. This is necessary so that python knows that the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement needs to be execute <strong>every time</strong> we make a step forward</p></li>
 </ul>
 <p>As another example, let’s say you want to add all the values in <code class="docutils literal notranslate"><span class="pre">a_list</span></code> together. To do so, we need to define a variable to hold the partial sum, and increment it every time we step through the loop. The resulting code may look like:</p>
@@ -536,7 +536,7 @@ document.write(`
 </section>
 <section id="enumerate-as-you-loop">
 <h2>Enumerate as you loop<a class="headerlink" href="#enumerate-as-you-loop" title="Link to this heading">#</a></h2>
-<p>Sometimes when you go through a list, you’d want to know the index of the current element in addtion to knowing its value. The <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> function can help you in such circumstance. An example:</p>
+<p>Sometimes when you go through a list, you’d want to know the index of the current element in addition to knowing its value. The <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> function can help you in such circumstance. An example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
@@ -557,7 +557,7 @@ At index 2 we get the value 7
 <section id="range-objects">
 <h2>Range objects<a class="headerlink" href="#range-objects" title="Link to this heading">#</a></h2>
 <p>We find a way to step through a list step by step using for loop. But up to now we have the construct the list by hands ourselves, which somewhat defeat the purpose of a for loop. Is there a way to generate regular sequences in python? The answer is yes, and the tool is the <code class="docutils literal notranslate"><span class="pre">range()</span></code> objects</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">range()</span></code> object can take between 1 to 3 arguments, each of which must be an integer. The meaning of the arugment is as follows:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">range()</span></code> object can take between 1 to 3 arguments, each of which must be an integer. The meanings of the arguments are as follows:</p>
 <ul class="simple">
 <li><p>if <code class="docutils literal notranslate"><span class="pre">range()</span></code> is supplied with 1 argument, that argument is interpreted as an (exclusive) endpoint, and the sequence will start from 0 and increase by 1 until it hits the endpoint.</p></li>
 <li><p>if <code class="docutils literal notranslate"><span class="pre">range()</span></code> is supplied with 2 arguments, the first argument is interpreted as (inclusive) starting point and the last argument is interpreted as (exclusive) end point</p></li>
@@ -700,7 +700,7 @@ At index 2 we get the value 7
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complex control flow</p>
+        <p class="prev-next-title">Conditional statements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -720,7 +720,7 @@ At index 2 we get the value 7
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop">For loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-for-loops">Using for loops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-as-you-loop">Enumerate as you loop</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#range-objects">Range objects</a></li>
 </ul>

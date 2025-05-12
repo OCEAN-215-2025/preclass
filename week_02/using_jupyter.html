@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using jupyter notebook &#8212; OCEAN 215 pre-lecture readings</title>
+    <title>Using Jupyter notebook &#8212; OCEAN 215 pre-lecture readings</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -183,7 +183,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Using jupyter notebook</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Using Jupyter notebook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_list.html">Collection type: python list</a></li>
@@ -191,10 +191,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_03/wk03_intro.html">Week 3: Control flow; Debugging code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">Control flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Complex control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding ettiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -218,7 +218,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; More matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
 </ul>
 
@@ -405,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Using jupyter notebook</h1>
+    <h1>Using Jupyter notebook</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -416,8 +416,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-what-and-why">Jupyter notebooks: what and why</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook">Creating, uploading, downloading, and opening a new jupyter notebook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-jupyter-notebook-manipulation">Basic jupyter notebook manipulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook">Creating, uploading, downloading, and opening a new Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-jupyter-notebook-manipulation">Basic Jupyter notebook manipulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-formatting">Markdown formatting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-within-code-cell">Comments within code cell</a></li>
 </ul>
@@ -432,29 +432,29 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="using-jupyter-notebook">
-<h1>Using jupyter notebook<a class="headerlink" href="#using-jupyter-notebook" title="Link to this heading">#</a></h1>
+<h1>Using Jupyter notebook<a class="headerlink" href="#using-jupyter-notebook" title="Link to this heading">#</a></h1>
 <section id="jupyter-notebooks-what-and-why">
 <h2>Jupyter notebooks: what and why<a class="headerlink" href="#jupyter-notebooks-what-and-why" title="Link to this heading">#</a></h2>
 <p>In this course we’ll execute python codes mainly using Jupyter notebooks. These are files with <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> extensions. The advantage of Jupyter notebooks are:</p>
 <ul class="simple">
 <li><p>You can executes python codes in small units, which makes debugging easier.</p></li>
 <li><p>You can executes python codes interactively, i.e., you can switch between debugging and executing fairly seamlessly.</p></li>
-<li><p>You can mix rich-formatted texts with python code within the same file. This is especially useful if you want to documnent what your codes is doing.</p></li>
+<li><p>You can mix rich-formatted texts with python code within the same file. This is especially useful if you want to document what your codes are doing.</p></li>
 </ul>
 </section>
 <section id="creating-uploading-downloading-and-opening-a-new-jupyter-notebook">
-<h2>Creating, uploading, downloading, and opening a new jupyter notebook<a class="headerlink" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook" title="Link to this heading">#</a></h2>
+<h2>Creating, uploading, downloading, and opening a new Jupyter notebook<a class="headerlink" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>To create a new jupyter notebook in Jupyterhub, click on the <code class="docutils literal notranslate"><span class="pre">+</span></code> symbols either at the top of the main panel or at the top of the left panel, which brings up a launcher. Then, at the top section of the main panel, just click on the icon that says “Python 3 (ipykernel)”</p></li>
-<li><p>To upload a file onto jupyter hub, all you need to do is to drag the file from your desktop / file browser to the left pane of the jupyter hub</p></li>
+<li><p>To create a new Jupyter notebook in Jupyter Hub, click on the <code class="docutils literal notranslate"><span class="pre">+</span></code> symbols either at the top of the main panel or at the top of the left panel, which brings up a launcher. Then, at the top section of the main panel, just click on the icon that says “Python 3 (ipykernel)”</p></li>
+<li><p>To upload a file onto Jupyter Hub, all you need to do is to drag the file from your desktop / file browser to the left pane of the Jupyter Hub</p></li>
 <li><p>To download a file onto your computer, right click on the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file from the left pane, and select download</p></li>
-<li><p>To edit an existing jupyter notebook file, left click on the file on the left pane and it will be displayed on the main panel.</p></li>
+<li><p>To edit an existing Jupyter notebook, left click on the file on the left pane and it will be displayed on the main panel.</p></li>
 </ul>
 </section>
 <section id="basic-jupyter-notebook-manipulation">
-<h2>Basic jupyter notebook manipulation<a class="headerlink" href="#basic-jupyter-notebook-manipulation" title="Link to this heading">#</a></h2>
-<p>A jupyter notebook is comprised of cells. There are 3 types of cells: raw, markdown, and code. In this course we will mainly deal with the latter 2 types. Visually, a code cell is distinguished from the markdown cell by a gray background. The markdown cell is used for displaying richly-formatted texts, while code cell is used to execute python codes.</p>
-<p>In general, there are two modes of operation in a jupyter notebook: the <strong>command mode</strong> and the <strong>edit mode</strong>. The former is for cell-level operations while the latter is for editing the content within a cell. If you see a flashing cursor in your notebook, you are likely in edit mode. In addition, the current cell being edited is usually indicated by a tight blue line frame, whereas in command mode the blue frame extends all the way to the left.</p>
+<h2>Basic Jupyter notebook manipulation<a class="headerlink" href="#basic-jupyter-notebook-manipulation" title="Link to this heading">#</a></h2>
+<p>A Jupyter notebook is comprised of cells. There are 3 types of cells: raw, markdown, and code. In this course we will mainly deal with the latter 2 types. Visually, a code cell is distinguished from the markdown cell by a gray background. The markdown cell is used for displaying richly-formatted texts, while code cell is used to execute python codes.</p>
+<p>In general, there are two modes of operation in a Jupyter notebook: the <strong>command mode</strong> and the <strong>edit mode</strong>. The former is for cell-level operations while the latter is for editing the content within a cell. If you see a flashing cursor in your notebook, you are likely in edit mode. In addition, the current cell being edited is usually indicated by a tight blue line frame, whereas in command mode the blue frame extends all the way to the left.</p>
 <p>A few operations that are useful in command mode:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">m</span></code> converts the current cell into a markdown cell</p></li>
@@ -479,9 +479,9 @@ document.write(`
 </section>
 <section id="comments-within-code-cell">
 <h2>Comments within code cell<a class="headerlink" href="#comments-within-code-cell" title="Link to this heading">#</a></h2>
-<p>Within a code cell you may occasionally see lines that start with a <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol. Such lines serve the purpose of <strong>comments</strong> in the python language. In other words, content to the right ofthe <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol is ignored by the python executable when the cell is run.</p>
+<p>Within a code cell you may occasionally see lines that start with a <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol. Such lines serve the purpose of <strong>comments</strong> in the python language. In other words, content to the right of the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol is ignored by the python executable when the cell is run.</p>
 <p>In fact, you can start a comment with a <code class="docutils literal notranslate"><span class="pre">#</span></code> in the middle of a line. The content to the left of the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol is executed as code, whereas texts after the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol are ignored.</p>
-<p>In jupyter notebook the role of comments somewhat overlaps with that of a markdown cell. However, in a python script where every line is code, comments are useful in helping a human reader to understand what the code is doing.</p>
+<p>In Jupyter notebook the role of comments somewhat overlaps with that of a markdown cell. However, in a python script where every line is code, comments are useful in helping a human reader to understand what the code is doing.</p>
 </section>
 </section>
 
@@ -550,8 +550,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-what-and-why">Jupyter notebooks: what and why</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook">Creating, uploading, downloading, and opening a new jupyter notebook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-jupyter-notebook-manipulation">Basic jupyter notebook manipulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook">Creating, uploading, downloading, and opening a new Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-jupyter-notebook-manipulation">Basic Jupyter notebook manipulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-formatting">Markdown formatting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-within-code-cell">Comments within code cell</a></li>
 </ul>

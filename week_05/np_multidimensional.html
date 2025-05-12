@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -185,7 +185,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_02/wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using Jupyter notebook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/python_list.html">Collection type: python list</a></li>
@@ -193,10 +193,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_03/wk03_intro.html">Week 3: Control flow; Debugging code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">Control flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Complex control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding ettiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -220,7 +220,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; More matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
 </ul>
 
@@ -419,7 +419,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-examples">Some examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-a-multi-dimensional-array">Indexing a multi-dimensional array</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetics-with-multi-dimensional-array">Arithmetics with multi-dimensional array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-multi-dimensional-array">Arithmetic with multi-dimensional array</a></li>
 </ul>
             </nav>
         </div>
@@ -580,7 +580,7 @@ document.write(`
 </section>
 <section id="indexing-a-multi-dimensional-array">
 <h2>Indexing a multi-dimensional array<a class="headerlink" href="#indexing-a-multi-dimensional-array" title="Link to this heading">#</a></h2>
-<p>An n-dimensional array can be indexed by a mixture of integers and slices of total length n, separted by commas. For example, if we want to obtain the element at the 2nd row (index = 1) and 3rd column (index = 2) of <code class="docutils literal notranslate"><span class="pre">x</span></code>, we can do:</p>
+<p>An n-dimensional array can be indexed by a mixture of integers and slices of total length n, separated by commas. For example, if we want to obtain the element at the 2nd row (index = 1) and 3rd column (index = 2) of <code class="docutils literal notranslate"><span class="pre">x</span></code>, we can do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
@@ -660,8 +660,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="arithmetics-with-multi-dimensional-array">
-<h2>Arithmetics with multi-dimensional array<a class="headerlink" href="#arithmetics-with-multi-dimensional-array" title="Link to this heading">#</a></h2>
+<section id="arithmetic-with-multi-dimensional-array">
+<h2>Arithmetic with multi-dimensional array<a class="headerlink" href="#arithmetic-with-multi-dimensional-array" title="Link to this heading">#</a></h2>
 <p>The arithmetic operators <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">//</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, and <code class="docutils literal notranslate"><span class="pre">**</span></code> can be used to operate between two arrays of the same dimension. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,7 +684,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Moreover, the arithmetic operators can also operate between an n-dimenional array:</p>
+<p>Moreover, the arithmetic operators can also operate between an n-dimensional array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">/</span> <span class="mi">2</span>
@@ -698,7 +698,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>As it turns out, if you have an n-dimensional array (say <code class="docutils literal notranslate"><span class="pre">y</span></code>) and an m-dimensional array (say <code class="docutils literal notranslate"><span class="pre">x</span></code>), where m &lt; n, as long as the last m dimensions of <code class="docutils literal notranslate"><span class="pre">y</span></code> agree with the dimensions of <code class="docutils literal notranslate"><span class="pre">x</span></code>, you can also operate between the two. What happens is that the array <code class="docutils literal notranslate"><span class="pre">x</span></code> will automatically expand to have the same dimension as <code class="docutils literal notranslate"><span class="pre">y</span></code>, where data are copied identitically if need be, and the operation will be carried out between <code class="docutils literal notranslate"><span class="pre">y</span></code> and this expanded version of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
+<p>As it turns out, if you have an n-dimensional array (say <code class="docutils literal notranslate"><span class="pre">y</span></code>) and an m-dimensional array (say <code class="docutils literal notranslate"><span class="pre">x</span></code>), where m &lt; n, as long as the last m dimensions of <code class="docutils literal notranslate"><span class="pre">y</span></code> agree with the dimensions of <code class="docutils literal notranslate"><span class="pre">x</span></code>, you can also operate between the two. What happens is that the array <code class="docutils literal notranslate"><span class="pre">x</span></code> will automatically expand to have the same dimension as <code class="docutils literal notranslate"><span class="pre">y</span></code>, where data are copied identically if need be, and the operation will be carried out between <code class="docutils literal notranslate"><span class="pre">y</span></code> and this expanded version of <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
 <p>As an example, suppose we have 4 measurements of time (as fractional hour), temperature (in °C), and salinity, packed as a 4-by-3 array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -712,10 +712,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Suppose we want to convert temperature to fahrenheit, we may define:</p>
+<p>Suppose we want to convert temperature to Fahrenheit, we may define:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multipler</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">9.0</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiplier</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">9.0</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">offset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">32.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -724,7 +724,7 @@ document.write(`
 <p>Which allow us to do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multipler</span> <span class="o">*</span> <span class="n">measurement</span> <span class="o">+</span> <span class="n">offset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiplier</span> <span class="o">*</span> <span class="n">measurement</span> <span class="o">+</span> <span class="n">offset</span>
 </pre></div>
 </div>
 </div>
@@ -737,7 +737,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The idea is that both multipler and offset are expanded to become 4-by-3 arrays, with each row repeating the same content. The end effect is that each temperature element is modified as <span class="math notranslate nohighlight">\(T_F = (9.0 / 5.0) \cdot T_C + 32.0\)</span></p>
+<p>The idea is that both multiplier and offset are expanded to become 4-by-3 arrays, with each row repeating the same content. The end effect is that each temperature element is modified as <span class="math notranslate nohighlight">\(T_F = (9.0 / 5.0) \cdot T_C + 32.0\)</span></p>
 <p>Incidentally, another way to perform the above calculation is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -825,7 +825,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-examples">Some examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-a-multi-dimensional-array">Indexing a multi-dimensional array</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetics-with-multi-dimensional-array">Arithmetics with multi-dimensional array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-multi-dimensional-array">Arithmetic with multi-dimensional array</a></li>
 </ul>
   </nav></div>
 

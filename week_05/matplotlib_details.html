@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -183,7 +183,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_02/wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using Jupyter notebook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/python_list.html">Collection type: python list</a></li>
@@ -191,10 +191,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_03/wk03_intro.html">Week 3: Control flow; Debugging code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">Control flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Complex control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding ettiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -218,7 +218,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; More matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
 </ul>
 
@@ -593,7 +593,7 @@ document.write(`
 <h3>Set title: the <code class="docutils literal notranslate"><span class="pre">.set_title()</span></code> method<a class="headerlink" href="#set-title-the-set-title-method" title="Link to this heading">#</a></h3>
 <p>The title of a plot can be set using the <code class="docutils literal notranslate"><span class="pre">.set_title()</span></code> method of the axes object. In addition to the title text, some useful arguments are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">loc</span></code>: the horizaontal alignment of the title. Can be <code class="docutils literal notranslate"><span class="pre">&quot;center&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">&quot;center&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">loc</span></code>: the horizontal alignment of the title. Can be <code class="docutils literal notranslate"><span class="pre">&quot;center&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code> (the default is <code class="docutils literal notranslate"><span class="pre">&quot;center&quot;</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fontsize</span></code>: the font size of the title</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fontstyle</span></code>: the “style” of the font, can be <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;italic&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;oblique&quot;</span></code> (default is <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fontweight</span></code>: the “weight” of the font, can be <code class="docutils literal notranslate"><span class="pre">&quot;light&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bold&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;extra</span> <span class="pre">bold&quot;</span></code> (among other possibilities). Default is <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code></p></li>
@@ -802,7 +802,7 @@ document.write(`
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">axis</span></code>: which axis (axes) to draw the grid. Can be <code class="docutils literal notranslate"><span class="pre">&quot;x&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;y&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code> (default is <code class="docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> or <code class="docutils literal notranslate"><span class="pre">c</span></code>: the color of the grid lines</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">linewidth</span></code> or <code class="docutils literal notranslate"><span class="pre">lw</span></code>: linewidth of the grid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linewidth</span></code> or <code class="docutils literal notranslate"><span class="pre">lw</span></code>: line width of the grid</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code> or <code class="docutils literal notranslate"><span class="pre">ls</span></code>: line style of the grid</p></li>
 </ul>
 <p>Example:</p>
@@ -826,7 +826,7 @@ document.write(`
 </section>
 <section id="remark-customizing-figure-size">
 <h2>Remark: customizing figure size<a class="headerlink" href="#remark-customizing-figure-size" title="Link to this heading">#</a></h2>
-<p>The figure size is a property of the figure and not of the axes. So, to adjust the figure size we need to customize the figure object. In particualr, we can adjust the figure size using the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code> call. Example:</p>
+<p>The figure size is a property of the figure and not of the axes. So, to adjust the figure size we need to customize the figure object. In particular, we can adjust the figure size using the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code> call. Example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>

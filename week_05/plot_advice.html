@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -183,7 +183,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_02/wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using Jupyter notebook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_02/python_list.html">Collection type: python list</a></li>
@@ -191,10 +191,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_03/wk03_intro.html">Week 3: Control flow; Debugging code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">Control flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Complex control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding ettiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -218,7 +218,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; More matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
 </ul>
 
@@ -447,7 +447,7 @@ document.write(`
 <p>While a figure may not be entirely self-contained, it is a good idea for the figure to provide context of the data it presents. Concretely, this means:</p>
 <ul class="simple">
 <li><p>Make sure the figure has a concise and descriptive title</p></li>
-<li><p>Make sure that the axes are labelled, including proper units if applicable</p></li>
+<li><p>Make sure that the axes are labeled, including proper units if applicable</p></li>
 </ul>
 <p>For example, suppose we have data about a remote sensor’s depth as a function of time.</p>
 <p style="color: red; font-weight: bold;">Bad example:</p><div class="cell docutils container">
@@ -475,7 +475,7 @@ document.write(`
 <img alt="../_images/430f54c0e98bedde492957c2a37991e9a322af0dfa328cde46cf4a024e3c252e.png" src="../_images/430f54c0e98bedde492957c2a37991e9a322af0dfa328cde46cf4a024e3c252e.png" />
 </div>
 </div>
-<p>The above figure provides no context about what what the axes values actually represent, and does not describe what it is plotting. It also give little hint about how frequet the data is collected</p>
+<p>The above figure provides no context about what what the axes values actually represent, and does not describe what it is plotting. It also give little hint about how frequent the data is collected</p>
 <p style="color: blue; font-weight: bold;">Good example:</p><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -553,7 +553,7 @@ document.write(`
 <img alt="../_images/bd92ef98d52cb0ac23459455d28536bea31c157c65f3139205f61d24ad4d6f82.png" src="../_images/bd92ef98d52cb0ac23459455d28536bea31c157c65f3139205f61d24ad4d6f82.png" />
 </div>
 </div>
-<p>Since the purpose of the graph is to guide us towards a general trend, the grid does not provide any useful information. In fact, it likely ditract the reader from the trend line, which is more important. Moreover, the interval between ticks are probably too small that it becomes hard to appreciate the overall scale of data. Finally, the dot that represents data are also too thick, making hard to appreciate the actual among of data presented.</p>
+<p>Since the purpose of the graph is to guide us towards a general trend, the grid does not provide any useful information. In fact, it likely distract the reader from the trend line, which is more important. Moreover, the interval between ticks are probably too small that it becomes hard to appreciate the overall scale of data. Finally, the dot that represents data are also too thick, making hard to appreciate the actual among of data presented.</p>
 <p style="color: blue; font-weight: bold;">Good example:</p><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the data</span>
@@ -634,7 +634,7 @@ document.write(`
 </section>
 <section id="keep-accessibility-in-mind">
 <h2>4. Keep accessibility in mind<a class="headerlink" href="#keep-accessibility-in-mind" title="Link to this heading">#</a></h2>
-<p>In essence, we should be thoughtful about text size, and we should choose our color carefully so that people who have color blindness or printed on grayscale can still glimpse useful information about the figure. In addition, if color is used to distinguish between different kinds of data, try to add another distingish visual element on top of color.</p>
+<p>In essence, we should be thoughtful about text size, and we should choose our color carefully so that people who have color blindness or printed on grayscale can still glimpse useful information about the figure. In addition, if color is used to distinguish between different kinds of data, try to add another distinguishing visual element on top of color.</p>
 <p style="color: red; font-weight: bold;">Bad example:</p><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data to be plotted</span>
