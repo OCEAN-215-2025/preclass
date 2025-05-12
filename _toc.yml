@@ -26,6 +26,13 @@ chapters:
   - file: week_04/reading_documentations.ipynb
   - file: week_04/wk04_glossary.md
 - file: week_05/wk05_intro.md
+  sections:
+  - file: week_05/np_multidimensional.ipynb
+  - file: week_05/np_multi_functions.ipynb
+  - file: week_05/intro_matplotlib.ipynb
+  - file: week_05/matplotlib_details.ipynb
+  - file: week_05/plot_advice.ipynb
+  - file: week_05/wk05_glossary.md
 - file: week_06/wk06_intro.md
 - file: week_07/wk07_intro.md
 - file: week_08/wk08_intro.md
