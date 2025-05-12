@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -423,6 +423,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-reduction-functions">Numpy reduction functions</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-functions">matplotlib functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-showing-figures-and-axes">Creating and showing figures and axes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-different-types-of-visualization">Making different types of visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-and-titles">Axes and titles</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -438,6 +444,8 @@ document.write(`
 <h1>Week 5 glossary<a class="headerlink" href="#week-5-glossary" title="Link to this heading">#</a></h1>
 <section id="online-resources">
 <h2>Online resources<a class="headerlink" href="#online-resources" title="Link to this heading">#</a></h2>
+<p>The official matplotlib documentation can be found in <a class="reference external" href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a> (<em>note</em>: we are using the “axes interface”)</p>
+<p>In addition, you may find the cheatsheets provided by matplotlib (<a class="reference external" href="https://matplotlib.org/cheatsheets/">https://matplotlib.org/cheatsheets/</a>) useful.</p>
 </section>
 <section id="numpy-syntax">
 <h2>Numpy syntax<a class="headerlink" href="#numpy-syntax" title="Link to this heading">#</a></h2>
@@ -467,6 +475,37 @@ document.write(`
 <h3>Numpy reduction functions<a class="headerlink" href="#numpy-reduction-functions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>, etc. Functions that apply reduction along particular axis / axes or across the whole multi-dimensional array (for a more complete list, see the glossary of week 4)</p></li>
+</ul>
+</section>
+</section>
+<section id="matplotlib-functions">
+<h2>matplotlib functions<a class="headerlink" href="#matplotlib-functions" title="Link to this heading">#</a></h2>
+<section id="creating-and-showing-figures-and-axes">
+<h3>Creating and showing figures and axes<a class="headerlink" href="#creating-and-showing-figures-and-axes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code>: create a new figure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code>: add new axes object to an existing figure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>: show a figure already created<br><br></p></li>
+</ul>
+</section>
+<section id="making-different-types-of-visualization">
+<h3>Making different types of visualization<a class="headerlink" href="#making-different-types-of-visualization" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code>: create a line plot on the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code>: create a scatter plot on the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.bar()</span></code>: create a bar plot on the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+</ul>
+</section>
+<section id="axes-and-titles">
+<h3>Axes and titles<a class="headerlink" href="#axes-and-titles" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_title()</span></code>: set the title of the figure, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_xlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_ylabel()</span></code>: set the labels for x- and y-axis, respectively, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_xlim()</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_ylim()</span></code>: set the x- and y-axis limits, respectively, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_xticks()</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_yticks()</span></code>: set the ticks for x- and y-axis, respectively, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.tick_params()</span></code>: set the parameters for ticks (e.g., font size for tick labels), for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.grid()</span></code>: create a grid overlay for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax.legend()</span></code>: create a legend for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
 </ul>
 </section>
 </section>
@@ -542,6 +581,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-methods">Numpy array methods</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mapping-functions">Numpy mapping functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-reduction-functions">Numpy reduction functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-functions">matplotlib functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-showing-figures-and-axes">Creating and showing figures and axes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-different-types-of-visualization">Making different types of visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-and-titles">Axes and titles</a></li>
 </ul>
 </li>
 </ul>
