@@ -47,7 +47,7 @@ The official numpy documentations can be found at [https://numpy.org/doc/stable/
 + `np.log10()`: base-10 logarithm
 + `np.log2()`: base-2 logrithm<br><br>
 
-+ `np.sin()`, `np.cos()`, `np.tan()`: trigonometic functions
++ `np.sin()`, `np.cos()`, `np.tan()`: trigonometric functions
 + `np.arcsin()`, `np.arccos()`, `np.arctan()`: inverse trigonometric functions
 + `np.arctan2()`: arctangent function accepting both `x` and `y` as arguments
 + `deg2rad()`, `rad2deg()`: conversion between radians and degrees<br><br>

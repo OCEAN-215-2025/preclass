@@ -1,1 +1,1 @@
-# Week 9: Linear regression; Grouped aggregration
+# Week 9: Linear regression; Grouped aggregation
