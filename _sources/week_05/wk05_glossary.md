@@ -12,13 +12,19 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 + `[]`: indexing operators on multi-dimensional numpy array
 + `:` : operator to create slicing object of form _start_:_stop_:_step_
 
-## Numpy functions and methods
+## Numpy attributes, functions and methods
+
+## Numpy array attributes
+
++ `<ndarray>.size`: the size (number of entries) of a numpy array
++ `<ndarray>.shape`: the shape of a numpy array
++ `<ndarray>.ndim`: number of dimensions of the numpy array
 
 ### Numpy array methods
 
-+ `.reshape()`: reshape an numpy array
-+ `.flatten()`: flatten a multi-dimensional array to 1D
-+ `.transpose()`: transpose the rows and columns of a 2D numpy array
++ `<ndarray>.reshape()`: reshape an numpy array
++ `<ndarray>.flatten()`: flatten a multi-dimensional array to 1D
++ `<ndarray>.transpose()`: transpose the rows and columns of a 2D numpy array
 
 ### Numpy mapping functions
 
@@ -33,21 +39,21 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 ### Creating and showing figures and axes
 
 + `plt.figure()`: create a new figure
-+ `fig.add_subplot()`: add new axes object to an existing figure `fig`
-+ `plt.show()`: show a figure already created `<br><br>`
++ `<Figure>.add_subplot()`: add new axes object to a Figure instance
++ `plt.show()`: show a figure already created
 
 ### Making different types of visualization
 
-+ `ax.plot()`: create a line plot on the axes instance `ax`
-+ `ax.scatter()`: create a scatter plot on the axes instance `ax`
-+ `ax.bar()`: create a bar plot on the axes instance `ax`
++ `<Axes>.plot()`: create a line plot on an Axes instance
++ `<Axes>.scatter()`: create a scatter plot on an Axes instance
++ `<Axes>.bar()`: create a bar plot on an Axes instance
 
 ### Axes and titles
 
-+ `ax.set_title()`: set the title of the figure, for the axes instance `ax`
-+ `ax.set_xlabel()`, `ax.set_ylabel()`: set the labels for x- and y-axis, respectively, for the axes instance `ax`
-+ `ax.set_xlim()`, `ax.set_ylim()`: set the x- and y-axis limits, respectively, for the axes instance `ax`
-+ `ax.set_xticks()`, `ax.set_yticks()`: set the ticks for x- and y-axis, respectively, for the axes instance `ax`
-+ `ax.tick_params()`: set the parameters for ticks (e.g., font size for tick labels), for the axes instance `ax`
-+ `ax.grid()`: create a grid overlay for the axes instance `ax`
-+ `ax.legend()`: create a legend for the axes instance `ax`
++ `<Axes>.set_title()`: set the title of the figure, for an Axes instance
++ `<Axes>.set_xlabel()`, `<Axes>.set_ylabel()`: set the labels for x- and y-axis, respectively, for an Axes instance
++ `<Axes>.set_xlim()`, `<Axes>.set_ylim()`: set the x- and y-axis limits, respectively, for an Axes instance
++ `<Axes>.set_xticks()`, `<Axes>.set_yticks()`: set the ticks for x- and y-axis, respectively, for an Axes instance
++ `<Axes>.tick_params()`: set the parameters for ticks (e.g., font size for tick labels), for an Axes instance
++ `<Axes>.grid()`: create a grid overlay for an Axes instance
++ `<Axes>.legend()`: create a legend for an Axes instance

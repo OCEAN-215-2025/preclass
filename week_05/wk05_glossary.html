@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -202,13 +202,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_04/numpy_overview.html">An overview of numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/statistics.html">A little bit of statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/reading_documentations.html">Reading documentations and using online resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/wk04_glossary.html">Week 4 glossary</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk05_intro.html">Week 5: Multi-dimensional numpy array; Plotting with matplotlib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="np_multidimensional.html">Multi-dimensional arrays in numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="np_multi_functions.html">Numpy functions on multi-dimensional array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="np_multi_functions.html">Numpy functions on multi-dimensional arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_matplotlib.html">Overview of matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib_details.html">Dive into matplotlib functions and methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_advice.html">Advice on making good visualizations</a></li>
@@ -417,7 +418,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-resources">Online resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-syntax">Numpy syntax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions-and-methods">Numpy functions and methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-attributes-functions-and-methods">Numpy attributes, functions and methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-attributes">Numpy array attributes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-methods">Numpy array methods</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mapping-functions">Numpy mapping functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-reduction-functions">Numpy reduction functions</a></li>
@@ -455,14 +457,22 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> : operator to create slicing object of form <em>start</em>:<em>stop</em>:<em>step</em></p></li>
 </ul>
 </section>
-<section id="numpy-functions-and-methods">
-<h2>Numpy functions and methods<a class="headerlink" href="#numpy-functions-and-methods" title="Link to this heading">#</a></h2>
+<section id="numpy-attributes-functions-and-methods">
+<h2>Numpy attributes, functions and methods<a class="headerlink" href="#numpy-attributes-functions-and-methods" title="Link to this heading">#</a></h2>
+</section>
+<section id="numpy-array-attributes">
+<h2>Numpy array attributes<a class="headerlink" href="#numpy-array-attributes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.size</span></code>: the size (number of entries) of a numpy array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.shape</span></code>: the shape of a numpy array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.ndim</span></code>: number of dimensions of the numpy array</p></li>
+</ul>
 <section id="numpy-array-methods">
 <h3>Numpy array methods<a class="headerlink" href="#numpy-array-methods" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">.reshape()</span></code>: reshape an numpy array</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.flatten()</span></code>: flatten a multi-dimensional array to 1D</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.transpose()</span></code>: transpose the rows and columns of a 2D numpy array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.reshape()</span></code>: reshape an numpy array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.flatten()</span></code>: flatten a multi-dimensional array to 1D</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.transpose()</span></code>: transpose the rows and columns of a 2D numpy array</p></li>
 </ul>
 </section>
 <section id="numpy-mapping-functions">
@@ -484,28 +494,28 @@ document.write(`
 <h3>Creating and showing figures and axes<a class="headerlink" href="#creating-and-showing-figures-and-axes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code>: create a new figure</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code>: add new axes object to an existing figure <code class="docutils literal notranslate"><span class="pre">fig</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>: show a figure already created <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;&lt;br&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Figure&gt;.add_subplot()</span></code>: add new axes object to a Figure instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>: show a figure already created</p></li>
 </ul>
 </section>
 <section id="making-different-types-of-visualization">
 <h3>Making different types of visualization<a class="headerlink" href="#making-different-types-of-visualization" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code>: create a line plot on the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.scatter()</span></code>: create a scatter plot on the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.bar()</span></code>: create a bar plot on the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.plot()</span></code>: create a line plot on an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.scatter()</span></code>: create a scatter plot on an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.bar()</span></code>: create a bar plot on an Axes instance</p></li>
 </ul>
 </section>
 <section id="axes-and-titles">
 <h3>Axes and titles<a class="headerlink" href="#axes-and-titles" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_title()</span></code>: set the title of the figure, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_xlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_ylabel()</span></code>: set the labels for x- and y-axis, respectively, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_xlim()</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_ylim()</span></code>: set the x- and y-axis limits, respectively, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.set_xticks()</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_yticks()</span></code>: set the ticks for x- and y-axis, respectively, for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.tick_params()</span></code>: set the parameters for ticks (e.g., font size for tick labels), for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.grid()</span></code>: create a grid overlay for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ax.legend()</span></code>: create a legend for the axes instance <code class="docutils literal notranslate"><span class="pre">ax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.set_title()</span></code>: set the title of the figure, for an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.set_xlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.set_ylabel()</span></code>: set the labels for x- and y-axis, respectively, for an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.set_xlim()</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.set_ylim()</span></code>: set the x- and y-axis limits, respectively, for an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.set_xticks()</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.set_yticks()</span></code>: set the ticks for x- and y-axis, respectively, for an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.tick_params()</span></code>: set the parameters for ticks (e.g., font size for tick labels), for an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.grid()</span></code>: create a grid overlay for an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.legend()</span></code>: create a legend for an Axes instance</p></li>
 </ul>
 </section>
 </section>
@@ -577,7 +587,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-resources">Online resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-syntax">Numpy syntax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions-and-methods">Numpy functions and methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-attributes-functions-and-methods">Numpy attributes, functions and methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-attributes">Numpy array attributes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-methods">Numpy array methods</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mapping-functions">Numpy mapping functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-reduction-functions">Numpy reduction functions</a></li>

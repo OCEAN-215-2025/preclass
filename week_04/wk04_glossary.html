@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -204,13 +204,14 @@
 <li class="toctree-l2"><a class="reference internal" href="numpy_overview.html">An overview of numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">A little bit of statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reading_documentations.html">Reading documentations and using online resources</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 4 glossary</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_05/wk05_intro.html">Week 5: Multi-dimensional numpy array; Plotting with matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_05/np_multidimensional.html">Multi-dimensional arrays in numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multi_functions.html">Numpy functions on multi-dimensional array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multi_functions.html">Numpy functions on multi-dimensional arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_05/intro_matplotlib.html">Overview of matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_05/matplotlib_details.html">Dive into matplotlib functions and methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_05/plot_advice.html">Advice on making good visualizations</a></li>
@@ -425,6 +426,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-constants">Numpy constants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-attributes">Numpy array attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">Numpy functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array creation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-functions">Mapping functions</a></li>
@@ -481,6 +483,14 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code>: the “not a number” value</p></li>
 </ul>
 </section>
+<section id="numpy-array-attributes">
+<h2>Numpy array attributes<a class="headerlink" href="#numpy-array-attributes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.size</span></code>: the size (number of entries) of a numpy array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.shape</span></code>: the shape of a numpy array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.ndim</span></code>: number of dimensions of the numpy array</p></li>
+</ul>
+</section>
 <section id="numpy-functions">
 <h2>Numpy functions<a class="headerlink" href="#numpy-functions" title="Link to this heading">#</a></h2>
 <section id="array-creation">
@@ -519,7 +529,8 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>: calculating average</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.var()</span></code>: calculating variance</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.std()</span></code>: calculating standard deviation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">np.median()</span></code>: calculating median<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.median()</span></code>: calculating median</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.quantile()</span></code>: calculating quantiles<br><br></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.prod()</span></code>: product over elements</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>: sum over elements<br><br></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.max()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.min()</span></code>: finding extremum <em>value</em> of an array</p></li>
@@ -608,6 +619,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-constants">Numpy constants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-attributes">Numpy array attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">Numpy functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array creation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-functions">Mapping functions</a></li>

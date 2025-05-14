@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -202,13 +202,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_04/numpy_overview.html">An overview of numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/statistics.html">A little bit of statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/reading_documentations.html">Reading documentations and using online resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_04/wk04_glossary.html">Week 4 glossary</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk05_intro.html">Week 5: Multi-dimensional numpy array; Plotting with matplotlib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="np_multidimensional.html">Multi-dimensional arrays in numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="np_multi_functions.html">Numpy functions on multi-dimensional array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="np_multi_functions.html">Numpy functions on multi-dimensional arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_matplotlib.html">Overview of matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib_details.html">Dive into matplotlib functions and methods</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Advice on making good visualizations</a></li>
@@ -517,9 +518,9 @@ document.write(`
 <span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">salinity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="n">slope</span> <span class="o">=</span> <span class="mf">0.0951</span>
-<span class="n">intercept</span> <span class="o">=</span> <span class="mf">32.09</span>
-<span class="n">temp_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="mf">0.0916</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mf">32.11</span>
+<span class="n">temp_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
 <span class="n">sal_fit</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">temp_fit</span> <span class="o">+</span> <span class="n">intercept</span>
 </pre></div>
 </div>
@@ -538,7 +539,7 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Salinity&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">28.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mf">36.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 
@@ -550,7 +551,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bd92ef98d52cb0ac23459455d28536bea31c157c65f3139205f61d24ad4d6f82.png" src="../_images/bd92ef98d52cb0ac23459455d28536bea31c157c65f3139205f61d24ad4d6f82.png" />
+<img alt="../_images/e0f17c7a1d192451cff1d601ce6209088100c777b0659a9d5079ba510bad80c1.png" src="../_images/e0f17c7a1d192451cff1d601ce6209088100c777b0659a9d5079ba510bad80c1.png" />
 </div>
 </div>
 <p>Since the purpose of the graph is to guide us towards a general trend, the grid does not provide any useful information. In fact, it likely distract the reader from the trend line, which is more important. Moreover, the interval between ticks are probably too small that it becomes hard to appreciate the overall scale of data. Finally, the dot that represents data are also too thick, making hard to appreciate the actual among of data presented.</p>
@@ -567,10 +568,10 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Salinity&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mf">28.5</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">31.5</span><span class="p">,</span> <span class="mf">36.5</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">28.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mf">36.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">salinity</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
@@ -581,7 +582,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1fed6da14da55858474fcf1cf8f29dfe2957d39cc1e13ee9b95221206041f31c.png" src="../_images/1fed6da14da55858474fcf1cf8f29dfe2957d39cc1e13ee9b95221206041f31c.png" />
+<img alt="../_images/823cffc6cbd7f7d3c94354401a38702459aace484f8446f14fd9870a1ebfe89e.png" src="../_images/823cffc6cbd7f7d3c94354401a38702459aace484f8446f14fd9870a1ebfe89e.png" />
 </div>
 </div>
 </section>
