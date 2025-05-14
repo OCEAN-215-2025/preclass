@@ -27,6 +27,12 @@ The official numpy documentations can be found at [https://numpy.org/doc/stable/
 + `np.pi`: the number $\pi$
 + `np.nan`: the "not a number" value
 
+## Numpy array attributes
+
++ `<ndarray>.size`: the size (number of entries) of a numpy array
++ `<ndarray>.shape`: the shape of a numpy array
++ `<ndarray>.ndim`: number of dimensions of the numpy array
+
 ## Numpy functions
 
 ### Array creation
@@ -63,7 +69,8 @@ The official numpy documentations can be found at [https://numpy.org/doc/stable/
 + `np.mean()`: calculating average
 + `np.var()`: calculating variance
 + `np.std()`: calculating standard deviation
-+ `np.median()`: calculating median<br><br>
++ `np.median()`: calculating median
++ `np.quantile()`: calculating quantiles<br><br>
 
 + `np.prod()`: product over elements
 + `np.sum()`: sum over elements<br><br>
