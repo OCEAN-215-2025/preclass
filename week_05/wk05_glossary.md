@@ -46,6 +46,7 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 
 + `<Axes>.plot()`: create a line plot on an Axes instance
 + `<Axes>.scatter()`: create a scatter plot on an Axes instance
++ `<Axes>.errorbar()`: create an error bar plot on an Axes instance
 + `<Axes>.bar()`: create a bar plot on an Axes instance
 
 ### Axes and titles

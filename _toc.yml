@@ -35,6 +35,13 @@ chapters:
   - file: week_05/plot_advice.ipynb
   - file: week_05/wk05_glossary.md
 - file: week_06/wk06_intro.md
+  sections:
+  - file: week_06/file_path.ipynb
+  - file: week_06/pandas_and_data.ipynb
+  - file: week_06/pandas_operations.ipynb
+  - file: week_06/pandas_datetime.ipynb
+  - file: week_06/matplotlib_datetime.ipynb
+  - file: week_06/wk06_glossary.md
 - file: week_07/wk07_intro.md
 - file: week_08/wk08_intro.md
 - file: week_09/wk09_intro.md
