@@ -16,7 +16,7 @@ chapters:
   - file: week_03/control_flow.ipynb
   - file: week_03/complex_control_flow.ipynb
   - file: week_03/debugging.ipynb
-  - file: week_03/ettiquette.ipynb
+  - file: week_03/etiquette.ipynb
   - file: week_03/wk03_glossary.ipynb
 - file: week_04/wk04_intro.md
   sections:
@@ -43,6 +43,12 @@ chapters:
   - file: week_06/matplotlib_datetime.ipynb
   - file: week_06/wk06_glossary.md
 - file: week_07/wk07_intro.md
+  sections:
+  - file: week_07/xarray_and_data.ipynb
+  - file: week_07/xarray_operations.ipynb
+  - file: week_07/xarray_conversions.ipynb
+  - file: week_07/matplotlib_matrix.ipynb
+  - file: week_07/wk07_glossary.md
 - file: week_08/wk08_intro.md
 - file: week_09/wk09_intro.md
 - file: week_10/wk10_intro.md

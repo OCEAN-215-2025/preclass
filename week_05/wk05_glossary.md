@@ -26,6 +26,12 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 + `<ndarray>.flatten()`: flatten a multi-dimensional array to 1D
 + `<ndarray>.transpose()`: transpose the rows and columns of a 2D numpy array
 
+### Numpy array combining functions
+
++ `np.concatenate()`: concatenate numpy arrays along a specified axis
++ `np.vstack()`: combine 2D numpy arrays vertically (i.e., extending rows)
++ `np.hstack()`: combine 2D numpy arrays horizonatal (i.e., extending columns)
+
 ### Numpy mapping functions
 
 + `np.exp()`, `np.sin()`, etc. Functions that applying a mapping to each element of a multi-dimensional array (for a more complete list, see the glossary of week 4)
@@ -36,10 +42,11 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 
 ## matplotlib functions
 
-### Creating and showing figures and axes
+### Creating, showing, and exporting figures and axes
 
 + `plt.figure()`: create a new figure
 + `<Figure>.add_subplot()`: add new axes object to a Figure instance
++ `<Figure>.savefig()`: save a figure to an external file
 + `plt.show()`: show a figure already created
 
 ### Making different types of visualization
@@ -48,7 +55,8 @@ In addition, you may find the cheatsheets provided by matplotlib ([https://matpl
 + `<Axes>.scatter()`: create a scatter plot on an Axes instance
 + `<Axes>.errorbar()`: create an error bar plot on an Axes instance
 + `<Axes>.bar()`: create a bar plot on an Axes instance
-
++ `<Axes>.hist()`: create a histogram on an Axes instance
++ 
 ### Axes and titles
 
 + `<Axes>.set_title()`: set the title of the figure, for an Axes instance

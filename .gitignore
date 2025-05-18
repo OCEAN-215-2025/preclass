@@ -4,6 +4,9 @@ sync.ffs_db
 # secrets folder
 secrets/
 
+# output folders
+output/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
