@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -194,7 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/etiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -225,7 +225,14 @@
 <li class="toctree-l2"><a class="reference internal" href="wk06_glossary.html">Week 6 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
@@ -426,6 +433,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-and-pandas-dataframes">Pandas and pandas DataFrames</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data-into-pandas-dataframe">Importing data into pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-multiple-dataframes">Combining multiple dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-dataframe-to-file">Writing dataframe to file</a></li>
 </ul>
             </nav>
         </div>
@@ -711,53 +720,53 @@ Name: A, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>0</td>
-      <td>12.12</td>
-      <td>33.030</td>
-      <td>25.030</td>
+      <td>14.040</td>
+      <td>33.1700</td>
+      <td>24.76600</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>10</td>
-      <td>12.08</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.950</td>
+      <td>33.2100</td>
+      <td>24.81500</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>20</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.900</td>
+      <td>33.2100</td>
+      <td>24.82600</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>30</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>23</td>
+      <td>13.880</td>
+      <td>33.2100</td>
+      <td>24.83000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>50</td>
-      <td>11.18</td>
-      <td>33.280</td>
-      <td>25.400</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>30</td>
+      <td>13.810</td>
+      <td>33.2180</td>
+      <td>24.85100</td>
     </tr>
     <tr>
       <th>...</th>
@@ -770,58 +779,58 @@ Name: A, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>81369</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>250</td>
-      <td>7.82</td>
-      <td>34.168</td>
-      <td>26.651</td>
-    </tr>
-    <tr>
-      <th>81370</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>275</td>
-      <td>7.66</td>
-      <td>34.203</td>
-      <td>26.701</td>
-    </tr>
-    <tr>
-      <th>81371</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10052</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>300</td>
-      <td>7.44</td>
-      <td>34.225</td>
-      <td>26.750</td>
+      <td>7.692</td>
+      <td>34.1712</td>
+      <td>26.67697</td>
     </tr>
     <tr>
-      <th>81372</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>350</td>
-      <td>7.17</td>
-      <td>34.260</td>
-      <td>26.817</td>
-    </tr>
-    <tr>
-      <th>81373</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10053</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>381</td>
-      <td>6.91</td>
-      <td>34.282</td>
-      <td>26.870</td>
+      <td>7.144</td>
+      <td>34.2443</td>
+      <td>26.81386</td>
+    </tr>
+    <tr>
+      <th>10054</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>400</td>
+      <td>7.031</td>
+      <td>34.2746</td>
+      <td>26.85372</td>
+    </tr>
+    <tr>
+      <th>10055</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>500</td>
+      <td>6.293</td>
+      <td>34.3126</td>
+      <td>26.98372</td>
+    </tr>
+    <tr>
+      <th>10056</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>515</td>
+      <td>6.155</td>
+      <td>34.2903</td>
+      <td>26.98398</td>
     </tr>
   </tbody>
 </table>
-<p>81374 rows × 7 columns</p>
+<p>10057 rows × 7 columns</p>
 </div></div></div>
 </div>
 <p>You can find the official documentation of <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> from <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html</a>. The function have plenty of (keyword-only, optional) arguments. Some highlights are:</p>
@@ -911,6 +920,279 @@ m,g,cm,L
 </table>
 </div></div></div>
 </div>
+<p>As a second example, consider the Seattle tide prediction data from Jan 1, 2025 to Jan 31, 2025, obtained from <a class="reference external" href="https://tidesandcurrents.noaa.gov/noaatidepredictions.html?id=9447130">NOAA</a> (a copy of the file can be found <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_06/data/tide_prediction_2025-01.txt">here</a>) If you open the file in Jupyter Hub, you’ll find that this is a text file with 13 lines of metadata, followed by header at line 14, and data from that point all. Note also that the data is separated by white spaces (actually tabs). We can load this file as a pandas DataFrame like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tides</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/tide_prediction_2025-01.txt&quot;</span><span class="p">,</span> 
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">s+&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">13</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">tides</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Day</th>
+      <th>Time</th>
+      <th>Pred</th>
+      <th>High/Low</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025/01/01</th>
+      <td>Wed</td>
+      <td>06:58</td>
+      <td>AM</td>
+      <td>3.80</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>2025/01/01</th>
+      <td>Wed</td>
+      <td>12:17</td>
+      <td>PM</td>
+      <td>2.47</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>2025/01/01</th>
+      <td>Wed</td>
+      <td>04:41</td>
+      <td>PM</td>
+      <td>3.19</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>2025/01/01</th>
+      <td>Wed</td>
+      <td>11:54</td>
+      <td>PM</td>
+      <td>-0.73</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>2025/01/02</th>
+      <td>Thu</td>
+      <td>07:28</td>
+      <td>AM</td>
+      <td>3.83</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2025/01/30</th>
+      <td>Thu</td>
+      <td>04:44</td>
+      <td>PM</td>
+      <td>3.28</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>2025/01/30</th>
+      <td>Thu</td>
+      <td>11:36</td>
+      <td>PM</td>
+      <td>-0.57</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>2025/01/31</th>
+      <td>Fri</td>
+      <td>06:45</td>
+      <td>AM</td>
+      <td>3.84</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>2025/01/31</th>
+      <td>Fri</td>
+      <td>12:29</td>
+      <td>PM</td>
+      <td>1.68</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>2025/01/31</th>
+      <td>Fri</td>
+      <td>05:38</td>
+      <td>PM</td>
+      <td>3.22</td>
+      <td>H</td>
+    </tr>
+  </tbody>
+</table>
+<p>119 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>In the above, <code class="docutils literal notranslate"><span class="pre">sep</span> <span class="pre">=</span> <span class="pre">\\s+</span></code> tells pandas that the entries are separted by one or more “white-space like characters”. Unfortunately, the precise formatting of this file causes pandas to turn the first column into the index of the DataFrame. To deal with this, we use <code class="docutils literal notranslate"><span class="pre">.reset_index()</span></code> to turn the index back into a regular column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tides</span> <span class="o">=</span> <span class="n">tides</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">tides</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Date</th>
+      <th>Day</th>
+      <th>Time</th>
+      <th>Pred</th>
+      <th>High/Low</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>06:58</td>
+      <td>AM</td>
+      <td>3.80</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>12:17</td>
+      <td>PM</td>
+      <td>2.47</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>04:41</td>
+      <td>PM</td>
+      <td>3.19</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>11:54</td>
+      <td>PM</td>
+      <td>-0.73</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2025/01/02</td>
+      <td>Thu</td>
+      <td>07:28</td>
+      <td>AM</td>
+      <td>3.83</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>2025/01/30</td>
+      <td>Thu</td>
+      <td>04:44</td>
+      <td>PM</td>
+      <td>3.28</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>2025/01/30</td>
+      <td>Thu</td>
+      <td>11:36</td>
+      <td>PM</td>
+      <td>-0.57</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>2025/01/31</td>
+      <td>Fri</td>
+      <td>06:45</td>
+      <td>AM</td>
+      <td>3.84</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>2025/01/31</td>
+      <td>Fri</td>
+      <td>12:29</td>
+      <td>PM</td>
+      <td>1.68</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>2025/01/31</td>
+      <td>Fri</td>
+      <td>05:38</td>
+      <td>PM</td>
+      <td>3.22</td>
+      <td>H</td>
+    </tr>
+  </tbody>
+</table>
+<p>119 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>Additional clean up will be needed to fix the header row, etc, and you will learn some of these in the later parts of this week’s readings</p>
 <p>Incidentally, pandas can also be used to read Microsoft Excel file. The relevant function is <code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code>, with is documented at <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html">https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html</a>. Most of its arguments are the same as <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>, with the notable except of the <code class="docutils literal notranslate"><span class="pre">sheet_name</span></code> argument, which is used to specify the sheet to load the data from.</p>
 <p>As an example, the CalSOFI data is also saved as an Excel .xlsx document, and we can load it as such:</p>
 <div class="cell docutils container">
@@ -951,53 +1233,53 @@ m,g,cm,L
   <tbody>
     <tr>
       <th>0</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>0</td>
-      <td>12.12</td>
-      <td>33.030</td>
-      <td>25.030</td>
+      <td>14.040</td>
+      <td>33.1700</td>
+      <td>24.76600</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>10</td>
-      <td>12.08</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.950</td>
+      <td>33.2100</td>
+      <td>24.81500</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>20</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.900</td>
+      <td>33.2100</td>
+      <td>24.82600</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>30</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>23</td>
+      <td>13.880</td>
+      <td>33.2100</td>
+      <td>24.83000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>50</td>
-      <td>11.18</td>
-      <td>33.280</td>
-      <td>25.400</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>30</td>
+      <td>13.810</td>
+      <td>33.2180</td>
+      <td>24.85100</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1010,59 +1292,246 @@ m,g,cm,L
       <td>...</td>
     </tr>
     <tr>
-      <th>81369</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>250</td>
-      <td>7.82</td>
-      <td>34.168</td>
-      <td>26.651</td>
-    </tr>
-    <tr>
-      <th>81370</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>275</td>
-      <td>7.66</td>
-      <td>34.203</td>
-      <td>26.701</td>
-    </tr>
-    <tr>
-      <th>81371</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10052</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>300</td>
-      <td>7.44</td>
-      <td>34.225</td>
-      <td>26.750</td>
+      <td>7.692</td>
+      <td>34.1712</td>
+      <td>26.67697</td>
     </tr>
     <tr>
-      <th>81372</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>350</td>
-      <td>7.17</td>
-      <td>34.260</td>
-      <td>26.817</td>
-    </tr>
-    <tr>
-      <th>81373</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10053</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>381</td>
-      <td>6.91</td>
-      <td>34.282</td>
-      <td>26.870</td>
+      <td>7.144</td>
+      <td>34.2443</td>
+      <td>26.81386</td>
+    </tr>
+    <tr>
+      <th>10054</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>400</td>
+      <td>7.031</td>
+      <td>34.2746</td>
+      <td>26.85372</td>
+    </tr>
+    <tr>
+      <th>10055</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>500</td>
+      <td>6.293</td>
+      <td>34.3126</td>
+      <td>26.98372</td>
+    </tr>
+    <tr>
+      <th>10056</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>515</td>
+      <td>6.155</td>
+      <td>34.2903</td>
+      <td>26.98398</td>
     </tr>
   </tbody>
 </table>
-<p>81374 rows × 7 columns</p>
+<p>10057 rows × 7 columns</p>
 </div></div></div>
+</div>
+</section>
+<section id="combining-multiple-dataframes">
+<h2>Combining multiple dataframes<a class="headerlink" href="#combining-multiple-dataframes" title="Link to this heading">#</a></h2>
+<p>Sometimes it is necessary to first save data is separate file then combine them during analysis. For example, suppose we are interested in tide measurement. The <a class="reference external" href="https://tidesandcurrents.noaa.gov/noaatidepredictions.html?id=9447130">NOAA</a> interface only let us download 31 days of data every time. So if you want to analyze tide patterns from January to March of 2025, your data will consist of 3 files:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tides_Jan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/tide_prediction_2025-01.txt&quot;</span><span class="p">,</span> 
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">s+&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">13</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">tides_Feb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/tide_prediction_2025-02.txt&quot;</span><span class="p">,</span> 
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">s+&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">13</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">tides_Mar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/tide_prediction_2025-03.txt&quot;</span><span class="p">,</span> 
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">s+&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">13</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(As in above, to be useful these need some further manipulation. Nonethess less, since the 3 dataframes are at least <em>consisteny</em> in their column names we can proceed to combine them)</p>
+<p>We can combine the three dataframes into a single one using <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">tides_Jan</span><span class="p">,</span> <span class="n">tides_Feb</span><span class="p">,</span> <span class="n">tides_Mar</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Date</th>
+      <th>Day</th>
+      <th>Time</th>
+      <th>Pred</th>
+      <th>High/Low</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>06:58</td>
+      <td>AM</td>
+      <td>3.80</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>12:17</td>
+      <td>PM</td>
+      <td>2.47</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>04:41</td>
+      <td>PM</td>
+      <td>3.19</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2025/01/01</td>
+      <td>Wed</td>
+      <td>11:54</td>
+      <td>PM</td>
+      <td>-0.73</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2025/01/02</td>
+      <td>Thu</td>
+      <td>07:28</td>
+      <td>AM</td>
+      <td>3.83</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>2025/03/30</td>
+      <td>Sun</td>
+      <td>06:52</td>
+      <td>PM</td>
+      <td>3.46</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>2025/03/31</td>
+      <td>Mon</td>
+      <td>12:37</td>
+      <td>AM</td>
+      <td>1.10</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>2025/03/31</td>
+      <td>Mon</td>
+      <td>06:25</td>
+      <td>AM</td>
+      <td>3.70</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>2025/03/31</td>
+      <td>Mon</td>
+      <td>01:09</td>
+      <td>PM</td>
+      <td>-0.48</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>2025/03/31</td>
+      <td>Mon</td>
+      <td>07:52</td>
+      <td>PM</td>
+      <td>3.48</td>
+      <td>H</td>
+    </tr>
+  </tbody>
+</table>
+<p>347 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="writing-dataframe-to-file">
+<h2>Writing dataframe to file<a class="headerlink" href="#writing-dataframe-to-file" title="Link to this heading">#</a></h2>
+<p>Sometimes it is useful to save your intermediate data into a new file (e.g., so that other people can access it outside of python, or so that you don’t have to carry out the same data cleaning step when every time). To export your DataFrame into a csv file, all you need to do is to call the <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> method on it. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a new dataframe</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;this&quot;</span><span class="p">,</span> <span class="s2">&quot;that&quot;</span><span class="p">,</span> <span class="s2">&quot;here&quot;</span><span class="p">,</span> <span class="s2">&quot;there&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">]</span>
+    <span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2017&quot;</span><span class="p">,</span> <span class="s2">&quot;2018&quot;</span><span class="p">,</span> <span class="s2">&quot;2019&quot;</span><span class="p">,</span> <span class="s2">&quot;2020&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># export to a csv file named &quot;new_data.csv&quot;</span>
+<span class="c1"># NOTE: the output folder needs to already exist</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;output/new_data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1133,6 +1602,8 @@ m,g,cm,L
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-and-pandas-dataframes">Pandas and pandas DataFrames</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data-into-pandas-dataframe">Importing data into pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-multiple-dataframes">Combining multiple dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-dataframe-to-file">Writing dataframe to file</a></li>
 </ul>
   </nav></div>
 

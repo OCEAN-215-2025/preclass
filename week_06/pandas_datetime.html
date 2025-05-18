@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -194,7 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/etiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -225,7 +225,14 @@
 <li class="toctree-l2"><a class="reference internal" href="wk06_glossary.html">Week 6 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
@@ -531,19 +538,19 @@ dtype: datetime64[ns]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 81374 entries, 0 to 81373
+RangeIndex: 10057 entries, 0 to 10056
 Data columns (total 7 columns):
  #   Column      Non-Null Count  Dtype         
 ---  ------      --------------  -----         
- 0   Cast_Count  81374 non-null  int64         
- 1   Station_ID  81374 non-null  object        
- 2   Datetime    81374 non-null  datetime64[ns]
- 3   Depth_m     81374 non-null  int64         
- 4   T_degC      80973 non-null  float64       
- 5   Salinity    80924 non-null  float64       
- 6   SigmaTheta  80924 non-null  float64       
+ 0   Cast_Count  10057 non-null  int64         
+ 1   Station_ID  10057 non-null  object        
+ 2   Datetime    10057 non-null  datetime64[ns]
+ 3   Depth_m     10057 non-null  int64         
+ 4   T_degC      10026 non-null  float64       
+ 5   Salinity    10057 non-null  float64       
+ 6   SigmaTheta  10008 non-null  float64       
 dtypes: datetime64[ns](1), float64(3), int64(2), object(1)
-memory usage: 4.3+ MB
+memory usage: 550.1+ KB
 </pre></div>
 </div>
 </div>
@@ -585,53 +592,53 @@ memory usage: 4.3+ MB
   <tbody>
     <tr>
       <th>0</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>0</td>
-      <td>12.12</td>
-      <td>33.030</td>
-      <td>25.030</td>
+      <td>14.040</td>
+      <td>33.1700</td>
+      <td>24.76600</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>10</td>
-      <td>12.08</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.950</td>
+      <td>33.2100</td>
+      <td>24.81500</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>20</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.900</td>
+      <td>33.2100</td>
+      <td>24.82600</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>30</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>23</td>
+      <td>13.880</td>
+      <td>33.2100</td>
+      <td>24.83000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>50</td>
-      <td>11.18</td>
-      <td>33.280</td>
-      <td>25.400</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>30</td>
+      <td>13.810</td>
+      <td>33.2180</td>
+      <td>24.85100</td>
     </tr>
     <tr>
       <th>...</th>
@@ -644,58 +651,58 @@ memory usage: 4.3+ MB
       <td>...</td>
     </tr>
     <tr>
-      <th>81369</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>250</td>
-      <td>7.82</td>
-      <td>34.168</td>
-      <td>26.651</td>
-    </tr>
-    <tr>
-      <th>81370</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>275</td>
-      <td>7.66</td>
-      <td>34.203</td>
-      <td>26.701</td>
-    </tr>
-    <tr>
-      <th>81371</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10052</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>300</td>
-      <td>7.44</td>
-      <td>34.225</td>
-      <td>26.750</td>
+      <td>7.692</td>
+      <td>34.1712</td>
+      <td>26.67697</td>
     </tr>
     <tr>
-      <th>81372</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>350</td>
-      <td>7.17</td>
-      <td>34.260</td>
-      <td>26.817</td>
-    </tr>
-    <tr>
-      <th>81373</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10053</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>381</td>
-      <td>6.91</td>
-      <td>34.282</td>
-      <td>26.870</td>
+      <td>7.144</td>
+      <td>34.2443</td>
+      <td>26.81386</td>
+    </tr>
+    <tr>
+      <th>10054</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>400</td>
+      <td>7.031</td>
+      <td>34.2746</td>
+      <td>26.85372</td>
+    </tr>
+    <tr>
+      <th>10055</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>500</td>
+      <td>6.293</td>
+      <td>34.3126</td>
+      <td>26.98372</td>
+    </tr>
+    <tr>
+      <th>10056</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>515</td>
+      <td>6.155</td>
+      <td>34.2903</td>
+      <td>26.98398</td>
     </tr>
   </tbody>
 </table>
-<p>81374 rows × 7 columns</p>
+<p>10057 rows × 7 columns</p>
 </div></div></div>
 </div>
 <p>In addition, when we use <code class="docutils literal notranslate"><span class="pre">.read_csv()</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> argument to tell pandas to read certain column as dates:</p>
@@ -708,19 +715,19 @@ memory usage: 4.3+ MB
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 81374 entries, 0 to 81373
+RangeIndex: 10057 entries, 0 to 10056
 Data columns (total 7 columns):
  #   Column      Non-Null Count  Dtype         
 ---  ------      --------------  -----         
- 0   Cast_Count  81374 non-null  int64         
- 1   Station_ID  81374 non-null  object        
- 2   Datetime    81374 non-null  datetime64[ns]
- 3   Depth_m     81374 non-null  int64         
- 4   T_degC      80973 non-null  float64       
- 5   Salinity    80924 non-null  float64       
- 6   SigmaTheta  80924 non-null  float64       
+ 0   Cast_Count  10057 non-null  int64         
+ 1   Station_ID  10057 non-null  object        
+ 2   Datetime    10057 non-null  datetime64[ns]
+ 3   Depth_m     10057 non-null  int64         
+ 4   T_degC      10026 non-null  float64       
+ 5   Salinity    10057 non-null  float64       
+ 6   SigmaTheta  10008 non-null  float64       
 dtypes: datetime64[ns](1), float64(3), int64(2), object(1)
-memory usage: 4.3+ MB
+memory usage: 550.1+ KB
 </pre></div>
 </div>
 </div>
@@ -857,12 +864,11 @@ dtype: bool
 </div>
 </div>
 </div>
-<p>As an application, we can combine datetime comparsion and <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> to extract data that are collected in the 1970s</p>
+<p>As an application, we can combine datetime comparsion and <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> to extract data that are collected in the new millennium (which we defined as year ≥ 2000)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalSOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">CalSOFI</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1970-01-01&quot;</span><span class="p">))</span> <span class="o">&amp;</span> 
-    <span class="p">(</span><span class="n">CalSOFI</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1980-01-01&quot;</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">CalSOFI</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">))</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -897,54 +903,54 @@ dtype: bool
   </thead>
   <tbody>
     <tr>
-      <th>25101</th>
-      <td>17384</td>
-      <td>050.0 060.0</td>
-      <td>1970-08-22 16:15:00</td>
+      <th>7364</th>
+      <td>29359</td>
+      <td>090.0 070.0</td>
+      <td>2000-01-12 18:23:00</td>
       <td>0</td>
-      <td>12.81</td>
-      <td>32.890</td>
-      <td>24.797</td>
+      <td>14.310</td>
+      <td>33.4100</td>
+      <td>24.89000</td>
     </tr>
     <tr>
-      <th>25102</th>
-      <td>17384</td>
-      <td>050.0 060.0</td>
-      <td>1970-08-22 16:15:00</td>
+      <th>7365</th>
+      <td>29359</td>
+      <td>090.0 070.0</td>
+      <td>2000-01-12 18:23:00</td>
+      <td>2</td>
+      <td>14.310</td>
+      <td>33.4130</td>
+      <td>24.89700</td>
+    </tr>
+    <tr>
+      <th>7366</th>
+      <td>29359</td>
+      <td>090.0 070.0</td>
+      <td>2000-01-12 18:23:00</td>
+      <td>2</td>
+      <td>14.310</td>
+      <td>33.4130</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7367</th>
+      <td>29359</td>
+      <td>090.0 070.0</td>
+      <td>2000-01-12 18:23:00</td>
       <td>10</td>
-      <td>12.81</td>
-      <td>32.900</td>
-      <td>24.804</td>
+      <td>14.290</td>
+      <td>33.4130</td>
+      <td>24.90100</td>
     </tr>
     <tr>
-      <th>25103</th>
-      <td>17384</td>
-      <td>050.0 060.0</td>
-      <td>1970-08-22 16:15:00</td>
+      <th>7368</th>
+      <td>29359</td>
+      <td>090.0 070.0</td>
+      <td>2000-01-12 18:23:00</td>
       <td>20</td>
-      <td>12.81</td>
-      <td>32.900</td>
-      <td>24.805</td>
-    </tr>
-    <tr>
-      <th>25104</th>
-      <td>17384</td>
-      <td>050.0 060.0</td>
-      <td>1970-08-22 16:15:00</td>
-      <td>30</td>
-      <td>12.75</td>
-      <td>32.880</td>
-      <td>24.801</td>
-    </tr>
-    <tr>
-      <th>25105</th>
-      <td>17384</td>
-      <td>050.0 060.0</td>
-      <td>1970-08-22 16:15:00</td>
-      <td>50</td>
-      <td>10.46</td>
-      <td>32.780</td>
-      <td>25.143</td>
+      <td>14.280</td>
+      <td>33.4130</td>
+      <td>24.90400</td>
     </tr>
     <tr>
       <th>...</th>
@@ -957,58 +963,58 @@ dtype: bool
       <td>...</td>
     </tr>
     <tr>
-      <th>70259</th>
-      <td>20850</td>
-      <td>093.0 039.7</td>
-      <td>1976-11-11 21:36:00</td>
-      <td>309</td>
-      <td>7.77</td>
-      <td>34.190</td>
-      <td>26.676</td>
+      <th>10052</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>300</td>
+      <td>7.692</td>
+      <td>34.1712</td>
+      <td>26.67697</td>
     </tr>
     <tr>
-      <th>70260</th>
-      <td>20850</td>
-      <td>093.0 039.7</td>
-      <td>1976-11-11 21:36:00</td>
-      <td>320</td>
-      <td>7.80</td>
-      <td>34.224</td>
-      <td>26.699</td>
+      <th>10053</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>381</td>
+      <td>7.144</td>
+      <td>34.2443</td>
+      <td>26.81386</td>
     </tr>
     <tr>
-      <th>70261</th>
-      <td>20850</td>
-      <td>093.0 039.7</td>
-      <td>1976-11-11 21:36:00</td>
-      <td>330</td>
-      <td>7.74</td>
-      <td>34.240</td>
-      <td>26.719</td>
+      <th>10054</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>400</td>
+      <td>7.031</td>
+      <td>34.2746</td>
+      <td>26.85372</td>
     </tr>
     <tr>
-      <th>70262</th>
-      <td>20850</td>
-      <td>093.0 039.7</td>
-      <td>1976-11-11 21:36:00</td>
-      <td>340</td>
-      <td>7.71</td>
-      <td>34.255</td>
-      <td>26.735</td>
+      <th>10055</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>500</td>
+      <td>6.293</td>
+      <td>34.3126</td>
+      <td>26.98372</td>
     </tr>
     <tr>
-      <th>70263</th>
-      <td>20850</td>
-      <td>093.0 039.7</td>
-      <td>1976-11-11 21:36:00</td>
-      <td>347</td>
-      <td>7.59</td>
-      <td>34.251</td>
-      <td>26.750</td>
+      <th>10056</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>515</td>
+      <td>6.155</td>
+      <td>34.2903</td>
+      <td>26.98398</td>
     </tr>
   </tbody>
 </table>
-<p>45163 rows × 7 columns</p>
+<p>2693 rows × 7 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1027,23 +1033,176 @@ dtype: bool
 <p>As an example, let’s extract the day of year from the datetimes in CalSOFI:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalSOFI</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select one single depth to look at, to reduce duplication of dates</span>
+<span class="n">CalSOFI_10</span> <span class="o">=</span> <span class="n">CalSOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">CalSOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CalSOFI_10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         11
-1         11
-2         11
-3         11
-4         11
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cast_Count</th>
+      <th>Station_ID</th>
+      <th>Datetime</th>
+      <th>Depth_m</th>
+      <th>T_degC</th>
+      <th>Salinity</th>
+      <th>SigmaTheta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>10</td>
+      <td>13.950</td>
+      <td>33.2100</td>
+      <td>24.81500</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1267</td>
+      <td>090.0 070.0</td>
+      <td>1950-04-08 17:30:00</td>
+      <td>10</td>
+      <td>14.980</td>
+      <td>33.4000</td>
+      <td>24.74400</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>1387</td>
+      <td>090.0 070.0</td>
+      <td>1950-05-07 17:36:00</td>
+      <td>10</td>
+      <td>14.170</td>
+      <td>33.3080</td>
+      <td>24.84500</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>1477</td>
+      <td>090.0 070.0</td>
+      <td>1950-06-13 00:42:00</td>
+      <td>10</td>
+      <td>14.510</td>
+      <td>33.1110</td>
+      <td>24.62200</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>1589</td>
+      <td>090.0 070.0</td>
+      <td>1950-07-13 00:54:00</td>
+      <td>10</td>
+      <td>16.550</td>
+      <td>33.1020</td>
+      <td>24.16400</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9913</th>
+      <td>35250</td>
+      <td>090.0 070.0</td>
+      <td>2019-11-09 01:24:00</td>
+      <td>10</td>
+      <td>16.983</td>
+      <td>33.3950</td>
+      <td>24.28840</td>
+    </tr>
+    <tr>
+      <th>9944</th>
+      <td>35354</td>
+      <td>090.0 070.0</td>
+      <td>2020-01-09 18:13:00</td>
+      <td>10</td>
+      <td>15.054</td>
+      <td>33.3427</td>
+      <td>24.68417</td>
+    </tr>
+    <tr>
+      <th>9978</th>
+      <td>35429</td>
+      <td>090.0 070.0</td>
+      <td>2020-07-16 23:40:00</td>
+      <td>10</td>
+      <td>17.114</td>
+      <td>33.6188</td>
+      <td>24.42921</td>
+    </tr>
+    <tr>
+      <th>10015</th>
+      <td>35500</td>
+      <td>090.0 070.0</td>
+      <td>2020-10-14 23:52:00</td>
+      <td>10</td>
+      <td>17.373</td>
+      <td>33.3346</td>
+      <td>24.14988</td>
+    </tr>
+    <tr>
+      <th>10037</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>10</td>
+      <td>15.092</td>
+      <td>33.4561</td>
+      <td>24.76328</td>
+    </tr>
+  </tbody>
+</table>
+<p>348 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract day of year</span>
+<span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1         37
+28        98
+62       127
+98       164
+130      194
         ... 
-81369    266
-81370    266
-81371    266
-81372    266
-81373    266
-Name: Datetime, Length: 81374, dtype: int32
+9913     313
+9944       9
+9978     198
+10015    288
+10037     21
+Name: Datetime, Length: 348, dtype: int32
 </pre></div>
 </div>
 </div>

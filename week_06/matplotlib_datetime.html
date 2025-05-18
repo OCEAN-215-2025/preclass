@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -194,7 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/etiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -225,7 +225,14 @@
 <li class="toctree-l2"><a class="reference internal" href="wk06_glossary.html">Week 6 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
@@ -491,53 +498,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>0</td>
-      <td>12.12</td>
-      <td>33.030</td>
-      <td>25.030</td>
+      <td>14.040</td>
+      <td>33.1700</td>
+      <td>24.76600</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>10</td>
-      <td>12.08</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.950</td>
+      <td>33.2100</td>
+      <td>24.81500</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
       <td>20</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>13.900</td>
+      <td>33.2100</td>
+      <td>24.82600</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>30</td>
-      <td>12.06</td>
-      <td>33.040</td>
-      <td>25.050</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>23</td>
+      <td>13.880</td>
+      <td>33.2100</td>
+      <td>24.83000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>14172</td>
-      <td>060.0 060.0</td>
-      <td>1965-01-11 04:43:00</td>
-      <td>50</td>
-      <td>11.18</td>
-      <td>33.280</td>
-      <td>25.400</td>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>30</td>
+      <td>13.810</td>
+      <td>33.2180</td>
+      <td>24.85100</td>
     </tr>
     <tr>
       <th>...</th>
@@ -550,61 +557,61 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
-      <th>81369</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>250</td>
-      <td>7.82</td>
-      <td>34.168</td>
-      <td>26.651</td>
-    </tr>
-    <tr>
-      <th>81370</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>275</td>
-      <td>7.66</td>
-      <td>34.203</td>
-      <td>26.701</td>
-    </tr>
-    <tr>
-      <th>81371</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10052</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>300</td>
-      <td>7.44</td>
-      <td>34.225</td>
-      <td>26.750</td>
+      <td>7.692</td>
+      <td>34.1712</td>
+      <td>26.67697</td>
     </tr>
     <tr>
-      <th>81372</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
-      <td>350</td>
-      <td>7.17</td>
-      <td>34.260</td>
-      <td>26.817</td>
-    </tr>
-    <tr>
-      <th>81373</th>
-      <td>25948</td>
-      <td>090.5 043.0</td>
-      <td>1988-09-22 18:45:00</td>
+      <th>10053</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
       <td>381</td>
-      <td>6.91</td>
-      <td>34.282</td>
-      <td>26.870</td>
+      <td>7.144</td>
+      <td>34.2443</td>
+      <td>26.81386</td>
+    </tr>
+    <tr>
+      <th>10054</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>400</td>
+      <td>7.031</td>
+      <td>34.2746</td>
+      <td>26.85372</td>
+    </tr>
+    <tr>
+      <th>10055</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>500</td>
+      <td>6.293</td>
+      <td>34.3126</td>
+      <td>26.98372</td>
+    </tr>
+    <tr>
+      <th>10056</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>515</td>
+      <td>6.155</td>
+      <td>34.2903</td>
+      <td>26.98398</td>
     </tr>
   </tbody>
 </table>
-<p>81374 rows × 7 columns</p>
+<p>10057 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>Let’s say we’re interested in data taken at 10 m deep:</p>
+<p>Let’s say we’re interested in data at 10 m deep</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalSOFI_10</span> <span class="o">=</span> <span class="n">CalSOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">CalSOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="p">]</span>
@@ -620,7 +627,7 @@ document.write(`
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
 
 <span class="c1"># Note the use of .value to extract the underlying data when plotting</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
@@ -632,15 +639,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/19a20da956661b5ca8383adaa2c6f8b7772ce1365eacf8bdf3ee0d13ae5b98e9.png" src="../_images/19a20da956661b5ca8383adaa2c6f8b7772ce1365eacf8bdf3ee0d13ae5b98e9.png" />
+<img alt="../_images/2458df01ed622a9bfb2b6e9926de656cb0aa5dc926fdf69205c0754ecfe9da1e.png" src="../_images/2458df01ed622a9bfb2b6e9926de656cb0aa5dc926fdf69205c0754ecfe9da1e.png" />
 </div>
 </div>
-<p>Now let’s suppose we want to focus on the year 1975. First we subset the data:</p>
+<p>Now let’s suppose we want to focus on the year 1959. First we subset the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalSOFI_10_1975</span> <span class="o">=</span> <span class="n">CalSOFI_10</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1975-01-01&quot;</span><span class="p">))</span> <span class="o">&amp;</span>
-    <span class="p">(</span><span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1976-01-01&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalSOFI_10_1959</span> <span class="o">=</span> <span class="n">CalSOFI_10</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1959-01-01&quot;</span><span class="p">))</span> <span class="o">&amp;</span>
+    <span class="p">(</span><span class="n">CalSOFI_10</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1960-01-01&quot;</span><span class="p">))</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -654,7 +661,7 @@ document.write(`
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
 
 <span class="c1"># Note the use of .value to extract the underlying data when plotting</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10_1975</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10_1975</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10_1959</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10_1959</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
@@ -666,10 +673,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4d3b1e827fd74ed8c484185a4ba86cbeb1c336a0604c7dd5515129682445220e.png" src="../_images/4d3b1e827fd74ed8c484185a4ba86cbeb1c336a0604c7dd5515129682445220e.png" />
+<img alt="../_images/f1b2251bb7a175697c87ad0f942daea248ca677772463b06b66c599c4de5392e.png" src="../_images/f1b2251bb7a175697c87ad0f942daea248ca677772463b06b66c599c4de5392e.png" />
 </div>
 </div>
-<p>(<em>Note</em>: We don’t have have a strong seasonal pattern because of the confounding factor of stations. Different stations are sampled at different times, which creates an apparent pattern that has nothing to do with true seasonal effect)</p>
 </section>
 <section id="setting-ticks-and-tick-labels-on-datetime-axis">
 <h2>Setting ticks and tick labels on datetime axis<a class="headerlink" href="#setting-ticks-and-tick-labels-on-datetime-axis" title="Link to this heading">#</a></h2>
@@ -688,13 +694,13 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10_1975</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10_1975</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10_1959</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10_1959</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1975-01-01&quot;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1975-12-31&quot;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1959-01-01&quot;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1959-12-31&quot;</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%b&quot;</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date in year 1975&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date in year 1959&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Temperature versus mesurement time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
@@ -704,7 +710,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8eaa49fee3b0d05bb1332f11a0bbf1eea4cb2dd3950812c383ef9124508173bf.png" src="../_images/8eaa49fee3b0d05bb1332f11a0bbf1eea4cb2dd3950812c383ef9124508173bf.png" />
+<img alt="../_images/5d3707a52676a36bbe8a639d2003157feb2b281986fb37b754bba10bfa9c77ec.png" src="../_images/5d3707a52676a36bbe8a639d2003157feb2b281986fb37b754bba10bfa9c77ec.png" />
 </div>
 </div>
 <p>We use <code class="docutils literal notranslate"><span class="pre">mdates.MonthLocator()</span></code> to tell matplotlib that we want one tick every month. And we use <code class="docutils literal notranslate"><span class="pre">mdates.DateFormatter(&quot;%b&quot;)</span></code> to tell matplotlib that each tick label should display the short name of the month, and nothing else.</p>
@@ -722,14 +728,14 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10_1975</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10_1975</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">CalSOFI_10_1959</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">CalSOFI_10_1959</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1975-01-01&quot;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1975-12-31&quot;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1959-01-01&quot;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1959-12-31&quot;</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DayLocator</span><span class="p">([</span><span class="mi">15</span><span class="p">]))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%b </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=-</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date in year 1975&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date in year 1959&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Temperature versus mesurement time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
@@ -739,7 +745,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f47c558f80d5cd0dd5eb30c811f771468335c12264b8dbf4f08410196fcca199.png" src="../_images/f47c558f80d5cd0dd5eb30c811f771468335c12264b8dbf4f08410196fcca199.png" />
+<img alt="../_images/764666ed5108bf2afd49ec11a24ae2ae17d11dc09af3e07a08c3b5f07bf8da47.png" src="../_images/764666ed5108bf2afd49ec11a24ae2ae17d11dc09af3e07a08c3b5f07bf8da47.png" />
 </div>
 </div>
 <p>Note also that we handled long tick labels by rotating them, which is achieved using the <code class="docutils literal notranslate"><span class="pre">ax.tick_params(&quot;x&quot;,</span> <span class="pre">labelrotation=-50)</span></code> line</p>

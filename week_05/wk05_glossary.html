@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -194,7 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_03/ettiquette.html">Coding etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/etiquette.html">Coding etiquette</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
 </ul>
 </details></li>
@@ -225,7 +225,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_06/wk06_glossary.html">Week 6 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
@@ -429,12 +436,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-attributes-functions-and-methods">Numpy attributes, functions and methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-attributes">Numpy array attributes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-methods">Numpy array methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-combining-functions">Numpy array combining functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mapping-functions">Numpy mapping functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-reduction-functions">Numpy reduction functions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-functions">matplotlib functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-showing-figures-and-axes">Creating and showing figures and axes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-showing-and-exporting-figures-and-axes">Creating, showing, and exporting figures and axes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-different-types-of-visualization">Making different types of visualization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-and-titles">Axes and titles</a></li>
 </ul>
@@ -483,6 +491,14 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;ndarray&gt;.transpose()</span></code>: transpose the rows and columns of a 2D numpy array</p></li>
 </ul>
 </section>
+<section id="numpy-array-combining-functions">
+<h3>Numpy array combining functions<a class="headerlink" href="#numpy-array-combining-functions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code>: concatenate numpy arrays along a specified axis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.vstack()</span></code>: combine 2D numpy arrays vertically (i.e., extending rows)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.hstack()</span></code>: combine 2D numpy arrays horizonatal (i.e., extending columns)</p></li>
+</ul>
+</section>
 <section id="numpy-mapping-functions">
 <h3>Numpy mapping functions<a class="headerlink" href="#numpy-mapping-functions" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -498,11 +514,12 @@ document.write(`
 </section>
 <section id="matplotlib-functions">
 <h2>matplotlib functions<a class="headerlink" href="#matplotlib-functions" title="Link to this heading">#</a></h2>
-<section id="creating-and-showing-figures-and-axes">
-<h3>Creating and showing figures and axes<a class="headerlink" href="#creating-and-showing-figures-and-axes" title="Link to this heading">#</a></h3>
+<section id="creating-showing-and-exporting-figures-and-axes">
+<h3>Creating, showing, and exporting figures and axes<a class="headerlink" href="#creating-showing-and-exporting-figures-and-axes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code>: create a new figure</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Figure&gt;.add_subplot()</span></code>: add new axes object to a Figure instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Figure&gt;.savefig()</span></code>: save a figure to an external file</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>: show a figure already created</p></li>
 </ul>
 </section>
@@ -513,6 +530,8 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.scatter()</span></code>: create a scatter plot on an Axes instance</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.errorbar()</span></code>: create an error bar plot on an Axes instance</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.bar()</span></code>: create a bar plot on an Axes instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Axes&gt;.hist()</span></code>: create a histogram on an Axes instance</p></li>
+<li></li>
 </ul>
 </section>
 <section id="axes-and-titles">
@@ -599,12 +618,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-attributes-functions-and-methods">Numpy attributes, functions and methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-attributes">Numpy array attributes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-methods">Numpy array methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-combining-functions">Numpy array combining functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mapping-functions">Numpy mapping functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-reduction-functions">Numpy reduction functions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-functions">matplotlib functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-showing-figures-and-axes">Creating and showing figures and axes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-showing-and-exporting-figures-and-axes">Creating, showing, and exporting figures and axes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-different-types-of-visualization">Making different types of visualization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axes-and-titles">Axes and titles</a></li>
 </ul>
