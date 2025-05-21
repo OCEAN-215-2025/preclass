@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Week 9: Linear regression; Grouped aggregation &#8212; OCEAN 215 pre-lecture readings</title>
+    <title>Week 9: Linear regression; Grouped summarization; Multi-panel figures &#8212; OCEAN 215 pre-lecture readings</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -58,12 +58,14 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'week_09/wk09_intro';</script>
     <link rel="icon" href="../_static/ocean_python_sm.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Week 10: Writing python functions" href="../week_10/wk10_intro.html" />
-    <link rel="prev" title="Week 8: Cartopy" href="../week_08/wk08_intro.html" />
+    <link rel="next" title="Linear regression" href="linregress.html" />
+    <link rel="prev" title="Week 8 glossary" href="../week_08/wk08_glossary.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -216,7 +218,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_05/wk05_glossary.html">Week 5 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; More matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
@@ -225,7 +227,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_06/wk06_glossary.html">Week 6 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
@@ -233,9 +235,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Week 9: Linear regression; Grouped aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/basic_cartopy.html">Introduction to cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/more_cartopy.html">More on cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/wk08_glossary.html">Week 8 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Week 9: Linear regression; Grouped summarization; Multi-panel figures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="linregress.html">Linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grouped_summarization.html">Grouped summarization in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_panel_figure.html">Multi-panel figures in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wk09_glossary.html">Week 9 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/writing_functions.html">Writing your own functions in python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/wk10_glossary.html">Week 10 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -408,7 +429,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -419,11 +442,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Week 9: Linear regression; Grouped aggregation</h1>
+    <h1>Week 9: Linear regression; Grouped summarization; Multi-panel figures</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -433,8 +464,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="week-9-linear-regression-grouped-aggregation">
-<h1>Week 9: Linear regression; Grouped aggregation<a class="headerlink" href="#week-9-linear-regression-grouped-aggregation" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="week-9-linear-regression-grouped-summarization-multi-panel-figures">
+<h1>Week 9: Linear regression; Grouped summarization; Multi-panel figures<a class="headerlink" href="#week-9-linear-regression-grouped-summarization-multi-panel-figures" title="Link to this heading">#</a></h1>
+<p>In this week’s pre-lecture readings, we will introduce two more tools for analyzing your data: linear regression and grouped summarization. In addition, we will talk about how to make multi-panel figures in matplotlib.</p>
+<section id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linregress.html">Linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grouped_summarization.html">Grouped summarization in pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_panel_figure.html">Multi-panel figures in matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wk09_glossary.html">Week 9 glossary</a></li>
+</ul>
+</div>
+</div></blockquote>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,20 +513,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../week_08/wk08_intro.html"
+       href="../week_08/wk08_glossary.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Week 8: Cartopy</p>
+        <p class="prev-next-title">Week 8 glossary</p>
       </div>
     </a>
     <a class="right-next"
-       href="../week_10/wk10_intro.html"
+       href="linregress.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 10: Writing python functions</p>
+        <p class="prev-next-title">Linear regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -491,6 +536,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

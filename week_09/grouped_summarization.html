@@ -1,0 +1,2089 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Grouped summarization in pandas &#8212; OCEAN 215 pre-lecture readings</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'week_09/grouped_summarization';</script>
+    <link rel="icon" href="../_static/ocean_python_sm.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multi-panel figures in matplotlib" href="multi_panel_figure.html" />
+    <link rel="prev" title="Linear regression" href="linregress.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ocean_python.png" class="logo__image only-light" alt="OCEAN 215 pre-lecture readings - Home"/>
+    <script>document.write(`<img src="../_static/ocean_python.png" class="logo__image only-dark" alt="OCEAN 215 pre-lecture readings - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the OCEAN 215 class readings
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_02/wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/python_list.html">Collection type: python list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/wk02_glossary.html">Week 2 Glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_03/wk03_intro.html">Week 3: Control flow; Debugging code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/etiquette.html">Coding etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_04/wk04_intro.html">Week 4: One-dimensional numpy array</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/numpy_overview.html">An overview of numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/statistics.html">A little bit of statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/reading_documentations.html">Reading documentations and using online resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/wk04_glossary.html">Week 4 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_05/wk05_intro.html">Week 5: Multi-dimensional numpy array; Plotting with matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multidimensional.html">Multi-dimensional arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multi_functions.html">Numpy functions on multi-dimensional arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/intro_matplotlib.html">Overview of matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/matplotlib_details.html">Dive into matplotlib functions and methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/plot_advice.html">Advice on making good visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/wk05_glossary.html">Week 5 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/wk06_glossary.html">Week 6 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/basic_cartopy.html">Introduction to cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/more_cartopy.html">More on cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/wk08_glossary.html">Week 8 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="wk09_intro.html">Week 9: Linear regression; Grouped summarization; Multi-panel figures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linregress.html">Linear regression</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Grouped summarization in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_panel_figure.html">Multi-panel figures in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wk09_glossary.html">Week 9 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/writing_functions.html">Writing your own functions in python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/wk10_glossary.html">Week 10 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/OCEAN-215-2025/preclass" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/OCEAN-215-2025/preclass/issues/new?title=Issue%20on%20page%20%2Fweek_09/grouped_summarization.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/week_09/grouped_summarization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grouped summarization in pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-groupby-method-of-pandas-dataframe">The .groupby() method of pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-climatology">Example: climatology</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="grouped-summarization-in-pandas">
+<h1>Grouped summarization in pandas<a class="headerlink" href="#grouped-summarization-in-pandas" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialization</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-groupby-method-of-pandas-dataframe">
+<h2>The .groupby() method of pandas DataFrame<a class="headerlink" href="#the-groupby-method-of-pandas-dataframe" title="Link to this heading">#</a></h2>
+<p>Sometimes your data can be partitioned into multiple subsets, and it would be useful to obtain summary statistics on each subset. As an example, we will use the fish length and weight data taken at Alsakan shore from 1997-2006. More information about the source data can be found on <a class="reference external" href="https://www.bco-dmo.org/dataset/3332">https://lod.bco-dmo.org/id/dataset/3332</a>, and the simplified data we use can be found as a csv file <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/secm_fish_size.csv">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/secm_fish_size.csv&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;nd&quot;</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">fish</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>time_local</th>
+      <th>haul_id</th>
+      <th>fish_id</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>locality</th>
+      <th>species</th>
+      <th>name_common</th>
+      <th>length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1997-5-20</td>
+      <td>9:40</td>
+      <td>1001</td>
+      <td>6</td>
+      <td>58.19</td>
+      <td>-134.20</td>
+      <td>Taku_Inlet</td>
+      <td>Platichthys_stellatus</td>
+      <td>Starry_flounder</td>
+      <td>347.0</td>
+      <td>500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1997-5-20</td>
+      <td>9:40</td>
+      <td>1001</td>
+      <td>7</td>
+      <td>58.19</td>
+      <td>-134.20</td>
+      <td>Taku_Inlet</td>
+      <td>Platichthys_stellatus</td>
+      <td>Starry_flounder</td>
+      <td>341.0</td>
+      <td>430.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1997-5-20</td>
+      <td>9:40</td>
+      <td>1001</td>
+      <td>8</td>
+      <td>58.19</td>
+      <td>-134.20</td>
+      <td>Taku_Inlet</td>
+      <td>Platichthys_stellatus</td>
+      <td>Starry_flounder</td>
+      <td>339.0</td>
+      <td>459.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1997-5-20</td>
+      <td>9:40</td>
+      <td>1001</td>
+      <td>9</td>
+      <td>58.19</td>
+      <td>-134.20</td>
+      <td>Taku_Inlet</td>
+      <td>Platichthys_stellatus</td>
+      <td>Starry_flounder</td>
+      <td>337.0</td>
+      <td>398.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1997-5-20</td>
+      <td>9:40</td>
+      <td>1001</td>
+      <td>10</td>
+      <td>58.19</td>
+      <td>-134.20</td>
+      <td>Taku_Inlet</td>
+      <td>Platichthys_stellatus</td>
+      <td>Starry_flounder</td>
+      <td>309.0</td>
+      <td>325.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1723</th>
+      <td>2006-7-30</td>
+      <td>9:5</td>
+      <td>10085</td>
+      <td>17</td>
+      <td>58.10</td>
+      <td>-135.02</td>
+      <td>Upper_Chatham</td>
+      <td>Oncorhynchus_tshawytscha</td>
+      <td>Chinook_Imm.</td>
+      <td>472.0</td>
+      <td>1375.0</td>
+    </tr>
+    <tr>
+      <th>1724</th>
+      <td>2006-7-31</td>
+      <td>7:40</td>
+      <td>10088</td>
+      <td>27</td>
+      <td>58.22</td>
+      <td>-135.53</td>
+      <td>Icy_Strait</td>
+      <td>Oncorhynchus_tshawytscha</td>
+      <td>Chinook_Imm.</td>
+      <td>442.0</td>
+      <td>1400.0</td>
+    </tr>
+    <tr>
+      <th>1725</th>
+      <td>2006-7-31</td>
+      <td>10:30</td>
+      <td>10090</td>
+      <td>34</td>
+      <td>58.25</td>
+      <td>-135.44</td>
+      <td>Icy_Strait</td>
+      <td>Oncorhynchus_tshawytscha</td>
+      <td>Chinook_Imm.</td>
+      <td>563.0</td>
+      <td>2300.0</td>
+    </tr>
+    <tr>
+      <th>1726</th>
+      <td>2006-7-31</td>
+      <td>10:30</td>
+      <td>10090</td>
+      <td>35</td>
+      <td>58.25</td>
+      <td>-135.44</td>
+      <td>Icy_Strait</td>
+      <td>Oncorhynchus_tshawytscha</td>
+      <td>Chinook_Imm.</td>
+      <td>459.0</td>
+      <td>1150.0</td>
+    </tr>
+    <tr>
+      <th>1727</th>
+      <td>2006-7-31</td>
+      <td>12:0</td>
+      <td>10091</td>
+      <td>75</td>
+      <td>58.27</td>
+      <td>-135.40</td>
+      <td>Icy_Strait</td>
+      <td>Oncorhynchus_kisutch</td>
+      <td>Coho_Adult</td>
+      <td>585.0</td>
+      <td>2250.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1728 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1728 entries, 0 to 1727
+Data columns (total 11 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   date         1728 non-null   object 
+ 1   time_local   1728 non-null   object 
+ 2   haul_id      1728 non-null   int64  
+ 3   fish_id      1728 non-null   int64  
+ 4   lat          1728 non-null   float64
+ 5   lon          1728 non-null   float64
+ 6   locality     1728 non-null   object 
+ 7   species      1728 non-null   object 
+ 8   name_common  1728 non-null   object 
+ 9   length       1724 non-null   float64
+ 10  weight       1683 non-null   float64
+dtypes: float64(4), int64(2), object(5)
+memory usage: 148.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you inspect the dataset, you will see that many fish species show up many, many times. It may be useful to find the average length of each species of fish from this dataset. To do so, we need to <strong>split</strong> the dataset by values of the species column, <strong>apply</strong> the summarization, then <strong>combine</strong> the result.</p>
+<p>Luckily, pandas has a built-in <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method to help with this <strong>split-apply-combine</strong> pipeline. The <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method will create the split and perform the combination. We just have to supply the function to apply via method chaining. In our case. the summarization function is <code class="docutils literal notranslate"><span class="pre">.mean()</span></code>, so we do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish_grp_mean</span> <span class="o">=</span> <span class="n">fish</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">fish_grp_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>length</th>
+      <th>weight</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Anarrhichthys_ocellatus</th>
+      <td>587.000000</td>
+      <td>1130.000000</td>
+    </tr>
+    <tr>
+      <th>Anoplopoma_fimbria</th>
+      <td>320.172043</td>
+      <td>386.913978</td>
+    </tr>
+    <tr>
+      <th>Brama_japonica</th>
+      <td>351.857143</td>
+      <td>1057.692308</td>
+    </tr>
+    <tr>
+      <th>Clupea_pallasi</th>
+      <td>208.000000</td>
+      <td>145.000000</td>
+    </tr>
+    <tr>
+      <th>Gadus_macrocephalus</th>
+      <td>308.700000</td>
+      <td>229.000000</td>
+    </tr>
+    <tr>
+      <th>Merluccius_productus</th>
+      <td>492.500000</td>
+      <td>825.000000</td>
+    </tr>
+    <tr>
+      <th>Oncorhynchus_gorbuscha</th>
+      <td>498.364341</td>
+      <td>1596.613546</td>
+    </tr>
+    <tr>
+      <th>Oncorhynchus_keta</th>
+      <td>656.794118</td>
+      <td>3531.323529</td>
+    </tr>
+    <tr>
+      <th>Oncorhynchus_kisutch</th>
+      <td>599.404040</td>
+      <td>3022.421053</td>
+    </tr>
+    <tr>
+      <th>Oncorhynchus_nerka</th>
+      <td>613.909091</td>
+      <td>2913.636364</td>
+    </tr>
+    <tr>
+      <th>Oncorhynchus_tshawytscha</th>
+      <td>395.789969</td>
+      <td>1025.838095</td>
+    </tr>
+    <tr>
+      <th>Platichthys_stellatus</th>
+      <td>334.764706</td>
+      <td>477.176471</td>
+    </tr>
+    <tr>
+      <th>Sebastes_ciliatus</th>
+      <td>280.000000</td>
+      <td>350.000000</td>
+    </tr>
+    <tr>
+      <th>Sebastes_melanops</th>
+      <td>495.875000</td>
+      <td>2371.250000</td>
+    </tr>
+    <tr>
+      <th>Squalus_acanthias</th>
+      <td>657.000000</td>
+      <td>1781.518692</td>
+    </tr>
+    <tr>
+      <th>Theragra_chalcogramma</th>
+      <td>405.115789</td>
+      <td>516.202899</td>
+    </tr>
+    <tr>
+      <th>Trichodon_trichodon</th>
+      <td>171.838710</td>
+      <td>86.580645</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Notice that the variable used for grouping (<code class="docutils literal notranslate"><span class="pre">species</span></code>) is now the index of the DataFrame. Again, we can turn the index back to a regular column via <code class="docutils literal notranslate"><span class="pre">.reset_index()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish_grp_mean</span> <span class="o">=</span> <span class="n">fish_grp_mean</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">fish_grp_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Anarrhichthys_ocellatus</td>
+      <td>587.000000</td>
+      <td>1130.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Anoplopoma_fimbria</td>
+      <td>320.172043</td>
+      <td>386.913978</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brama_japonica</td>
+      <td>351.857143</td>
+      <td>1057.692308</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Clupea_pallasi</td>
+      <td>208.000000</td>
+      <td>145.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Gadus_macrocephalus</td>
+      <td>308.700000</td>
+      <td>229.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Merluccius_productus</td>
+      <td>492.500000</td>
+      <td>825.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Oncorhynchus_gorbuscha</td>
+      <td>498.364341</td>
+      <td>1596.613546</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Oncorhynchus_keta</td>
+      <td>656.794118</td>
+      <td>3531.323529</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Oncorhynchus_kisutch</td>
+      <td>599.404040</td>
+      <td>3022.421053</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oncorhynchus_nerka</td>
+      <td>613.909091</td>
+      <td>2913.636364</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Oncorhynchus_tshawytscha</td>
+      <td>395.789969</td>
+      <td>1025.838095</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Platichthys_stellatus</td>
+      <td>334.764706</td>
+      <td>477.176471</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Sebastes_ciliatus</td>
+      <td>280.000000</td>
+      <td>350.000000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Sebastes_melanops</td>
+      <td>495.875000</td>
+      <td>2371.250000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Squalus_acanthias</td>
+      <td>657.000000</td>
+      <td>1781.518692</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Theragra_chalcogramma</td>
+      <td>405.115789</td>
+      <td>516.202899</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Trichodon_trichodon</td>
+      <td>171.838710</td>
+      <td>86.580645</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In addition to grouped mean, the following functions are available for grouped summarization:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.count()</span></code>: count the number of non-NA values in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.max()</span></code>: Compute the maximum value in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.min()</span></code>: Compute the minimum value in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.mean()</span></code>: Compute the mean of each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.median()</span></code>: Compute the median of each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.nunique()</span></code>: Compute the number of unique values in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.quantile()</span></code>: Compute a given quantile of the values in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.sem()</span></code>: Compute the standard error of the mean of the values in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.std()</span></code>: Compute the standard deviation of the values in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.var()</span></code>: Compute the variance of the values in each group</p></li>
+</ul>
+<p>Recall in week 4 we talked about the concept of standard error, which is a measure of the uncertainty in the mean, and depend on both the standard deviation and count. To compute the standard error, we use the <code class="docutils literal notranslate"><span class="pre">.sem()</span></code> method after the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish_grp_sem</span> <span class="o">=</span> <span class="n">fish</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">:,</span> <span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sem</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">fish_grp_sem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Anarrhichthys_ocellatus</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Anoplopoma_fimbria</td>
+      <td>5.672692</td>
+      <td>16.722263</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brama_japonica</td>
+      <td>6.237830</td>
+      <td>43.796643</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Clupea_pallasi</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Gadus_macrocephalus</td>
+      <td>5.166237</td>
+      <td>16.512621</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Merluccius_productus</td>
+      <td>77.500000</td>
+      <td>225.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Oncorhynchus_gorbuscha</td>
+      <td>2.567097</td>
+      <td>35.408346</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Oncorhynchus_keta</td>
+      <td>9.004256</td>
+      <td>152.740822</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Oncorhynchus_kisutch</td>
+      <td>13.365375</td>
+      <td>158.806295</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oncorhynchus_nerka</td>
+      <td>29.958291</td>
+      <td>315.514796</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Oncorhynchus_tshawytscha</td>
+      <td>6.158532</td>
+      <td>104.286037</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Platichthys_stellatus</td>
+      <td>12.529239</td>
+      <td>64.601564</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Sebastes_ciliatus</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Sebastes_melanops</td>
+      <td>30.070416</td>
+      <td>350.924481</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Squalus_acanthias</td>
+      <td>7.639284</td>
+      <td>71.993265</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Theragra_chalcogramma</td>
+      <td>3.817544</td>
+      <td>12.337072</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Trichodon_trichodon</td>
+      <td>6.488882</td>
+      <td>13.225812</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that we have a bunch of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in the result, which is a consequence that some species only appeared once in the dataset.</p>
+<p>To combine the two dataframe, we can use <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>. But because some variable names are repeated, we first have to modify those names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish_grp_mean</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="s2">&quot;mean_length&quot;</span><span class="p">,</span> <span class="s2">&quot;mean_weight&quot;</span><span class="p">]</span>
+<span class="n">fish_grp_sem</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="s2">&quot;stderr_length&quot;</span><span class="p">,</span> <span class="s2">&quot;stderr_weight&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish_grp_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+    <span class="n">fish_grp_mean</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">),</span> 
+    <span class="n">fish_grp_sem</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+<span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">fish_grp_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>mean_length</th>
+      <th>mean_weight</th>
+      <th>stderr_length</th>
+      <th>stderr_weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Anarrhichthys_ocellatus</td>
+      <td>587.000000</td>
+      <td>1130.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Anoplopoma_fimbria</td>
+      <td>320.172043</td>
+      <td>386.913978</td>
+      <td>5.672692</td>
+      <td>16.722263</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brama_japonica</td>
+      <td>351.857143</td>
+      <td>1057.692308</td>
+      <td>6.237830</td>
+      <td>43.796643</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Clupea_pallasi</td>
+      <td>208.000000</td>
+      <td>145.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Gadus_macrocephalus</td>
+      <td>308.700000</td>
+      <td>229.000000</td>
+      <td>5.166237</td>
+      <td>16.512621</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Merluccius_productus</td>
+      <td>492.500000</td>
+      <td>825.000000</td>
+      <td>77.500000</td>
+      <td>225.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Oncorhynchus_gorbuscha</td>
+      <td>498.364341</td>
+      <td>1596.613546</td>
+      <td>2.567097</td>
+      <td>35.408346</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Oncorhynchus_keta</td>
+      <td>656.794118</td>
+      <td>3531.323529</td>
+      <td>9.004256</td>
+      <td>152.740822</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Oncorhynchus_kisutch</td>
+      <td>599.404040</td>
+      <td>3022.421053</td>
+      <td>13.365375</td>
+      <td>158.806295</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oncorhynchus_nerka</td>
+      <td>613.909091</td>
+      <td>2913.636364</td>
+      <td>29.958291</td>
+      <td>315.514796</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Oncorhynchus_tshawytscha</td>
+      <td>395.789969</td>
+      <td>1025.838095</td>
+      <td>6.158532</td>
+      <td>104.286037</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Platichthys_stellatus</td>
+      <td>334.764706</td>
+      <td>477.176471</td>
+      <td>12.529239</td>
+      <td>64.601564</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Sebastes_ciliatus</td>
+      <td>280.000000</td>
+      <td>350.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Sebastes_melanops</td>
+      <td>495.875000</td>
+      <td>2371.250000</td>
+      <td>30.070416</td>
+      <td>350.924481</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Squalus_acanthias</td>
+      <td>657.000000</td>
+      <td>1781.518692</td>
+      <td>7.639284</td>
+      <td>71.993265</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Theragra_chalcogramma</td>
+      <td>405.115789</td>
+      <td>516.202899</td>
+      <td>3.817544</td>
+      <td>12.337072</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Trichodon_trichodon</td>
+      <td>171.838710</td>
+      <td>86.580645</td>
+      <td>6.488882</td>
+      <td>13.225812</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="example-climatology">
+<h2>Example: climatology<a class="headerlink" href="#example-climatology" title="Link to this heading">#</a></h2>
+<p>As a second example, suppose we are interested in climatology, i.e., the long term weather pattern. Our source data are weather information at the SeaTac airport and Spokane airport, from 2020 to 2024. The data is sourced from <a class="reference external" href="https://www.ncei.noaa.gov/cdo-web/">NOAA Climate Data Online</a>, and a copy of the simplified and combined data we use can be found <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/WA_weather_2000-2024.csv">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WA_weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/WA_weather_2000-2024.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">WA_weather</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>ELEVATION</th>
+      <th>DATE</th>
+      <th>PRCP</th>
+      <th>TAVG</th>
+      <th>TMAX</th>
+      <th>TMIN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>2000-01-01</td>
+      <td>6.9</td>
+      <td>4.4</td>
+      <td>6.1</td>
+      <td>2.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>2000-01-02</td>
+      <td>0.0</td>
+      <td>-3.9</td>
+      <td>7.2</td>
+      <td>2.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>2000-01-03</td>
+      <td>7.1</td>
+      <td>5.6</td>
+      <td>8.3</td>
+      <td>2.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>2000-01-04</td>
+      <td>7.6</td>
+      <td>7.8</td>
+      <td>10.0</td>
+      <td>5.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>2000-01-05</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>6.7</td>
+      <td>2.8</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>18259</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2024-12-27</td>
+      <td>0.8</td>
+      <td>2.7</td>
+      <td>4.4</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>18260</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2024-12-28</td>
+      <td>4.3</td>
+      <td>4.4</td>
+      <td>7.2</td>
+      <td>3.3</td>
+    </tr>
+    <tr>
+      <th>18261</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2024-12-29</td>
+      <td>15.2</td>
+      <td>3.7</td>
+      <td>3.9</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>18262</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2024-12-30</td>
+      <td>8.9</td>
+      <td>1.1</td>
+      <td>2.8</td>
+      <td>-1.6</td>
+    </tr>
+    <tr>
+      <th>18263</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2024-12-31</td>
+      <td>0.3</td>
+      <td>0.1</td>
+      <td>1.1</td>
+      <td>-1.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>18264 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WA_weather</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 18264 entries, 0 to 18263
+Data columns (total 9 columns):
+ #   Column     Non-Null Count  Dtype         
+---  ------     --------------  -----         
+ 0   NAME       18264 non-null  object        
+ 1   LATITUDE   18264 non-null  float64       
+ 2   LONGITUDE  18264 non-null  float64       
+ 3   ELEVATION  18264 non-null  float64       
+ 4   DATE       18264 non-null  datetime64[ns]
+ 5   PRCP       18259 non-null  float64       
+ 6   TAVG       12654 non-null  float64       
+ 7   TMAX       18264 non-null  float64       
+ 8   TMIN       18263 non-null  float64       
+dtypes: datetime64[ns](1), float64(7), object(1)
+memory usage: 1.3+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>To proceed, we extract the day of year from the timestamp, which we’ll use as our group-by variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WA_weather</span><span class="p">[</span><span class="s2">&quot;day_of_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">WA_weather</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can perform the group-by and compute the mean and standard error. Note that since we have two locations that we want to analyze separately, we need to group by both <code class="docutils literal notranslate"><span class="pre">NAME</span></code> and <code class="docutils literal notranslate"><span class="pre">day_of_year</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WA_weather_mean</span> <span class="o">=</span> <span class="n">WA_weather</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">WA_weather_sem</span> <span class="o">=</span> <span class="n">WA_weather</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WA_weather_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>day_of_year</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>ELEVATION</th>
+      <th>PRCP</th>
+      <th>TAVG</th>
+      <th>TMAX</th>
+      <th>TMIN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>1</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>4.688000</td>
+      <td>4.276471</td>
+      <td>7.736000</td>
+      <td>1.844000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>2</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>7.264000</td>
+      <td>4.029412</td>
+      <td>7.820000</td>
+      <td>1.928000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>3</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>4.600000</td>
+      <td>4.988235</td>
+      <td>8.104000</td>
+      <td>2.112000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>4</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>5.864000</td>
+      <td>5.229412</td>
+      <td>7.980000</td>
+      <td>2.720000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>5</td>
+      <td>47.44467</td>
+      <td>-122.31442</td>
+      <td>112.5</td>
+      <td>5.540000</td>
+      <td>5.147059</td>
+      <td>8.076000</td>
+      <td>3.072000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>727</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>362</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2.372000</td>
+      <td>-2.082353</td>
+      <td>0.684000</td>
+      <td>-3.824000</td>
+    </tr>
+    <tr>
+      <th>728</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>363</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2.172000</td>
+      <td>-2.535294</td>
+      <td>0.744000</td>
+      <td>-4.868000</td>
+    </tr>
+    <tr>
+      <th>729</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>364</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2.672000</td>
+      <td>-2.600000</td>
+      <td>-0.364000</td>
+      <td>-5.756000</td>
+    </tr>
+    <tr>
+      <th>730</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>365</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>2.464000</td>
+      <td>-2.952941</td>
+      <td>-0.756000</td>
+      <td>-6.404000</td>
+    </tr>
+    <tr>
+      <th>731</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>366</td>
+      <td>47.62168</td>
+      <td>-117.52796</td>
+      <td>717.7</td>
+      <td>0.842857</td>
+      <td>-1.320000</td>
+      <td>0.414286</td>
+      <td>-4.728571</td>
+    </tr>
+  </tbody>
+</table>
+<p>732 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WA_weather_mean</span> <span class="o">=</span> <span class="n">WA_weather_mean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">:,</span> <span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">,</span> <span class="s2">&quot;PRCP&quot;</span><span class="p">,</span> <span class="s2">&quot;TAVG&quot;</span><span class="p">,</span> <span class="s2">&quot;TMAX&quot;</span><span class="p">,</span> <span class="s2">&quot;TMIN&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">WA_weather_sem</span> <span class="o">=</span> <span class="n">WA_weather_sem</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">:,</span> <span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">,</span> <span class="s2">&quot;PRCP&quot;</span><span class="p">,</span> <span class="s2">&quot;TAVG&quot;</span><span class="p">,</span> <span class="s2">&quot;TMAX&quot;</span><span class="p">,</span> <span class="s2">&quot;TMIN&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">WA_weather_mean</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">,</span> <span class="s2">&quot;PRCP_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;TAVG_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;TMAX_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;TMIN_mean&quot;</span>
+<span class="p">]</span>
+
+<span class="n">WA_weather_sem</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">,</span> <span class="s2">&quot;PRCP_sem&quot;</span><span class="p">,</span> <span class="s2">&quot;TAVG_sem&quot;</span><span class="p">,</span> <span class="s2">&quot;TMAX_sem&quot;</span><span class="p">,</span> <span class="s2">&quot;TMIN_sem&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WA_weather_stat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+    <span class="n">WA_weather_mean</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">]),</span>
+    <span class="n">WA_weather_sem</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of_year&quot;</span><span class="p">])</span>
+<span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">WA_weather_stat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>day_of_year</th>
+      <th>PRCP_mean</th>
+      <th>TAVG_mean</th>
+      <th>TMAX_mean</th>
+      <th>TMIN_mean</th>
+      <th>PRCP_sem</th>
+      <th>TAVG_sem</th>
+      <th>TMAX_sem</th>
+      <th>TMIN_sem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>1</td>
+      <td>4.688000</td>
+      <td>4.276471</td>
+      <td>7.736000</td>
+      <td>1.844000</td>
+      <td>1.379690</td>
+      <td>0.843423</td>
+      <td>0.635082</td>
+      <td>0.761732</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>2</td>
+      <td>7.264000</td>
+      <td>4.029412</td>
+      <td>7.820000</td>
+      <td>1.928000</td>
+      <td>2.506318</td>
+      <td>0.945335</td>
+      <td>0.659722</td>
+      <td>0.685845</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>3</td>
+      <td>4.600000</td>
+      <td>4.988235</td>
+      <td>8.104000</td>
+      <td>2.112000</td>
+      <td>1.353255</td>
+      <td>0.837006</td>
+      <td>0.721376</td>
+      <td>0.732719</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>4</td>
+      <td>5.864000</td>
+      <td>5.229412</td>
+      <td>7.980000</td>
+      <td>2.720000</td>
+      <td>1.405938</td>
+      <td>1.042895</td>
+      <td>0.787274</td>
+      <td>0.800854</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SEATTLE TACOMA AIRPORT, WA US</td>
+      <td>5</td>
+      <td>5.540000</td>
+      <td>5.147059</td>
+      <td>8.076000</td>
+      <td>3.072000</td>
+      <td>1.581086</td>
+      <td>1.052522</td>
+      <td>0.750628</td>
+      <td>0.855015</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>727</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>362</td>
+      <td>2.372000</td>
+      <td>-2.082353</td>
+      <td>0.684000</td>
+      <td>-3.824000</td>
+      <td>0.652394</td>
+      <td>0.866460</td>
+      <td>0.768346</td>
+      <td>0.818235</td>
+    </tr>
+    <tr>
+      <th>728</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>363</td>
+      <td>2.172000</td>
+      <td>-2.535294</td>
+      <td>0.744000</td>
+      <td>-4.868000</td>
+      <td>0.935566</td>
+      <td>0.942460</td>
+      <td>0.770348</td>
+      <td>0.887087</td>
+    </tr>
+    <tr>
+      <th>729</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>364</td>
+      <td>2.672000</td>
+      <td>-2.600000</td>
+      <td>-0.364000</td>
+      <td>-5.756000</td>
+      <td>0.914577</td>
+      <td>1.119381</td>
+      <td>0.786318</td>
+      <td>0.953748</td>
+    </tr>
+    <tr>
+      <th>730</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>365</td>
+      <td>2.464000</td>
+      <td>-2.952941</td>
+      <td>-0.756000</td>
+      <td>-6.404000</td>
+      <td>0.981884</td>
+      <td>0.988579</td>
+      <td>0.826803</td>
+      <td>1.228257</td>
+    </tr>
+    <tr>
+      <th>731</th>
+      <td>SPOKANE INTERNATIONAL AIRPORT, WA US</td>
+      <td>366</td>
+      <td>0.842857</td>
+      <td>-1.320000</td>
+      <td>0.414286</td>
+      <td>-4.728571</td>
+      <td>0.425305</td>
+      <td>1.413294</td>
+      <td>0.742399</td>
+      <td>1.844776</td>
+    </tr>
+  </tbody>
+</table>
+<p>732 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>Now we can visualize the climatology data with a plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spokane_stat</span> <span class="o">=</span> <span class="n">WA_weather_stat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">WA_weather_stat</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;SPOKANE INTERNATIONAL AIRPORT, WA US&quot;</span><span class="p">]</span>
+<span class="n">seatac_stat</span> <span class="o">=</span> <span class="n">WA_weather_stat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">WA_weather_stat</span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;SEATTLE TACOMA AIRPORT, WA US&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seatac_stat</span><span class="p">[</span><span class="s2">&quot;day_of_year&quot;</span><span class="p">],</span> <span class="n">seatac_stat</span><span class="p">[</span><span class="s2">&quot;TAVG_mean&quot;</span><span class="p">],</span> <span class="n">ls</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SeaTac&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spokane_stat</span><span class="p">[</span><span class="s2">&quot;day_of_year&quot;</span><span class="p">],</span> <span class="n">spokane_stat</span><span class="p">[</span><span class="s2">&quot;TAVG_mean&quot;</span><span class="p">],</span> <span class="n">ls</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Spokane&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;day of year&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;temperature (°C)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/56c4b7d1528c701a00ad9539ac2e773372ecdc5f9b41aac03d8538644aa1d0c6.png" src="../_images/56c4b7d1528c701a00ad9539ac2e773372ecdc5f9b41aac03d8538644aa1d0c6.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./week_09"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="linregress.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Linear regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="multi_panel_figure.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multi-panel figures in matplotlib</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-groupby-method-of-pandas-dataframe">The .groupby() method of pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-climatology">Example: climatology</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Wing-Ho Ko
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Licensed under <a href="https://choosealicense.com/licenses/cc-by-4.0/">CC-BY-4.0</a>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

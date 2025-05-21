@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Week 6: File path; Introduction to pandas; More matplotlib &#8212; OCEAN 215 pre-lecture readings</title>
+    <title>Week 6: File path; Introduction to pandas; Datetime values &#8212; OCEAN 215 pre-lecture readings</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -216,7 +216,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_05/wk05_glossary.html">Week 5 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Week 6: File path; Introduction to pandas; More matplotlib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Week 6: File path; Introduction to pandas; Datetime values</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_operations.html">DataFrame operations</a></li>
@@ -225,7 +225,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wk06_glossary.html">Week 6 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting matrix data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
@@ -233,7 +233,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/basic_cartopy.html">Introduction to cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/more_cartopy.html">More on cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/wk08_glossary.html">Week 8 glossary</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
 </ul>
@@ -421,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Week 6: File path; Introduction to pandas; More matplotlib</h1>
+    <h1>Week 6: File path; Introduction to pandas; Datetime values</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,9 +448,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="week-6-file-path-introduction-to-pandas-more-matplotlib">
-<h1>Week 6: File path; Introduction to pandas; More matplotlib<a class="headerlink" href="#week-6-file-path-introduction-to-pandas-more-matplotlib" title="Link to this heading">#</a></h1>
-<p>In this week’s pre-lecture readings, we will talk about handling tabular data using the pandas module, including how to load external data as a pandas DataFrames. We will also discuss how to work with date and datetime values in pandas and matplotlib.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="week-6-file-path-introduction-to-pandas-datetime-values">
+<h1>Week 6: File path; Introduction to pandas; Datetime values<a class="headerlink" href="#week-6-file-path-introduction-to-pandas-datetime-values" title="Link to this heading">#</a></h1>
+<p>In this week’s pre-lecture readings, we will talk about handling tabular data using the pandas module, including how to load external data as a pandas DataFrames. We will also discuss how to work with datetime values in pandas and matplotlib.</p>
 <section id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
 <blockquote>

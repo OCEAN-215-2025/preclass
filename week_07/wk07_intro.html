@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Week 7: Xarray; Plotting matrix data &#8212; OCEAN 215 pre-lecture readings</title>
+    <title>Week 7: Xarray; Plotting 2D gridded data &#8212; OCEAN 215 pre-lecture readings</title>
   
   
   
@@ -216,7 +216,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_05/wk05_glossary.html">Week 5 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; More matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
@@ -225,7 +225,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_06/wk06_glossary.html">Week 6 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Week 7: Xarray; Plotting matrix data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Week 7: Xarray; Plotting 2D gridded data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
@@ -233,9 +233,28 @@
 <li class="toctree-l2"><a class="reference internal" href="wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/basic_cartopy.html">Introduction to cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/more_cartopy.html">More on cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/wk08_glossary.html">Week 8 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped summarization; Multi-panel figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/linregress.html">Linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/grouped_summarization.html">Grouped summarization in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/multi_panel_figure.html">Multi-panel figures in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/wk09_glossary.html">Week 9 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/writing_functions.html">Writing your own functions in python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/wk10_glossary.html">Week 10 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -421,7 +440,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Week 7: Xarray; Plotting matrix data</h1>
+    <h1>Week 7: Xarray; Plotting 2D gridded data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,8 +462,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="week-7-xarray-plotting-matrix-data">
-<h1>Week 7: Xarray; Plotting matrix data<a class="headerlink" href="#week-7-xarray-plotting-matrix-data" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="week-7-xarray-plotting-2d-gridded-data">
+<h1>Week 7: Xarray; Plotting 2D gridded data<a class="headerlink" href="#week-7-xarray-plotting-2d-gridded-data" title="Link to this heading">#</a></h1>
 <p>In this week’s pre-lecture readings, we will talk about handling gridded data using the xarray module, including how to load netcdf files into xarray Datasets. We will also discuss how plot gridded data in matplotlib.</p>
 <section id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>

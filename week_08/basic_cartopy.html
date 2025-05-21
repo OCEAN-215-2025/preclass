@@ -1,0 +1,1159 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to cartopy &#8212; OCEAN 215 pre-lecture readings</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'week_08/basic_cartopy';</script>
+    <link rel="icon" href="../_static/ocean_python_sm.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="More on cartopy" href="more_cartopy.html" />
+    <link rel="prev" title="Week 8: Cartopy" href="wk08_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ocean_python.png" class="logo__image only-light" alt="OCEAN 215 pre-lecture readings - Home"/>
+    <script>document.write(`<img src="../_static/ocean_python.png" class="logo__image only-dark" alt="OCEAN 215 pre-lecture readings - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the OCEAN 215 class readings
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_02/wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/python_list.html">Collection type: python list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/wk02_glossary.html">Week 2 Glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_03/wk03_intro.html">Week 3: Control flow; Debugging code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/etiquette.html">Coding etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_04/wk04_intro.html">Week 4: One-dimensional numpy array</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/numpy_overview.html">An overview of numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/statistics.html">A little bit of statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/reading_documentations.html">Reading documentations and using online resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/wk04_glossary.html">Week 4 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_05/wk05_intro.html">Week 5: Multi-dimensional numpy array; Plotting with matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multidimensional.html">Multi-dimensional arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multi_functions.html">Numpy functions on multi-dimensional arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/intro_matplotlib.html">Overview of matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/matplotlib_details.html">Dive into matplotlib functions and methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/plot_advice.html">Advice on making good visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/wk05_glossary.html">Week 5 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/wk06_glossary.html">Week 6 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="wk08_intro.html">Week 8: Cartopy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_cartopy.html">More on cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wk08_glossary.html">Week 8 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/OCEAN-215-2025/preclass" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/OCEAN-215-2025/preclass/issues/new?title=Issue%20on%20page%20%2Fweek_08/basic_cartopy.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/week_08/basic_cartopy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to cartopy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelude-the-earth-is-round-but-the-map-is-flat">Prelude: the Earth is round, but the map is flat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-projections-in-cartopy">Map projections in cartopy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-global-ocean-data">Plotting global ocean data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-cartopy">
+<h1>Introduction to cartopy<a class="headerlink" href="#introduction-to-cartopy" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialization</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="prelude-the-earth-is-round-but-the-map-is-flat">
+<h2>Prelude: the Earth is round, but the map is flat<a class="headerlink" href="#prelude-the-earth-is-round-but-the-map-is-flat" title="Link to this heading">#</a></h2>
+<p>Due to the fundamental fact that the Earth is round, it is impossible to represent all of areas, lengths, and angles faithfully on a flat sheet. Therefore, all maps are distorted in one way or another. However, different <strong>projectioon</strong> of the curved Earth surface onto flat 2-dimensional sheets may be more or less useful in a given situation.</p>
+<p>Up to this point, we have been treating longitude and latitude as ordinary x- and y- axis. As a result, when we plot both longitude (as x-axis) and latitude (as y-axis), we have essentially been using the plate carrée map projection, which distorts areas and lengths as we move away from the equator.</p>
+<p>In matplotlib, there is no easy way to switch to a different projection. However, the third-party <strong>cartopy</strong> module can be used to extend matplotlib, thus allowing us to specify data in the plate carrée coordinates but present them under a different projection. In addition, cartopy also comes bundled with information about geographical features, which can be conveniently included in plots.</p>
+</section>
+<section id="map-projections-in-cartopy">
+<h2>Map projections in cartopy<a class="headerlink" href="#map-projections-in-cartopy" title="Link to this heading">#</a></h2>
+<p>Instead of importing the entire cartopy package, we import two submodules from it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(Note that <em>crs</em> is short for coordinate reference system)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ccrs</span></code> submodule provide tools for map projection, while <code class="docutils literal notranslate"><span class="pre">cfeature</span></code> let us include geographical features in our plots.</p>
+<p>A cartopy plot is not much different from a standard matplotlib plot, except that: (1) when Axes instances are created, we need to supply one of the crs implemented by cartopy in the <code class="docutils literal notranslate"><span class="pre">projection</span></code> argument; (2) when we add data via <code class="docutils literal notranslate"><span class="pre">.polormesh()</span></code>, <code class="docutils literal notranslate"><span class="pre">.contour()</span></code>, etc., we need to supply the source coordinate system as represented in cartopy using the <code class="docutils literal notranslate"><span class="pre">transform</span></code> argument.</p>
+<p>To illustrate how cartopy works, we display the world’s coastline using the <code class="docutils literal notranslate"><span class="pre">.coastlines()</span></code> method available to all cartopy-augmented Axes instances, for the usual plate carrée projection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6796907b70b2dc825768467b1469659bedfc43a2814415c76261eb000f4f87f8.png" src="../_images/6796907b70b2dc825768467b1469659bedfc43a2814415c76261eb000f4f87f8.png" />
+</div>
+</div>
+<p>Again, note that the above code block is similar to how typical matplotlib plot is created thus far except for the <code class="docutils literal notranslate"><span class="pre">projection=ccrs.PlateCarree()</span></code> argument in <code class="docutils literal notranslate"><span class="pre">.add_subplot()</span></code>, and the <code class="docutils literal notranslate"><span class="pre">ax.coastlines()</span></code> line that generates the coastlines in the plot.</p>
+<p>Next, we show the same coastlines in a few different map projections:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">projections</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+    <span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">(),</span>
+    <span class="n">ccrs</span><span class="o">.</span><span class="n">Mercator</span><span class="p">(),</span>
+    <span class="n">ccrs</span><span class="o">.</span><span class="n">Orthographic</span><span class="p">(),</span>
+    <span class="n">ccrs</span><span class="o">.</span><span class="n">InterruptedGoodeHomolosine</span><span class="p">()</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">proj</span> <span class="ow">in</span> <span class="n">projections</span><span class="p">:</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">proj</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;crs = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">proj</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6733f5f0d5cb0b741de7bb94622e46e4f75f91c65e8b6988467efb7e4583a81a.png" src="../_images/6733f5f0d5cb0b741de7bb94622e46e4f75f91c65e8b6988467efb7e4583a81a.png" />
+<img alt="../_images/354dbdf659e79bc028bb3b57cbea2db04a89274710bd79b0c9cee6c28ced5f77.png" src="../_images/354dbdf659e79bc028bb3b57cbea2db04a89274710bd79b0c9cee6c28ced5f77.png" />
+<img alt="../_images/8c8d74de1b35872db8ba83e9f11cce4beb309d68f0d952dfa260edadd98f7501.png" src="../_images/8c8d74de1b35872db8ba83e9f11cce4beb309d68f0d952dfa260edadd98f7501.png" />
+<img alt="../_images/10ba99d7fbfd8e14b7f8e6e5c6c411f68a54f5e907c10511a9a5a2036fc43547.png" src="../_images/10ba99d7fbfd8e14b7f8e6e5c6c411f68a54f5e907c10511a9a5a2036fc43547.png" />
+<img alt="../_images/18ba274151175d776d247a6d9cb68a4b01410e0dec0c4391686efd4a250b5890.png" src="../_images/18ba274151175d776d247a6d9cb68a4b01410e0dec0c4391686efd4a250b5890.png" />
+</div>
+</div>
+<p>For a full list of supported map projection, see <a class="reference external" href="https://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html">https://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html</a>. In addition, a good resource for more information about various map projections is provided by ArcGIS and can be found <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/list-of-supported-map-projections.htm">here</a> (unfortunately, the ArcGIS projection name does not always match that of cartopy)</p>
+<p>If you are plotting global data, the Robinson projection may serve as a good default.</p>
+</section>
+<section id="plotting-global-ocean-data">
+<h2>Plotting global ocean data<a class="headerlink" href="#plotting-global-ocean-data" title="Link to this heading">#</a></h2>
+<p>Next we consider including actual data in our plot. For our examples we will be using the data from the <a class="reference external" href="https://www.ncei.noaa.gov/products/world-ocean-atlas">World Ocean Altas</a> 2023. We will plot the ocean surface oxygen concentration. We first load the data (note: the WOA dataset has unusual encoding for time, to avoid problems we set <code class="docutils literal notranslate"><span class="pre">decode_times=False</span></code> in <code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">woa23_O</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;data/woa23_all_o00_5d.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">woa23_O</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 5MB
+Dimensions:             (lat: 36, nbounds: 2, lon: 72, depth: 102, time: 1)
+Coordinates:
+  * lat                 (lat) float32 144B -87.5 -82.5 -77.5 ... 77.5 82.5 87.5
+  * lon                 (lon) float32 288B -177.5 -172.5 -167.5 ... 172.5 177.5
+  * depth               (depth) float32 408B 0.0 5.0 10.0 ... 5.4e+03 5.5e+03
+  * time                (time) float32 4B 3.894e+03
+Dimensions without coordinates: nbounds
+Data variables:
+    crs                 int32 4B ...
+    lat_bnds            (lat, nbounds) float32 288B ...
+    lon_bnds            (lon, nbounds) float32 576B ...
+    depth_bnds          (depth, nbounds) float32 816B ...
+    climatology_bounds  (time, nbounds) float32 8B ...
+    o_mn                (time, depth, lat, lon) float32 1MB ...
+    o_dd                (time, depth, lat, lon) float64 2MB ...
+    o_sd                (time, depth, lat, lon) float32 1MB ...
+    o_se                (time, depth, lat, lon) float32 1MB ...
+Attributes: (12/45)
+    Conventions:                     CF-1.6
+    title:                           World Ocean Atlas 2023 : moles_of_oxygen...
+    summary:                         Climatological mean dissolved oxygen for...
+    references:                      Garcia, H.E., Z. Wang, C. Bouchard, S.L....
+    institution:                     NOAA National Centers for Environmental ...
+    comment:                         Global Climatology as part of the World ...
+    ...                              ...
+    ncei_template_version:           NCEI_NetCDF_Grid_Template_v1.0
+    license:                         These data are openly available to the p...
+    Metadata_Conventions:            Unidata Dataset Discovery v1.0
+    metadata_link:                   https://www.ncei.noaa.gov/products/world...
+    date_created:                    2024-05-30 
+    date_modified:                   2024-05-30 </pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-007e7202-0490-46eb-812e-93308dabb690' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-007e7202-0490-46eb-812e-93308dabb690' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 36</li><li><span>nbounds</span>: 2</li><li><span class='xr-has-index'>lon</span>: 72</li><li><span class='xr-has-index'>depth</span>: 102</li><li><span class='xr-has-index'>time</span>: 1</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-07fa8e83-cdd7-4039-9cef-01f462473d68' class='xr-section-summary-in' type='checkbox'  checked><label for='section-07fa8e83-cdd7-4039-9cef-01f462473d68' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-87.5 -82.5 -77.5 ... 82.5 87.5</div><input id='attrs-83fbe23f-380b-44d7-ba10-cd8dd3c46ea7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-83fbe23f-380b-44d7-ba10-cd8dd3c46ea7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-73a9b813-eb00-4d7b-81a6-d4e65d8a0461' class='xr-var-data-in' type='checkbox'><label for='data-73a9b813-eb00-4d7b-81a6-d4e65d8a0461' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>bounds :</span></dt><dd>lat_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-87.5, -82.5, -77.5, -72.5, -67.5, -62.5, -57.5, -52.5, -47.5, -42.5,
+       -37.5, -32.5, -27.5, -22.5, -17.5, -12.5,  -7.5,  -2.5,   2.5,   7.5,
+        12.5,  17.5,  22.5,  27.5,  32.5,  37.5,  42.5,  47.5,  52.5,  57.5,
+        62.5,  67.5,  72.5,  77.5,  82.5,  87.5], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-177.5 -172.5 ... 172.5 177.5</div><input id='attrs-f4f02cb4-5073-4017-aff8-03e8ef33d5b6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f4f02cb4-5073-4017-aff8-03e8ef33d5b6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-214a33d8-c748-4b31-a669-876489a7f832' class='xr-var-data-in' type='checkbox'><label for='data-214a33d8-c748-4b31-a669-876489a7f832' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>bounds :</span></dt><dd>lon_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-177.5, -172.5, -167.5, -162.5, -157.5, -152.5, -147.5, -142.5, -137.5,
+       -132.5, -127.5, -122.5, -117.5, -112.5, -107.5, -102.5,  -97.5,  -92.5,
+        -87.5,  -82.5,  -77.5,  -72.5,  -67.5,  -62.5,  -57.5,  -52.5,  -47.5,
+        -42.5,  -37.5,  -32.5,  -27.5,  -22.5,  -17.5,  -12.5,   -7.5,   -2.5,
+          2.5,    7.5,   12.5,   17.5,   22.5,   27.5,   32.5,   37.5,   42.5,
+         47.5,   52.5,   57.5,   62.5,   67.5,   72.5,   77.5,   82.5,   87.5,
+         92.5,   97.5,  102.5,  107.5,  112.5,  117.5,  122.5,  127.5,  132.5,
+        137.5,  142.5,  147.5,  152.5,  157.5,  162.5,  167.5,  172.5,  177.5],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 5.0 10.0 ... 5.4e+03 5.5e+03</div><input id='attrs-53c58bcc-f6bd-4c2b-b6ea-dcafe12a4064' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-53c58bcc-f6bd-4c2b-b6ea-dcafe12a4064' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-da8d426a-92b9-4391-b4e5-c0c7f7f89616' class='xr-var-data-in' type='checkbox'><label for='data-da8d426a-92b9-4391-b4e5-c0c7f7f89616' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>depth</dd><dt><span>bounds :</span></dt><dd>depth_bnds</dd><dt><span>positive :</span></dt><dd>down</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>axis :</span></dt><dd>Z</dd></dl></div><div class='xr-var-data'><pre>array([0.00e+00, 5.00e+00, 1.00e+01, 1.50e+01, 2.00e+01, 2.50e+01, 3.00e+01,
+       3.50e+01, 4.00e+01, 4.50e+01, 5.00e+01, 5.50e+01, 6.00e+01, 6.50e+01,
+       7.00e+01, 7.50e+01, 8.00e+01, 8.50e+01, 9.00e+01, 9.50e+01, 1.00e+02,
+       1.25e+02, 1.50e+02, 1.75e+02, 2.00e+02, 2.25e+02, 2.50e+02, 2.75e+02,
+       3.00e+02, 3.25e+02, 3.50e+02, 3.75e+02, 4.00e+02, 4.25e+02, 4.50e+02,
+       4.75e+02, 5.00e+02, 5.50e+02, 6.00e+02, 6.50e+02, 7.00e+02, 7.50e+02,
+       8.00e+02, 8.50e+02, 9.00e+02, 9.50e+02, 1.00e+03, 1.05e+03, 1.10e+03,
+       1.15e+03, 1.20e+03, 1.25e+03, 1.30e+03, 1.35e+03, 1.40e+03, 1.45e+03,
+       1.50e+03, 1.55e+03, 1.60e+03, 1.65e+03, 1.70e+03, 1.75e+03, 1.80e+03,
+       1.85e+03, 1.90e+03, 1.95e+03, 2.00e+03, 2.10e+03, 2.20e+03, 2.30e+03,
+       2.40e+03, 2.50e+03, 2.60e+03, 2.70e+03, 2.80e+03, 2.90e+03, 3.00e+03,
+       3.10e+03, 3.20e+03, 3.30e+03, 3.40e+03, 3.50e+03, 3.60e+03, 3.70e+03,
+       3.80e+03, 3.90e+03, 4.00e+03, 4.10e+03, 4.20e+03, 4.30e+03, 4.40e+03,
+       4.50e+03, 4.60e+03, 4.70e+03, 4.80e+03, 4.90e+03, 5.00e+03, 5.10e+03,
+       5.20e+03, 5.30e+03, 5.40e+03, 5.50e+03], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>3.894e+03</div><input id='attrs-24d3b013-5d39-44a3-a838-90f6509cbee3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-24d3b013-5d39-44a3-a838-90f6509cbee3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-541c7a00-bc7b-4269-87bb-f3000dc6bf96' class='xr-var-data-in' type='checkbox'><label for='data-541c7a00-bc7b-4269-87bb-f3000dc6bf96' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>units :</span></dt><dd>months since 1965-01-01 00:00:00</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>climatology :</span></dt><dd>climatology_bounds</dd></dl></div><div class='xr-var-data'><pre>array([3894.], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2e40ea68-dadf-4d21-8520-7c3fa9a2871b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2e40ea68-dadf-4d21-8520-7c3fa9a2871b' class='xr-section-summary' >Data variables: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>crs</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0bc25f1f-74e2-439c-9cfb-e7c9e7bc9caa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0bc25f1f-74e2-439c-9cfb-e7c9e7bc9caa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c5ffdc94-6b00-4e37-af79-a1b0a018d0d3' class='xr-var-data-in' type='checkbox'><label for='data-c5ffdc94-6b00-4e37-af79-a1b0a018d0d3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>epsg_code :</span></dt><dd>EPSG:4326</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>inverse_flattening :</span></dt><dd>298.25723</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat_bnds</span></div><div class='xr-var-dims'>(lat, nbounds)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-777fa775-d151-490e-afb4-d170da7a0b61' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-777fa775-d151-490e-afb4-d170da7a0b61' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2dbc0261-4ad5-4632-8c63-182e8cd3f623' class='xr-var-data-in' type='checkbox'><label for='data-2dbc0261-4ad5-4632-8c63-182e8cd3f623' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>latitude bounds</dd></dl></div><div class='xr-var-data'><pre>[72 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon_bnds</span></div><div class='xr-var-dims'>(lon, nbounds)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e0096441-41cf-453d-96ea-bb62b4bbc915' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e0096441-41cf-453d-96ea-bb62b4bbc915' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dde1baac-4a4c-425b-9191-616b6b89461f' class='xr-var-data-in' type='checkbox'><label for='data-dde1baac-4a4c-425b-9191-616b6b89461f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>longitude bounds</dd></dl></div><div class='xr-var-data'><pre>[144 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>depth_bnds</span></div><div class='xr-var-dims'>(depth, nbounds)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-79e1c2ce-e12a-42b5-9c13-7b6da75cad78' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-79e1c2ce-e12a-42b5-9c13-7b6da75cad78' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df0bc515-77f5-480c-a045-e885814cbfe9' class='xr-var-data-in' type='checkbox'><label for='data-df0bc515-77f5-480c-a045-e885814cbfe9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>depth bounds</dd></dl></div><div class='xr-var-data'><pre>[204 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>climatology_bounds</span></div><div class='xr-var-dims'>(time, nbounds)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9ca1a8fa-5007-4050-b993-bc2a123bc913' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9ca1a8fa-5007-4050-b993-bc2a123bc913' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cc3140e7-a691-49b9-94ed-a74b5fbadbba' class='xr-var-data-in' type='checkbox'><label for='data-cc3140e7-a691-49b9-94ed-a74b5fbadbba' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This variable defines the bounds of the climatological time period for each time</dd></dl></div><div class='xr-var-data'><pre>[2 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>o_mn</span></div><div class='xr-var-dims'>(time, depth, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-99461202-ed60-4de3-b47e-ae3be185c4ed' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-99461202-ed60-4de3-b47e-ae3be185c4ed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bee4b593-1ba8-4348-aa8c-92226ebb7f7b' class='xr-var-data-in' type='checkbox'><label for='data-bee4b593-1ba8-4348-aa8c-92226ebb7f7b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>moles_of_oxygen_per_unit_mass_in_sea_water</dd><dt><span>long_name :</span></dt><dd>Average of all unflagged interpolated values at each standard depth level for moles_of_oxygen_per_unit_mass_in_sea_water in each grid-square which contain at least one measurement.</dd><dt><span>cell_methods :</span></dt><dd>area: mean depth: mean time: mean within years time: mean over years</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>units :</span></dt><dd>micromoles_per_kilogram</dd></dl></div><div class='xr-var-data'><pre>[264384 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>o_dd</span></div><div class='xr-var-dims'>(time, depth, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e4f8f3bc-6d08-4e8e-9e7a-8fee21fe7178' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e4f8f3bc-6d08-4e8e-9e7a-8fee21fe7178' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9965280a-3f19-42ad-87d9-9cca0d47b439' class='xr-var-data-in' type='checkbox'><label for='data-9965280a-3f19-42ad-87d9-9cca0d47b439' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>moles_of_oxygen_per_unit_mass_in_sea_water number_of_observations</dd><dt><span>long_name :</span></dt><dd>The number of observations of moles_of_oxygen_per_unit_mass_in_sea_water in each grid-square at each standard depth level.</dd><dt><span>cell_methods :</span></dt><dd>area: sum depth: point time: sum</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>[264384 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>o_sd</span></div><div class='xr-var-dims'>(time, depth, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-50152ab1-b763-495e-a6d7-db9ad47fa89c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-50152ab1-b763-495e-a6d7-db9ad47fa89c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3aa3b2fe-fd2c-4e4d-ad45-97e2dc14d2c0' class='xr-var-data-in' type='checkbox'><label for='data-3aa3b2fe-fd2c-4e4d-ad45-97e2dc14d2c0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>The standard deviation about the statistical mean of moles_of_oxygen_per_unit_mass_in_sea_water in each grid-square at each standard depth level.</dd><dt><span>cell_methods :</span></dt><dd>area: mean depth: mean time: standard_deviation</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>units :</span></dt><dd>micromoles_per_kilogram</dd></dl></div><div class='xr-var-data'><pre>[264384 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>o_se</span></div><div class='xr-var-dims'>(time, depth, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6f1e423c-dbad-4879-bdb6-d445e5c754d8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6f1e423c-dbad-4879-bdb6-d445e5c754d8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-10d2e728-9d89-4c90-99b4-6f81ade3185b' class='xr-var-data-in' type='checkbox'><label for='data-10d2e728-9d89-4c90-99b4-6f81ade3185b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>moles_of_oxygen_per_unit_mass_in_sea_water standard_error</dd><dt><span>long_name :</span></dt><dd>The standard error about the statistical mean of moles_of_oxygen_per_unit_mass_in_sea_water in each grid-square at each standard depth level.</dd><dt><span>cell_methods :</span></dt><dd>area: mean depth: mean time: mean</dd><dt><span>grid_mapping :</span></dt><dd>crs</dd><dt><span>units :</span></dt><dd>micromoles_per_kilogram</dd></dl></div><div class='xr-var-data'><pre>[264384 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a577e199-cda2-4c04-be73-25bcd3b4e92a' class='xr-section-summary-in' type='checkbox'  ><label for='section-a577e199-cda2-4c04-be73-25bcd3b4e92a' class='xr-section-summary' >Indexes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-dd698ef4-b2a0-406e-ba76-197b3dd834b3' class='xr-index-data-in' type='checkbox'/><label for='index-dd698ef4-b2a0-406e-ba76-197b3dd834b3' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-87.5, -82.5, -77.5, -72.5, -67.5, -62.5, -57.5, -52.5, -47.5, -42.5,
+       -37.5, -32.5, -27.5, -22.5, -17.5, -12.5,  -7.5,  -2.5,   2.5,   7.5,
+        12.5,  17.5,  22.5,  27.5,  32.5,  37.5,  42.5,  47.5,  52.5,  57.5,
+        62.5,  67.5,  72.5,  77.5,  82.5,  87.5],
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-d08080f2-940c-4e04-b5e8-bc9a900113ff' class='xr-index-data-in' type='checkbox'/><label for='index-d08080f2-940c-4e04-b5e8-bc9a900113ff' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-177.5, -172.5, -167.5, -162.5, -157.5, -152.5, -147.5, -142.5, -137.5,
+       -132.5, -127.5, -122.5, -117.5, -112.5, -107.5, -102.5,  -97.5,  -92.5,
+        -87.5,  -82.5,  -77.5,  -72.5,  -67.5,  -62.5,  -57.5,  -52.5,  -47.5,
+        -42.5,  -37.5,  -32.5,  -27.5,  -22.5,  -17.5,  -12.5,   -7.5,   -2.5,
+          2.5,    7.5,   12.5,   17.5,   22.5,   27.5,   32.5,   37.5,   42.5,
+         47.5,   52.5,   57.5,   62.5,   67.5,   72.5,   77.5,   82.5,   87.5,
+         92.5,   97.5,  102.5,  107.5,  112.5,  117.5,  122.5,  127.5,  132.5,
+        137.5,  142.5,  147.5,  152.5,  157.5,  162.5,  167.5,  172.5,  177.5],
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>depth</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-7a10e0b9-dd9e-4985-9788-601add303c50' class='xr-index-data-in' type='checkbox'/><label for='index-7a10e0b9-dd9e-4985-9788-601add303c50' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([   0.0,    5.0,   10.0,   15.0,   20.0,   25.0,   30.0,   35.0,   40.0,
+         45.0,
+       ...
+       4600.0, 4700.0, 4800.0, 4900.0, 5000.0, 5100.0, 5200.0, 5300.0, 5400.0,
+       5500.0],
+      dtype=&#x27;float32&#x27;, name=&#x27;depth&#x27;, length=102))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-33956e82-9a2b-4611-8b41-4ef291cfcdf2' class='xr-index-data-in' type='checkbox'/><label for='index-33956e82-9a2b-4611-8b41-4ef291cfcdf2' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([3894.0], dtype=&#x27;float32&#x27;, name=&#x27;time&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f93e1aad-d278-4cbb-8cbe-14934fa0b3d1' class='xr-section-summary-in' type='checkbox'  ><label for='section-f93e1aad-d278-4cbb-8cbe-14934fa0b3d1' class='xr-section-summary' >Attributes: <span>(45)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>title :</span></dt><dd>World Ocean Atlas 2023 : moles_of_oxygen_per_unit_mass_in_sea_water Annual 1965-2022 5.00 degree</dd><dt><span>summary :</span></dt><dd>Climatological mean dissolved oxygen for the global ocean from in situ profile data</dd><dt><span>references :</span></dt><dd>Garcia, H.E., Z. Wang, C. Bouchard, S.L. Cross, C.R. Paver, J.R. Reagan, T.P. Boyer, R.A. Locarnini, A.V. Mishonov, O.K. Baranova, D. Seidov, and D. Dukhovskoy (2024). World Ocean Atlas 2023, Volume 3: Dissolved Oxygen, Apparent Oxygen Utilization, and Oxygen Saturation. A. Mishonov Technical Ed., NOAA Atlas NESDIS 91, https://doi.org/10.25923/rb67-ns53.</dd><dt><span>institution :</span></dt><dd>NOAA National Centers for Environmental Information (NCEI)</dd><dt><span>comment :</span></dt><dd>Global Climatology as part of the World Ocean Atlas Project. This version (v1.1) of the climatology updates the original version and should be used in place of the original version.  For more information on what updates were made please see the Errata in Garcia et al., 2024. https://doi.org/10.25923/rb67-ns53</dd><dt><span>id :</span></dt><dd>woa23_all_o00_5d.nc</dd><dt><span>naming_authority :</span></dt><dd>gov.noaa.ncei</dd><dt><span>time_coverage_start :</span></dt><dd>1965-01-01</dd><dt><span>time_coverage_duration :</span></dt><dd>P58Y</dd><dt><span>time_coverage_resolution :</span></dt><dd>P01Y</dd><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>geospatial_vertical_min :</span></dt><dd>0.0</dd><dt><span>geospatial_vertical_max :</span></dt><dd>5500.0</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>5.00 degrees</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>5.00 degrees</dd><dt><span>geospatial_vertical_units :</span></dt><dd>m</dd><dt><span>geospatial_vertical_resolution :</span></dt><dd></dd><dt><span>geospatial_vertical_positive :</span></dt><dd>down</dd><dt><span>creator_name :</span></dt><dd>Ocean Climate Laboratory Team</dd><dt><span>creator_email :</span></dt><dd>NCEI.Info@noaa.gov</dd><dt><span>creator_url :</span></dt><dd>http://www.ncei.noaa.gov</dd><dt><span>project :</span></dt><dd>World Ocean Atlas</dd><dt><span>processing_level :</span></dt><dd>processed</dd><dt><span>keywords :</span></dt><dd>&lt;ISO_TOPIC_Category&gt; Oceans&lt;/ISO_TOPIC_Category&gt; Oceans &gt; Ocean Oxygen &gt; Dissolved Oxygen</dd><dt><span>keywords_vocabulary :</span></dt><dd>ISO 19115, GCMD</dd><dt><span>standard_name_vocabulary :</span></dt><dd>CF-1.6</dd><dt><span>contributor_name :</span></dt><dd>Ocean Climate Laboratory</dd><dt><span>contributor_role :</span></dt><dd>Calculation of climatologies</dd><dt><span>featureType :</span></dt><dd>Grid</dd><dt><span>cdm_data_type :</span></dt><dd>Grid</dd><dt><span>publisher_name :</span></dt><dd>National Centers for Environmental Information (NCEI)</dd><dt><span>publisher_url :</span></dt><dd>http://www.ncei.noaa.gov/</dd><dt><span>publisher_email :</span></dt><dd>NCEI.Info@noaa.gov</dd><dt><span>ncei_template_version :</span></dt><dd>NCEI_NetCDF_Grid_Template_v1.0</dd><dt><span>license :</span></dt><dd>These data are openly available to the public. Please acknowledge the use of these data with the text given in the acknowledgment attribute.</dd><dt><span>Metadata_Conventions :</span></dt><dd>Unidata Dataset Discovery v1.0</dd><dt><span>metadata_link :</span></dt><dd>https://www.ncei.noaa.gov/products/world-ocean-atlas</dd><dt><span>date_created :</span></dt><dd>2024-05-30 </dd><dt><span>date_modified :</span></dt><dd>2024-05-30 </dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>The variable we’re interested in plotting is <code class="docutils literal notranslate"><span class="pre">o_mn</span></code> and we are only interested in depth = 0 m, hence we subset as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oxygen</span> <span class="o">=</span> <span class="n">woa23_O</span><span class="p">[</span><span class="s2">&quot;o_mn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="n">oxygen</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(36, 72)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also extract the internal numpy array for the <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code> coordinates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">woa23_O</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">woa23_O</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we use matplotlib + cartopy to create our plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">())</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">oxygen</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Oxygen (μmol/kg)&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eacdefadc5373f23446aef8202f67017b9b70695f47b57392f4ff5db4097988e.png" src="../_images/eacdefadc5373f23446aef8202f67017b9b70695f47b57392f4ff5db4097988e.png" />
+</div>
+</div>
+<p>(The pixelation is a result of the low-resolution of the dataset we picked. There is also a larger, 1° resolution dataset available from WOA)</p>
+<p>Again, note that our block of code is similar to that of a regular matplotlib plot, except for the <code class="docutils literal notranslate"><span class="pre">projection=ccrs.Robinson()</span></code> argument in <code class="docutils literal notranslate"><span class="pre">.add_subplot()</span></code> and the <code class="docutils literal notranslate"><span class="pre">transform=ccrs.PlateCarree()</span></code> argument in <code class="docutils literal notranslate"><span class="pre">.pcolormesh()</span></code></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./week_08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="wk08_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Week 8: Cartopy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="more_cartopy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">More on cartopy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelude-the-earth-is-round-but-the-map-is-flat">Prelude: the Earth is round, but the map is flat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-projections-in-cartopy">Map projections in cartopy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-global-ocean-data">Plotting global ocean data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Wing-Ho Ko
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Licensed under <a href="https://choosealicense.com/licenses/cc-by-4.0/">CC-BY-4.0</a>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

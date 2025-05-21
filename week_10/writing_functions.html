@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Writing your own functions in python &#8212; OCEAN 215 pre-lecture readings</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'week_10/writing_functions';</script>
+    <link rel="icon" href="../_static/ocean_python_sm.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Week 10 glossary" href="wk10_glossary.html" />
+    <link rel="prev" title="Week 10: Writing python functions" href="wk10_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ocean_python.png" class="logo__image only-light" alt="OCEAN 215 pre-lecture readings - Home"/>
+    <script>document.write(`<img src="../_static/ocean_python.png" class="logo__image only-dark" alt="OCEAN 215 pre-lecture readings - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the OCEAN 215 class readings
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_02/wk02_intro.html">Week 2: Using Jupyter notebook; Data types in python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/using_jupyter.html">Using Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/numerics_and_strings.html">Numeric and textual types, and their operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/boolean_and_logic.html">Boolean and None types; Logical expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/python_list.html">Collection type: python list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_02/wk02_glossary.html">Week 2 Glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_03/wk03_intro.html">Week 3: Control flow; Debugging code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/control_flow.html">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/complex_control_flow.html">Conditional statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/debugging.html">Bugs and debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/etiquette.html">Coding etiquette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_03/wk03_glossary.html">Week 3 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_04/wk04_intro.html">Week 4: One-dimensional numpy array</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/numpy_overview.html">An overview of numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/np_creation_indexing.html">Creating and indexing arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/np_mapping_reduction.html">Mapping and reduction functions in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/statistics.html">A little bit of statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/reading_documentations.html">Reading documentations and using online resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_04/wk04_glossary.html">Week 4 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_05/wk05_intro.html">Week 5: Multi-dimensional numpy array; Plotting with matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multidimensional.html">Multi-dimensional arrays in numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/np_multi_functions.html">Numpy functions on multi-dimensional arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/intro_matplotlib.html">Overview of matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/matplotlib_details.html">Dive into matplotlib functions and methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/plot_advice.html">Advice on making good visualizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_05/wk05_glossary.html">Week 5 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_06/wk06_glossary.html">Week 6 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_08/wk08_intro.html">Week 8: Cartopy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/basic_cartopy.html">Introduction to cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/more_cartopy.html">More on cartopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_08/wk08_glossary.html">Week 8 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped summarization; Multi-panel figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/linregress.html">Linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/grouped_summarization.html">Grouped summarization in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/multi_panel_figure.html">Multi-panel figures in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/wk09_glossary.html">Week 9 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="wk10_intro.html">Week 10: Writing python functions</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Writing your own functions in python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wk10_glossary.html">Week 10 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/OCEAN-215-2025/preclass" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/OCEAN-215-2025/preclass/issues/new?title=Issue%20on%20page%20%2Fweek_10/writing_functions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/week_10/writing_functions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Writing your own functions in python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-write-your-own-functions">Why write your own functions?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-python-functions">Writing python functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-versus-global-variables">Local versus global variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns-versus-side-effects">Returns versus side effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-optional-arguments">Functions with optional arguments</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-your-own-functions-in-python">
+<h1>Writing your own functions in python<a class="headerlink" href="#writing-your-own-functions-in-python" title="Link to this heading">#</a></h1>
+<p><em>Note</em>: in this section we will stay within core python and avoid using <em>any</em> third party modules such as numpy.</p>
+<p>Up to this point we have been using functions written by someone else. What do we need to do to create our own functions? And when do we want to do it?</p>
+<section id="why-write-your-own-functions">
+<h2>Why write your own functions?<a class="headerlink" href="#why-write-your-own-functions" title="Link to this heading">#</a></h2>
+<p>The main reason to write a function is the same main reason to use a for loop: you avoid repeating yourself. As an example, suppose you have a list of floats call <code class="docutils literal notranslate"><span class="pre">float_values</span></code> and you want to print each number out after rounding them to 2 decimal points, we can do so using the for loop below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a list of floats</span>
+<span class="n">float_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.3546</span><span class="p">,</span> <span class="mf">2.8452</span><span class="p">,</span> <span class="mf">7.3137</span><span class="p">,</span> <span class="mf">4.5606</span><span class="p">,</span> <span class="mf">4.5517</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out each number after rounded to 2 decimcal points. Use &quot; &quot; as separator</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_values</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.35 2.85 7.31 4.56 4.55 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s suppose later on in the code you run into the same basic problem, but this time the list is called floats, you’ll then have to make another code block:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># another list of floats</span>
+<span class="n">floats</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1764</span><span class="p">,</span> <span class="mf">5.1505</span> <span class="p">,</span> <span class="mf">2.9198</span><span class="p">,</span> <span class="mf">4.0561</span><span class="p">,</span> <span class="mf">5.1616</span><span class="p">,</span> <span class="mf">4.1885</span><span class="p">,</span> <span class="mf">6.6322</span><span class="p">,</span> <span class="mf">9.1152</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">floats</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 5.15 2.92 4.06 5.16 4.19 6.63 9.12 
+</pre></div>
+</div>
+</div>
+</div>
+<p>By doing so, what amounts to the same piece of code will show up in more than one places. In addition to repeating yourself, this creates problem when you decide to round to 1 decimal points instead of 2, for then you’ll have to hunt down every instance where this piece of code is used and change everyone of them.</p>
+<p>The upshot is this: if you are using the same piece of codes (execpt for minor modifications) multiple times, consider writing a function for the general task, then call it every time a when specific case of the task needs to be performed.</p>
+</section>
+<section id="writing-python-functions">
+<h2>Writing python functions<a class="headerlink" href="#writing-python-functions" title="Link to this heading">#</a></h2>
+<p>In python, a definition of function starts with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function and the comma-separated sequence of parameters placed inside paratheses, then followed by the ending colon <code class="docutils literal notranslate"><span class="pre">:</span></code>. As an example, we may write a function called <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> that print out floats to 2 decimal place (<em>note</em>: the rules for allowed function names are exactly the same as the rules for allowed variable names):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print2dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As defined, the function <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> takes one input argument <code class="docutils literal notranslate"><span class="pre">float_list</span></code>. Note that the input argument is essentially a <em>place holder</em>. It does not correspond to any concrete values. Instead, when you call the function, the variable <code class="docutils literal notranslate"><span class="pre">float_list</span></code> is assigned the values of the input at the start of the execution of the <strong>function body</strong>.</p>
+<p>In addition, note that the <code class="docutils literal notranslate"><span class="pre">for...:</span></code> line is indented. This is again a <em>syntax feature</em> of python. Basically, after the <code class="docutils literal notranslate"><span class="pre">def</span></code> line, the body of the function needs to be indented by one level. Because our function has a for loop that requires indention on <em>its</em> body, the <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">round(x,</span> <span class="pre">2)</span></code> and <code class="docutils literal notranslate"><span class="pre">print(x,</span> <span class="pre">end=&quot;</span> <span class="pre">&quot;)</span></code> lines are now indented twice.</p>
+<p>Once our function is defined, it can be called like any other functions you have encountered. For example, now we can print out our two lists to 2 decimal points via:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print2dp</span><span class="p">(</span><span class="n">float_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.35 2.85 7.31 4.56 4.55 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print2dp</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 5.15 2.92 4.06 5.16 4.19 6.63 9.12 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="local-versus-global-variables">
+<h2>Local versus global variables<a class="headerlink" href="#local-versus-global-variables" title="Link to this heading">#</a></h2>
+<p>There is one more important difference between rerunning the same piece of codes versus writing a function to complete the same task. When the block of code is not placed inside a function body, the variables defined during the execution of the code will overwrite variables of the same name already defined, and are accessible after the block of code executes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">floats</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 5.15 2.92 4.06 5.16 4.19 6.63 9.12 
+9.12
+</pre></div>
+</div>
+</div>
+</div>
+<p>We call the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in this case a <strong>global</strong> variable since it can be accessed globally (= anywhere in the code after it is defined).</p>
+<p>In contrast, when you placed the code block inside a function, the variables the block defines are <strong>local</strong> to the function and cannot be accessed outside. For our example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># global variable x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">print2dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span> <span class="c1"># x is local variable here</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="c1"># the local `x` is destroyed upon function exit</span>
+
+<span class="n">print2dp</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># print out the global x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 5.15 2.92 4.06 5.16 4.19 6.63 9.12 
+0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, the input arguments of your functions are local. They can take the same name as a global variable but they are always assigned the values of the inputs when you call the function, and the global variable will remain unchanged.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># global variable x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># local place-holder x</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># reassign the value of local x</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># print the value of local x</span>
+
+<span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># subsitute x = 2 as the function starts executing</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># print out global value of x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The existence of local scope is a feature, not a bug. It allows you to hide implementation details of your function and control what object is exposed to the outside. It also makes the global scope less cluttered when the function body generates a lot of intermediate variables.<br><br></p>
+<p>What if a variable is defined in the global scope but not in the local scope? What if we use such variables inside the function body? Answer: when python can’t find the variable in the local scope it will interpret the variable as being a global variable. Here is an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">print_x_add_y</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">print_x_add_y</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+2
+1
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above function, when the <code class="docutils literal notranslate"><span class="pre">print(x</span> <span class="pre">+</span> <span class="pre">y)</span></code> line is reached, the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> comes from the placeholder, i.e., from the value you input into the function when calling it, while the value of <code class="docutils literal notranslate"><span class="pre">y</span></code> comes from the global scope.</p>
+<p>Note that by design, you can <em>use</em> a global variable in a function but cannot <em>reassign</em> it. In particular, the code below will result in an error:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">print_x_add_y</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="c1"># planted an error: cannot reassign global y</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> 
+
+<span class="n">print_x_add_y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># when the error is actually triggered</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="c1"># planted an error: cannot reassign global y</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">print_x_add_y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># when the error is actually triggered</span>
+
+<span class="nn">Cell In[12], line 5,</span> in <span class="ni">print_x_add_y</span><span class="nt">(x)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span><span class="w"> </span><span class="nf">print_x_add_y</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="c1"># planted an error: cannot reassign global y</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="ne">UnboundLocalError</span>: cannot access local variable &#39;y&#39; where it is not associated with a value
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="returns-versus-side-effects">
+<h2>Returns versus side effects<a class="headerlink" href="#returns-versus-side-effects" title="Link to this heading">#</a></h2>
+<p>It is worth noting that <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> works by side effect: It does not return any object that can be assigned to the left hand side. Instead, numbers are printed out over the course of its execution. In contrast, we can also define a function that returns value.</p>
+<p>For example, suppose we want our function to round every number in a list to 2 decimal places, but we want the list of rounded number to be returned rather than printed out. We may modify our function to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">round2dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this time we have to define a new list called <code class="docutils literal notranslate"><span class="pre">out</span></code> at the beginning of the code, and <strong>returns</strong> it at the end. By returning a variable, the result can be assigned and used in the global scope, even though the name <code class="docutils literal notranslate"><span class="pre">out</span></code> remains local:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># global out</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">round2dp</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span> <span class="c1"># global `result` assgined return value of round2dp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="c1"># global `out` is unchanged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.18, 5.15, 2.92, 4.06, 5.16, 4.19, 6.63, 9.12]
+[]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="functions-with-optional-arguments">
+<h2>Functions with optional arguments<a class="headerlink" href="#functions-with-optional-arguments" title="Link to this heading">#</a></h2>
+<p>It is easy to extend what we have learned and write functions that take multiple arguments. For example, suppose we generalized the <code class="docutils literal notranslate"><span class="pre">print2dp()</span></code> to a function <code class="docutils literal notranslate"><span class="pre">print_n_dp()</span></code> that allow you to supply how many decimal places you want to keep:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_n_dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_n_dp</span><span class="p">(</span><span class="n">floats</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2 5.2 2.9 4.1 5.2 4.2 6.6 9.1 
+</pre></div>
+</div>
+</div>
+</div>
+<p>This may be useful, but if you use cases mostly centered on printing to 2 decimal point, you may want to define 2 to be the default value of <code class="docutils literal notranslate"><span class="pre">n</span></code>. To do so, we follow the argument name with the equal sign and the default value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_n_dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can use the function without supplying <code class="docutils literal notranslate"><span class="pre">n</span></code>, and in that case, the default value will be used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_n_dp</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 5.15 2.92 4.06 5.16 4.19 6.63 9.12 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Importantly, you must write down arguments <em>without</em> defaults before you write down those that <em>has</em> defaults. For example, the following function will raise an error at definition time:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_dp_n</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">float_list</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_dp_n</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">float_list</span><span class="p">):</span>
+                          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: parameter without a default follows parameter with a default
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./week_10"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="wk10_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Week 10: Writing python functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="wk10_glossary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 10 glossary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-write-your-own-functions">Why write your own functions?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-python-functions">Writing python functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-versus-global-variables">Local versus global variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns-versus-side-effects">Returns versus side effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-optional-arguments">Functions with optional arguments</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Wing-Ho Ko
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Licensed under <a href="https://choosealicense.com/licenses/cc-by-4.0/">CC-BY-4.0</a>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
