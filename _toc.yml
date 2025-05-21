@@ -50,5 +50,20 @@ chapters:
   - file: week_07/matplotlib_matrix.ipynb
   - file: week_07/wk07_glossary.md
 - file: week_08/wk08_intro.md
+  sections:
+  - file: week_08/basic_cartopy.ipynb
+  - file: week_08/more_cartopy.ipynb
+  - file: week_08/wk08_glossary.md
 - file: week_09/wk09_intro.md
+  sections:
+  - file: week_09/linregress.ipynb
+  - file: week_09/grouped_summarization.ipynb
+  - file: week_09/multi_panel_figure.ipynb
+  - file: week_09/wk09_glossary.md
 - file: week_10/wk10_intro.md
+  sections:
+  - file: week_10/writing_functions.ipynb
+  - file: week_10/wk10_glossary.md
+- file: appendix/appendix_intro.md
+  sections:
+  - file: appendix/local_python.md

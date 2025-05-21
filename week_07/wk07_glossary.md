@@ -2,6 +2,8 @@
 
 ## Online resources
 
+Documentation of xarray can be found at [https://docs.xarray.dev/en/stable/api.html](https://docs.xarray.dev/en/stable/api.html)
+
 ## Xarray
 
 ### Xarray functions
@@ -26,6 +28,7 @@
 + `<Dataset>.sum()` or `<DataArray>.sum()`: calculate the sum of a Dataset or DataArray along particular dimension(s)
 + `<Dataset>.var()` or `<DataArray>.var()`: calculate the variance of a Dataset or DataArray along particular dimension(s)
 + `<Dataset>.std()` or `<DataArray>.std()`: calculate the standard deviation of a Dataset or DataArray along particular dimension(s)
++ `<Dataset>.squeeze()` or `<DataArray>.squeeze()`: remove dimension of size 1 from internal array structures
 + `<Dataset>.to_dataframe()`: convert an xarray Dataset into a pandas DataFrame
 + `<Dataset>.to_netcdf()`: convert an xarray Dataset into an external netCDF file
 + `<Dataset>.expand_dims()` or `<DataArray>.expand_dims()`: add addition dimension(s) to a Dataset or DataArray
