@@ -477,7 +477,7 @@ document.write(`
 </div>
 <section id="the-groupby-method-of-pandas-dataframe">
 <h2>The .groupby() method of pandas DataFrame<a class="headerlink" href="#the-groupby-method-of-pandas-dataframe" title="Link to this heading">#</a></h2>
-<p>Sometimes your data can be partitioned into multiple subsets, and it would be useful to obtain summary statistics on each subset. As an example, we will use the fish length and weight data taken at Alsakan shore from 1997-2006. More information about the source data can be found on <a class="reference external" href="https://www.bco-dmo.org/dataset/3332">https://lod.bco-dmo.org/id/dataset/3332</a>, and the simplified data we use can be found as a csv file <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/secm_fish_size.csv">here</a>.</p>
+<p>Sometimes your data can be partitioned into multiple subsets, and it would be useful to obtain summary statistics on each subset. As an example, we will use the fish length and weight data taken at Alaskan shore from 1997-2006. More information about the source data can be found on <a class="reference external" href="https://www.bco-dmo.org/dataset/3332">https://lod.bco-dmo.org/id/dataset/3332</a>, and the simplified data we use can be found as a csv file <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/secm_fish_size.csv">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/secm_fish_size.csv&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;nd&quot;</span><span class="p">])</span>
@@ -1128,7 +1128,7 @@ memory usage: 148.6+ KB
 </div></div></div>
 </div>
 <p>Note that we have a bunch of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in the result, which is a consequence that some species only appeared once in the dataset.</p>
-<p>To combine the two dataframe, we can use <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>. But because some variable names are repeated, we first have to modify those names:</p>
+<p>To combine the two DataFrames, we can use <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>. But because some variable names are repeated, we first have to modify those names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fish_grp_mean</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="s2">&quot;mean_length&quot;</span><span class="p">,</span> <span class="s2">&quot;mean_weight&quot;</span><span class="p">]</span>

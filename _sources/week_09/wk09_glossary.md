@@ -4,7 +4,7 @@
 
 Scipy's documentation on `linregress()` can be found at [https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html).
 
-For a more thorogh guide of the "group-by" capability of pandas, see [https://pandas.pydata.org/docs/user_guide/groupby.html](https://pandas.pydata.org/docs/user_guide/groupby.html)
+For a more thorough guide of the "group-by" capability of pandas, see [https://pandas.pydata.org/docs/user_guide/groupby.html](https://pandas.pydata.org/docs/user_guide/groupby.html)
 
 ## Functions from scipy.stats
 

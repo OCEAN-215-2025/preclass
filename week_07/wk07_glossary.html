@@ -239,8 +239,22 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_08/wk08_glossary.html">Week 8 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped summarization; Multi-panel figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/linregress.html">Linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/grouped_summarization.html">Grouped summarization in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/multi_panel_figure.html">Multi-panel figures in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/wk09_glossary.html">Week 9 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/writing_functions.html">Writing your own functions in python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/wk10_glossary.html">Week 10 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -469,7 +483,7 @@ document.write(`
 <h3>Xarray functions<a class="headerlink" href="#xarray-functions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code>: read netCDF file into xarray Dataset object</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">xr.Dataset.from_dataframe()</span></code>: convert a pandas dataframe into an xarray Dataset object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xr.Dataset.from_dataframe()</span></code>: convert a pandas DataFrame into an xarray Dataset object</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">xr.concat()</span></code>: combine multiple Datasets or DataArrays into a single object</p></li>
 </ul>
 </section>
@@ -522,7 +536,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Figure&gt;.colorbar()</span></code>: create color bar in a figure</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Colorbar&gt;.set_label()</span></code>: set the label of the color bar</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Colorbar&gt;.ax</span></code>: obtain the Axes instance of the color bar</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ContourSet&gt;.clabel()</span></code>: create labels within the coutour lines</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ContourSet&gt;.clabel()</span></code>: create labels within the contour lines</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cmocean.cm.thermal</span></code>, etc.: color maps for oceanographic data</p></li>
 </ul>
 </section>

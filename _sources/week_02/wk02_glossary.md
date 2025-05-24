@@ -26,7 +26,7 @@ Here we provide a short glossary of important syntax features and functions of p
 + `or`: operator to join two logical statements with an "or"
 + `not`: operator to negate a logical statement<br><br>
 
-+ `in`: operator to check if a string is contained in another
++ `in` and `not in`: operator to check if a string is (or is not) contained in another
 + `is None` and `is not None`: check if a variable is (or is not) `None`<br><br>
 
 + `[]`: for indexing or slicing a python list<br><br>

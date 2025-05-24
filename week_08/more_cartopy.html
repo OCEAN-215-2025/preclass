@@ -239,8 +239,22 @@
 <li class="toctree-l2"><a class="reference internal" href="wk08_glossary.html">Week 8 glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped aggregation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_09/wk09_intro.html">Week 9: Linear regression; Grouped summarization; Multi-panel figures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/linregress.html">Linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/grouped_summarization.html">Grouped summarization in pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/multi_panel_figure.html">Multi-panel figures in matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_09/wk09_glossary.html">Week 9 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_10/wk10_intro.html">Week 10: Writing python functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/writing_functions.html">Writing your own functions in python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_10/wk10_glossary.html">Week 10 glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -594,7 +608,7 @@ document.write(`
 </section>
 <section id="limiting-the-extent-of-the-map">
 <h2>Limiting the extent of the map<a class="headerlink" href="#limiting-the-extent-of-the-map" title="Link to this heading">#</a></h2>
-<p>Sometimes you’ll be interested in a smaller geographical region and want the convenience of using available geographical features from cartopy. To limit the range of latitude and longitude in a cartopy plot, use the <code class="docutils literal notranslate"><span class="pre">ax.set_extent()</span></code> method. For example, suppose we’re interested in the north Alantic ocean, we may do:</p>
+<p>Sometimes you’ll be interested in a smaller geographical region and want the convenience of using available geographical features from cartopy. To limit the range of latitude and longitude in a cartopy plot, use the <code class="docutils literal notranslate"><span class="pre">ax.set_extent()</span></code> method. For example, suppose we’re interested in the north Atlantic ocean, we may do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">urban</span> <span class="o">=</span> <span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span>

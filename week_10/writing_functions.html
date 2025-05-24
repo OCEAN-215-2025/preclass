@@ -483,7 +483,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out each number after rounded to 2 decimcal points. Use &quot; &quot; as separator</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out each number after rounded to 2 decimal points. Use &quot; &quot; as separator</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_values</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
@@ -520,11 +520,11 @@ document.write(`
 </div>
 </div>
 <p>By doing so, what amounts to the same piece of code will show up in more than one places. In addition to repeating yourself, this creates problem when you decide to round to 1 decimal points instead of 2, for then you’ll have to hunt down every instance where this piece of code is used and change everyone of them.</p>
-<p>The upshot is this: if you are using the same piece of codes (execpt for minor modifications) multiple times, consider writing a function for the general task, then call it every time a when specific case of the task needs to be performed.</p>
+<p>The upshot is this: if you are using the same piece of codes (except for minor modifications) multiple times, consider writing a function for the general task, then call it every time a when specific case of the task needs to be performed.</p>
 </section>
 <section id="writing-python-functions">
 <h2>Writing python functions<a class="headerlink" href="#writing-python-functions" title="Link to this heading">#</a></h2>
-<p>In python, a definition of function starts with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function and the comma-separated sequence of parameters placed inside paratheses, then followed by the ending colon <code class="docutils literal notranslate"><span class="pre">:</span></code>. As an example, we may write a function called <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> that print out floats to 2 decimal place (<em>note</em>: the rules for allowed function names are exactly the same as the rules for allowed variable names):</p>
+<p>In python, a definition of function starts with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function and the comma-separated sequence of parameters placed inside parentheses, then followed by the ending colon <code class="docutils literal notranslate"><span class="pre">:</span></code>. As an example, we may write a function called <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> that print out floats to 2 decimal place (<em>note</em>: the rules for allowed function names are exactly the same as the rules for allowed variable names):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print2dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
@@ -622,7 +622,7 @@ document.write(`
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># reassign the value of local x</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># print the value of local x</span>
 
-<span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># subsitute x = 2 as the function starts executing</span>
+<span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># substitute x = 2 as the function starts executing</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># print out global value of x</span>
 </pre></div>
 </div>
@@ -716,7 +716,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># global out</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">round2dp</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span> <span class="c1"># global `result` assgined return value of round2dp</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">round2dp</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span> <span class="c1"># global `result` assigned return value of round2dp</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="c1"># global `out` is unchanged</span>

@@ -515,11 +515,11 @@ document.write(`
 <img alt="../_images/38ec8e11d9ee243e2ae4b3ad995f63ece914701be89904b8ad147243d77cbacc.png" src="../_images/38ec8e11d9ee243e2ae4b3ad995f63ece914701be89904b8ad147243d77cbacc.png" />
 </div>
 </div>
-<p>Notice that while the meaurements don’t fall onto a literal straight line, there is a clear linear trend. So we may still want to associate the data with a “best fitted line”. But how do we do that?</p>
+<p>Notice that while the measurements don’t fall onto a literal straight line, there is a clear linear trend. So we may still want to associate the data with a “best fitted line”. But how do we do that?</p>
 <p>A common strategy in such situation is to find a straight line of the form <span class="math notranslate nohighlight">\(y = m x + c\)</span> with slope <span class="math notranslate nohighlight">\(m\)</span> and intercept <span class="math notranslate nohighlight">\(c\)</span> such that the square error <span class="math notranslate nohighlight">\(\sum_i \left( y_i - (m x_i + c) \right)^2\)</span> is minimized (here <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> are the individual data points). The procedure to do so is known as linear regression.</p>
 <p>As it turns out, the linear regression procedure outlined above corresponds to a particular <em>model</em> of the relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The relationship is:</p>
 <blockquote>
-<div><p>At any given value of <span class="math notranslate nohighlight">\(x\)</span>, the variable <span class="math notranslate nohighlight">\(y\)</span> is distributed as a gaussian (a.k.a. normal) distribution with mean <span class="math notranslate nohighlight">\(m x + c\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, where <span class="math notranslate nohighlight">\(\sigma\)</span> is the same across all values of <span class="math notranslate nohighlight">\(x\)</span></p>
+<div><p>At any given value of <span class="math notranslate nohighlight">\(x\)</span>, the variable <span class="math notranslate nohighlight">\(y\)</span> is distributed as a Gaussian (a.k.a. normal) distribution with mean <span class="math notranslate nohighlight">\(m x + c\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, where <span class="math notranslate nohighlight">\(\sigma\)</span> is the same across all values of <span class="math notranslate nohighlight">\(x\)</span></p>
 </div></blockquote>
 <p>In applying linear regression, it is important to check that the model assumption is plausible. For example, while there are clear relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> below, a linear regression will not be appropriate.</p>
 <div class="cell docutils container">
@@ -619,7 +619,7 @@ document.write(`
     \left(\sum_i (x_i - \overline{x})^2\right)\left(\sum_i (y_i - \overline{y})^2\right))
 }}\]</div>
 <p>In general, <span class="math notranslate nohighlight">\(r\)</span> can takes any value between −1 and 1. If the association between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are negative (i.e., when the regression slope is negative), <span class="math notranslate nohighlight">\(r\)</span> will be negative. Conversely, if the association is positive (positive slope), <span class="math notranslate nohighlight">\(r\)</span> will be positive. Furthermore, the closer the value of <span class="math notranslate nohighlight">\(|r|\)</span> is to 1, the stronger is the association.</p>
-<p>The figure below illustrates various data with different level of correlation (you can download the data behing the plot <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/correlations.csv">here</a>.):</p>
+<p>The figure below illustrates various data with different level of correlation (you can download the data behind the plot <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/correlations.csv">here</a>.):</p>
 <p><img alt="Correlations of various data" src="../_images/correlations.png" /></p>
 <p>As a rule of thumb, we may call correlation with <span class="math notranslate nohighlight">\(|r| &lt; 0.3\)</span> weak, <span class="math notranslate nohighlight">\(|r| &gt; 0.7\)</span> strong, and values in-between moderate. However, do note that <em>correlation is not causation</em>.</p>
 <p>In the case of the height versus weight example, we have <span class="math notranslate nohighlight">\(r \approx 0.9\)</span>, so the association is strong and positive.</p>
@@ -843,7 +843,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 <p>Thus the rate of ocean temperature increase is approximately 0.015 K per year.</p>
-<p>One final remark: because correlation is dimensionless, the value we obtained from the linear regression is immediately useable. For example, the correlation of temperature anomaly with date is simply:</p>
+<p>One final remark: because correlation is dimensionless, the value we obtained from the linear regression is immediately usable. For example, the correlation of temperature anomaly with date is simply:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">regress</span><span class="o">.</span><span class="n">rvalue</span><span class="p">)</span>
