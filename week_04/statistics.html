@@ -506,9 +506,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Plotting each individuals as data point on a figure, we obtain the visualization below (you’ll learn how to create histogram next week):</p>
+<p>We can visualize the height distributions of the 3 groups using histogram like the one below (you’ll learn how to create histogram next week):</p>
 <p><img alt="height distribution" src="../_images/height_distribution.png" /></p>
-<p>We can tell that all three groups have distinct distribution. For example:</p>
+<p>We can tell that all three groups have distinct distributions. For examples:</p>
 <ul class="simple">
 <li><p>Group 1 and group 2 are on average taller than group 3</p></li>
 <li><p>Group 2 has a larger spread in height compared to group 1 and 3</p></li>
@@ -516,7 +516,7 @@ document.write(`
 <p>In general, if we want to characterize a distribution with a few numbers, we will be most interested in a measure of <strong>central tendency</strong> and a measure of <strong>spread</strong>.</p>
 <section id="central-tendency">
 <h2>Central tendency<a class="headerlink" href="#central-tendency" title="Link to this heading">#</a></h2>
-<p>For a measure of central tendency, one possible choice is the <strong>mean</strong>. If the measurements are <span class="math notranslate nohighlight">\((x_1, x_2, \ldots, x_n)\)</span>, the mean of the measurements is defined as:</p>
+<p>A common measure of central tendency is the <strong>mean</strong>. If the measurements are <span class="math notranslate nohighlight">\(\{x_1, x_2, \ldots, x_n\}\)</span>, the mean of the measurements is defined as:</p>
 <div class="math notranslate nohighlight">
 \[ \overline{x} = \frac{1}{n} (x_1 + x_2 + \ldots + x_n) \]</div>
 <p>If we compute the means of the 3 groups, we’ll get:</p>
@@ -544,7 +544,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Another measure of central tendency, which is mathematically less “neat” but more robust against outliers, is the <strong>median</strong>. By definition, the median is the data point at which equal number of data is below it and above it (if there is no data point exactly half-way, an interpolation is carried out between the nearest two data points). For our 3 groups:</p>
+<p>Another measure of central tendency, which is mathematically less “neat” but more robust against outliers, is the <strong>median</strong>. By definition, the median is the data point at which equal number of data lies below and above it (if there is no data point exactly half-way, an interpolation is carried out between the nearest two data points). For our 3 groups:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">heights_1</span><span class="p">)</span>
@@ -576,7 +576,7 @@ document.write(`
 <p>For spread, a common measure is the standard deviation. To define the standard deviation, we first define the <strong>variance</strong>:</p>
 <div class="math notranslate nohighlight">
 \[ \sigma^2 = \frac{1}{n'} \left( (x_1 - \overline{x})^2 + \ldots + (x_n - \overline{x})^2 \right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(n' = n\)</span> if you have the whole population and (more often) <span class="math notranslate nohighlight">\(n' = n - 1\)</span> when you have a sample of the population (for the most part we’ll not worry about this distinction here). Once the variance is calculated, the <strong>standard deviation</strong> <span class="math notranslate nohighlight">\(\sigma\)</span> is obtained as the square root of the variance. The advantage of taking the square root is that the standard deviation will have the same dimension as the mean.</p>
+<p>(treat the square (<span class="math notranslate nohighlight">\(^2\)</span>) as part of the symbol), where <span class="math notranslate nohighlight">\(n' = n\)</span> if you have the whole population and (more often) <span class="math notranslate nohighlight">\(n' = n - 1\)</span> when you have a sample of the population (for the most part we’ll not worry about this distinction). Once the variance is calculated, the <strong>standard deviation</strong> <span class="math notranslate nohighlight">\(\sigma\)</span> is obtained as the square root of the variance. The advantage of taking the square root is that the standard deviation will have the same dimension as the mean.</p>
 <p>For our 3 groups:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -602,8 +602,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>We see that indeed, group 1 and group 3 have similar standard deviation, both of which are distinctively smaller than group 2.</p>
-<p>Another possible measure of spread is the inter quartile range. By definition, the <strong><span class="math notranslate nohighlight">\(q\)</span> quantile</strong> (<span class="math notranslate nohighlight">\(0 \leq q \leq 1\)</span>) is the data point at which a portion <span class="math notranslate nohighlight">\(q\)</span> of data is below its value. Similar to median, an interpolation is used when there are no exact data point at the required portion <span class="math notranslate nohighlight">\(q\)</span>. The <strong>upper quartile</strong> is defined as the 0.75 quantile, and the <strong>lower quartile</strong> is defined as the 0.25 quantile. Finally, the <strong>inter-quartile range (IQR)</strong> is defined as the difference between the upper quartile and the lower quartile.</p>
+<p>We see that indeed, group 1 and group 3 have similar standard deviations, both of which are distinctively smaller than group 2.</p>
+<p>Another possible measure of spread is the <strong>inter-quartile range</strong>. By definition, the <strong><span class="math notranslate nohighlight">\(q\)</span> quantile</strong> (<span class="math notranslate nohighlight">\(0 \leq q \leq 1\)</span>) is the data point at which a portion <span class="math notranslate nohighlight">\(q\)</span> of data lies below it. Similar to the median, an interpolation is used when there are no exact data point at the required portion <span class="math notranslate nohighlight">\(q\)</span>. The <strong>upper quartile</strong> is defined as the 0.75 quantile, and the <strong>lower quartile</strong> is defined as the 0.25 quantile. Finally, the <strong>inter-quartile range (IQR)</strong> is defined as the difference between the upper quartile and the lower quartile.</p>
 <p>Similar to mean versus median, the IQR is mathematically less “neat” than the standard deviation but more robust against outliers.</p>
 <p>For our 3 groups:</p>
 <div class="cell docutils container">
@@ -636,9 +636,9 @@ document.write(`
 <h2>Standard error<a class="headerlink" href="#standard-error" title="Link to this heading">#</a></h2>
 <p>As a general observation, when you take samples of increasing size, your estimation of the population’s mean from the sample’s mean improves. As it turns out, if you take multiple samples of size <span class="math notranslate nohighlight">\(n\)</span> and consider the standard deviation in the mean values of these samples, we have:</p>
 <div class="math notranslate nohighlight">
-\[ \sigma_{\textrm{mean of }x} \approx \frac{\sigma_{\textrm{sample}}}{\sqrt{n}}\]</div>
+\[ \sigma_{\textrm{mean of samples}} \approx \frac{\sigma_{\textrm{sample}}}{\sqrt{n}}\]</div>
 <p>Thus, the quantity <span class="math notranslate nohighlight">\(\sigma/ \sqrt{n}\)</span> is referred to as the <strong>standard error</strong> in the estimate of the mean.</p>
-<p>Conceptually, if the difference in the means between two samples are big compared to the standard error in either of them, it is higher unlikely that the difference is a result of statistical fluke.</p>
+<p>Conceptually, if the difference between the means of two samples is big compared to the standard error of either one of them, it is higher unlikely that the difference is a result of statistical fluke.</p>
 <p>We can calculate the standard error in our 3 groups like so:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

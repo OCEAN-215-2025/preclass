@@ -494,21 +494,21 @@ document.write(`
 </div>
 </div>
 </div>
-<p>As we have seen in the introductory examples, the bulk of the work in a matplotlib plot is achieved by calling various methods of the axes object. Here we will dive deeper into the different method calls and their functions</p>
+<p>As we have seen in the introductory examples, the bulk of the work in a matplotlib plot is achieved by calling various methods of the axes object. Here we will dive deeper into the different method calls and their purposes.</p>
 <section id="specifying-plot-type-of-data-series">
 <h2>Specifying plot type of data series<a class="headerlink" href="#specifying-plot-type-of-data-series" title="Link to this heading">#</a></h2>
 <section id="line-plot-the-plot-method">
 <h3>Line plot: the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method<a class="headerlink" href="#line-plot-the-plot-method" title="Link to this heading">#</a></h3>
-<p>We have been using <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method to visualize data series as a line plot. In typical usage, you supply the x-coordinate vector and y-coordinate vector as positional argument (and in that order), then add keyword argument to specify the visual presentation. Some useful keyword arguments are:</p>
+<p>We have been using <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method to visualize data series as a line plot. In typical usage, you supply the x-coordinate vector and y-coordinate vector as positional arguments (and in that order), then add keyword arguments to specify the visual presentation. Some useful keyword arguments are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in constructing legend</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in legend.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> or <code class="docutils literal notranslate"><span class="pre">c</span></code>: specify the color of the line. For a list of named color, consult <a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">https://matplotlib.org/stable/gallery/color/named_colors.html</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code> or <code class="docutils literal notranslate"><span class="pre">ls</span></code>: the style of the line. Possible values include <code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;--&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;-.&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;:&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">linewidth</span></code> or <code class="docutils literal notranslate"><span class="pre">lw</span></code>: the thickness of the line</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">marker</span></code>: the shape of marker. See <a class="reference external" href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/marker_reference.html">https://matplotlib.org/stable/gallery/lines_bars_and_markers/marker_reference.html</a> for reference</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">markerfacecolor</span></code> or <code class="docutils literal notranslate"><span class="pre">mfc</span></code>: face color of the marker</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">markeredgecolor</span></code> or <code class="docutils literal notranslate"><span class="pre">mec</span></code>: edge color of the marker</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">markersize</span></code> or <code class="docutils literal notranslate"><span class="pre">mc</span></code>: size of marker</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">markersize</span></code> or <code class="docutils literal notranslate"><span class="pre">mc</span></code>: size of the marker</p></li>
 </ul>
 <p>Example:</p>
 <div class="cell docutils container">
@@ -541,15 +541,15 @@ document.write(`
 </section>
 <section id="scatter-plot-the-scatter-method">
 <h3>Scatter plot: the <code class="docutils literal notranslate"><span class="pre">.scatter()</span></code> method<a class="headerlink" href="#scatter-plot-the-scatter-method" title="Link to this heading">#</a></h3>
-<p>To make scatter plot, use <code class="docutils literal notranslate"><span class="pre">.scatter()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.plot()</span></code>. Importantly, <code class="docutils literal notranslate"><span class="pre">.scatter()</span></code> allows the marker size (<code class="docutils literal notranslate"><span class="pre">s</span></code>) and marker color (<code class="docutils literal notranslate"><span class="pre">c</span></code>) to vary between data points. In addition to <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>, some useful arguments for <code class="docutils literal notranslate"><span class="pre">.scatter()</span></code> are:</p>
+<p>To make a scatter plot, use <code class="docutils literal notranslate"><span class="pre">.scatter()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.plot()</span></code>. Importantly, <code class="docutils literal notranslate"><span class="pre">.scatter()</span></code> allows the marker size (<code class="docutils literal notranslate"><span class="pre">s</span></code>) and marker color (<code class="docutils literal notranslate"><span class="pre">c</span></code>) to vary between data points. In addition to <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>, some useful arguments for <code class="docutils literal notranslate"><span class="pre">.scatter()</span></code> are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in constructing legend</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in legend</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">marker</span></code>: the shape of marker (see above)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cmap</span></code>: the color map used to map the values supplied by <code class="docutils literal notranslate"><span class="pre">c</span></code> to actual color</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmap</span></code>: the color map used convert the values supplied by <code class="docutils literal notranslate"><span class="pre">c</span></code> to actual color</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">norm</span></code>: the normalization of color scale</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vmin</span></code>, <code class="docutils literal notranslate"><span class="pre">vmax</span></code>: the endpoints of the color scale</p></li>
 </ul>
-<p>We’ll talk more about the colormap related arguments (<code class="docutils literal notranslate"><span class="pre">cmap</span></code>, <code class="docutils literal notranslate"><span class="pre">norm</span></code>, <code class="docutils literal notranslate"><span class="pre">vmin</span></code>, <code class="docutils literal notranslate"><span class="pre">vmax</span></code>) in future weeks. For now here is a simple illustration:</p>
+<p>We’ll talk more about the color map related arguments (<code class="docutils literal notranslate"><span class="pre">cmap</span></code>, <code class="docutils literal notranslate"><span class="pre">norm</span></code>, <code class="docutils literal notranslate"><span class="pre">vmin</span></code>, <code class="docutils literal notranslate"><span class="pre">vmax</span></code>) in future weeks. For now here is a simple illustration:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data to plot</span>
@@ -587,14 +587,14 @@ document.write(`
 </section>
 <section id="error-bars-the-errorbar-method">
 <h3>Error bars: the <code class="docutils literal notranslate"><span class="pre">.errorbar()</span></code> method<a class="headerlink" href="#error-bars-the-errorbar-method" title="Link to this heading">#</a></h3>
-<p>To plot errorbars, use the .errorbar() method. The main arguments is the x-coordinate <code class="docutils literal notranslate"><span class="pre">x</span></code>, the y coordinates <code class="docutils literal notranslate"><span class="pre">y</span></code>, and the y error range <code class="docutils literal notranslate"><span class="pre">yerr</span></code> (there’s also an <code class="docutils literal notranslate"><span class="pre">xerr</span></code> in case you need to plot horizontal error bars). Additional useful arguments include:</p>
+<p>To plot errorbars, use the <code class="docutils literal notranslate"><span class="pre">.errorbar()</span></code> method. The main arguments are the x-coordinate <code class="docutils literal notranslate"><span class="pre">x</span></code>, the y-coordinates <code class="docutils literal notranslate"><span class="pre">y</span></code>, and the y error range <code class="docutils literal notranslate"><span class="pre">yerr</span></code> (there’s also an <code class="docutils literal notranslate"><span class="pre">xerr</span></code> in case you need to plot horizontal error bars). Additional useful arguments include:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in constructing legend</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in legend</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ecolor</span></code>: color of the errorbar lines</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">elinewidth</span></code>: linewidth of the errorbar lines</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">capsize</span></code>: length of the error bar caps</p></li>
 </ul>
-<p>Note that there are multiple ways to specify <code class="docutils literal notranslate"><span class="pre">yerr</span></code>. To illustrate, below are normal average temperature, normal temperature deviation, normal high temperature, and normal low temperature (in °F) at Portege Bay, measured from 1981 through 2010:</p>
+<p>Note that there are multiple ways to specify <code class="docutils literal notranslate"><span class="pre">yerr</span></code>. To illustrate, below are average normal temperature, standard deviations in normal temperature, normal high temperature, and normal low temperature (in °F) at Portege Bay, measured from 1981 through 2010:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data to plot</span>
@@ -620,7 +620,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Suppose we want to plot the normal average temperature and show its standard deviation as errorbar, we may do:</p>
+<p>Suppose we want to plot the average normal temperature and show its standard deviations as errorbar, we may do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make plot</span>
@@ -638,7 +638,7 @@ document.write(`
 <img alt="../_images/8cc27f6d76072508205b539667e130fdf7771bcad56ba0a7ff2266cff300b288.png" src="../_images/8cc27f6d76072508205b539667e130fdf7771bcad56ba0a7ff2266cff300b288.png" />
 </div>
 </div>
-<p>Suppose we want to use errorbars to instead indicate the average high and low temperature. Then we first has to construct the error bar intervals as a 2-by-12 array:</p>
+<p>Suppose we want to use errorbars to instead indicate the normal high and low temperature. Then we first has to construct the error bar intervals as a 2-by-12 array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct the asymmetric error intervals</span>
@@ -662,12 +662,13 @@ document.write(`
 <img alt="../_images/44462a9e529169eebb6cc1328c8b23196bf724b95b4d3e7e1900256007343b88.png" src="../_images/44462a9e529169eebb6cc1328c8b23196bf724b95b4d3e7e1900256007343b88.png" />
 </div>
 </div>
+<p>The official documentations for the <code class="docutils literal notranslate"><span class="pre">.errorbar()</span></code> method can be found in <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html</a></p>
 </section>
 <section id="bar-graph-the-bar-method">
 <h3>Bar graph: the <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> method<a class="headerlink" href="#bar-graph-the-bar-method" title="Link to this heading">#</a></h3>
-<p>To make a bar graph, use the <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> method. The main arguments is the x-coordinate <code class="docutils literal notranslate"><span class="pre">x</span></code> and the height <code class="docutils literal notranslate"><span class="pre">height</span></code> of the bar <code class="docutils literal notranslate"><span class="pre">height</span></code>. In addition, you can optionally supply <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, both of which can be scalar or vector. Additional useful arguments include:</p>
+<p>To make a bar graph, use the <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> method. The main arguments are the x-coordinate <code class="docutils literal notranslate"><span class="pre">x</span></code> and the height <code class="docutils literal notranslate"><span class="pre">height</span></code> of the bar height. In addition, you can optionally supply <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, both of which can be scalar or vector. Additional useful arguments include:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in constructing legend</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in legend</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">color</span></code>: color of the bar faces. Can be a scalar or a vector</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tick_label</span></code>: tick labels for each bar.</p></li>
 </ul>
@@ -705,7 +706,7 @@ document.write(`
 <h3>Histogram: the <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method<a class="headerlink" href="#histogram-the-hist-method" title="Link to this heading">#</a></h3>
 <p>Histogram is a common tool to visualize a sample measured on a continuous scale. In matplotlib, a histogram can be produced using the <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method. Note that the precise shape of a histogram (and the impression it gives people) is dependent on the bin length and bin boundaries. These can be customized using the <code class="docutils literal notranslate"><span class="pre">bins</span></code> and <code class="docutils literal notranslate"><span class="pre">range</span></code> arguments. Additional useful argument includes:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in constructing legend</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the data series, to be used in legend</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">color</span></code>: color of the bar faces. Can be a scalar or a vector</p></li>
 </ul>
 <p>As an example, recall the height distribution from week 4:</p>
@@ -744,6 +745,7 @@ document.write(`
 <img alt="../_images/fa2fb2db143477b3d4507dfd5f1f5866f5ee3df5b1f256cd7d81fc07414c761a.png" src="../_images/fa2fb2db143477b3d4507dfd5f1f5866f5ee3df5b1f256cd7d81fc07414c761a.png" />
 </div>
 </div>
+<p>The official documentations for the <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method can be found in <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html</a></p>
 </section>
 </section>
 <section id="title-legends-and-axes-labels">
@@ -756,7 +758,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">fontsize</span></code>: the font size of the title</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fontstyle</span></code>: the “style” of the font, can be <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;italic&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;oblique&quot;</span></code> (default is <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fontweight</span></code>: the “weight” of the font, can be <code class="docutils literal notranslate"><span class="pre">&quot;light&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bold&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;extra</span> <span class="pre">bold&quot;</span></code> (among other possibilities). Default is <code class="docutils literal notranslate"><span class="pre">&quot;normal&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code>: the color of the font</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code>: the color of the title text</p></li>
 </ul>
 <p>Example:</p>
 <div class="cell docutils container">
@@ -847,9 +849,9 @@ document.write(`
 </section>
 <section id="remarks-unicode-characters">
 <h3>Remarks: unicode characters<a class="headerlink" href="#remarks-unicode-characters" title="Link to this heading">#</a></h3>
-<p>In scientific figures, titles, legends, and axes labels often include special character such as <code class="docutils literal notranslate"><span class="pre">°</span></code>, superscript, or subscript. One way to deal with such needs is to use unicode characters, which include these special symbols.</p>
-<p>Two useful online resources for unicode characters are the BabelMap Online character map <a class="reference external" href="https://www.babelstone.co.uk/Unicode/babelmap.html">https://www.babelstone.co.uk/Unicode/babelmap.html</a> and Shapecatcher <a class="reference external" href="https://shapecatcher.com/">https://shapecatcher.com/</a>. The former allows you to find unicode characters by their location within the unicode specification, and the latter makes it possible to translate hand-drawn characters to unicode ones.</p>
-<p>Here are a small collection of unicode characters that you may find useful (you should be able to just copy-and-paste them when you need):</p>
+<p>In scientific figures, titles, legends, and axes labels often include special character such as <code class="docutils literal notranslate"><span class="pre">°</span></code>, superscript, or subscript. One way to deal with such needs is to use unicode characters, which include many of these special symbols.</p>
+<p>Two useful online resources for unicode characters are the BabelMap Online character map <a class="reference external" href="https://www.babelstone.co.uk/Unicode/babelmap.html">https://www.babelstone.co.uk/Unicode/babelmap.html</a> and Shapecatcher <a class="reference external" href="https://shapecatcher.com/">https://shapecatcher.com/</a>. The former allows you to find unicode characters by their location within the unicode specification, while the latter makes it possible to translate hand-drawn characters to unicode ones.</p>
+<p>Here is a small collection of unicode characters that you may find useful (you should be able to just copy-and-paste them as you need):</p>
 <ul class="simple">
 <li><p>Superscript: <code class="docutils literal notranslate"><span class="pre">¹</span></code> <code class="docutils literal notranslate"><span class="pre">²</span></code> <code class="docutils literal notranslate"><span class="pre">³</span></code> <code class="docutils literal notranslate"><span class="pre">⁰</span></code> <code class="docutils literal notranslate"><span class="pre">⁺</span></code> <code class="docutils literal notranslate"><span class="pre">⁻</span></code> (more can be found in the “Superscripts and Subscripts” unicode block)</p></li>
 <li><p>Subscript: <code class="docutils literal notranslate"><span class="pre">₀</span></code> <code class="docutils literal notranslate"><span class="pre">₁</span></code> <code class="docutils literal notranslate"><span class="pre">₂</span></code> <code class="docutils literal notranslate"><span class="pre">₃</span></code> <code class="docutils literal notranslate"><span class="pre">ᵢ</span></code> (again, more are in the “Superscripts and Subscripts” unicode block)</p></li>
@@ -905,18 +907,9 @@ document.write(`
 </section>
 <section id="setting-ticks-via-set-xticks-set-yticks-and-tick-params">
 <h3>Setting ticks via <code class="docutils literal notranslate"><span class="pre">.set_xticks()</span></code>, <code class="docutils literal notranslate"><span class="pre">.set_yticks()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.tick_params()</span></code><a class="headerlink" href="#setting-ticks-via-set-xticks-set-yticks-and-tick-params" title="Link to this heading">#</a></h3>
-<p>We can set the ticks location of a plot using <code class="docutils literal notranslate"><span class="pre">.set_xticks()</span></code> and <code class="docutils literal notranslate"><span class="pre">.set_yticks()</span></code>. These accept a 1D numpy array of tick locations as their first argument. In addition, they also have a <code class="docutils literal notranslate"><span class="pre">labels</span></code> argument that can be used to customize the tick labels.</p>
-<p>Unfortunately, neither <code class="docutils literal notranslate"><span class="pre">.set_xticks()</span></code> nor <code class="docutils literal notranslate"><span class="pre">.set_yticks()</span></code> provides a way to change the font size of the tick labels. To do so, we need to set the <code class="docutils literal notranslate"><span class="pre">labelsize</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">.tick_params()</span></code> function</p>
+<p>We can set the locations of ticks using <code class="docutils literal notranslate"><span class="pre">.set_xticks()</span></code> and <code class="docutils literal notranslate"><span class="pre">.set_yticks()</span></code>. These accept a 1D numpy array of tick locations as their first argument. In addition, they also have a <code class="docutils literal notranslate"><span class="pre">labels</span></code> argument that can be used to customize the tick labels.</p>
+<p>Unfortunately, neither <code class="docutils literal notranslate"><span class="pre">.set_xticks()</span></code> nor <code class="docutils literal notranslate"><span class="pre">.set_yticks()</span></code> provides a way to change the font size of the tick labels. To do so, we need to set the <code class="docutils literal notranslate"><span class="pre">labelsize</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">.tick_params()</span></code> method.</p>
 <p>Example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data to plot</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-<span class="n">speed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data to plot</span>
@@ -981,6 +974,7 @@ document.write(`
 <img alt="../_images/946c4856802673a0a552242171905ab2c0e9a9a53f47bcb2fb705b2291562d25.png" src="../_images/946c4856802673a0a552242171905ab2c0e9a9a53f47bcb2fb705b2291562d25.png" />
 </div>
 </div>
+<p>For full documentation, see <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.grid.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.grid.html</a></p>
 </section>
 </section>
 <section id="remark-customizing-figure-size">

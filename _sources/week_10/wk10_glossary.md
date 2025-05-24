@@ -2,4 +2,4 @@
 
 ## Python syntax features
 
-`def ...(...):` : syntax for defining a new function
+`def ...(...):` : the starting line of a function definition
