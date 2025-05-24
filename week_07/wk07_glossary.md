@@ -9,7 +9,7 @@ Documentation of xarray can be found at [https://docs.xarray.dev/en/stable/api.h
 ### Xarray functions
 
 + `xr.open_dataset()`: read netCDF file into xarray Dataset object
-+ `xr.Dataset.from_dataframe()`: convert a pandas dataframe into an xarray Dataset object
++ `xr.Dataset.from_dataframe()`: convert a pandas DataFrame into an xarray Dataset object
 + `xr.concat()`: combine multiple Datasets or DataArrays into a single object
 
 ### Xarray Dataset/DataArray attributes and syntax
@@ -51,5 +51,5 @@ Documentation of xarray can be found at [https://docs.xarray.dev/en/stable/api.h
 + `<Figure>.colorbar()`: create color bar in a figure
 + `<Colorbar>.set_label()`: set the label of the color bar
 + `<Colorbar>.ax`: obtain the Axes instance of the color bar
-+ `<ContourSet>.clabel()`: create labels within the coutour lines
++ `<ContourSet>.clabel()`: create labels within the contour lines
 + `cmocean.cm.thermal`, etc.: color maps for oceanographic data
