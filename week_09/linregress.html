@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -221,6 +221,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -230,7 +231,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
@@ -482,7 +482,7 @@ document.write(`
 </div>
 <section id="conceptual-foundations-of-linear-regression">
 <h2>Conceptual foundations of linear regression<a class="headerlink" href="#conceptual-foundations-of-linear-regression" title="Link to this heading">#</a></h2>
-<p>Often times we are interested in how one variable depends on another. The simplest dependence of such kind is a linear relationship. However, because of measurement uncertainty and inherit variation in variables not captured by the dependency being studied, when we plot the data in scatter plot, they seldom fall onto a literal straight line.</p>
+<p>Often times we are interested in how one variable depends on another. The simplest dependence of such kind is a linear relationship. However, because of measurement uncertainty and inherit variation in the variables not captured by the dependency being studied, when we plot the data in (e.g.) a scatter plot, they seldom fall onto a literal straight line.</p>
 <p>As an example, suppose we measured the heights (in cm) and weights (in kg) of a number of male American adults, we may obtain a dataset like the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -515,9 +515,9 @@ document.write(`
 <img alt="../_images/38ec8e11d9ee243e2ae4b3ad995f63ece914701be89904b8ad147243d77cbacc.png" src="../_images/38ec8e11d9ee243e2ae4b3ad995f63ece914701be89904b8ad147243d77cbacc.png" />
 </div>
 </div>
-<p>Notice that while the measurements don’t fall onto a literal straight line, there is a clear linear trend. So we may still want to associate the data with a “best fitted line”. But how do we do that?</p>
-<p>A common strategy in such situation is to find a straight line of the form <span class="math notranslate nohighlight">\(y = m x + c\)</span> with slope <span class="math notranslate nohighlight">\(m\)</span> and intercept <span class="math notranslate nohighlight">\(c\)</span> such that the square error <span class="math notranslate nohighlight">\(\sum_i \left( y_i - (m x_i + c) \right)^2\)</span> is minimized (here <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> are the individual data points). The procedure to do so is known as linear regression.</p>
-<p>As it turns out, the linear regression procedure outlined above corresponds to a particular <em>model</em> of the relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The relationship is:</p>
+<p>Notice that while the measurements don’t fall onto a literal straight line, there is a clear linear trend. So we may still want to associate the data with a <strong>“best fitted line”</strong>. But how do we do that?</p>
+<p>A common strategy in such situation is to find a straight line of the form <span class="math notranslate nohighlight">\(y = m x + c\)</span> with slope <span class="math notranslate nohighlight">\(m\)</span> and intercept <span class="math notranslate nohighlight">\(c\)</span> that minimizes sum of the square errors <span class="math notranslate nohighlight">\(\sum_i \left( y_i - (m x_i + c) \right)^2\)</span> (here <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> are the individual data points). The procedure to do so is known as <strong>linear regression</strong>.</p>
+<p>As it turns out, the linear regression procedure outlined above corresponds to a particular <em>model</em> of the relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The model is:</p>
 <blockquote>
 <div><p>At any given value of <span class="math notranslate nohighlight">\(x\)</span>, the variable <span class="math notranslate nohighlight">\(y\)</span> is distributed as a Gaussian (a.k.a. normal) distribution with mean <span class="math notranslate nohighlight">\(m x + c\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, where <span class="math notranslate nohighlight">\(\sigma\)</span> is the same across all values of <span class="math notranslate nohighlight">\(x\)</span></p>
 </div></blockquote>
@@ -555,7 +555,7 @@ document.write(`
 </section>
 <section id="linear-regression-in-python">
 <h2>Linear regression in python<a class="headerlink" href="#linear-regression-in-python" title="Link to this heading">#</a></h2>
-<p>In python, linear regression is implemented by the <code class="docutils literal notranslate"><span class="pre">linregress()</span></code> function in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> submodule of the third-party python module <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (generally, scipy has a collection of tools for scientific computing and numerical calculations, and is built on top of numpy).</p>
+<p>In python, linear regression is implemented by the <code class="docutils literal notranslate"><span class="pre">linregress()</span></code> function in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> submodule of the third-party python module <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (Broadly speaking, scipy is a collection of tools for scientific computing and numerical calculations, and is built on top of numpy).</p>
 <p>Since we’ll use only this specific function from the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>, we will import it directly as:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -578,24 +578,30 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">slope</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept</span></code> attributes of <code class="docutils literal notranslate"><span class="pre">wt_h</span></code> has the meaning you’d expect. In other words, we found that the best fit line between <code class="docutils literal notranslate"><span class="pre">heights</span></code> (in cm) and <code class="docutils literal notranslate"><span class="pre">weights</span></code> (in kg) is:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">slope</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept</span></code> attributes of <code class="docutils literal notranslate"><span class="pre">wt_h</span></code> has the meaning you’d expect. In other words, we found that the best fit line between <code class="docutils literal notranslate"><span class="pre">heights</span></code> (in cm) and <code class="docutils literal notranslate"><span class="pre">weights</span></code> (in kg) to be:</p>
 <blockquote>
-<div><p>weight = 3.21 * height − 441</p>
+<div><p>weight = 3.21 * height − 442</p>
 </div></blockquote>
-<p>To draw the best-fitted line on the plot we already have, we need to generate a new data series using the slope and intercept. For our example,</p>
+<p>To draw the best fitted line on the plot we already have, we need to generate a new data series using the slope and intercept. For our example,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">heights</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate new data based on the best fitted line</span>
+<span class="n">height_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">heights</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="p">])</span>
 <span class="n">weight_fit</span> <span class="o">=</span> <span class="n">wt_h</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">height_fit</span> <span class="o">+</span> <span class="n">wt_h</span><span class="o">.</span><span class="n">intercept</span>
+
+<span class="c1"># make a plot</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
 
+<span class="c1"># plot the actual data</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">heights</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+
+<span class="c1"># plot the best fitted line</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">height_fit</span><span class="p">,</span> <span class="n">weight_fit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;best fit&quot;</span><span class="p">)</span>
+
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Weight (kg)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">height_fit</span><span class="p">,</span> <span class="n">weight_fit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;best fit&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -618,15 +624,15 @@ document.write(`
 }{\sqrt{
     \left(\sum_i (x_i - \overline{x})^2\right)\left(\sum_i (y_i - \overline{y})^2\right))
 }}\]</div>
-<p>In general, <span class="math notranslate nohighlight">\(r\)</span> can takes any value between −1 and 1. If the association between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are negative (i.e., when the regression slope is negative), <span class="math notranslate nohighlight">\(r\)</span> will be negative. Conversely, if the association is positive (positive slope), <span class="math notranslate nohighlight">\(r\)</span> will be positive. Furthermore, the closer the value of <span class="math notranslate nohighlight">\(|r|\)</span> is to 1, the stronger is the association.</p>
-<p>The figure below illustrates various data with different level of correlation (you can download the data behind the plot <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/correlations.csv">here</a>.):</p>
+<p>In general, <span class="math notranslate nohighlight">\(r\)</span> can takes any value between −1 and 1. If the association between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is negative (i.e., when the regression slope is negative), <span class="math notranslate nohighlight">\(r\)</span> will be negative. Conversely, if the association is positive (positive slope), <span class="math notranslate nohighlight">\(r\)</span> will be positive. Furthermore, the closer the value of <span class="math notranslate nohighlight">\(|r|\)</span> is to 1, the stronger is the association.</p>
+<p>The figure below illustrates various data with different level of correlation (you can download the data behind the plot <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/correlations.csv">here</a>):</p>
 <p><img alt="Correlations of various data" src="../_images/correlations.png" /></p>
 <p>As a rule of thumb, we may call correlation with <span class="math notranslate nohighlight">\(|r| &lt; 0.3\)</span> weak, <span class="math notranslate nohighlight">\(|r| &gt; 0.7\)</span> strong, and values in-between moderate. However, do note that <em>correlation is not causation</em>.</p>
 <p>In the case of the height versus weight example, we have <span class="math notranslate nohighlight">\(r \approx 0.9\)</span>, so the association is strong and positive.</p>
 </section>
 <section id="coefficient-of-determination-r-2">
 <h2>Coefficient of determination <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#coefficient-of-determination-r-2" title="Link to this heading">#</a></h2>
-<p>In the specific case of linear regression, the square value of <span class="math notranslate nohighlight">\(r\)</span> also has a nice interpretation. Recall that the (sample) variance of a variable <span class="math notranslate nohighlight">\(y\)</span> is defined as:</p>
+<p>In the specific case of linear regression, the square of <span class="math notranslate nohighlight">\(r\)</span> also has a nice interpretation. Recall that the (sample) variance of a variable <span class="math notranslate nohighlight">\(y\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[ \sigma^2 = \frac{1}{n-1} \sum_i (y_i - \overline{y})^2 \]</div>
 <p>Thus, let <span class="math notranslate nohighlight">\(\hat{y}_i = m x_i + c\)</span> be the <em>predicted</em> value of <span class="math notranslate nohighlight">\(y_i\)</span> based on the linear regression. We may say that the <strong>variance explained by the regression</strong> is:</p>
@@ -635,7 +641,7 @@ document.write(`
 <p>Similarly, we may define the <strong>residual variance</strong> to be:</p>
 <div class="math notranslate nohighlight">
 \[ \sigma^2_\textrm{residual} = \frac{1}{n-1} \sum_i (y_i - \hat{y}_i)^2 \]</div>
-<p>We may then define the portion of variance explained to be:</p>
+<p>We may then define the <strong>portion of variance explained</strong> to be:</p>
 <div class="math notranslate nohighlight">
 \[ \textrm{portion of variance explained} = \frac{\sigma^2_\textrm{explained}}{\sigma^2} = \ldots = 1 - \frac{\sigma^2_\textrm{residual}}{\sigma^2} \equiv R^2\]</div>
 <p>where the derivation (the <span class="math notranslate nohighlight">\(= \ldots =\)</span> part) rely on the fact that <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> are obtained from least square procedure. In this context, <span class="math notranslate nohighlight">\(R^2\)</span> is known as the <strong>coefficient of determination</strong>.</p>
@@ -657,8 +663,8 @@ document.write(`
 </section>
 <section id="linear-regression-on-time-series-in-python">
 <h2>Linear regression on time series in python<a class="headerlink" href="#linear-regression-on-time-series-in-python" title="Link to this heading">#</a></h2>
-<p>Using <code class="docutils literal notranslate"><span class="pre">linregress()</span></code> on time series presents particular challenge in python because of the peculiarity of datetime representations in python. As an example, let’s consider the time series of ocean surface temperature anomaly. The data came from <a class="reference external" href="https://marine.copernicus.eu/">Copernicus Marine Service</a>’s <a class="reference external" href="https://marine.copernicus.eu/access-data/ocean-monitoring-indicators/global-ocean-sea-surface-temperature-time-series-and-trend">Global Ocean Sea Surface Temperature time series</a>. We convert this data into a csv format, which you can download from <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/ocean_surface_temp_1993-2021.csv">here</a>.</p>
-<p>To start, we load the csv file into pandas dataframe:</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">linregress()</span></code> on time series in python presents a particular challenge because of the technicality of datetime representations in python. As an example, let’s consider the time series of ocean surface temperature anomaly. The data comes from <a class="reference external" href="https://marine.copernicus.eu/">Copernicus Marine Service</a>’s <a class="reference external" href="https://marine.copernicus.eu/access-data/ocean-monitoring-indicators/global-ocean-sea-surface-temperature-time-series-and-trend">Global Ocean Sea Surface Temperature time series</a>. We convert this data into a csv format, which you can download from <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/tree/main/week_09/data/ocean_surface_temp_1993-2021.csv">here</a>.</p>
+<p>To start, we load the csv file into a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surf_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ocean_surface_temp_1993-2021.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">])</span>
@@ -680,7 +686,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 </div>
-<p>Here is what the data looks like in a plot</p>
+<p>Here is how the data look like in a plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -698,7 +704,7 @@ memory usage: 5.6 KB
 <img alt="../_images/f373f76000e094e70f389abf88859321ce22eed6bec5a90a27b5183d6835c3aa.png" src="../_images/f373f76000e094e70f389abf88859321ce22eed6bec5a90a27b5183d6835c3aa.png" />
 </div>
 </div>
-<p>If we attempt to perform linear regression as-is, we’ll get an error:</p>
+<p>If we attempt to perform a linear regression as-is, we’ll get an error:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linregress</span><span class="p">(</span><span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;sst_anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -739,7 +745,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 </div>
-<p>Internally, pandas datetimes is stored as a 64-bit integers. So one way to get around the problem is to explicityly cast the datetime values into integers, like so:</p>
+<p>Internally, pandas datetimes are stored as a 64-bit integers. So one way to get around the problem is to explicitly cast the datetime values into integers, like so:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regress</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int64&quot;</span><span class="p">),</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;sst_anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -747,7 +753,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 </div>
-<p>Now the line runs without error but the fit results become quite hard to interpret:</p>
+<p>Now the regression runs without error but the fit results become quite hard to interpret:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">regress</span><span class="p">)</span>
@@ -760,7 +766,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 </div>
-<p>Nevertheless, if we want to plot the best-fitted line all we have to do is to make sure we perform the same conversion in our “prediction” step:</p>
+<p>Nevertheless, if we want to plot the best-fitted line all we have to do is to make sure that we perform the same conversion in our “prediction” step:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
@@ -796,7 +802,7 @@ memory usage: 5.6 KB
 <img alt="../_images/7b0992f5a93cef1477346b7373969cd066be10b394f1388c88d069075a0a8c44.png" src="../_images/7b0992f5a93cef1477346b7373969cd066be10b394f1388c88d069075a0a8c44.png" />
 </div>
 </div>
-<p>To express the slope in a more meaningful way, we note that in-principle the slope is just the temperature change divided by the date change. Doing this calculation naively again produce an error:</p>
+<p>To express the slope in a more meaningful way, we note that in-principle the slope is just the temperature change divided by the date change. Doing this calculation naively again produces an error:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">temp_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">temp_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">date_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">date_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -828,7 +834,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 </div>
-<p>The slope above now has the more intuitive unit of K/day. Unfortunately, <code class="docutils literal notranslate"><span class="pre">TimeDelta</span></code> object does <em>not</em> have a <code class="docutils literal notranslate"><span class="pre">.year</span></code> attribute (because length of year is not uniform), but we can do the conversion ourselves to get the rate per year (note that in the Gregorian calendar a year is on average 365.2425 days):</p>
+<p>The slope above now has the more intuitive unit of K/day. Unfortunately, <code class="docutils literal notranslate"><span class="pre">TimeDelta</span></code> object does <em>not</em> have a <code class="docutils literal notranslate"><span class="pre">.year</span></code> attribute (because the length of a year is not uniform), but we can do the conversion ourselves to get the rate per year (note that in the Gregorian calendar a year is on average 365.2425 days):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_year</span> <span class="o">=</span> <span class="n">slope_day</span> <span class="o">*</span> <span class="mf">365.2425</span>
@@ -843,7 +849,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 <p>Thus the rate of ocean temperature increase is approximately 0.015 K per year.</p>
-<p>One final remark: because correlation is dimensionless, the value we obtained from the linear regression is immediately usable. For example, the correlation of temperature anomaly with date is simply:</p>
+<p>One final remark: because correlation is dimensionless, the value we obtained from the linear regression is immediately usable. For example, the correlation between temperature anomaly with date is simply:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">regress</span><span class="o">.</span><span class="n">rvalue</span><span class="p">)</span>

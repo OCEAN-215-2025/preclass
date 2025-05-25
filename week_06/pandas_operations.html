@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,6 +219,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -228,7 +229,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
@@ -451,6 +451,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-a-dataframe">Inspecting a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parts-of-a-dataframe">Extracting parts of a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-a-dataframe">Subsetting a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-the-rows-of-a-dataframe">Sorting the rows of a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-a-dataframe">Modifying a DataFrame</a></li>
@@ -479,7 +480,7 @@ document.write(`
 </div>
 <section id="inspecting-a-dataframe">
 <h2>Inspecting a DataFrame<a class="headerlink" href="#inspecting-a-dataframe" title="Link to this heading">#</a></h2>
-<p>Let’s load the CalCOFI DataFrame again and inspect it further:</p>
+<p>Let’s load the <a class="reference external" href="https://calcofi.org/">CalCOFI</a> dataset again and inspect it further:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/CalCOFI_subset.csv&quot;</span><span class="p">)</span>
@@ -631,7 +632,7 @@ document.write(`
 <p>10057 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>While <code class="docutils literal notranslate"><span class="pre">display()</span></code> gives us a good glimpse of the data, the datatype of each column is not exactly clear. A good way to examine the data type is to use the <code class="docutils literal notranslate"><span class="pre">.info()</span></code> method of the DataFrame:</p>
+<p>While <code class="docutils literal notranslate"><span class="pre">display()</span></code> gives us a good glimpse of the data, the datatype of each column is not exactly clear. A good way to examine the data type is to use the <code class="docutils literal notranslate"><span class="pre">.info()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -657,11 +658,11 @@ memory usage: 550.1+ KB
 </div>
 </div>
 </div>
-<p>While it may not be clear, with the datatype (“Dtype”) is marked as object, the column most likely (but not always!) contains string. So we have 3 columns of floats, 2 columns of integers, and 2 columns of string.</p>
-<p>Just like numpy arrays, a pandas dataframe has the <code class="docutils literal notranslate"><span class="pre">.size</span></code>, <code class="docutils literal notranslate"><span class="pre">.shape</span></code>, and <code class="docutils literal notranslate"><span class="pre">.ndim</span></code> attributes:</p>
+<p>While it may not be obvious, columns with datatype (“Dtype”) object are most often (but not always!) string columns. So we have 3 columns of floats, 2 columns of integers, and 2 columns of string.</p>
+<p>Just like numpy arrays, a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> has the <code class="docutils literal notranslate"><span class="pre">.size</span></code>, <code class="docutils literal notranslate"><span class="pre">.shape</span></code>, and <code class="docutils literal notranslate"><span class="pre">.ndim</span></code> attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">size</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">size</span> <span class="c1"># total number of entries</span>
 </pre></div>
 </div>
 </div>
@@ -673,7 +674,7 @@ memory usage: 550.1+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># number of rows and columns</span>
 </pre></div>
 </div>
 </div>
@@ -685,7 +686,7 @@ memory usage: 550.1+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">ndim</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">ndim</span> <span class="c1"># number of dimensions</span>
 </pre></div>
 </div>
 </div>
@@ -696,9 +697,102 @@ memory usage: 550.1+ KB
 </div>
 </div>
 </section>
+<section id="extracting-parts-of-a-dataframe">
+<h2>Extracting parts of a DataFrame<a class="headerlink" href="#extracting-parts-of-a-dataframe" title="Link to this heading">#</a></h2>
+<p>The column names of a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> can be extracted using the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> atrribute, and its row index can be extracted using the <code class="docutils literal notranslate"><span class="pre">.index</span></code> attribute</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">columns</span> <span class="c1"># column labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Cast_Count&#39;, &#39;Station_ID&#39;, &#39;Datetime&#39;, &#39;Depth_m&#39;, &#39;T_degC&#39;, &#39;Salinity&#39;,
+       &#39;SigmaTheta&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">index</span> <span class="c1"># row labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=10057, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>To extract the pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> that corresponds to a specific column, we can the square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code> syntax. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0          0
+1         10
+2         20
+3         23
+4         30
+        ... 
+10052    300
+10053    381
+10054    400
+10055    500
+10056    515
+Name: Depth_m, Length: 10057, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Furthermore, we can extract the data contained within the pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> using the <code class="docutils literal notranslate"><span class="pre">.values</span></code> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  0,  10,  20, ..., 400, 500, 515], dtype=int64)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, we can extract the data contained in column labels and row labels of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> using the <code class="docutils literal notranslate"><span class="pre">.values</span></code> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Cast_Count&#39;, &#39;Station_ID&#39;, &#39;Datetime&#39;, &#39;Depth_m&#39;, &#39;T_degC&#39;,
+       &#39;Salinity&#39;, &#39;SigmaTheta&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([    0,     1,     2, ..., 10054, 10055, 10056], dtype=int64)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="subsetting-a-dataframe">
 <h2>Subsetting a DataFrame<a class="headerlink" href="#subsetting-a-dataframe" title="Link to this heading">#</a></h2>
-<p>There are two main methods to subset a DataFrame in pandas. The first one is <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>, which subset a DataFrame by row and column <strong>index</strong>. For example, if we want to extract rows 1 to 10, we’ll do (note that like other slicing functions we’ve seen thus far, <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> is <em>endpoint exclusive</em>):</p>
+<p>There are two main methods to subset a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in pandas. The first is <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>, which subset a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> by row and column <strong>positional index</strong>. For example, if we want to extract rows 1 (positional index 0) to 10 (positional index 9), we’ll do (note that like other slicing operations we’ve seen thus far, <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> is <em>endpoint exclusive</em>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
@@ -838,7 +932,7 @@ memory usage: 550.1+ KB
 </table>
 </div></div></div>
 </div>
-<p>If, in addition, we need only the last 4 columns of the DataFrame, and we want their order reversed, we may do:</p>
+<p>If, in addition, we need only the last 4 columns of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, and we want their order reversed, we may do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -945,7 +1039,7 @@ memory usage: 550.1+ KB
 </table>
 </div></div></div>
 </div>
-<p>And if we want the last 4 columns of the DataFrame but retain all rows, we can do:</p>
+<p>And if we want the last 4 columns of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> but retain all rows, we can do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
@@ -1060,7 +1154,7 @@ memory usage: 550.1+ KB
 <p>10057 rows × 4 columns</p>
 </div></div></div>
 </div>
-<p>In addition, since pandas DataFrame also store row and column <strong>labels</strong>, these can also be used to subset the DataFrame. To do so, we need to use the method <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>. For example, suppose we only want to retain only the datetime, depth, and temperature information of the data frame, we may do:</p>
+<p>Alternatively, since pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> also stores row and column <strong>labels</strong>, these can also be used to subset the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. To do so, we need to use the method <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>. For example, suppose we only want to retain only the datetime, depth, and temperature information of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, we may do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">,</span> <span class="s2">&quot;Depth_m&quot;</span><span class="p">,</span> <span class="s2">&quot;T_degC&quot;</span><span class="p">]]</span>
@@ -1163,7 +1257,7 @@ memory usage: 550.1+ KB
 <p>10057 rows × 3 columns</p>
 </div></div></div>
 </div>
-<p>Alternatively, noting that “Datetime”, “Depth_m”, “T_degC” are consecutive column, we can also use the slicing syntax. Note that unlike <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>, slices in <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> is <em>endpoint inclusive</em>:</p>
+<p>Alternatively, noting that “Datetime”, “Depth_m”, and “T_degC” are consecutive columns, we can also use the slicing syntax. Note that unlike <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code>, slices in <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> are <em>endpoint inclusive</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Datetime&quot;</span><span class="p">:</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span>
@@ -1266,7 +1360,7 @@ memory usage: 550.1+ KB
 <p>10057 rows × 3 columns</p>
 </div></div></div>
 </div>
-<p>For subsetting rows, in addition to accepting row label lists and slices (which are not particularly useful when the row index is a dummy), <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> also accepts a boolean array. For example, let’s say we want to extract all data point measured at depth = 10 m, we can do:</p>
+<p>For subsetting rows, in addition to accepting row label lists and slices (which are not particularly useful when the row labels are dummies), <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> also accepts boolean arrays. For example, let’s say we want to extract all observations (rows) at depth = 10 m, we can do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="p">]</span>
@@ -1417,7 +1511,7 @@ memory usage: 550.1+ KB
 <p>348 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>Note that pandas as a special function <code class="docutils literal notranslate"><span class="pre">pd.isna()</span></code> that provides vectorized check on whether the data is missing (e.g., <code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>). So, to extract all entries for which the temperature measurement is missing, we may do:</p>
+<p>Note that pandas has a special function <code class="docutils literal notranslate"><span class="pre">pd.isna()</span></code> that performs vectorized check on whether values are coded as missing (e.g., <code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>). So, to extract all observations (rows) for which the temperature measurement is missing, we may do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">])]</span>
@@ -1767,7 +1861,7 @@ memory usage: 550.1+ KB
 </table>
 </div></div></div>
 </div>
-<p>If you want to drop all rows for which <em>some</em> columns have missing values, you can use the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> method of the DataFrame:</p>
+<p>If you want to drop all rows for which <em>some</em> columns have missing values, you can use the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -1918,7 +2012,7 @@ memory usage: 550.1+ KB
 <p>10008 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>And if you want <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> to consider only certain columns in deciding whether to drop or not, use its <code class="docutils literal notranslate"><span class="pre">subset</span></code> argument:</p>
+<p>And if you want <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> to consider only certain columns when deciding if a row should be dropped, use its <code class="docutils literal notranslate"><span class="pre">subset</span></code> argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># no data is dropped since the Depth_m column has no missing values</span>
@@ -2073,10 +2167,11 @@ memory usage: 550.1+ KB
 </section>
 <section id="sorting-the-rows-of-a-dataframe">
 <h2>Sorting the rows of a DataFrame<a class="headerlink" href="#sorting-the-rows-of-a-dataframe" title="Link to this heading">#</a></h2>
-<p>We can use the <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code> method to sort a pandas DataFrame. For example, suppose we want to sort the rows of <code class="docutils literal notranslate"><span class="pre">CalCOFI</span></code> by temperature, from high to low, we can do:</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code> method to sort a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. For example, suppose we want to sort the rows of <code class="docutils literal notranslate"><span class="pre">CalCOFI</span></code> by temperature, from high to low, we can do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;T_degC&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI_sorted</span> <span class="o">=</span> <span class="n">CalCOFI</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;T_degC&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CalCOFI_sorted</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2224,11 +2319,161 @@ memory usage: 550.1+ KB
 <p>10057 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>Note that missing values are sorted to the end. Also note that the index of the DataFrame is rearranged too.</p>
+<p>Note that missing values are sorted to the end. Also note that the index of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is rearranged too. If we want to rebuild the index (so that it starts from 0 and increment by 1 in the <em>sorted</em> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>), we can use the <code class="docutils literal notranslate"><span class="pre">.reset_index()</span></code> method, with the <code class="docutils literal notranslate"><span class="pre">drop=True</span></code> argument (which remove the old index instead of retaining it as a regular column):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI_sorted</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cast_Count</th>
+      <th>Station_ID</th>
+      <th>Datetime</th>
+      <th>Depth_m</th>
+      <th>T_degC</th>
+      <th>Salinity</th>
+      <th>SigmaTheta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22468</td>
+      <td>090.0 070.0</td>
+      <td>1983-09-27 15:15:00</td>
+      <td>10</td>
+      <td>20.59</td>
+      <td>33.532</td>
+      <td>23.488</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>22468</td>
+      <td>090.0 070.0</td>
+      <td>1983-09-27 15:15:00</td>
+      <td>0</td>
+      <td>20.59</td>
+      <td>33.533</td>
+      <td>23.489</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>22468</td>
+      <td>090.0 070.0</td>
+      <td>1983-09-27 15:15:00</td>
+      <td>20</td>
+      <td>20.58</td>
+      <td>33.519</td>
+      <td>23.482</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>28613</td>
+      <td>090.0 070.0</td>
+      <td>1997-09-25 11:46:00</td>
+      <td>15</td>
+      <td>20.21</td>
+      <td>33.635</td>
+      <td>23.668</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>28613</td>
+      <td>090.0 070.0</td>
+      <td>1997-09-25 11:46:00</td>
+      <td>10</td>
+      <td>20.20</td>
+      <td>33.634</td>
+      <td>23.667</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>10052</th>
+      <td>8006</td>
+      <td>090.0 070.0</td>
+      <td>1955-12-05 12:24:00</td>
+      <td>57</td>
+      <td>NaN</td>
+      <td>33.420</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10053</th>
+      <td>8006</td>
+      <td>090.0 070.0</td>
+      <td>1955-12-05 12:24:00</td>
+      <td>76</td>
+      <td>NaN</td>
+      <td>33.350</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10054</th>
+      <td>9017</td>
+      <td>090.0 070.0</td>
+      <td>1957-07-14 08:42:00</td>
+      <td>1025</td>
+      <td>NaN</td>
+      <td>34.470</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10055</th>
+      <td>9018</td>
+      <td>090.0 070.0</td>
+      <td>1957-07-14 10:42:00</td>
+      <td>63</td>
+      <td>NaN</td>
+      <td>33.300</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10056</th>
+      <td>24355</td>
+      <td>090.0 070.0</td>
+      <td>1986-02-14 15:49:00</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>33.301</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>10057 rows × 7 columns</p>
+</div></div></div>
+</div>
 </section>
 <section id="modifying-a-dataframe">
 <h2>Modifying a DataFrame<a class="headerlink" href="#modifying-a-dataframe" title="Link to this heading">#</a></h2>
-<p>The subsetting syntax can also be used overwrite data on a DataFrame. For example, suppose we want to set the SigmaTheta value to 0 whenever depth is above 300 m, we can do:</p>
+<p>The subsetting syntax can also be used overwrite data on a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. For example, suppose we want to set the SigmaTheta value to 0 whenever depth is above 300 m, we can do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&quot;SigmaTheta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
@@ -2380,11 +2625,11 @@ memory usage: 550.1+ KB
 <p>10057 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>Note that unlike most functions, the changes happen <em>in-place</em> here</p>
-<p>More often, we would like to derive a new column using data from existing columns. Just like <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, we can do vectorized computation on pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> (recall that each column of a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>) column level. Moreover, we can assign the result to a new column of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. For example, suppose we want to create a <code class="docutils literal notranslate"><span class="pre">log_Depth_m</span></code> column and a <code class="docutils literal notranslate"><span class="pre">T_degF</span></code> column. We can do so with:</p>
+<p>Note that unlike most functions, the changes happen <em>in-place</em> here.</p>
+<p>More often, we would like to derive a new column using data from existing columns. Just like <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, we can do vectorized computation on pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> (recall that each column of a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>). Moreover, we can assign the result to a new column of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. For example, suppose we want to create a <code class="docutils literal notranslate"><span class="pre">log_Depth_m</span></code> column and a <code class="docutils literal notranslate"><span class="pre">T_degF</span></code> column. We can do so with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;log_Depth_m&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;log_Depth_m&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;T_degF&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;T_degC&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">CalCOFI</span><span class="p">)</span>
@@ -2392,10 +2637,6 @@ memory usage: 550.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\wingho\miniforge3\envs\learn\Lib\site-packages\pandas\core\arraylike.py:399: RuntimeWarning: divide by zero encountered in log
-  result = getattr(ufunc, method)(*inputs, **kwargs)
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2435,7 +2676,7 @@ memory usage: 550.1+ KB
       <td>14.040</td>
       <td>33.1700</td>
       <td>24.76600</td>
-      <td>-inf</td>
+      <td>0.000000</td>
       <td>57.2720</td>
     </tr>
     <tr>
@@ -2447,7 +2688,7 @@ memory usage: 550.1+ KB
       <td>13.950</td>
       <td>33.2100</td>
       <td>24.81500</td>
-      <td>2.302585</td>
+      <td>2.397895</td>
       <td>57.1100</td>
     </tr>
     <tr>
@@ -2459,7 +2700,7 @@ memory usage: 550.1+ KB
       <td>13.900</td>
       <td>33.2100</td>
       <td>24.82600</td>
-      <td>2.995732</td>
+      <td>3.044522</td>
       <td>57.0200</td>
     </tr>
     <tr>
@@ -2471,7 +2712,7 @@ memory usage: 550.1+ KB
       <td>13.880</td>
       <td>33.2100</td>
       <td>24.83000</td>
-      <td>3.135494</td>
+      <td>3.178054</td>
       <td>56.9840</td>
     </tr>
     <tr>
@@ -2483,7 +2724,7 @@ memory usage: 550.1+ KB
       <td>13.810</td>
       <td>33.2180</td>
       <td>24.85100</td>
-      <td>3.401197</td>
+      <td>3.433987</td>
       <td>56.8580</td>
     </tr>
     <tr>
@@ -2507,7 +2748,7 @@ memory usage: 550.1+ KB
       <td>7.692</td>
       <td>34.1712</td>
       <td>26.67697</td>
-      <td>5.703782</td>
+      <td>5.707110</td>
       <td>45.8456</td>
     </tr>
     <tr>
@@ -2519,7 +2760,7 @@ memory usage: 550.1+ KB
       <td>7.144</td>
       <td>34.2443</td>
       <td>NaN</td>
-      <td>5.942799</td>
+      <td>5.945421</td>
       <td>44.8592</td>
     </tr>
     <tr>
@@ -2531,7 +2772,7 @@ memory usage: 550.1+ KB
       <td>7.031</td>
       <td>34.2746</td>
       <td>NaN</td>
-      <td>5.991465</td>
+      <td>5.993961</td>
       <td>44.6558</td>
     </tr>
     <tr>
@@ -2543,7 +2784,7 @@ memory usage: 550.1+ KB
       <td>6.293</td>
       <td>34.3126</td>
       <td>NaN</td>
-      <td>6.214608</td>
+      <td>6.216606</td>
       <td>43.3274</td>
     </tr>
     <tr>
@@ -2555,7 +2796,7 @@ memory usage: 550.1+ KB
       <td>6.155</td>
       <td>34.2903</td>
       <td>NaN</td>
-      <td>6.244167</td>
+      <td>6.246107</td>
       <td>43.0790</td>
     </tr>
   </tbody>
@@ -2563,11 +2804,11 @@ memory usage: 550.1+ KB
 <p>10057 rows × 9 columns</p>
 </div></div></div>
 </div>
-<p>Notice that the new columns in inserted to the right of existing columns</p>
+<p>Notice that the new columns are inserted to the right of the existing columns.</p>
 </section>
 <section id="statistics-function">
 <h2>Statistics function<a class="headerlink" href="#statistics-function" title="Link to this heading">#</a></h2>
-<p>If you want to obtain summary statistics of a DataFrame, pandas has a convenient <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method that compute a bunch of them for you in one go:</p>
+<p>If you want to obtain summary statistics of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, pandas has a convenient <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method that computes a bunch of them for you in one go:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/CalCOFI_subset.csv&quot;</span><span class="p">)</span>
@@ -2677,7 +2918,7 @@ memory usage: 550.1+ KB
 </div></div></div>
 </div>
 <p>Note that by default, <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> works only on numerical columns.</p>
-<p>Importantly, the output of <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> is another DataFrame, so you can extract particular rows and columns using the previous tricks. For example, the median (<code class="docutils literal notranslate"><span class="pre">50%</span></code>) of temperature can be extracted as:</p>
+<p>Importantly, the output of <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> is another <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, so you can extract particular rows and columns using the previous tricks. For example, the median (<code class="docutils literal notranslate"><span class="pre">50%</span></code>) of temperature can be extracted as:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalSummary</span> <span class="o">=</span> <span class="n">CalCOFI</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2709,14 +2950,14 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>In addition, there are also individual methods that you can apply to the DataFrame to get one particular statistics. Some of these methods include:</p>
+<p>In addition, there are also individual methods that you can apply to the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to obtain a particular statistics. Some of these methods include:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.mean()</span></code> for the mean</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.median()</span></code> for the median</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.quantile()</span></code> for quantile</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.var()</span></code> for variance</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.std()</span></code> for standard deviation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.sem()</span></code> for standard error</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.quantile()</span></code> for quantiles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.var()</span></code> for the variance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.std()</span></code> for the standard deviation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.sem()</span></code> for the standard error</p></li>
 </ul>
 <p>For example, to compute the standard error in the above numerical variables, we can do:</p>
 <div class="cell docutils container">
@@ -2805,6 +3046,7 @@ dtype: float64
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-a-dataframe">Inspecting a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parts-of-a-dataframe">Extracting parts of a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-a-dataframe">Subsetting a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-the-rows-of-a-dataframe">Sorting the rows of a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-a-dataframe">Modifying a DataFrame</a></li>

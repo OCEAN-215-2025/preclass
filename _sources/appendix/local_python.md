@@ -10,21 +10,21 @@ Once the installer is downloaded, follow the installation instruction and instal
 
 ## Installing third-party modules
 
-The base environment has a very limited number of third-party modules installed. So our next step is to installed the third-party packages that you are now familiar with (numpy, scipy, pandas, xarray, matplotlib, etc.). While we can install these packages in the base environment, we recommend doing so in a new environment. In this appendix we'll call the new environment "learn", but you should feel free to change that name in the subsequent code.
+The base environment has a very limited number of third-party modules installed. So our next step is to install the third-party packages that you are now familiar with (numpy, scipy, pandas, xarray, matplotlib, etc.). While we can install these packages in the base environment, we recommend doing so in a new environment. In this appendix we'll call this new environment "learn", but you should feel free to change that name in the subsequent code.
 
-The easiest way to create a new environment with the desired packages installed is to use a requirement.txt file. You can find an example of the requirement file (used in building this site) [here](https://github.com/OCEAN-215-2025/preclass/blob/main/appendix/data/requirement.txt).
+The easiest way to create a new environment with the desired packages installed is to use a requirements.txt file. You can find an example of the requirements.txt file [here](https://github.com/OCEAN-215-2025/preclass/blob/main/appendix/data/requirements.txt).
 
-Download the requirement.txt file to your local computer, then, change directory (via `cd`, using the same text-based file navigation convention we discussed in week 6) to the location of the requirement file, and execute the following command:
+Download the requirements.txt file to your local computer, then, change directory (via `cd`, using the same text-based file navigation convention we discussed in week 6) to the location of the requirements file, and execute the following command:
 
 ```
 mamba create -n learn --file requirement.txt
 ```
 
-(change the name `learn` to whichever way you want to name your environment)
+(change the name `learn` to whatever way you want to name your environment)
 
-Once the above command is executed, mamba should get to work and figure out what packages you need to install (some of the modules included in requirement.txt may have prerequisites that are not listed, and mamba will take care of install those too). Confirm that the installation plan is correct, and mamba will create the environment and install the packages in it.
+Once the above command is entered, mamba should get to work and figure out what packages you need to install (some of the modules included in requirement.txt have prerequisites that are not listed, and mamba will take care of install those too). Confirm that the installation plan is correct, and mamba will create the environment and install the packages in it.
 
-Once mamba is finished, following the instruction it provides to activate the `learn` environment, namely:
+Once mamba is finished, follow the instruction it provides to activate the `learn` environment, namely:
 
 ```
 mamba activate learn
@@ -32,7 +32,7 @@ mamba activate learn
 
 ## Starting Jupyter lab
 
-Instead of JupyterHub, in a local installation you would like to view your Jupyter notebooks using JupyterLab. To view your notebook in JupyterLab, first change directory (again via `cd`) to the folder that contains your notebook. Then, in the terminal, run:
+Instead of JupyterHub, in a local installation you would like to view your Jupyter notebooks using JupyterLab. To view your notebook in JupyterLab, first change directory (again via `cd`) to the folder containing your notebook. Then, in the terminal, run:
 
 ```
 jupyter lab

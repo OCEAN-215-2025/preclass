@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,6 +219,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -228,7 +229,6 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 7 glossary</a></li>
 </ul>
@@ -460,6 +460,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-methods">Pandas DataFrame methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-for-2d-gridded-data">Matplotlib for 2D gridded data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-maps-from-the-cmocean-module">Color maps from the cmocean module</a></li>
 </ul>
             </nav>
         </div>
@@ -476,13 +477,15 @@ document.write(`
 <section id="online-resources">
 <h2>Online resources<a class="headerlink" href="#online-resources" title="Link to this heading">#</a></h2>
 <p>Documentation of xarray can be found at <a class="reference external" href="https://docs.xarray.dev/en/stable/api.html">https://docs.xarray.dev/en/stable/api.html</a></p>
+<p>A good guide on color maps can be found at <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">https://matplotlib.org/stable/users/explain/colors/colormaps.html</a></p>
+<p>A quick guide of color maps from the <code class="docutils literal notranslate"><span class="pre">cmocean</span></code> package can be found at <a class="reference external" href="https://matplotlib.org/cmocean/">https://matplotlib.org/cmocean/</a></p>
 </section>
 <section id="xarray">
 <h2>Xarray<a class="headerlink" href="#xarray" title="Link to this heading">#</a></h2>
 <section id="xarray-functions">
 <h3>Xarray functions<a class="headerlink" href="#xarray-functions" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code>: read netCDF file into xarray Dataset object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code>: read netCDF file into an xarray Dataset object</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">xr.Dataset.from_dataframe()</span></code>: convert a pandas DataFrame into an xarray Dataset object</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">xr.concat()</span></code>: combine multiple Datasets or DataArrays into a single object</p></li>
 </ul>
@@ -498,7 +501,7 @@ document.write(`
 <h3>Xarray Dataset/DataArray methods<a class="headerlink" href="#xarray-dataset-dataarray-methods" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.sel()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.sel()</span></code>: subset a Dataset or DataArray by coordinate(s) value(s) of dimension(s)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.isel()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.isel()</span></code>: subset a Dataset or DataArray by index(es) of dimension(s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.isel()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.isel()</span></code>: subset a Dataset or DataArray by positional index(es) of dimension(s)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.mean()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.mean()</span></code>: calculate the mean of a Dataset or DataArray along particular dimension(s)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.median()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.median()</span></code>: calculate the median of a Dataset or DataArray along particular dimension(s)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.min()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.min()</span></code>: calculate the minimum of a Dataset or DataArray along particular dimension(s)</p></li>
@@ -506,7 +509,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.sum()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.sum()</span></code>: calculate the sum of a Dataset or DataArray along particular dimension(s)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.var()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.var()</span></code>: calculate the variance of a Dataset or DataArray along particular dimension(s)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.std()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.std()</span></code>: calculate the standard deviation of a Dataset or DataArray along particular dimension(s)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.squeeze()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.squeeze()</span></code>: remove dimension of size 1 from internal array structures</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.squeeze()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.squeeze()</span></code>: remove coordinate(s) of size 1 from the internal array structure</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.to_dataframe()</span></code>: convert an xarray Dataset into a pandas DataFrame</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.to_netcdf()</span></code>: convert an xarray Dataset into an external netCDF file</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Dataset&gt;.expand_dims()</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;DataArray&gt;.expand_dims()</span></code>: add addition dimension(s) to a Dataset or DataArray</p></li>
@@ -537,6 +540,11 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Colorbar&gt;.set_label()</span></code>: set the label of the color bar</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;Colorbar&gt;.ax</span></code>: obtain the Axes instance of the color bar</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;ContourSet&gt;.clabel()</span></code>: create labels within the contour lines</p></li>
+</ul>
+</section>
+<section id="color-maps-from-the-cmocean-module">
+<h2>Color maps from the cmocean module<a class="headerlink" href="#color-maps-from-the-cmocean-module" title="Link to this heading">#</a></h2>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cmocean.cm.thermal</span></code>, etc.: color maps for oceanographic data</p></li>
 </ul>
 </section>
@@ -616,6 +624,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-methods">Pandas DataFrame methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-for-2d-gridded-data">Matplotlib for 2D gridded data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-maps-from-the-cmocean-module">Color maps from the cmocean module</a></li>
 </ul>
   </nav></div>
 

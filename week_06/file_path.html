@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,6 +219,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -228,7 +229,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
@@ -468,15 +468,15 @@ document.write(`
 <h1>Navigating file systems<a class="headerlink" href="#navigating-file-systems" title="Link to this heading">#</a></h1>
 <section id="file-system-navigation-via-text">
 <h2>File system navigation via text<a class="headerlink" href="#file-system-navigation-via-text" title="Link to this heading">#</a></h2>
-<p>Up to this point we have been including data directly in the Jupyter notebooks. This only works if the data is modest in size, and even then it is not the best practice since data and codes should reside in different places.</p>
+<p>Up to this point we have been including data directly in the Jupyter notebooks. This only works if the data is modest in size, and even then it is not the best practice since data and codes should reside in separate places.</p>
 <p>Thus, this week we’ll introduce tools to read files in python. And our first step is to understand how python locate files on your local computer. In particular, we will learn how to specify file location using a string.</p>
-<p>Now, you are probably familiar with the <em>directory</em> structure of your local files: your files are organized in folders (a.k.a. directory), and each folder can contain files and more folders. When you map out that structure, you will find that it assemble a tree, like so:</p>
+<p>Now, you are probably familiar with the <strong>directory structure</strong> of your local files: your files are organized in <strong>folders</strong> (a.k.a. <strong>directories</strong>), and each folder can contain files and more folders. When you map out that structure, you will find that it assemble a tree, like so:</p>
 <p><img alt="" src="../_images/folder_structure.png" /></p>
 <p>(In computer science trees are customarily inverted)</p>
-<p>The idea here is that with this tree structure in mind, you can specify the path from one place (usually a folder) to another using a string. The basic rules are:</p>
+<p>The idea is that once you map out this tree structure, you can specify the path from one place (usually a folder) to another (a file or a folder) using a string. The basic rules are:</p>
 <ul class="simple">
 <li><p>To go up one level, use <code class="docutils literal notranslate"><span class="pre">..</span></code></p></li>
-<li><p>To go down one level, specify the name of the child node</p></li>
+<li><p>To go down one level, specify the name of the subfolder or file</p></li>
 <li><p>If the location is a folder, add a <code class="docutils literal notranslate"><span class="pre">/</span></code> to the end</p></li>
 </ul>
 <p>For example, the file path to go from <code class="docutils literal notranslate"><span class="pre">project5</span></code> to <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code> would be:</p>
@@ -490,7 +490,7 @@ document.write(`
 </section>
 <section id="the-working-directory">
 <h2>The working directory<a class="headerlink" href="#the-working-directory" title="Link to this heading">#</a></h2>
-<p>There are a special “starting points” in the file system: the working directory. When you are working on a Jupyter notebook, the working directory is usually the directory that immediately contains the notebook <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file. If you want to where exactly is your working directory, you can use the <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> function, which becomes accessible after you import the (built-in) <code class="docutils literal notranslate"><span class="pre">os</span></code> module:</p>
+<p>There are a special “starting points” in the file system: the working directory. When you are working on a Jupyter notebook, the working directory is usually the directory that immediately contains the notebook <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file. If you want to know exactly where is your working directory, you can use the <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> function, which becomes accessible after you import the (built-in) <code class="docutils literal notranslate"><span class="pre">os</span></code> module:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the os module</span>
@@ -531,7 +531,7 @@ document.write(`
 </div>
 </div>
 <p>This can be convenient if you need to work with a data folder that contains multiple files you want to load.</p>
-<p>Finally, to list all the files and subfolders inside a directory, you may use <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code></p>
+<p>Next, to list all the files and subfolders inside a directory, you may use <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;week_06&quot;</span><span class="p">)</span>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,6 +219,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -228,7 +229,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
@@ -508,7 +508,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>To create multiple panels in a figure, all we have to do is to issue multiple <code class="docutils literal notranslate"><span class="pre">.add_subplot()</span></code> call. Moreover, to specify the layout of the figure, we will supply the first three positional argument (<code class="docutils literal notranslate"><span class="pre">nrow</span></code>, <code class="docutils literal notranslate"><span class="pre">ncol</span></code> and <code class="docutils literal notranslate"><span class="pre">index</span></code>) to <code class="docutils literal notranslate"><span class="pre">.add_subplot()</span></code>. Also note that <code class="docutils literal notranslate"><span class="pre">index</span></code> is a single integer that specifies both the row and column location, since the index increases first with columns and then with rows.</p>
+<p>To create multiple panels in a figure, all we have to do is to issue multiple <code class="docutils literal notranslate"><span class="pre">.add_subplot()</span></code> call. However, to control the layout of the figure, we will need to supply the first three positional arguments (<code class="docutils literal notranslate"><span class="pre">nrow</span></code>, <code class="docutils literal notranslate"><span class="pre">ncol</span></code> and <code class="docutils literal notranslate"><span class="pre">index</span></code>) to <code class="docutils literal notranslate"><span class="pre">.add_subplot()</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">index</span></code> is a single integer that determines both the row and column location. In particular, the index of the panel increases first with columns and then with rows.</p>
 <p>In our specific case, we will create 3 Axes instances like so:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,7 +525,7 @@ document.write(`
 <img alt="../_images/517abe6ce98cd3856deec2ec921233168a6fe5bc35f14b549ed5de4598feb272.png" src="../_images/517abe6ce98cd3856deec2ec921233168a6fe5bc35f14b549ed5de4598feb272.png" />
 </div>
 </div>
-<p>Now we add content to each Axes instances just like we did with individual plots:</p>
+<p>Now we add content to each Axes instances the same way we add content to a single panel plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">146.5</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -552,7 +552,7 @@ document.write(`
 <img alt="../_images/a829685741ccb41ac38657bd083b5f57e158a310362946025f28033063f4e3b1.png" src="../_images/a829685741ccb41ac38657bd083b5f57e158a310362946025f28033063f4e3b1.png" />
 </div>
 </div>
-<p>At first glance, the plots above seems to indicate that there are more individuals in group 2 than groups 1 and 3. But upon closer inspection, this is really because all 3 plots use different y <a class="reference external" href="http://axis.To">axis.To</a> force common axes, we use the <code class="docutils literal notranslate"><span class="pre">sharey=True</span></code> argument when creating the subplots (we also added <code class="docutils literal notranslate"><span class="pre">sharex=True</span></code>, even though it is not strictly necessary in this case):</p>
+<p>At first glance, the figure above seems to indicate that there are more individuals in group 2 than groups 1 and 3. But upon closer inspection, this is really because each of the 3 panels use a separate y-axis scale. To force common axes, we use the <code class="docutils literal notranslate"><span class="pre">sharey</span></code> argument to link the y-axis scales of two panels when create the subplots (we also added <code class="docutils literal notranslate"><span class="pre">sharex</span></code>, even though it is not strictly necessary in this case):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">146.5</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -585,7 +585,7 @@ document.write(`
 <img alt="../_images/3b99d16613e4ca2f24402b5e819db88ff614b573d59543b910be44c7608c08dd.png" src="../_images/3b99d16613e4ca2f24402b5e819db88ff614b573d59543b910be44c7608c08dd.png" />
 </div>
 </div>
-<p>Next, we want to expand the space between plots to make the group labels clearer. We also want to reduce the redundant x-axis label on the top two plots. The former can be achieved by a <code class="docutils literal notranslate"><span class="pre">Fig.subplots_adjust()</span></code> call with an <code class="docutils literal notranslate"><span class="pre">hspace</span></code> argument, the latter can be achieved using the <code class="docutils literal notranslate"><span class="pre">labelbottom</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">tick_params()</span></code> call of the respective Axes instances:</p>
+<p>Next, we want to expand the space between plots to make the group labels clearer. We also want to eliminate the redundant x-axis labels on the top two plots. The former can be achieved by a <code class="docutils literal notranslate"><span class="pre">Fig.subplots_adjust()</span></code> call with an <code class="docutils literal notranslate"><span class="pre">hspace</span></code> argument, and the latter can be achieved using the <code class="docutils literal notranslate"><span class="pre">labelbottom</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">tick_params()</span></code> call of the respective Axes instances:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -614,7 +614,7 @@ document.write(`
 <img alt="../_images/24896b8a9b53b6384881f13d1fa232ecd813cefe73ec3d80904db06552392010.png" src="../_images/24896b8a9b53b6384881f13d1fa232ecd813cefe73ec3d80904db06552392010.png" />
 </div>
 </div>
-<p>Finally, we can add overall x-axis label, y-axis label and figure title using <code class="docutils literal notranslate"><span class="pre">.supxlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">.supylabel()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.suptitle()</span></code> method of the figure instance, respectively:</p>
+<p>Finally, we can add the overall x-axis label, the overall y-axis label, and the figure title using <code class="docutils literal notranslate"><span class="pre">.supxlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">.supylabel()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.suptitle()</span></code> method of the Figure instance, respectively:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>

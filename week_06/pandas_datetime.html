@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,6 +219,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -228,7 +229,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
@@ -478,7 +478,7 @@ document.write(`
 </div>
 <section id="create-pandas-datetime-objects">
 <h2>Create pandas datetime objects<a class="headerlink" href="#create-pandas-datetime-objects" title="Link to this heading">#</a></h2>
-<p>One reason to use pandas to handle tabular data is that pandas have good support of datetime values. Suppose we have a python <code class="docutils literal notranslate"><span class="pre">list</span></code> of dates, in the form of string:</p>
+<p>One reason to use pandas to handle tabular data is that pandas has good support of datetime values. Suppose we have a python <code class="docutils literal notranslate"><span class="pre">list</span></code> of dates, in the form of string:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2024-01-15&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-02-15&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-03-15&quot;</span><span class="p">]</span>
@@ -486,7 +486,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>We can convert the strings to a <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code> using <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code>:</p>
+<p>We can convert these strings to a pandas <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code> using <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
@@ -540,10 +540,11 @@ dtype: datetime64[ns]
 </div>
 </div>
 </div>
-<p>We can also assign the result of <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> to column of DataFrame. For the CalCOFI dateset, we may do:</p>
+<p>We can also assign the result of <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> to a column of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. For the CalCOFI dateset, we may do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/CalCOFI_subset.csv&quot;</span><span class="p">)</span>
+
 <span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -724,7 +725,7 @@ memory usage: 550.1+ KB
 <p>10057 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>In addition, when we use <code class="docutils literal notranslate"><span class="pre">.read_csv()</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> argument to tell pandas to read certain column as dates:</p>
+<p>In addition, when we use <code class="docutils literal notranslate"><span class="pre">.read_csv()</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> argument to tell pandas to read certain column(s) as datetimes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/CalCOFI_subset.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">])</span>
@@ -754,7 +755,7 @@ memory usage: 550.1+ KB
 </section>
 <section id="datetime-formatting">
 <h2>Datetime formatting<a class="headerlink" href="#datetime-formatting" title="Link to this heading">#</a></h2>
-<p>Of course, textual representations of datetime comes in many different format. For example, the following all specifies the same date:</p>
+<p>Of course, textual representations of datetime come in many different formats. For example, the following all specifies the same date:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_1</span> <span class="o">=</span> <span class="s2">&quot;2024-08-05 3:08 PM&quot;</span>
@@ -766,7 +767,7 @@ memory usage: 550.1+ KB
 </div>
 </div>
 </div>
-<p>To deal with the different formats, the <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> function accept a <code class="docutils literal notranslate"><span class="pre">format</span></code> argument, which uses different <em>format code</em> to specify how months, days, etc. are encoded. The documentation for format code can be found in <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior</a>. Note that when the format code is specified, the non-informational characters (e.g., <code class="docutils literal notranslate"> </code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> or <code class="docutils literal notranslate"><span class="pre">,</span></code>) need to be included too.</p>
+<p>To deal with the different formats, <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> accepts a <code class="docutils literal notranslate"><span class="pre">format</span></code> argument, which uses different <strong>format codes</strong> to specify how months, days, etc. are encoded. The documentation for format code can be found in <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior</a>. Note that when we supply a format code, the non-informational characters (e.g., <code class="docutils literal notranslate"> </code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> or <code class="docutils literal notranslate"><span class="pre">,</span></code>) need to be included too.</p>
 <p>As examples, to read the above strings into datetime, we’ll need:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1039,14 +1040,14 @@ dtype: bool
 </section>
 <section id="extracting-parts-of-a-datetime">
 <h2>Extracting parts of a datetime<a class="headerlink" href="#extracting-parts-of-a-datetime" title="Link to this heading">#</a></h2>
-<p>Sometimes you are interested in parts of the datetime and not the whole datetime (e.g., in climatology studies you may be interested in the day of year but not the year itself). You are access these as attributes of the *datetime accessor <code class="docutils literal notranslate"><span class="pre">.dt</span></code> of the pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> (again, a column of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <code class="docutils literal notranslate"><span class="pre">Series</span></code>). Examples include:</p>
+<p>Sometimes you are interested in parts of the datetime and not the whole datetime (e.g., in climatology studies you may be interested in the day of year but not the year itself). You are access these as attributes of the <strong>datetime accessor</strong> <code class="docutils literal notranslate"><span class="pre">.dt</span></code> of the pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> (again, a column of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <code class="docutils literal notranslate"><span class="pre">Series</span></code>). Examples include:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">.dt.year</span></code>: year of the datetime</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.dt.month</span></code>: month of the datetime</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.dt.day</span></code>: day of the datetime</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.dt.hour</span></code>: hour of the datetime</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.dt.minute</span></code>: minute of the datetime</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.dt.dayofyear</span></code>: day of year of the datetime</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dt.year</span></code>: year of the datetimes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dt.month</span></code>: month of the datetimes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dt.day</span></code>: day of the datetimes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dt.hour</span></code>: hour of the datetimes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dt.minute</span></code>: minute of the datetimes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dt.dayofyear</span></code>: day of year of the datetimes</p></li>
 </ul>
 <p>For a full list, <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/timeseries.html#time-date-components">see https://pandas.pydata.org/docs/user_guide/timeseries.html#time-date-components</a></p>
 <p>As an example, let’s extract the day of year from the datetimes in CalCOFI:</p>

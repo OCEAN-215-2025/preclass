@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -218,6 +218,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -227,7 +228,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
@@ -473,22 +473,22 @@ document.write(`
 </section>
 <section id="installing-third-party-modules">
 <h2>Installing third-party modules<a class="headerlink" href="#installing-third-party-modules" title="Link to this heading">#</a></h2>
-<p>The base environment has a very limited number of third-party modules installed. So our next step is to installed the third-party packages that you are now familiar with (numpy, scipy, pandas, xarray, matplotlib, etc.). While we can install these packages in the base environment, we recommend doing so in a new environment. In this appendix we’ll call the new environment “learn”, but you should feel free to change that name in the subsequent code.</p>
-<p>The easiest way to create a new environment with the desired packages installed is to use a requirement.txt file. You can find an example of the requirement file (used in building this site) <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/blob/main/appendix/data/requirement.txt">here</a>.</p>
-<p>Download the requirement.txt file to your local computer, then, change directory (via <code class="docutils literal notranslate"><span class="pre">cd</span></code>, using the same text-based file navigation convention we discussed in week 6) to the location of the requirement file, and execute the following command:</p>
+<p>The base environment has a very limited number of third-party modules installed. So our next step is to install the third-party packages that you are now familiar with (numpy, scipy, pandas, xarray, matplotlib, etc.). While we can install these packages in the base environment, we recommend doing so in a new environment. In this appendix we’ll call this new environment “learn”, but you should feel free to change that name in the subsequent code.</p>
+<p>The easiest way to create a new environment with the desired packages installed is to use a requirements.txt file. You can find an example of the requirements.txt file <a class="reference external" href="https://github.com/OCEAN-215-2025/preclass/blob/main/appendix/data/requirements.txt">here</a>.</p>
+<p>Download the requirements.txt file to your local computer, then, change directory (via <code class="docutils literal notranslate"><span class="pre">cd</span></code>, using the same text-based file navigation convention we discussed in week 6) to the location of the requirements file, and execute the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">learn</span> <span class="o">--</span><span class="n">file</span> <span class="n">requirement</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>(change the name <code class="docutils literal notranslate"><span class="pre">learn</span></code> to whichever way you want to name your environment)</p>
-<p>Once the above command is executed, mamba should get to work and figure out what packages you need to install (some of the modules included in requirement.txt may have prerequisites that are not listed, and mamba will take care of install those too). Confirm that the installation plan is correct, and mamba will create the environment and install the packages in it.</p>
-<p>Once mamba is finished, following the instruction it provides to activate the <code class="docutils literal notranslate"><span class="pre">learn</span></code> environment, namely:</p>
+<p>(change the name <code class="docutils literal notranslate"><span class="pre">learn</span></code> to whatever way you want to name your environment)</p>
+<p>Once the above command is entered, mamba should get to work and figure out what packages you need to install (some of the modules included in requirement.txt have prerequisites that are not listed, and mamba will take care of install those too). Confirm that the installation plan is correct, and mamba will create the environment and install the packages in it.</p>
+<p>Once mamba is finished, follow the instruction it provides to activate the <code class="docutils literal notranslate"><span class="pre">learn</span></code> environment, namely:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">activate</span> <span class="n">learn</span>
 </pre></div>
 </div>
 </section>
 <section id="starting-jupyter-lab">
 <h2>Starting Jupyter lab<a class="headerlink" href="#starting-jupyter-lab" title="Link to this heading">#</a></h2>
-<p>Instead of JupyterHub, in a local installation you would like to view your Jupyter notebooks using JupyterLab. To view your notebook in JupyterLab, first change directory (again via <code class="docutils literal notranslate"><span class="pre">cd</span></code>) to the folder that contains your notebook. Then, in the terminal, run:</p>
+<p>Instead of JupyterHub, in a local installation you would like to view your Jupyter notebooks using JupyterLab. To view your notebook in JupyterLab, first change directory (again via <code class="docutils literal notranslate"><span class="pre">cd</span></code>) to the folder containing your notebook. Then, in the terminal, run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">lab</span>
 </pre></div>
 </div>

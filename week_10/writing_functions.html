@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,6 +219,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -228,7 +229,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_07/wk07_intro.html">Week 7: Xarray; Plotting 2D gridded data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_and_data.html">Xarray and gridded data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_operations.html">Xarray Dataset and DataArray operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_07/xarray_conversions.html">Xarray Dataset conversions and exports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/matplotlib_matrix.html">Plotting gridded data in matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_07/wk07_glossary.html">Week 7 glossary</a></li>
 </ul>
@@ -469,7 +469,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="writing-your-own-functions-in-python">
 <h1>Writing your own functions in python<a class="headerlink" href="#writing-your-own-functions-in-python" title="Link to this heading">#</a></h1>
 <p><em>Note</em>: in this section we will stay within core python and avoid using <em>any</em> third party modules such as numpy.</p>
-<p>Up to this point we have been using functions written by someone else. What do we need to do to create our own functions? And when do we want to do it?</p>
+<p>Up to this point we have been using functions written by someone else. What do we need to do to create our own functions? And when may we want to do that?</p>
 <section id="why-write-your-own-functions">
 <h2>Why write your own functions?<a class="headerlink" href="#why-write-your-own-functions" title="Link to this heading">#</a></h2>
 <p>The main reason to write a function is the same main reason to use a for loop: you avoid repeating yourself. As an example, suppose you have a list of floats call <code class="docutils literal notranslate"><span class="pre">float_values</span></code> and you want to print each number out after rounding them to 2 decimal points, we can do so using the for loop below:</p>
@@ -483,7 +483,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out each number after rounded to 2 decimal points. Use &quot; &quot; as separator</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out each number after rounded to 2 decimal points; Use &quot; &quot; as separator</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">float_values</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
@@ -519,12 +519,13 @@ document.write(`
 </div>
 </div>
 </div>
-<p>By doing so, what amounts to the same piece of code will show up in more than one places. In addition to repeating yourself, this creates problem when you decide to round to 1 decimal points instead of 2, for then you’ll have to hunt down every instance where this piece of code is used and change everyone of them.</p>
-<p>The upshot is this: if you are using the same piece of codes (except for minor modifications) multiple times, consider writing a function for the general task, then call it every time a when specific case of the task needs to be performed.</p>
+<p>By doing so, what amounts to the same piece of codes will show up in more than one places. In addition to repeating yourself, this creates problem when you decide to round to 1 decimal points instead of 2, for then you’ll have to hunt down every instance where this piece of codes is used and change everyone of them.</p>
+<p>The upshot is this: if you are using the same piece of codes (except for minor modifications) multiple times, consider writing a function for the general task, then calling it every time when a specific case of the task needs to be performed.</p>
 </section>
 <section id="writing-python-functions">
 <h2>Writing python functions<a class="headerlink" href="#writing-python-functions" title="Link to this heading">#</a></h2>
-<p>In python, a definition of function starts with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function and the comma-separated sequence of parameters placed inside parentheses, then followed by the ending colon <code class="docutils literal notranslate"><span class="pre">:</span></code>. As an example, we may write a function called <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> that print out floats to 2 decimal place (<em>note</em>: the rules for allowed function names are exactly the same as the rules for allowed variable names):</p>
+<p>In python, the <strong>definition</strong> of a function starts with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function and the comma-separated sequence of parameters placed inside parentheses, followed by a line-ending colon <code class="docutils literal notranslate"><span class="pre">:</span></code>. The <strong>body</strong> of the function is then written in an <em>indented</em> block following this first line.</p>
+<p>As an example, we may write a function called <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> that print out floats to 2 decimal place (<em>note</em>: the rules for allowed function names are exactly the same as the rules for allowed variable names):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print2dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
@@ -535,8 +536,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>As defined, the function <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> takes one input argument <code class="docutils literal notranslate"><span class="pre">float_list</span></code>. Note that the input argument is essentially a <em>place holder</em>. It does not correspond to any concrete values. Instead, when you call the function, the variable <code class="docutils literal notranslate"><span class="pre">float_list</span></code> is assigned the values of the input at the start of the execution of the <strong>function body</strong>.</p>
-<p>In addition, note that the <code class="docutils literal notranslate"><span class="pre">for...:</span></code> line is indented. This is again a <em>syntax feature</em> of python. Basically, after the <code class="docutils literal notranslate"><span class="pre">def</span></code> line, the body of the function needs to be indented by one level. Because our function has a for loop that requires indention on <em>its</em> body, the <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">round(x,</span> <span class="pre">2)</span></code> and <code class="docutils literal notranslate"><span class="pre">print(x,</span> <span class="pre">end=&quot;</span> <span class="pre">&quot;)</span></code> lines are now indented twice.</p>
+<p>As defined, the function <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> takes one <strong>input argument</strong> <code class="docutils literal notranslate"><span class="pre">float_list</span></code>. Note that this input argument is essentially a <em>place holder</em>. It does not correspond to any concrete values. Instead, when you call the function, the variable <code class="docutils literal notranslate"><span class="pre">float_list</span></code> is assigned the values of the input at the start of the execution of the function body.</p>
+<p>In addition, note that the <code class="docutils literal notranslate"><span class="pre">for...:</span></code> line is indented, because it is part of the function body. Similarly, because our function has a for loop that requires indention on <em>its</em> own body, the <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">round(x,</span> <span class="pre">2)</span></code> and <code class="docutils literal notranslate"><span class="pre">print(x,</span> <span class="pre">end=&quot;</span> <span class="pre">&quot;)</span></code> lines are now doubly-indented.</p>
 <p>Once our function is defined, it can be called like any other functions you have encountered. For example, now we can print out our two lists to 2 decimal points via:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -565,7 +566,7 @@ document.write(`
 </section>
 <section id="local-versus-global-variables">
 <h2>Local versus global variables<a class="headerlink" href="#local-versus-global-variables" title="Link to this heading">#</a></h2>
-<p>There is one more important difference between rerunning the same piece of codes versus writing a function to complete the same task. When the block of code is not placed inside a function body, the variables defined during the execution of the code will overwrite variables of the same name already defined, and are accessible after the block of code executes:</p>
+<p>There is one more important difference between rerunning the same piece of codes versus writing a function to complete the same task. When the block of code is not placed inside a function body, the variables defined during the execution of the codes will overwrite variables of the same name already defined, and are accessible after the block of code executes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
@@ -586,8 +587,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>We call the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in this case a <strong>global</strong> variable since it can be accessed globally (= anywhere in the code after it is defined).</p>
-<p>In contrast, when you placed the code block inside a function, the variables the block defines are <strong>local</strong> to the function and cannot be accessed outside. For our example:</p>
+<p>We call the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in this case a <strong>global</strong> variable since it can be accessed globally (= anywhere in the codes after it is defined).</p>
+<p>In contrast, when you place a code block inside a function, the variables the block defines are <strong>local</strong> to the function and cannot be accessed outside. For our example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># global variable x</span>
@@ -634,19 +635,19 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The existence of local scope is a feature, not a bug. It allows you to hide implementation details of your function and control what object is exposed to the outside. It also makes the global scope less cluttered when the function body generates a lot of intermediate variables.<br><br></p>
-<p>What if a variable is defined in the global scope but not in the local scope? What if we use such variables inside the function body? Answer: when python can’t find the variable in the local scope it will interpret the variable as being a global variable. Here is an example:</p>
+<p>The existence of <strong>local scope</strong> is a feature, not a bug. It allows you to hide implementation details of your function and control what object(s) are exposed to the outside. It also makes the <strong>global scope</strong> less cluttered when the function body generates a lot of intermediate variables.</p>
+<p>What if a variable is defined in the global scope but not in the local scope? What if we use such variables inside the function body? Answer: when python can’t find the variable in the local scope it will interpret the variable as global. Here is an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">print_x_add_y</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># local x, global y</span>
 
 <span class="n">print_x_add_y</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># print global x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># print global y</span>
 </pre></div>
 </div>
 </div>
@@ -694,8 +695,8 @@ document.write(`
 </section>
 <section id="returns-versus-side-effects">
 <h2>Returns versus side effects<a class="headerlink" href="#returns-versus-side-effects" title="Link to this heading">#</a></h2>
-<p>It is worth noting that <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> works by side effect: It does not return any object that can be assigned to the left hand side. Instead, numbers are printed out over the course of its execution. In contrast, we can also define a function that returns value.</p>
-<p>For example, suppose we want our function to round every number in a list to 2 decimal places, but we want the list of rounded number to be returned rather than printed out. We may modify our function to:</p>
+<p>It is worth noting that <code class="docutils literal notranslate"><span class="pre">print2dp</span></code> works by <strong>side effect</strong>: It does not return any object that can be assigned to the left hand side. Instead, numbers are printed out over the course of its execution. In contrast, we can also define a function that <strong>returns</strong> value.</p>
+<p>For example, suppose we want our function to round every number in a list to 2 decimal places, but we want the list of rounded numbers to be returned rather than printed out. We may modify our function to:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">round2dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
@@ -733,7 +734,7 @@ document.write(`
 </section>
 <section id="functions-with-optional-arguments">
 <h2>Functions with optional arguments<a class="headerlink" href="#functions-with-optional-arguments" title="Link to this heading">#</a></h2>
-<p>It is easy to extend what we have learned and write functions that take multiple arguments. For example, suppose we generalized the <code class="docutils literal notranslate"><span class="pre">print2dp()</span></code> to a function <code class="docutils literal notranslate"><span class="pre">print_n_dp()</span></code> that allow you to supply how many decimal places you want to keep:</p>
+<p>It is easy to extend what we have learned and write functions that take multiple arguments. For example, suppose we generalized the <code class="docutils literal notranslate"><span class="pre">print2dp()</span></code> to a function <code class="docutils literal notranslate"><span class="pre">print_n_dp()</span></code> that allows you to supply how many decimal places you want to keep:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_n_dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -757,7 +758,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>This may be useful, but if you use cases mostly centered on printing to 2 decimal point, you may want to define 2 to be the default value of <code class="docutils literal notranslate"><span class="pre">n</span></code>. To do so, we follow the argument name with the equal sign and the default value:</p>
+<p>This may be useful, but if your use cases center mostly on printing to 2 decimal points, you may want to define 2 to be the <strong>default value</strong> of <code class="docutils literal notranslate"><span class="pre">n</span></code>. To do so, we follow the argument name with the equal sign and the default value:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_n_dp</span><span class="p">(</span><span class="n">float_list</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
@@ -769,7 +770,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Then we can use the function without supplying <code class="docutils literal notranslate"><span class="pre">n</span></code>, and in that case, the default value will be used:</p>
+<p>Then we can use the function without supplying <code class="docutils literal notranslate"><span class="pre">n</span></code>, at which case the default value will be used:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_n_dp</span><span class="p">(</span><span class="n">floats</span><span class="p">)</span>
@@ -782,7 +783,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Importantly, you must write down arguments <em>without</em> defaults before you write down those that <em>has</em> defaults. For example, the following function will raise an error at definition time:</p>
+<p>Importantly, you must write down arguments <em>without</em> defaults before you write down those that <em>have</em> defaults. For example, the following function will raise an error at definition time:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_dp_n</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">float_list</span><span class="p">):</span>
