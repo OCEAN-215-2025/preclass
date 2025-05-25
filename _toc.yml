@@ -46,7 +46,6 @@ chapters:
   sections:
   - file: week_07/xarray_and_data.ipynb
   - file: week_07/xarray_operations.ipynb
-  - file: week_07/xarray_conversions.ipynb
   - file: week_07/matplotlib_matrix.ipynb
   - file: week_07/wk07_glossary.md
 - file: week_08/wk08_intro.md

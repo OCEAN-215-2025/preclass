@@ -13,7 +13,6 @@ For a more thorough guide of the "group-by" capability of pandas, see [https://p
 ## Pandas group summarization methods
 
 + `<DataFrame>.groupby()`: group rows of a DataFrame for summarization. The result is a pandas DataFrameGroupBy object
-+ `<DataFrameGroupBy>.mean()`: compute mean of numerical columns per group
 + `<DataFrameGroupBy>.count()`: count the number of non-NA values in each group
 + `<DataFrameGroupBy>.max()`: Compute the maximum value in each group
 + `<DataFrameGroupBy>.min()`: Compute the minimum value in each group
@@ -28,7 +27,7 @@ For a more thorough guide of the "group-by" capability of pandas, see [https://p
   
 ## Matplotlib methods for multi-panel plot
 
-+ `<Figure>.addsuplot()`: add a subplot to a matplotlib Figure instance, possibly creating a multi-panel figure.
++ `<Figure>.add_subplot()`: add a subplot to a matplotlib Figure instance, possibly creating a multi-panel figure.
 + `<Figure>.subplots_adjust()`: adjust the spacing between subplots of a figure
 + `<Figure>.supxlabel()`: add an overall horizontal (x-)axis label to the multi-panel figure
 + `<Figure>.supxlabel()`: add an overall vertical (y-)axis label to the multi-panel figure
