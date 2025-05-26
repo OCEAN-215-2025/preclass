@@ -9,8 +9,18 @@ xarray
 # secondary numeric packages
 imageio
 scikit-learn
+scikit-image
 joblib
 networkx
+# secondary geographical data packages
+folium
+geopandas
+fiona
+ipyleaflet
+# secondary visualization packages
+altair
+bokeh
+plotly
 # file formats
 hdf4
 hdf5
