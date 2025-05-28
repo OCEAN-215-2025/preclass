@@ -6,7 +6,11 @@ In this course we have been relying on the JupyterHub server provided by the Uni
 
 An alternative to using JupyterHub is to install python on your local machine. There are a few routes to do so, but we recommend the miniforge distribution. You can find and download the installer on [https://conda-forge.org/download/](https://conda-forge.org/download/)
 
-Once the installer is downloaded, follow the installation instruction and install the miniforge distribution. Once miniforge is installed, start a terminal (command prompt in Windows, Terminal in MacOS, etc.) with the base mamba environment activated (in Windows there is a separate icon for that, in Mac your Terminal should be configured to activate the base environment automatically).
+Once the installer is downloaded, follow the installation instruction and install the miniforge distribution. Once miniforge is installed, start a terminal (command prompt in Windows, Terminal in MacOS, etc.) with the base mamba environment activated (in Windows there is a separate icon for that, in Mac your Terminal should be configured to activate the base environment automatically). A mamba enabled terminal with the base environment activated should have a prompt that started with the text `(base)`.
+
+![A mamba enabled terminal](img/mamba_base.png)
+
+**Figure**: A mamba enabled terminal.
 
 ## Installing third-party modules
 
@@ -17,7 +21,7 @@ The easiest way to create a new environment with the desired packages installed 
 Download the requirements.txt file to your local computer, then, change directory (via `cd`, using the same text-based file navigation convention we discussed in week 6) to the location of the requirements file, and execute the following command:
 
 ```
-mamba create -n learn --file requirement.txt
+    mamba create -n learn --file requirement.txt
 ```
 
 (change the name `learn` to whatever way you want to name your environment)
@@ -27,15 +31,22 @@ Once the above command is entered, mamba should get to work and figure out what 
 Once mamba is finished, follow the instruction it provides to activate the `learn` environment, namely:
 
 ```
-mamba activate learn
+    mamba activate learn
 ```
 
-## Starting Jupyter lab
+When the `learn` environment is activated, the prompt of the terminal should start with the text `(learn)`.
+
+![A terminal with the "learn" environment activated](img/mamba_activate.png)
+
+**Figure**: A terminal with the "learn" environment activated.
+
+
+## Starting JupyterLab
 
 Instead of JupyterHub, in a local installation you would like to view your Jupyter notebooks using JupyterLab. To view your notebook in JupyterLab, first change directory (again via `cd`) to the folder containing your notebook. Then, in the terminal, run:
 
 ```
-jupyter lab
+    jupyter lab
 ```
 
 Your browser should automatically open with a JupyterLab page (which has similar interface as the JupyterHub page) that shows your notebook. You can now work on the notebook like you did with JupyterHub.
