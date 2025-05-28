@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -453,6 +453,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-what-and-why">Jupyter notebooks: what and why</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook">Creating, uploading, downloading, and opening a new Jupyter notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-jupyter-notebook-manipulation">Basic Jupyter notebook manipulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-code-in-jupyter-notebook">Running code in Jupyter notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-formatting">Markdown formatting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-within-code-cell">Comments within code cell</a></li>
 </ul>
@@ -486,11 +487,17 @@ document.write(`
 <li><p>To edit an existing Jupyter notebook, left click on the file on the left pane and it will be displayed on the main panel.</p></li>
 </ul>
 <p><em>Note</em>: in addition to working with Jupyter notebooks, we can also use JupyterHub to preview the contents of text and csv (comma-separated values) files. We will make use of JupyterHub’s previewer in later weeks.</p>
+<p><img alt="Showing launcher page and creating new notebook" src="../_images/JupyterHub_interface_1.png" /></p>
+<p><strong>Figure:</strong> how to start the launcher page and create a new Jupyter notebook</p></p>
 </section>
 <section id="basic-jupyter-notebook-manipulation">
 <h2>Basic Jupyter notebook manipulation<a class="headerlink" href="#basic-jupyter-notebook-manipulation" title="Link to this heading">#</a></h2>
 <p>A Jupyter notebook is comprised of cells. There are 3 types of cells: raw, markdown, and code. In this course we will mainly work with the latter 2 types. Visually, a code cell is distinguished from the markdown cell by a gray background. The markdown cell is used for displaying richly-formatted texts, while code cell is used to execute python codes.</p>
 <p>In general, there are two modes of operation when working with a Jupyter notebook: the <strong>command mode</strong> and the <strong>edit mode</strong>. The former is for cell-level operations while the latter is for editing the content within a cell. If you see a flashing cursor in your notebook, you are likely in the edit mode. In addition, the current cell being edited is usually indicated by a tight blue line frame, whereas in command mode the blue frame extends all the way to the left.</p>
+<p><img alt="Jupyter notebook in edit mode" src="../_images/edit_mode.png" /></p>
+<p><strong>Figure</strong>: Jupyter notebook in edit mode</p>
+<p><img alt="Jupyter notebook in command mode" src="../_images/command_mode.png" /></p>
+<p><strong>Figure</strong>: Jupyter notebook in command mode<br><br></p>
 <p>A few operations that are useful in command mode:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">m</span></code> converts the current cell into a markdown cell</p></li>
@@ -501,6 +508,13 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> + <code class="docutils literal notranslate"><span class="pre">d</span></code> deletes the current cell</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> undoes the previous action</p></li>
 </ul>
+</section>
+<section id="running-code-in-jupyter-notebook">
+<h2>Running code in Jupyter notebook<a class="headerlink" href="#running-code-in-jupyter-notebook" title="Link to this heading">#</a></h2>
+<p>Texts inside a code cell are intended to be executed as python code. To run the codes in the current cell, press <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code> in <em>either</em> edit mode or command mode. You can also use the play button (<code class="docutils literal notranslate"><span class="pre">⯈</span></code>) on the top of the main panel to execute the current cell.</p>
+<p>Importantly, the python backend (“kernel”) cares only about the order you <strong>execute the codes</strong>, not the order they are presented in the notebook. Thus, as you program interactively, there might be “ghost” variables that no long exists in the notebook, or cells that are misplaced in terms of execution order. We <strong>strongly recommend</strong> you occasionally to restart the kernel and rerun your codes sequentially. To restart the kernel, use the refresh button (<code class="docutils literal notranslate"><span class="pre">⟳</span></code>) on the top of the main panel. You may also find the restart and run all option (<code class="docutils literal notranslate"><span class="pre">⏩</span></code>) useful, particularly before you submit your Jupyter notebook in homework, activities, etc.</p>
+<p><img alt="Run code in the current cell or restart the kernel" src="../_images/JupyterHub_run_code.png" /></p>
+<p><strong>Figure:</strong> Buttons to run the current code cell and restart the kernel</p>
 </section>
 <section id="markdown-formatting">
 <h2>Markdown formatting<a class="headerlink" href="#markdown-formatting" title="Link to this heading">#</a></h2>
@@ -588,6 +602,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-what-and-why">Jupyter notebooks: what and why</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-uploading-downloading-and-opening-a-new-jupyter-notebook">Creating, uploading, downloading, and opening a new Jupyter notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-jupyter-notebook-manipulation">Basic Jupyter notebook manipulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-code-in-jupyter-notebook">Running code in Jupyter notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-formatting">Markdown formatting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-within-code-cell">Comments within code cell</a></li>
 </ul>
