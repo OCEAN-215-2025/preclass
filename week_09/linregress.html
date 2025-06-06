@@ -221,7 +221,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -512,7 +511,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/38ec8e11d9ee243e2ae4b3ad995f63ece914701be89904b8ad147243d77cbacc.png" src="../_images/38ec8e11d9ee243e2ae4b3ad995f63ece914701be89904b8ad147243d77cbacc.png" />
+<img alt="../_images/9307d2aed21351f5ba1f4d48b35c1144acee7bf3a4ead1ffe75a1930bf8a2ac9.png" src="../_images/9307d2aed21351f5ba1f4d48b35c1144acee7bf3a4ead1ffe75a1930bf8a2ac9.png" />
 </div>
 </div>
 <p>Notice that while the measurements don’t fall onto a literal straight line, there is a clear linear trend. So we may still want to associate the data with a <strong>“best fitted line”</strong>. But how do we do that?</p>
@@ -549,7 +548,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1f4f3aea954ba07f7fbe8dcccc1eee18cde64842fabb33926d39605c3743d27e.png" src="../_images/1f4f3aea954ba07f7fbe8dcccc1eee18cde64842fabb33926d39605c3743d27e.png" />
+<img alt="../_images/de6e69435d2f8a82602a5aaabe71a9f4d6726fd6cae3ed143596a5e1212e2765.png" src="../_images/de6e69435d2f8a82602a5aaabe71a9f4d6726fd6cae3ed143596a5e1212e2765.png" />
 </div>
 </div>
 </section>
@@ -573,7 +572,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=3.2126420454545452, intercept=-441.57812500000006, rvalue=0.9161407489976452, pvalue=0.00019534135276194468, stderr=0.4969862092877473, intercept_stderr=80.95232605206309)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=np.float64(3.2126420454545452), intercept=np.float64(-441.57812500000006), rvalue=np.float64(0.9161407489976452), pvalue=np.float64(0.00019534135276194468), stderr=np.float64(0.4969862092877473), intercept_stderr=np.float64(80.95232605206309))
 </pre></div>
 </div>
 </div>
@@ -610,7 +609,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/32cb9a7f3b7f7befeff1eb36ae49c0441cf6587fda611322d39fed11f8c387ba.png" src="../_images/32cb9a7f3b7f7befeff1eb36ae49c0441cf6587fda611322d39fed11f8c387ba.png" />
+<img alt="../_images/7de73c03afd94622d1ca64f0cf9c7d0d066aea30144d65a892fc943f21c404b3.png" src="../_images/7de73c03afd94622d1ca64f0cf9c7d0d066aea30144d65a892fc943f21c404b3.png" />
 </div>
 </div>
 </section>
@@ -654,7 +653,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8393138719739663
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.8393138719739663)
 </pre></div>
 </div>
 </div>
@@ -701,7 +700,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f373f76000e094e70f389abf88859321ce22eed6bec5a90a27b5183d6835c3aa.png" src="../_images/f373f76000e094e70f389abf88859321ce22eed6bec5a90a27b5183d6835c3aa.png" />
+<img alt="../_images/12ba8a0c9c12f64e36563f5e7875859a5d32a44c99df25d4b50c43e533c1941a.png" src="../_images/12ba8a0c9c12f64e36563f5e7875859a5d32a44c99df25d4b50c43e533c1941a.png" />
 </div>
 </div>
 <p>If we attempt to perform a linear regression as-is, we’ll get an error:</p>
@@ -717,28 +716,29 @@ memory usage: 5.6 KB
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">linregress</span><span class="p">(</span><span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;sst_anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
-<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\scipy\stats\_stats_py.py:10708,</span> in <span class="ni">linregress</span><span class="nt">(x, y, alternative)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10704</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot calculate a linear regression &quot;</span>
-<span class="g g-Whitespace">  </span><span class="mi">10705</span>                      <span class="s2">&quot;if all x values are identical&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10707</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="ne">&gt; </span><span class="mi">10708</span> <span class="n">xmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10709</span> <span class="n">ymean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10711</span> <span class="c1"># Average sums of square differences from the mean</span>
-<span class="g g-Whitespace">  </span><span class="mi">10712</span> <span class="c1">#   ssxm = mean( (x-mean(x))^2 )</span>
-<span class="g g-Whitespace">  </span><span class="mi">10713</span> <span class="c1">#   ssxym = mean( (x-mean(x)) * (y-mean(y)) )</span>
+<span class="nn">File ~\miniforge3\envs\main\Lib\site-packages\scipy\stats\_stats_py.py:10709,</span> in <span class="ni">linregress</span><span class="nt">(x, y, alternative)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10705</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot calculate a linear regression &quot;</span>
+<span class="g g-Whitespace">  </span><span class="mi">10706</span>                      <span class="s2">&quot;if all x values are identical&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10708</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="ne">&gt; </span><span class="mi">10709</span> <span class="n">xmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10710</span> <span class="n">ymean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10712</span> <span class="c1"># Average sums of square differences from the mean</span>
+<span class="g g-Whitespace">  </span><span class="mi">10713</span> <span class="c1">#   ssxm = mean( (x-mean(x))^2 )</span>
+<span class="g g-Whitespace">  </span><span class="mi">10714</span> <span class="c1">#   ssxym = mean( (x-mean(x)) * (y-mean(y)) )</span>
 
-<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\numpy\core\fromnumeric.py:3504,</span> in <span class="ni">mean</span><span class="nt">(a, axis, dtype, out, keepdims, where)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3501</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3502</span>         <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3504</span> <span class="k">return</span> <span class="n">_methods</span><span class="o">.</span><span class="n">_mean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">3505</span>                       <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File ~\miniforge3\envs\main\Lib\site-packages\numpy\_core\fromnumeric.py:3860,</span> in <span class="ni">mean</span><span class="nt">(a, axis, dtype, out, keepdims, where)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3857</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3858</span>         <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3860</span> <span class="k">return</span> <span class="n">_methods</span><span class="o">.</span><span class="n">_mean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3861</span>                       <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\numpy\core\_methods.py:118,</span> in <span class="ni">_mean</span><span class="nt">(a, axis, dtype, out, keepdims, where)</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="n">dtype</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>         <span class="n">is_float16_result</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="ne">--&gt; </span><span class="mi">118</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">umr_sum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">where</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">mu</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="k">with</span> <span class="n">_no_nep50_warning</span><span class="p">():</span>
+<span class="nn">File ~\miniforge3\envs\main\Lib\site-packages\numpy\_core\_methods.py:135,</span> in <span class="ni">_mean</span><span class="nt">(a, axis, dtype, out, keepdims, where)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>         <span class="n">dtype</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>         <span class="n">is_float16_result</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">135</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">umr_sum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">where</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">mu</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">ret</span> <span class="o">=</span> <span class="n">um</span><span class="o">.</span><span class="n">true_divide</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>             <span class="n">ret</span><span class="p">,</span> <span class="n">rcount</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">ret</span><span class="p">,</span> <span class="n">casting</span><span class="o">=</span><span class="s1">&#39;unsafe&#39;</span><span class="p">,</span> <span class="n">subok</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="ne">UFuncTypeError</span>: ufunc &#39;add&#39; cannot use operands with types dtype(&#39;&lt;M8[ns]&#39;) and dtype(&#39;&lt;M8[ns]&#39;)
 </pre></div>
@@ -761,7 +761,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=4.719764222235652e-19, intercept=-0.4939024523218635, rvalue=0.819954624538679, pvalue=7.749079818621919e-86, stderr=1.7713880082111528e-20, intercept_stderr=0.021475751292749274)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=np.float64(4.719764222235652e-19), intercept=np.float64(-0.4939024523218635), rvalue=np.float64(0.819954624538679), pvalue=np.float64(7.749079818621919e-86), stderr=np.float64(1.7713880082111528e-20), intercept_stderr=np.float64(0.021475751292749274))
 </pre></div>
 </div>
 </div>
@@ -799,7 +799,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7b0992f5a93cef1477346b7373969cd066be10b394f1388c88d069075a0a8c44.png" src="../_images/7b0992f5a93cef1477346b7373969cd066be10b394f1388c88d069075a0a8c44.png" />
+<img alt="../_images/7eedc4c05b62ee743c6508481a25a34c1d24751c2ef2287041b0d9834ec5bba1.png" src="../_images/7eedc4c05b62ee743c6508481a25a34c1d24751c2ef2287041b0d9834ec5bba1.png" />
 </div>
 </div>
 <p>To express the slope in a more meaningful way, we note that in-principle the slope is just the temperature change divided by the date change. Doing this calculation naively again produces an error:</p>
