@@ -1,4 +1,6 @@
 python==3.12.*
+# system utilities
+pipdeptree
 # core numeric packages
 numpy
 scipy
@@ -7,11 +9,11 @@ pandas
 seaborn
 xarray
 # secondary numeric packages
-imageio
 scikit-learn
-scikit-image
 joblib
 networkx
+# secondary image processing packages
+imageio
 # secondary geographical data packages
 folium
 geopandas
@@ -30,11 +32,12 @@ openpyxl
 # ocean specific
 cartopy
 cmocean
-# otter-grader
-otter-grader
 # jupyter
 ipykernel
 ipympl
 jupyter-lsp
 jupyterlab
 notebook
+# grading
+otter-grader
+
