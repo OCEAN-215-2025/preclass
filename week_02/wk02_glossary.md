@@ -43,9 +43,10 @@ Here we provide a short glossary of important syntax features and functions of p
 + `round()`: rounding a number to fixed number of decimal places<br><br>
 
 + `bool()`: convert an object to a boolean value, if possible
-+ `float()`: convert an object to floating point number, if possible
-+ `int()`: convert an object to integer, if possible
-+ `str()`: convert an object to a string, if possible<br><br>
++ `float()`: convert an object to a floating point number, if possible
++ `int()`: convert an object to an integer, if possible
++ `str()`: convert an object to a string, if possible
++ `type()`: determine the type of an object <br><br>
 
 + `len()`: find the length of a python list
 
