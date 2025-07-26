@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,6 +219,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Plotting datetime in matplotlib</a></li>
@@ -657,7 +658,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5a134cecc9387fb657a58e03fc3c261d2915c366b88fb79e6b5b7ac8d47b7bb2.png" src="../_images/5a134cecc9387fb657a58e03fc3c261d2915c366b88fb79e6b5b7ac8d47b7bb2.png" />
+<img alt="../_images/20b0ac4b844d62bec9b9fc3469d2bf9d41c7f097e527e4ef260f2cbe2f15b348.png" src="../_images/20b0ac4b844d62bec9b9fc3469d2bf9d41c7f097e527e4ef260f2cbe2f15b348.png" />
 </div>
 </div>
 <p>Now let’s suppose we want to focus on the year 1959. First we subset the data:</p>
@@ -695,7 +696,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ffbb018615b5c4c30aa505cb95d18c252de54f0e690fbc17fb4e791274232bbd.png" src="../_images/ffbb018615b5c4c30aa505cb95d18c252de54f0e690fbc17fb4e791274232bbd.png" />
+<img alt="../_images/042b567b1587b282e7d821bcfa4e18d03f1eaab6970627a2323203c7d89f02ff.png" src="../_images/042b567b1587b282e7d821bcfa4e18d03f1eaab6970627a2323203c7d89f02ff.png" />
 </div>
 </div>
 </section>
@@ -736,7 +737,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a2f2880463def7c3e5bee0f6a7f264efd6e23ad6c870fabc4563dbc38b322532.png" src="../_images/a2f2880463def7c3e5bee0f6a7f264efd6e23ad6c870fabc4563dbc38b322532.png" />
+<img alt="../_images/23005232f4e8e27ac4bb4febf8fd3cef7c5434f88e62a49f435bb3d79eba7311.png" src="../_images/23005232f4e8e27ac4bb4febf8fd3cef7c5434f88e62a49f435bb3d79eba7311.png" />
 </div>
 </div>
 <p>We use <code class="docutils literal notranslate"><span class="pre">mdates.MonthLocator()</span></code> to tell matplotlib that we want one tick every month. And we use <code class="docutils literal notranslate"><span class="pre">mdates.DateFormatter(&quot;%b&quot;)</span></code> to tell matplotlib that each tick label should display the short name of the month, and nothing else. Note that <code class="docutils literal notranslate"><span class="pre">mdates.DateFormatter()</span></code> again uses the <strong>datetime format code</strong> <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior</a> to specify the formatting of tick labels.</p>
@@ -775,7 +776,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/583c4266fe0c51644590d2413127bba7a9b84d8f4771744e520d7d2c90a50071.png" src="../_images/583c4266fe0c51644590d2413127bba7a9b84d8f4771744e520d7d2c90a50071.png" />
+<img alt="../_images/900e18ed869895a1af525d65cf7ed8eb3d17a4224d1e8adb88607867047663f2.png" src="../_images/900e18ed869895a1af525d65cf7ed8eb3d17a4224d1e8adb88607867047663f2.png" />
 </div>
 </div>
 <p>Note also that we handled long tick labels by rotating them, which is achieved using the <code class="docutils literal notranslate"><span class="pre">ax.tick_params(&quot;x&quot;,</span> <span class="pre">labelrotation=-50)</span></code> line.</p>
