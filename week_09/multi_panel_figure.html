@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,7 +219,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -522,7 +521,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/517abe6ce98cd3856deec2ec921233168a6fe5bc35f14b549ed5de4598feb272.png" src="../_images/517abe6ce98cd3856deec2ec921233168a6fe5bc35f14b549ed5de4598feb272.png" />
+<img alt="../_images/e327a693425262d4ad5bea418cbe758681cc3690576344ad27ba28e9088467de.png" src="../_images/e327a693425262d4ad5bea418cbe758681cc3690576344ad27ba28e9088467de.png" />
 </div>
 </div>
 <p>Now we add content to each Axes instances the same way we add content to a single panel plot:</p>
@@ -549,7 +548,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a829685741ccb41ac38657bd083b5f57e158a310362946025f28033063f4e3b1.png" src="../_images/a829685741ccb41ac38657bd083b5f57e158a310362946025f28033063f4e3b1.png" />
+<img alt="../_images/0fb8e0eb53b0f48bb2fda26385ad9fb88be349fd3b91035c25431c6443acf66e.png" src="../_images/0fb8e0eb53b0f48bb2fda26385ad9fb88be349fd3b91035c25431c6443acf66e.png" />
 </div>
 </div>
 <p>At first glance, the figure above seems to indicate that there are more individuals in group 2 than groups 1 and 3. But upon closer inspection, this is really because each of the 3 panels use a separate y-axis scale. To force common axes, we use the <code class="docutils literal notranslate"><span class="pre">sharey</span></code> argument to link the y-axis scales of two panels when create the subplots (we also added <code class="docutils literal notranslate"><span class="pre">sharex</span></code>, even though it is not strictly necessary in this case):</p>
@@ -582,7 +581,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3b99d16613e4ca2f24402b5e819db88ff614b573d59543b910be44c7608c08dd.png" src="../_images/3b99d16613e4ca2f24402b5e819db88ff614b573d59543b910be44c7608c08dd.png" />
+<img alt="../_images/6652a2040ee5e9db6c86fc26665fa97cee33735542d206faa086d33cbf045dbc.png" src="../_images/6652a2040ee5e9db6c86fc26665fa97cee33735542d206faa086d33cbf045dbc.png" />
 </div>
 </div>
 <p>Next, we want to expand the space between plots to make the group labels clearer. We also want to eliminate the redundant x-axis labels on the top two plots. The former can be achieved by a <code class="docutils literal notranslate"><span class="pre">Fig.subplots_adjust()</span></code> call with an <code class="docutils literal notranslate"><span class="pre">hspace</span></code> argument, and the latter can be achieved using the <code class="docutils literal notranslate"><span class="pre">labelbottom</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">tick_params()</span></code> call of the respective Axes instances:</p>
@@ -611,7 +610,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/24896b8a9b53b6384881f13d1fa232ecd813cefe73ec3d80904db06552392010.png" src="../_images/24896b8a9b53b6384881f13d1fa232ecd813cefe73ec3d80904db06552392010.png" />
+<img alt="../_images/a475e4810cf2c55b59caa271e4aa44846c7ebae62745815cbd989049068c75b6.png" src="../_images/a475e4810cf2c55b59caa271e4aa44846c7ebae62745815cbd989049068c75b6.png" />
 </div>
 </div>
 <p>Finally, we can add the overall x-axis label, the overall y-axis label, and the figure title using <code class="docutils literal notranslate"><span class="pre">.supxlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">.supylabel()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.suptitle()</span></code> method of the Figure instance, respectively:</p>
@@ -644,7 +643,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c9b65eb8af61ac3c6e7a2abf89c50e1f00110881a38ed69ae8c351701da67f24.png" src="../_images/c9b65eb8af61ac3c6e7a2abf89c50e1f00110881a38ed69ae8c351701da67f24.png" />
+<img alt="../_images/f036082619df29f0565dc8f781d827975e6ff828a7ff46f3106df63fd48e4947.png" src="../_images/f036082619df29f0565dc8f781d827975e6ff828a7ff46f3106df63fd48e4947.png" />
 </div>
 </div>
 </section>

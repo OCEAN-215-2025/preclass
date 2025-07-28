@@ -14,13 +14,14 @@ Here we provide a short glossary of important syntax features and functions of p
 
 + `()`: for overriding operator precedence and for supplying arguments to function calls<br><br>
 
++ `#`: indicating the start of comments (lasting until the end of line)<br><br>
+
 + `==`: operator for "equal to" comparisons
 + `!=`: operator for "unequal to" comparisons
 + `>`: operator for "greater than" comparisons
 + `<`: operator for "less than" comparisons
 + `>=`: operator for "greater than or equal to" comparisons
 + `<=`: operator for "less than or equal to" comparisons<br><br>
-
 
 + `and`: operator to join two logical statements with an "and"
 + `or`: operator to join two logical statements with an "or"

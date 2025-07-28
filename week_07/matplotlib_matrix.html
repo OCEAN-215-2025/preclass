@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -219,7 +219,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_06/wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/file_path.html">Navigating file systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/pandas_datetime.html">Handling datetime in pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_06/matplotlib_datetime.html">Plotting datetime in matplotlib</a></li>
@@ -510,28 +509,76 @@ document.write(`
  */
 
 :root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
 }
 
 html[theme="dark"],
 html[data-theme="dark"],
 body[data-theme="dark"],
 body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1f1f1f;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
 }
 
 .xr-wrap {
@@ -587,6 +634,7 @@ body.vscode-dark {
 
 .xr-section-item input + label {
   color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
 }
 
 .xr-section-item input:enabled + label {
@@ -595,7 +643,7 @@ body.vscode-dark {
 }
 
 .xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0);
+  border: 2px solid var(--xr-font-color0) !important;
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -727,7 +775,9 @@ body.vscode-dark {
 .xr-var-item label,
 .xr-var-item > .xr-var-name span {
   background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
   margin-bottom: 0;
+  padding-top: 2px;
 }
 
 .xr-var-item > .xr-var-name:hover span {
@@ -738,6 +788,7 @@ body.vscode-dark {
 .xr-var-list > li:nth-child(odd) > label,
 .xr-var-list > li:nth-child(odd) > .xr-var-name span {
   background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
 }
 
 .xr-var-name {
@@ -787,8 +838,15 @@ body.vscode-dark {
 .xr-var-data,
 .xr-index-data {
   display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
@@ -799,6 +857,12 @@ body.vscode-dark {
 
 .xr-var-data > table {
   float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
 }
 
 .xr-var-name span,
@@ -860,8 +924,16 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 26MB
-Dimensions:      (time: 1, depth: 50, longitude: 121, latitude: 269)
+Dimensions:      (time: 1, depth: 50, latitude: 269, longitude: 121)
 Coordinates:
   * time         (time) datetime64[ns] 8B 2024-06-16
   * depth        (depth) float32 200B 0.494 1.541 2.646 ... 5.275e+03 5.728e+03
@@ -883,7 +955,7 @@ Attributes: (12/13)
     product:                       GLOBAL_ANALYSISFORECAST_PHY_001_024
     source:                        MERCATOR GLO12
     product_user_manual:           http://marine.copernicus.eu/documents/PUM/...
-    quality_information_document:  http://marine.copernicus.eu/documents/QUID...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-6f042043-2be0-4094-8c4d-3c3536094f9a' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-6f042043-2be0-4094-8c4d-3c3536094f9a' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 1</li><li><span class='xr-has-index'>depth</span>: 50</li><li><span class='xr-has-index'>longitude</span>: 121</li><li><span class='xr-has-index'>latitude</span>: 269</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-28e79fb7-239b-4567-a4b4-1ea8e31c66db' class='xr-section-summary-in' type='checkbox'  checked><label for='section-28e79fb7-239b-4567-a4b4-1ea8e31c66db' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2024-06-16</div><input id='attrs-60648fe9-2711-4d9d-bf56-f11186c2fd5f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-60648fe9-2711-4d9d-bf56-f11186c2fd5f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6ebb148d-ea08-448a-8cbb-cd0ea757f9ff' class='xr-var-data-in' type='checkbox'><label for='data-6ebb148d-ea08-448a-8cbb-cd0ea757f9ff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time (hours since 1950-01-01)</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2024-06-16T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.494 1.541 ... 5.275e+03 5.728e+03</div><input id='attrs-258afc7f-d256-4ddf-93a6-bea0e0820f5a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-258afc7f-d256-4ddf-93a6-bea0e0820f5a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a7f3e63b-d0d0-4505-a055-d18c5ab1237c' class='xr-var-data-in' type='checkbox'><label for='data-a7f3e63b-d0d0-4505-a055-d18c5ab1237c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_min :</span></dt><dd>0.494025</dd><dt><span>valid_max :</span></dt><dd>5727.917</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>positive :</span></dt><dd>down</dd><dt><span>unit_long :</span></dt><dd>Meters</dd><dt><span>long_name :</span></dt><dd>Depth</dd><dt><span>standard_name :</span></dt><dd>depth</dd><dt><span>axis :</span></dt><dd>Z</dd></dl></div><div class='xr-var-data'><pre>array([4.940250e-01, 1.541375e+00, 2.645669e+00, 3.819495e+00, 5.078224e+00,
+    quality_information_document:  http://marine.copernicus.eu/documents/QUID...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-0031846f-670d-4e16-bd9d-44bd58534968' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-0031846f-670d-4e16-bd9d-44bd58534968' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 1</li><li><span class='xr-has-index'>depth</span>: 50</li><li><span class='xr-has-index'>latitude</span>: 269</li><li><span class='xr-has-index'>longitude</span>: 121</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-af7941f3-20f2-4b20-a0f6-627f2675488f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-af7941f3-20f2-4b20-a0f6-627f2675488f' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2024-06-16</div><input id='attrs-dac00f92-329f-4235-97a4-6063372ed382' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dac00f92-329f-4235-97a4-6063372ed382' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d44d3012-3dbc-40ff-a77f-93b43a7af663' class='xr-var-data-in' type='checkbox'><label for='data-d44d3012-3dbc-40ff-a77f-93b43a7af663' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time (hours since 1950-01-01)</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2024-06-16T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.494 1.541 ... 5.275e+03 5.728e+03</div><input id='attrs-ea983714-53ff-4260-82d4-7c1734051de4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ea983714-53ff-4260-82d4-7c1734051de4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bdbb11cb-11e2-42f5-ad20-1272b1f7b5a6' class='xr-var-data-in' type='checkbox'><label for='data-bdbb11cb-11e2-42f5-ad20-1272b1f7b5a6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_min :</span></dt><dd>0.494025</dd><dt><span>valid_max :</span></dt><dd>5727.917</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>positive :</span></dt><dd>down</dd><dt><span>unit_long :</span></dt><dd>Meters</dd><dt><span>long_name :</span></dt><dd>Depth</dd><dt><span>standard_name :</span></dt><dd>depth</dd><dt><span>axis :</span></dt><dd>Z</dd></dl></div><div class='xr-var-data'><pre>array([4.940250e-01, 1.541375e+00, 2.645669e+00, 3.819495e+00, 5.078224e+00,
        6.440614e+00, 7.929560e+00, 9.572997e+00, 1.140500e+01, 1.346714e+01,
        1.581007e+01, 1.849556e+01, 2.159882e+01, 2.521141e+01, 2.944473e+01,
        3.443415e+01, 4.034405e+01, 4.737369e+01, 5.576429e+01, 6.580727e+01,
@@ -893,7 +965,7 @@ Attributes: (12/13)
        1.062440e+03, 1.245291e+03, 1.452251e+03, 1.684284e+03, 1.941893e+03,
        2.225078e+03, 2.533336e+03, 2.865703e+03, 3.220820e+03, 3.597032e+03,
        3.992484e+03, 4.405224e+03, 4.833291e+03, 5.274784e+03, 5.727917e+03],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-180.0 -179.5 ... -120.5 -120.0</div><input id='attrs-adf66fdb-3160-4531-83d2-218512a4cd6c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-adf66fdb-3160-4531-83d2-218512a4cd6c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c9e037f0-717c-4024-8306-f81366067035' class='xr-var-data-in' type='checkbox'><label for='data-c9e037f0-717c-4024-8306-f81366067035' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_min :</span></dt><dd>-180.0</dd><dt><span>valid_max :</span></dt><dd>179.91669</dd><dt><span>step :</span></dt><dd>0.08332825</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>unit_long :</span></dt><dd>Degrees East</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>axis :</span></dt><dd>X</dd></dl></div><div class='xr-var-data'><pre>array([-180. , -179.5, -179. , -178.5, -178. , -177.5, -177. , -176.5, -176. ,
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-180.0 -179.5 ... -120.5 -120.0</div><input id='attrs-d670f54f-6fa5-43ce-9bd3-3e8f35449a3f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d670f54f-6fa5-43ce-9bd3-3e8f35449a3f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f6c5dacc-0e08-4bd4-aec6-87fdddc22275' class='xr-var-data-in' type='checkbox'><label for='data-f6c5dacc-0e08-4bd4-aec6-87fdddc22275' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_min :</span></dt><dd>-180.0</dd><dt><span>valid_max :</span></dt><dd>179.91669</dd><dt><span>step :</span></dt><dd>0.08332825</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>unit_long :</span></dt><dd>Degrees East</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>axis :</span></dt><dd>X</dd></dl></div><div class='xr-var-data'><pre>array([-180. , -179.5, -179. , -178.5, -178. , -177.5, -177. , -176.5, -176. ,
        -175.5, -175. , -174.5, -174. , -173.5, -173. , -172.5, -172. , -171.5,
        -171. , -170.5, -170. , -169.5, -169. , -168.5, -168. , -167.5, -167. ,
        -166.5, -166. , -165.5, -165. , -164.5, -164. , -163.5, -163. , -162.5,
@@ -906,7 +978,7 @@ Attributes: (12/13)
        -135. , -134.5, -134. , -133.5, -133. , -132.5, -132. , -131.5, -131. ,
        -130.5, -130. , -129.5, -129. , -128.5, -128. , -127.5, -127. , -126.5,
        -126. , -125.5, -125. , -124.5, -124. , -123.5, -123. , -122.5, -122. ,
-       -121.5, -121. , -120.5, -120. ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-67.0 -66.5 -66.0 ... 66.5 67.0</div><input id='attrs-844bcbb3-d118-47b9-8648-b1695384b63c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-844bcbb3-d118-47b9-8648-b1695384b63c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d4814690-0435-47bc-8541-1927f1e61754' class='xr-var-data-in' type='checkbox'><label for='data-d4814690-0435-47bc-8541-1927f1e61754' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_min :</span></dt><dd>-80.0</dd><dt><span>valid_max :</span></dt><dd>90.0</dd><dt><span>step :</span></dt><dd>0.08333588</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>unit_long :</span></dt><dd>Degrees North</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array([-67. , -66.5, -66. , ...,  66. ,  66.5,  67. ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-aa35d296-ab09-40c8-b9aa-90879a9ef4c1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-aa35d296-ab09-40c8-b9aa-90879a9ef4c1' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>temperature</span></div><div class='xr-var-dims'>(time, depth, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-475a0242-fba4-444b-926f-2c3547e41bde' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-475a0242-fba4-444b-926f-2c3547e41bde' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7213d25b-463c-4f73-97db-137588c74189' class='xr-var-data-in' type='checkbox'><label for='data-7213d25b-463c-4f73-97db-137588c74189' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature</dd><dt><span>standard_name :</span></dt><dd>sea_water_potential_temperature</dd><dt><span>units :</span></dt><dd>degrees_C</dd><dt><span>unit_long :</span></dt><dd>Degrees Celsius</dd><dt><span>valid_min :</span></dt><dd>-10.0</dd><dt><span>valid_max :</span></dt><dd>40.0</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd></dl></div><div class='xr-var-data'><pre>[1627450 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>salinity</span></div><div class='xr-var-dims'>(time, depth, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-23cc57ac-2821-4f5d-9fb8-8e32ec7ac0df' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-23cc57ac-2821-4f5d-9fb8-8e32ec7ac0df' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e366b146-8a1e-4fcb-8ee2-8d1604c57ceb' class='xr-var-data-in' type='checkbox'><label for='data-e366b146-8a1e-4fcb-8ee2-8d1604c57ceb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Salinity</dd><dt><span>standard_name :</span></dt><dd>sea_water_salinity</dd><dt><span>units :</span></dt><dd>1e-3</dd><dt><span>unit_long :</span></dt><dd>Practical Salinity Unit</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>valid_max :</span></dt><dd>50.0</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd></dl></div><div class='xr-var-data'><pre>[1627450 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0dba4179-c6b0-458b-a812-b8b35adf24b5' class='xr-section-summary-in' type='checkbox'  ><label for='section-0dba4179-c6b0-458b-a812-b8b35adf24b5' class='xr-section-summary' >Indexes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-7b5aa206-199f-436f-b693-744e58137cc6' class='xr-index-data-in' type='checkbox'/><label for='index-7b5aa206-199f-436f-b693-744e58137cc6' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2024-06-16&#x27;], dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>depth</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-fa5fff17-c5c2-4c5e-94e8-8739b95efaac' class='xr-index-data-in' type='checkbox'/><label for='index-fa5fff17-c5c2-4c5e-94e8-8739b95efaac' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0.49402499198913574,  1.5413750410079956,  2.6456689834594727,
+       -121.5, -121. , -120.5, -120. ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-67.0 -66.5 -66.0 ... 66.5 67.0</div><input id='attrs-42666b55-7d12-430a-aee4-1d0b387105e6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-42666b55-7d12-430a-aee4-1d0b387105e6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e1dab216-2185-4dbe-90a3-c58424b027e4' class='xr-var-data-in' type='checkbox'><label for='data-e1dab216-2185-4dbe-90a3-c58424b027e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_min :</span></dt><dd>-80.0</dd><dt><span>valid_max :</span></dt><dd>90.0</dd><dt><span>step :</span></dt><dd>0.08333588</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>unit_long :</span></dt><dd>Degrees North</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array([-67. , -66.5, -66. , ...,  66. ,  66.5,  67. ], shape=(269,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ac8b98f7-ad0b-4450-afcd-2be4489e7b06' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ac8b98f7-ad0b-4450-afcd-2be4489e7b06' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>temperature</span></div><div class='xr-var-dims'>(time, depth, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6bf5fe52-1624-4f6c-a268-13017f4a4f41' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6bf5fe52-1624-4f6c-a268-13017f4a4f41' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7581408a-0ded-41ad-a110-83afa704859d' class='xr-var-data-in' type='checkbox'><label for='data-7581408a-0ded-41ad-a110-83afa704859d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature</dd><dt><span>standard_name :</span></dt><dd>sea_water_potential_temperature</dd><dt><span>units :</span></dt><dd>degrees_C</dd><dt><span>unit_long :</span></dt><dd>Degrees Celsius</dd><dt><span>valid_min :</span></dt><dd>-10.0</dd><dt><span>valid_max :</span></dt><dd>40.0</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd></dl></div><div class='xr-var-data'><pre>[1627450 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>salinity</span></div><div class='xr-var-dims'>(time, depth, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0c107eb5-9143-417c-86f9-f25dd15791c7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0c107eb5-9143-417c-86f9-f25dd15791c7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-93856047-e89d-4bdd-90d7-5f0fd7de8f5e' class='xr-var-data-in' type='checkbox'><label for='data-93856047-e89d-4bdd-90d7-5f0fd7de8f5e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Salinity</dd><dt><span>standard_name :</span></dt><dd>sea_water_salinity</dd><dt><span>units :</span></dt><dd>1e-3</dd><dt><span>unit_long :</span></dt><dd>Practical Salinity Unit</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>valid_max :</span></dt><dd>50.0</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd></dl></div><div class='xr-var-data'><pre>[1627450 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-93ac99d4-25de-4264-9efa-96d787b172b8' class='xr-section-summary-in' type='checkbox'  ><label for='section-93ac99d4-25de-4264-9efa-96d787b172b8' class='xr-section-summary' >Indexes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-b4cc3e27-0553-4e70-8b9f-56ca599d2762' class='xr-index-data-in' type='checkbox'/><label for='index-b4cc3e27-0553-4e70-8b9f-56ca599d2762' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2024-06-16&#x27;], dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>depth</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-de79dcb6-9051-4835-841b-d1afa36f8f1e' class='xr-index-data-in' type='checkbox'/><label for='index-de79dcb6-9051-4835-841b-d1afa36f8f1e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0.49402499198913574,  1.5413750410079956,  2.6456689834594727,
         3.8194949626922607,   5.078224182128906,   6.440614223480225,
           7.92956018447876,   9.572997093200684,  11.404999732971191,
         13.467140197753906,  15.810070037841797,  18.495559692382812,
@@ -923,15 +995,15 @@ Attributes: (12/13)
          2865.702880859375,   3220.820068359375,   3597.031982421875,
           3992.48388671875,    4405.22412109375,      4833.291015625,
            5274.7841796875,     5727.9169921875],
-      dtype=&#x27;float32&#x27;, name=&#x27;depth&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-8b9adc3d-2fac-47ef-9c6a-07d0ce4486aa' class='xr-index-data-in' type='checkbox'/><label for='index-8b9adc3d-2fac-47ef-9c6a-07d0ce4486aa' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-180.0, -179.5, -179.0, -178.5, -178.0, -177.5, -177.0, -176.5, -176.0,
+      dtype=&#x27;float32&#x27;, name=&#x27;depth&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-353f5646-03a0-48ee-9b2b-c7488b7dcda9' class='xr-index-data-in' type='checkbox'/><label for='index-353f5646-03a0-48ee-9b2b-c7488b7dcda9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-180.0, -179.5, -179.0, -178.5, -178.0, -177.5, -177.0, -176.5, -176.0,
        -175.5,
        ...
        -124.5, -124.0, -123.5, -123.0, -122.5, -122.0, -121.5, -121.0, -120.5,
        -120.0],
-      dtype=&#x27;float32&#x27;, name=&#x27;longitude&#x27;, length=121))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-d8036f2b-9e93-4fbe-87e9-0fe39e466582' class='xr-index-data-in' type='checkbox'/><label for='index-d8036f2b-9e93-4fbe-87e9-0fe39e466582' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-67.0, -66.5, -66.0, -65.5, -65.0, -64.5, -64.0, -63.5, -63.0, -62.5,
+      dtype=&#x27;float32&#x27;, name=&#x27;longitude&#x27;, length=121))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-2f78a7b9-1d30-4ad5-b9bd-ccba88bd1d38' class='xr-index-data-in' type='checkbox'/><label for='index-2f78a7b9-1d30-4ad5-b9bd-ccba88bd1d38' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-67.0, -66.5, -66.0, -65.5, -65.0, -64.5, -64.0, -63.5, -63.0, -62.5,
        ...
         62.5,  63.0,  63.5,  64.0,  64.5,  65.0,  65.5,  66.0,  66.5,  67.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=269))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cbaaedb8-a0e5-457a-a3f4-29fb702472b3' class='xr-section-summary-in' type='checkbox'  ><label for='section-cbaaedb8-a0e5-457a-a3f4-29fb702472b3' class='xr-section-summary' >Attributes: <span>(13)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>Monthly mean fields for product GLOBAL_ANALYSISFORECAST_PHY_001_024</dd><dt><span>references :</span></dt><dd>http://marine.copernicus.eu</dd><dt><span>credit :</span></dt><dd>E.U. Copernicus Marine Service Information (CMEMS)</dd><dt><span>licence :</span></dt><dd>http://marine.copernicus.eu/services-portfolio/service-commitments-and-licence/</dd><dt><span>contact :</span></dt><dd>servicedesk.cmems@mercator-ocean.eu</dd><dt><span>producer :</span></dt><dd>CMEMS - Global Monitoring and Forecasting Centre</dd><dt><span>institution :</span></dt><dd>Mercator Ocean</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>area :</span></dt><dd>GLOBAL</dd><dt><span>product :</span></dt><dd>GLOBAL_ANALYSISFORECAST_PHY_001_024</dd><dt><span>source :</span></dt><dd>MERCATOR GLO12</dd><dt><span>product_user_manual :</span></dt><dd>http://marine.copernicus.eu/documents/PUM/CMEMS-GLO-PUM-001-024.pdf</dd><dt><span>quality_information_document :</span></dt><dd>http://marine.copernicus.eu/documents/QUID/CMEMS-GLO-QUID-001-024.pdf</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=269))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1658c622-ef73-428f-b66e-f2ee225bf66c' class='xr-section-summary-in' type='checkbox'  ><label for='section-1658c622-ef73-428f-b66e-f2ee225bf66c' class='xr-section-summary' >Attributes: <span>(13)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>Monthly mean fields for product GLOBAL_ANALYSISFORECAST_PHY_001_024</dd><dt><span>references :</span></dt><dd>http://marine.copernicus.eu</dd><dt><span>credit :</span></dt><dd>E.U. Copernicus Marine Service Information (CMEMS)</dd><dt><span>licence :</span></dt><dd>http://marine.copernicus.eu/services-portfolio/service-commitments-and-licence/</dd><dt><span>contact :</span></dt><dd>servicedesk.cmems@mercator-ocean.eu</dd><dt><span>producer :</span></dt><dd>CMEMS - Global Monitoring and Forecasting Centre</dd><dt><span>institution :</span></dt><dd>Mercator Ocean</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>area :</span></dt><dd>GLOBAL</dd><dt><span>product :</span></dt><dd>GLOBAL_ANALYSISFORECAST_PHY_001_024</dd><dt><span>source :</span></dt><dd>MERCATOR GLO12</dd><dt><span>product_user_manual :</span></dt><dd>http://marine.copernicus.eu/documents/PUM/CMEMS-GLO-PUM-001-024.pdf</dd><dt><span>quality_information_document :</span></dt><dd>http://marine.copernicus.eu/documents/QUID/CMEMS-GLO-QUID-001-024.pdf</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="input-arguments-for-plotting-2d-gridded-data">
 <h2>Input arguments for plotting 2D gridded data<a class="headerlink" href="#input-arguments-for-plotting-2d-gridded-data" title="Link to this heading">#</a></h2>
@@ -998,7 +1070,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e7a3298818c52758be7318dffaafd797c3129bd70c78c57ac7f77e2de4da2ee8.png" src="../_images/e7a3298818c52758be7318dffaafd797c3129bd70c78c57ac7f77e2de4da2ee8.png" />
+<img alt="../_images/d48900573e6c23dc07c41e1c8d9bdbfab081298f3882afd94859be83a5753dae.png" src="../_images/d48900573e6c23dc07c41e1c8d9bdbfab081298f3882afd94859be83a5753dae.png" />
 </div>
 </div>
 <p>Notice that we have focused ourselves to depths in the range (0 m, 2000 m), since that’s the range for which most variations in temperature and salinity occur.</p>
@@ -1030,7 +1102,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bbdba6622e7a7a0399d079ef959413c61e03f1080088472deafbfa8bf39e6f21.png" src="../_images/bbdba6622e7a7a0399d079ef959413c61e03f1080088472deafbfa8bf39e6f21.png" />
+<img alt="../_images/b8d7bfa2d4e20be3c33096ad42223fdb5d61f9c96eb7883ab205223a19e70e64.png" src="../_images/b8d7bfa2d4e20be3c33096ad42223fdb5d61f9c96eb7883ab205223a19e70e64.png" />
 </div>
 </div>
 <p>Note that we now have a color bar but it is unlabeled. To update its title and settings, we assign the colorbar to a variable and use its methods to modify its appearance:</p>
@@ -1062,7 +1134,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3f29b04dfcd1819b7d1b1acfb8560ad94793b1ac5b2db4fca2fca1c603e20777.png" src="../_images/3f29b04dfcd1819b7d1b1acfb8560ad94793b1ac5b2db4fca2fca1c603e20777.png" />
+<img alt="../_images/d1e419a2544ddf56790270bc91434d021a4846f318f25eebce108dabd059d8a2.png" src="../_images/d1e419a2544ddf56790270bc91434d021a4846f318f25eebce108dabd059d8a2.png" />
 </div>
 </div>
 <p>Sometimes you want to set the range of color to be different from the span of the data. We can do so using the <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> arguments of <code class="docutils literal notranslate"><span class="pre">.pcolormesh()</span></code>:</p>
@@ -1095,7 +1167,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3e0fdd6732a559effdc79cdad36267683de0a443129e948c41f46e9dae56ba40.png" src="../_images/3e0fdd6732a559effdc79cdad36267683de0a443129e948c41f46e9dae56ba40.png" />
+<img alt="../_images/5e8fafab579c2708274c637cbcb674828b312c307749b5af241f1d715b93bceb.png" src="../_images/5e8fafab579c2708274c637cbcb674828b312c307749b5af241f1d715b93bceb.png" />
 </div>
 </div>
 <p>Finally, there may be occasions where you can get more information out from the figure if the color is plotted in log scale.</p>
@@ -1132,7 +1204,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b88c10a2886ba676dd38baf0ab0e370c300af02a0b6016e4a6bb9a49ce05fe06.png" src="../_images/b88c10a2886ba676dd38baf0ab0e370c300af02a0b6016e4a6bb9a49ce05fe06.png" />
+<img alt="../_images/8aaf8ad44205c35859cc597b8410bb053bafee29f05f24d945ab35eea4c76bb1.png" src="../_images/8aaf8ad44205c35859cc597b8410bb053bafee29f05f24d945ab35eea4c76bb1.png" />
 </div>
 </div>
 <p>To plot in log scale we need the <code class="docutils literal notranslate"><span class="pre">LogNorm()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">matplotlib.color</span></code> submodule, so we import the submodule below:</p>
@@ -1172,7 +1244,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e2ce9eee8025a3e8456a57235588d4967ffad3a0af75df74176f0996b0c33947.png" src="../_images/e2ce9eee8025a3e8456a57235588d4967ffad3a0af75df74176f0996b0c33947.png" />
+<img alt="../_images/36f0d60f94440a76c9d5b33afcd873c2ed64d4f4f5fbf29ca88f2b1a439f4e87.png" src="../_images/36f0d60f94440a76c9d5b33afcd873c2ed64d4f4f5fbf29ca88f2b1a439f4e87.png" />
 </div>
 </div>
 </section>
@@ -1209,7 +1281,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dce88b7494d9d12ea28641ab1cd0bfdcbef0d8467dbf51eb3e9e67844ca048bb.png" src="../_images/dce88b7494d9d12ea28641ab1cd0bfdcbef0d8467dbf51eb3e9e67844ca048bb.png" />
+<img alt="../_images/d28368ed9759261cd694d940909f418e4fd646023b328b8d55f6c635ef07a7a9.png" src="../_images/d28368ed9759261cd694d940909f418e4fd646023b328b8d55f6c635ef07a7a9.png" />
 </div>
 </div>
 <p>In Addition, the third-party <code class="docutils literal notranslate"><span class="pre">cmocean</span></code> module also provides a number of good color maps for oceanographic data. A good documentation of <code class="docutils literal notranslate"><span class="pre">cmocean</span></code> can be found at <a class="reference external" href="https://matplotlib.org/cmocean/">https://matplotlib.org/cmocean/</a>. For illustration, we will re-plot the temperature data using the thermal colormap below:</p>
@@ -1247,7 +1319,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/18de8e961f42fc4c138a68d2e5c47346f27639931059af5156d9778d0401d415.png" src="../_images/18de8e961f42fc4c138a68d2e5c47346f27639931059af5156d9778d0401d415.png" />
+<img alt="../_images/19b911063009537199a4e53c1541d3c7105daf876ce3e339a0f7abb45254a582.png" src="../_images/19b911063009537199a4e53c1541d3c7105daf876ce3e339a0f7abb45254a582.png" />
 </div>
 </div>
 </section>
@@ -1283,7 +1355,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2462371676e84589ebdf011a46ca65b2100bea31ff1323b3beb148dd0ef9ec5c.png" src="../_images/2462371676e84589ebdf011a46ca65b2100bea31ff1323b3beb148dd0ef9ec5c.png" />
+<img alt="../_images/c3b66a94d469d4166b35014c1f91bf0d88908c01efd57474c619aff35213c342.png" src="../_images/c3b66a94d469d4166b35014c1f91bf0d88908c01efd57474c619aff35213c342.png" />
 </div>
 </div>
 <p>However, there is one important argument in <code class="docutils literal notranslate"><span class="pre">.contourf()</span></code> that’s absent in <code class="docutils literal notranslate"><span class="pre">.pcolormesh()</span></code>. Namely, the <code class="docutils literal notranslate"><span class="pre">levels</span></code> argument determines where the contour boundaries are. For example, we can request denser contours than the plot above if we set:</p>
@@ -1319,7 +1391,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cbd6ae20ca37a06daff614a85d5ebbb7d200d721e6213171bae8a110ca990cfc.png" src="../_images/cbd6ae20ca37a06daff614a85d5ebbb7d200d721e6213171bae8a110ca990cfc.png" />
+<img alt="../_images/73dcf8cc0ac18eb643336245a886f363490eb1decedcbafe29df34321bbca8e2.png" src="../_images/73dcf8cc0ac18eb643336245a886f363490eb1decedcbafe29df34321bbca8e2.png" />
 </div>
 </div>
 <p>We can also use logarithmic color scale in filled contour plot:</p>
@@ -1355,7 +1427,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02b52ff287eb04b9da7b69820539f7bf8d08b10c86362c45f1bce55416bc8cd2.png" src="../_images/02b52ff287eb04b9da7b69820539f7bf8d08b10c86362c45f1bce55416bc8cd2.png" />
+<img alt="../_images/a820a3343d7a45b4eda9819b80b06e6efe6d989d4289fcd797bdb28fa3198a21.png" src="../_images/a820a3343d7a45b4eda9819b80b06e6efe6d989d4289fcd797bdb28fa3198a21.png" />
 </div>
 </div>
 </section>
@@ -1391,7 +1463,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0ae12d6ff4d207a3b44effebe2b82926eeadd4f49b883e8133d6cf99ab2cb936.png" src="../_images/0ae12d6ff4d207a3b44effebe2b82926eeadd4f49b883e8133d6cf99ab2cb936.png" />
+<img alt="../_images/2e7fbe0a5cf91cb718a4b64d9a92bd60c7c8d447a5f3521ed11bdd605115f0a7.png" src="../_images/2e7fbe0a5cf91cb718a4b64d9a92bd60c7c8d447a5f3521ed11bdd605115f0a7.png" />
 </div>
 </div>
 <p>In the case of line contour plot, it is no longer easy to read off the values of the contours via the color bar. So we may instead put <em>labels on the contours</em> themselves. To do so, we need to use the <code class="docutils literal notranslate"><span class="pre">.clabel()</span></code> method on the contours, e.g.,</p>
@@ -1425,7 +1497,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ffe1b143a4bf9d7a409b027f8b732028c1c0ae8898f41c241766c1fcd3325890.png" src="../_images/ffe1b143a4bf9d7a409b027f8b732028c1c0ae8898f41c241766c1fcd3325890.png" />
+<img alt="../_images/674e0d9f333756e73bad2918e47296500fabfe0b2d7fdf7c1f0c3cb36fa09ea4.png" src="../_images/674e0d9f333756e73bad2918e47296500fabfe0b2d7fdf7c1f0c3cb36fa09ea4.png" />
 </div>
 </div>
 <p>Finally, the line style of contours can also be adjusted <em>per contour</em>:</p>
@@ -1464,7 +1536,7 @@ shape of `sal` = (50, 269)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/25fa3a5dcd6b87521949820a2f5751e404042981bd7a7e3be6829f414cac1223.png" src="../_images/25fa3a5dcd6b87521949820a2f5751e404042981bd7a7e3be6829f414cac1223.png" />
+<img alt="../_images/993c50c69ecf9a8f2159ed08e4b8e50b3979a2afd3c1683c067e83300964f0ef.png" src="../_images/993c50c69ecf9a8f2159ed08e4b8e50b3979a2afd3c1683c067e83300964f0ef.png" />
 </div>
 </div>
 </section>
