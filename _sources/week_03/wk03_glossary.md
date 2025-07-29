@@ -11,3 +11,7 @@ Here are some python syntax features and functions that you should know after th
 
 Also note the use of **indentation** in `for` loop and `if`-`elif`-`else` statements
 
+## Built-in python functions:
+
++ `range()`: create a range object, useful in `for` loops
++ `enumerate()`: enable `for` loops that iterate through indices and values at the same time 
