@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'week_05/matplotlib_details';</script>
     <link rel="icon" href="../_static/ocean_python_sm.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -455,6 +457,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-bars-the-errorbar-method">Error bars: the <code class="docutils literal notranslate"><span class="pre">.errorbar()</span></code> method</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-graph-the-bar-method">Bar graph: the <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> method</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-the-hist-method">Histogram: the <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#annotations-the-axhline-axvline-and-text-methods">Annotations: the <code class="docutils literal notranslate"><span class="pre">.axhline()</span></code>, <code class="docutils literal notranslate"><span class="pre">.axvline()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.text()</span></code> methods</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title-legends-and-axes-labels">Title, legends, and axes labels</a><ul class="nav section-nav flex-column">
@@ -745,6 +748,55 @@ document.write(`
 </div>
 </div>
 <p>The official documentations for the <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method can be found in <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html</a></p>
+</section>
+<section id="annotations-the-axhline-axvline-and-text-methods">
+<h3>Annotations: the <code class="docutils literal notranslate"><span class="pre">.axhline()</span></code>, <code class="docutils literal notranslate"><span class="pre">.axvline()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.text()</span></code> methods<a class="headerlink" href="#annotations-the-axhline-axvline-and-text-methods" title="Link to this heading">#</a></h3>
+<p>Sometimes you want to include auxillary guide lines and texts in your plot. For guide lines, the <code class="docutils literal notranslate"><span class="pre">.axhline()</span></code> method can be used to produce horizontal line while the <code class="docutils literal notranslate"><span class="pre">.axvline()</span></code> method can be used to create vertical line. The <code class="docutils literal notranslate"><span class="pre">.axhline()</span></code> method has a position argument specifying the <span class="math notranslate nohighlight">\(y\)</span> coordinate of the horizontal line. Similarly, <code class="docutils literal notranslate"><span class="pre">.axvline()</span></code> has a positional argument specifying the <span class="math notranslate nohighlight">\(x\)</span> coordinate of the vertical line. In addition, the <code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">lw</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code> keyword arguments can be used to specify line style, line width, and color, respectively.</p>
+<p>As an example, suppose we want to add a vertical line that indicates the average height to the histogram from the previous section. In such case, we may do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">heights</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+
+<span class="c1"># NEW: adding vertical line</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heights</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6a087536349c90fe8841124cde0dd7b0d5f292f58b48839a23eb5018e4940158.png" src="../_images/6a087536349c90fe8841124cde0dd7b0d5f292f58b48839a23eb5018e4940158.png" />
+</div>
+</div>
+<p>In addition, we can also place texts in the plot area using the <code class="docutils literal notranslate"><span class="pre">.text()</span></code> method. The <code class="docutils literal notranslate"><span class="pre">.text()</span></code> method has 3 mandatory arguments, which are the x-coordinate and y-coordinate of the texts, and the string to be used (in that order). In addition, the <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">fontsize</span></code> keyword arguments can be used to set the color and font-size of the text, respectively.</p>
+<p>For example, suppose we want want to print out the mean height in the above histogram, we may do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">avg_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">heights</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">avg_h</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># NEW: adding text</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">162</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;average = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">avg_h</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; cm&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3dd709afa2311e8e22175c9232147422364dcd9bb3367ca748d1b5b3cd14e4ae.png" src="../_images/3dd709afa2311e8e22175c9232147422364dcd9bb3367ca748d1b5b3cd14e4ae.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="title-legends-and-axes-labels">
@@ -1065,6 +1117,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-bars-the-errorbar-method">Error bars: the <code class="docutils literal notranslate"><span class="pre">.errorbar()</span></code> method</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-graph-the-bar-method">Bar graph: the <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> method</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-the-hist-method">Histogram: the <code class="docutils literal notranslate"><span class="pre">.hist()</span></code> method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#annotations-the-axhline-axvline-and-text-methods">Annotations: the <code class="docutils literal notranslate"><span class="pre">.axhline()</span></code>, <code class="docutils literal notranslate"><span class="pre">.axvline()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.text()</span></code> methods</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title-legends-and-axes-labels">Title, legends, and axes labels</a><ul class="nav section-nav flex-column">
