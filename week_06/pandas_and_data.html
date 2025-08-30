@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -642,6 +642,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">names</span></code>: The names to use as column names. If not supplied the first line being read is treated as the header row</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">skiprows</span></code>: if an <code class="docutils literal notranslate"><span class="pre">int</span></code>, the number of rows to skip before contents are read in; if a python <code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">int</span></code>, the line indices to skip.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cols</span></code>: the columns to read into the DataFrame. Can be a list of column indices or column names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index_col</span></code>: the column to use as row index. Can be an <code class="docutils literal notranslate"><span class="pre">int</span></code> or a name</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">na_values</span></code>: which values are to be treated as indication of missing data</p></li>
 </ul>
 <p>As a second example, here is the content of a simple CSV file (don’t worry about the details of the code; we don’t expect you to read a file as plain text in this course):</p>
@@ -721,6 +722,73 @@ m,g,cm,L
       <td>2</td>
       <td>NaN</td>
       <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Alternatively, suppose we want to read in all columns, and use column D as row index. The code is then:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/header_example.csv&quot;</span><span class="p">,</span> 
+    <span class="n">skiprows</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+    <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span>
+    <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;-999&quot;</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">small_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>D</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3.2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>7.9</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>NaN</td>
+      <td>5</td>
     </tr>
   </tbody>
 </table>

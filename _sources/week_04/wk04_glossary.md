@@ -76,7 +76,9 @@ The official numpy documentations can be found at [https://numpy.org/doc/stable/
 + `np.sum()`: sum over elements<br><br>
 
 + `np.max()`, `np.min()`: finding extremum *value* of an array
-+ `np.argmax()`, `np.argmin()`: finding the *index* at which the extremum is attained
++ `np.argmax()`, `np.argmin()`: finding the *index* at which the extremum is attained<br><br>
+
++ `np.nanmean()`, `np.nanmedian()`, `np.nanvar()`, `np.nanstd()`, `np.nanmin()`, `np.nanmax()`, `np.nansum()`: "nan-omitted" variation of the respective functions without the `nan` in their names
 
 ### Other functions
 

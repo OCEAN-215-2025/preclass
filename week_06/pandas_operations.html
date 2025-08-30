@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -454,6 +454,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-a-dataframe">Subsetting a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-the-rows-of-a-dataframe">Sorting the rows of a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-a-dataframe">Modifying a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remark-dummy-versus-semantic-row-index">Remark: dummy versus semantic row index</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-function">Statistics function</a></li>
 </ul>
             </nav>
@@ -2805,6 +2806,742 @@ Name: Depth_m, Length: 10057, dtype: int64
 </div>
 <p>Notice that the new columns are inserted to the right of the existing columns.</p>
 </section>
+<section id="remark-dummy-versus-semantic-row-index">
+<h2>Remark: dummy versus semantic row index<a class="headerlink" href="#remark-dummy-versus-semantic-row-index" title="Link to this heading">#</a></h2>
+<p>In the examples above, the row index is really just an arbitrary number that has no meaning in and of itself, and our row operations have been based on the actual data contained in the columns. For most data, this setup is a good default.</p>
+<p>However, sometimes your tabular data have a special column that can serve as a <strong>unique indentifier</strong> of the row. In other words, the value of this column uniquely identify the row of data it comes from. A good example are <em>time series</em> data, where the timestamp uniquely identify a row of observations. In such case, it can be beneficial to set this specific row as the index of the DataFrame.</p>
+<p>Our CalCOFI subset has no natural unique identifier. However, suppose we are interested only in on observations at depth = 10 m. Then, the <code class="docutils literal notranslate"><span class="pre">Cast_Count</span></code> column uniquely identify an observation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/CalCOFI_subset.csv&quot;</span><span class="p">)</span>
+<span class="n">CalCOFI_10m</span> <span class="o">=</span> <span class="n">CalCOFI</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">CalCOFI</span><span class="p">[</span><span class="s2">&quot;Depth_m&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CalCOFI_10m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cast_Count</th>
+      <th>Station_ID</th>
+      <th>Datetime</th>
+      <th>Depth_m</th>
+      <th>T_degC</th>
+      <th>Salinity</th>
+      <th>SigmaTheta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>992</td>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>10</td>
+      <td>13.950</td>
+      <td>33.2100</td>
+      <td>24.81500</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1267</td>
+      <td>090.0 070.0</td>
+      <td>1950-04-08 17:30:00</td>
+      <td>10</td>
+      <td>14.980</td>
+      <td>33.4000</td>
+      <td>24.74400</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>1387</td>
+      <td>090.0 070.0</td>
+      <td>1950-05-07 17:36:00</td>
+      <td>10</td>
+      <td>14.170</td>
+      <td>33.3080</td>
+      <td>24.84500</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>1477</td>
+      <td>090.0 070.0</td>
+      <td>1950-06-13 00:42:00</td>
+      <td>10</td>
+      <td>14.510</td>
+      <td>33.1110</td>
+      <td>24.62200</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>1589</td>
+      <td>090.0 070.0</td>
+      <td>1950-07-13 00:54:00</td>
+      <td>10</td>
+      <td>16.550</td>
+      <td>33.1020</td>
+      <td>24.16400</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9913</th>
+      <td>35250</td>
+      <td>090.0 070.0</td>
+      <td>2019-11-09 01:24:00</td>
+      <td>10</td>
+      <td>16.983</td>
+      <td>33.3950</td>
+      <td>24.28840</td>
+    </tr>
+    <tr>
+      <th>9944</th>
+      <td>35354</td>
+      <td>090.0 070.0</td>
+      <td>2020-01-09 18:13:00</td>
+      <td>10</td>
+      <td>15.054</td>
+      <td>33.3427</td>
+      <td>24.68417</td>
+    </tr>
+    <tr>
+      <th>9978</th>
+      <td>35429</td>
+      <td>090.0 070.0</td>
+      <td>2020-07-16 23:40:00</td>
+      <td>10</td>
+      <td>17.114</td>
+      <td>33.6188</td>
+      <td>24.42921</td>
+    </tr>
+    <tr>
+      <th>10015</th>
+      <td>35500</td>
+      <td>090.0 070.0</td>
+      <td>2020-10-14 23:52:00</td>
+      <td>10</td>
+      <td>17.373</td>
+      <td>33.3346</td>
+      <td>24.14988</td>
+    </tr>
+    <tr>
+      <th>10037</th>
+      <td>35578</td>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>10</td>
+      <td>15.092</td>
+      <td>33.4561</td>
+      <td>24.76328</td>
+    </tr>
+  </tbody>
+</table>
+<p>348 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>Thus, we may set the <code class="docutils literal notranslate"><span class="pre">Cast_Count</span></code> column as the row index of this subsetted DataFrame. To do so, we use the <code class="docutils literal notranslate"><span class="pre">.set_index()</span></code> method of the DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI_10m</span> <span class="o">=</span> <span class="n">CalCOFI_10m</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Cast_Count&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CalCOFI_10m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Station_ID</th>
+      <th>Datetime</th>
+      <th>Depth_m</th>
+      <th>T_degC</th>
+      <th>Salinity</th>
+      <th>SigmaTheta</th>
+    </tr>
+    <tr>
+      <th>Cast_Count</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>992</th>
+      <td>090.0 070.0</td>
+      <td>1950-02-06 19:54:00</td>
+      <td>10</td>
+      <td>13.950</td>
+      <td>33.2100</td>
+      <td>24.81500</td>
+    </tr>
+    <tr>
+      <th>1267</th>
+      <td>090.0 070.0</td>
+      <td>1950-04-08 17:30:00</td>
+      <td>10</td>
+      <td>14.980</td>
+      <td>33.4000</td>
+      <td>24.74400</td>
+    </tr>
+    <tr>
+      <th>1387</th>
+      <td>090.0 070.0</td>
+      <td>1950-05-07 17:36:00</td>
+      <td>10</td>
+      <td>14.170</td>
+      <td>33.3080</td>
+      <td>24.84500</td>
+    </tr>
+    <tr>
+      <th>1477</th>
+      <td>090.0 070.0</td>
+      <td>1950-06-13 00:42:00</td>
+      <td>10</td>
+      <td>14.510</td>
+      <td>33.1110</td>
+      <td>24.62200</td>
+    </tr>
+    <tr>
+      <th>1589</th>
+      <td>090.0 070.0</td>
+      <td>1950-07-13 00:54:00</td>
+      <td>10</td>
+      <td>16.550</td>
+      <td>33.1020</td>
+      <td>24.16400</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35250</th>
+      <td>090.0 070.0</td>
+      <td>2019-11-09 01:24:00</td>
+      <td>10</td>
+      <td>16.983</td>
+      <td>33.3950</td>
+      <td>24.28840</td>
+    </tr>
+    <tr>
+      <th>35354</th>
+      <td>090.0 070.0</td>
+      <td>2020-01-09 18:13:00</td>
+      <td>10</td>
+      <td>15.054</td>
+      <td>33.3427</td>
+      <td>24.68417</td>
+    </tr>
+    <tr>
+      <th>35429</th>
+      <td>090.0 070.0</td>
+      <td>2020-07-16 23:40:00</td>
+      <td>10</td>
+      <td>17.114</td>
+      <td>33.6188</td>
+      <td>24.42921</td>
+    </tr>
+    <tr>
+      <th>35500</th>
+      <td>090.0 070.0</td>
+      <td>2020-10-14 23:52:00</td>
+      <td>10</td>
+      <td>17.373</td>
+      <td>33.3346</td>
+      <td>24.14988</td>
+    </tr>
+    <tr>
+      <th>35578</th>
+      <td>090.0 070.0</td>
+      <td>2021-01-21 13:36:00</td>
+      <td>10</td>
+      <td>15.092</td>
+      <td>33.4561</td>
+      <td>24.76328</td>
+    </tr>
+  </tbody>
+</table>
+<p>348 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>With a semantic row index such as the <code class="docutils literal notranslate"><span class="pre">Cast_Count</span></code>, we can use <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> to meaningfully subset out data, e.g.,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI_10m_mid</span> <span class="o">=</span> <span class="n">CalCOFI_10m</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">8000</span><span class="p">:</span><span class="mi">10000</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CalCOFI_10m_mid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Station_ID</th>
+      <th>Datetime</th>
+      <th>Depth_m</th>
+      <th>T_degC</th>
+      <th>Salinity</th>
+      <th>SigmaTheta</th>
+    </tr>
+    <tr>
+      <th>Cast_Count</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8006</th>
+      <td>090.0 070.0</td>
+      <td>1955-12-05 12:24:00</td>
+      <td>10</td>
+      <td>13.44</td>
+      <td>33.400</td>
+      <td>25.066</td>
+    </tr>
+    <tr>
+      <th>8141</th>
+      <td>090.0 070.0</td>
+      <td>1956-02-08 08:24:00</td>
+      <td>10</td>
+      <td>12.79</td>
+      <td>33.270</td>
+      <td>25.095</td>
+    </tr>
+    <tr>
+      <th>8330</th>
+      <td>090.0 070.0</td>
+      <td>1956-04-19 21:18:00</td>
+      <td>10</td>
+      <td>12.53</td>
+      <td>33.330</td>
+      <td>25.192</td>
+    </tr>
+    <tr>
+      <th>8437</th>
+      <td>090.0 070.0</td>
+      <td>1956-06-09 14:24:00</td>
+      <td>10</td>
+      <td>13.68</td>
+      <td>33.220</td>
+      <td>24.879</td>
+    </tr>
+    <tr>
+      <th>8755</th>
+      <td>090.0 070.0</td>
+      <td>1957-04-15 19:00:00</td>
+      <td>10</td>
+      <td>13.98</td>
+      <td>33.440</td>
+      <td>24.987</td>
+    </tr>
+    <tr>
+      <th>9018</th>
+      <td>090.0 070.0</td>
+      <td>1957-07-14 10:42:00</td>
+      <td>10</td>
+      <td>17.95</td>
+      <td>33.417</td>
+      <td>24.074</td>
+    </tr>
+    <tr>
+      <th>9203</th>
+      <td>090.0 070.0</td>
+      <td>1957-10-29 06:54:00</td>
+      <td>10</td>
+      <td>18.97</td>
+      <td>33.710</td>
+      <td>24.045</td>
+    </tr>
+    <tr>
+      <th>9327</th>
+      <td>090.0 070.0</td>
+      <td>1957-12-17 14:00:00</td>
+      <td>10</td>
+      <td>16.45</td>
+      <td>33.440</td>
+      <td>24.446</td>
+    </tr>
+    <tr>
+      <th>9527</th>
+      <td>090.0 070.0</td>
+      <td>1958-03-12 02:48:00</td>
+      <td>10</td>
+      <td>15.38</td>
+      <td>33.580</td>
+      <td>24.795</td>
+    </tr>
+    <tr>
+      <th>9993</th>
+      <td>090.0 070.0</td>
+      <td>1958-09-11 20:24:00</td>
+      <td>10</td>
+      <td>18.82</td>
+      <td>33.275</td>
+      <td>23.750</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Notice that even though there is no data with <code class="docutils literal notranslate"><span class="pre">Cast_Count</span></code> exactly equal to <code class="docutils literal notranslate"><span class="pre">8000</span></code> and <code class="docutils literal notranslate"><span class="pre">10000</span></code>, pandas know how to use these values as bound, because our index is <em>sorted</em> (or equivalenetly, monotone). Moreover, recall that <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> is end-point inclusive. Thus, knowing our result, the above is equivalent to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI_10m_mid</span> <span class="o">=</span> <span class="n">CalCOFI_10m</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">8006</span><span class="p">:</span><span class="mi">9993</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CalCOFI_10m_mid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Station_ID</th>
+      <th>Datetime</th>
+      <th>Depth_m</th>
+      <th>T_degC</th>
+      <th>Salinity</th>
+      <th>SigmaTheta</th>
+    </tr>
+    <tr>
+      <th>Cast_Count</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8006</th>
+      <td>090.0 070.0</td>
+      <td>1955-12-05 12:24:00</td>
+      <td>10</td>
+      <td>13.44</td>
+      <td>33.400</td>
+      <td>25.066</td>
+    </tr>
+    <tr>
+      <th>8141</th>
+      <td>090.0 070.0</td>
+      <td>1956-02-08 08:24:00</td>
+      <td>10</td>
+      <td>12.79</td>
+      <td>33.270</td>
+      <td>25.095</td>
+    </tr>
+    <tr>
+      <th>8330</th>
+      <td>090.0 070.0</td>
+      <td>1956-04-19 21:18:00</td>
+      <td>10</td>
+      <td>12.53</td>
+      <td>33.330</td>
+      <td>25.192</td>
+    </tr>
+    <tr>
+      <th>8437</th>
+      <td>090.0 070.0</td>
+      <td>1956-06-09 14:24:00</td>
+      <td>10</td>
+      <td>13.68</td>
+      <td>33.220</td>
+      <td>24.879</td>
+    </tr>
+    <tr>
+      <th>8755</th>
+      <td>090.0 070.0</td>
+      <td>1957-04-15 19:00:00</td>
+      <td>10</td>
+      <td>13.98</td>
+      <td>33.440</td>
+      <td>24.987</td>
+    </tr>
+    <tr>
+      <th>9018</th>
+      <td>090.0 070.0</td>
+      <td>1957-07-14 10:42:00</td>
+      <td>10</td>
+      <td>17.95</td>
+      <td>33.417</td>
+      <td>24.074</td>
+    </tr>
+    <tr>
+      <th>9203</th>
+      <td>090.0 070.0</td>
+      <td>1957-10-29 06:54:00</td>
+      <td>10</td>
+      <td>18.97</td>
+      <td>33.710</td>
+      <td>24.045</td>
+    </tr>
+    <tr>
+      <th>9327</th>
+      <td>090.0 070.0</td>
+      <td>1957-12-17 14:00:00</td>
+      <td>10</td>
+      <td>16.45</td>
+      <td>33.440</td>
+      <td>24.446</td>
+    </tr>
+    <tr>
+      <th>9527</th>
+      <td>090.0 070.0</td>
+      <td>1958-03-12 02:48:00</td>
+      <td>10</td>
+      <td>15.38</td>
+      <td>33.580</td>
+      <td>24.795</td>
+    </tr>
+    <tr>
+      <th>9993</th>
+      <td>090.0 070.0</td>
+      <td>1958-09-11 20:24:00</td>
+      <td>10</td>
+      <td>18.82</td>
+      <td>33.275</td>
+      <td>23.750</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As it turns out, pandas allow index to be non-unique and non-monotone. However, some row operations may no longer work or have unexpected behaviors in such cases.</p>
+<p>If the index of your DataFrame is not monotone, you can sort the data along the index using the <code class="docutils literal notranslate"><span class="pre">.sort_index()</span></code> method, which works similarly to the <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code> method. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalCOFI_sal</span> <span class="o">=</span> <span class="n">CalCOFI</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Salinity&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CalCOFI_sal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cast_Count</th>
+      <th>Station_ID</th>
+      <th>Datetime</th>
+      <th>Depth_m</th>
+      <th>T_degC</th>
+      <th>SigmaTheta</th>
+    </tr>
+    <tr>
+      <th>Salinity</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>32.624</th>
+      <td>30396</td>
+      <td>090.0 070.0</td>
+      <td>2003-10-25 05:31:00</td>
+      <td>59</td>
+      <td>12.07</td>
+      <td>24.733</td>
+    </tr>
+    <tr>
+      <th>32.641</th>
+      <td>30396</td>
+      <td>090.0 070.0</td>
+      <td>2003-10-25 05:31:00</td>
+      <td>70</td>
+      <td>11.42</td>
+      <td>24.866</td>
+    </tr>
+    <tr>
+      <th>32.653</th>
+      <td>30396</td>
+      <td>090.0 070.0</td>
+      <td>2003-10-25 05:31:00</td>
+      <td>75</td>
+      <td>11.15</td>
+      <td>24.924</td>
+    </tr>
+    <tr>
+      <th>32.674</th>
+      <td>30396</td>
+      <td>090.0 070.0</td>
+      <td>2003-10-25 05:31:00</td>
+      <td>50</td>
+      <td>12.85</td>
+      <td>24.623</td>
+    </tr>
+    <tr>
+      <th>32.693</th>
+      <td>30396</td>
+      <td>090.0 070.0</td>
+      <td>2003-10-25 05:31:00</td>
+      <td>85</td>
+      <td>10.66</td>
+      <td>25.041</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>34.677</th>
+      <td>13987</td>
+      <td>090.0 070.0</td>
+      <td>1964-04-18 02:18:00</td>
+      <td>3600</td>
+      <td>1.57</td>
+      <td>27.766</td>
+    </tr>
+    <tr>
+      <th>34.679</th>
+      <td>13987</td>
+      <td>090.0 070.0</td>
+      <td>1964-04-18 02:18:00</td>
+      <td>3689</td>
+      <td>1.57</td>
+      <td>27.769</td>
+    </tr>
+    <tr>
+      <th>34.680</th>
+      <td>13987</td>
+      <td>090.0 070.0</td>
+      <td>1964-04-18 02:18:00</td>
+      <td>3789</td>
+      <td>1.58</td>
+      <td>27.769</td>
+    </tr>
+    <tr>
+      <th>34.690</th>
+      <td>2378</td>
+      <td>090.0 070.0</td>
+      <td>1951-02-20 03:00:00</td>
+      <td>2366</td>
+      <td>1.86</td>
+      <td>27.747</td>
+    </tr>
+    <tr>
+      <th>34.720</th>
+      <td>6634</td>
+      <td>090.0 070.0</td>
+      <td>1954-02-10 14:18:00</td>
+      <td>1753</td>
+      <td>2.34</td>
+      <td>27.730</td>
+    </tr>
+  </tbody>
+</table>
+<p>10057 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>Note that even upon sorting, <code class="docutils literal notranslate"><span class="pre">Salinity</span></code> is still not a good row index, since it is not unique.</p>
+</section>
 <section id="statistics-function">
 <h2>Statistics function<a class="headerlink" href="#statistics-function" title="Link to this heading">#</a></h2>
 <p>If you want to obtain summary statistics of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, pandas has a convenient <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method that computes a bunch of them for you in one go:</p>
@@ -3049,6 +3786,7 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-a-dataframe">Subsetting a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-the-rows-of-a-dataframe">Sorting the rows of a DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-a-dataframe">Modifying a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remark-dummy-versus-semantic-row-index">Remark: dummy versus semantic row index</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-function">Statistics function</a></li>
 </ul>
   </nav></div>

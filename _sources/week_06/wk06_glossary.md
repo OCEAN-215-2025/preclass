@@ -31,8 +31,10 @@ The documentation of `matplolib.dates` submodule is at [https://matplotlib.org/s
 + `<DataFrame>.iloc[]`: subset the DataFrame by row and column indices
 + `<DataFrame>.loc[]`: subset the DataFrame by row and column labels
 + `<DataFrame>.dropna()`: dropping rows with missing values from the DataFrame
++ `<DataFrame>.sort_index()`: sort the rows of a DataFrame by the values of its index
 + `<DataFrame>.sort_values()`: sort the rows of a DataFrame by values from certain columns
 + `<DataFrame>.reset_index()`: reset the index of a DataFrame as a regular column
++ `<DataFrame>.set_index()`: set a column of the DataFrame as the DataFrame's row index
 + `<DataFrame>.to_csv()`: export a DataFrame as an external csv file
 
 ### Descriptive statistics

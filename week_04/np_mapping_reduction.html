@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -463,6 +463,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-functions">Statistics functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulation-functions">Accumulation functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extremum-functions">Extremum functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-nan-values-in-reduction">Dealing with nan values in reduction</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-functions">Sorting functions</a></li>
@@ -789,6 +790,65 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="dealing-with-nan-values-in-reduction">
+<h3>Dealing with nan values in reduction<a class="headerlink" href="#dealing-with-nan-values-in-reduction" title="Link to this heading">#</a></h3>
+<p>As noted, mathematical operations on <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> generally results in <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>. This includes reduction functions. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(nan)
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> is often used to represent missing values, and when calcaluating statistics involving missing values it is often appropriate to simply omit these values instead of voiding the entire calculation. Many reduction functions in numpy have an “nan-omitted” variation precisely for such a purpose. The names of these take the form of “nan” followed by the original names of the functions. For example, the nan-omitted variation of <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> is <code class="docutils literal notranslate"><span class="pre">np.nanmean()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare with the result from manually removing the <code class="docutils literal notranslate"><span class="pre">nan</span></code> value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Functions similar to <code class="docutils literal notranslate"><span class="pre">np.nanmean()</span></code> include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nanmean()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nanmedian()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nanvar()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nanstd()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nanmin()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nanmax()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.nansum()</span></code></p></li>
+</ul>
+</section>
 </section>
 <section id="sorting-functions">
 <h2>Sorting functions<a class="headerlink" href="#sorting-functions" title="Link to this heading">#</a></h2>
@@ -908,6 +968,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-functions">Statistics functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulation-functions">Accumulation functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extremum-functions">Extremum functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-nan-values-in-reduction">Dealing with nan values in reduction</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-functions">Sorting functions</a></li>
