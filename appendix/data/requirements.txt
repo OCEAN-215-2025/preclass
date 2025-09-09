@@ -29,6 +29,7 @@ hdf5
 h5py
 netcdf4
 openpyxl
+gdown
 # ocean specific
 cartopy
 cmocean
@@ -37,6 +38,7 @@ ipykernel
 ipympl
 jupyter-lsp
 jupyterlab
+jupyterlab-git
 notebook
 # grading
 otter-grader
