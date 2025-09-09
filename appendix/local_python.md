@@ -21,7 +21,7 @@ The easiest way to create a new environment with the desired packages installed 
 Download the requirements.txt file to your local computer, then, change directory (via `cd`, using the same text-based file navigation convention we discussed in week 6) to the location of the requirements file, and execute the following command:
 
 ```
-    mamba create -n learn --file requirement.txt
+    mamba create -n learn --file requirements.txt
 ```
 
 (change the name `learn` to whatever way you want to name your environment)
@@ -40,10 +40,17 @@ When the `learn` environment is activated, the prompt of the terminal should sta
 
 **Figure**: A terminal with the "learn" environment activated.
 
+Finally, a number of packages installed on our JupyterHub are absent in the conda-forge repository that mamba uses but available in the pypi repository. To install these we have to use `pip` in the _activated_ environment. The command is:
+
+```
+    pip install -U -r pip-requirements.txt
+```
+
+Note that you need only to run the above installation procedure **once**. You do not have to set up your environment again in order to use it. Instead, follow the instructions in the subsection below to create and edit your jupyter notebooks.
 
 ## Starting JupyterLab
 
-Instead of JupyterHub, in a local installation you would like to view your Jupyter notebooks using JupyterLab. To view your notebook in JupyterLab, first change directory (again via `cd`) to the folder containing your notebook. Then, in the terminal, run:
+Instead of JupyterHub, in a local installation you will view your Jupyter notebooks using JupyterLab. To view your notebook in JupyterLab, first open a mamba-enabled terminal, then activate the `learn` environment (via `mamba activate learn`) and change directory (via `cd`) to the folder containing your notebook in the terminal. Next, in the same terminal, run:
 
 ```
     jupyter lab

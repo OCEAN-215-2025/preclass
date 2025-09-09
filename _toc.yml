@@ -37,6 +37,7 @@ chapters:
 - file: week_06/wk06_intro.md
   sections:
   - file: week_06/file_path.ipynb
+  - file: week_06/internet_files.ipynb
   - file: week_06/pandas_and_data.ipynb
   - file: week_06/pandas_operations.ipynb
   - file: week_06/pandas_datetime.ipynb
@@ -66,3 +67,5 @@ chapters:
 - file: appendix/appendix_intro.md
   sections:
   - file: appendix/local_python.md
+  - file: appendix/additional_packages.md
+  - file: appendix/database_apis.ipynb
