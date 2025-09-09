@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -218,6 +218,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="file_path.html">Navigating file systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internet_files.html">Downloading files from the internet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_datetime.html">Handling datetime in pandas</a></li>
@@ -252,6 +253,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/additional_packages.html">Installing additional python packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/database_apis.html">Database access via python</a></li>
 </ul>
 </details></li>
 </ul>
@@ -758,7 +761,7 @@ Name: Depth_m, Length: 10057, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  0,  10,  20, ..., 400, 500, 515], shape=(10057,))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  0,  10,  20, ..., 400, 500, 515], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -784,7 +787,7 @@ Name: Depth_m, Length: 10057, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([    0,     1,     2, ..., 10054, 10055, 10056], shape=(10057,))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([    0,     1,     2, ..., 10054, 10055, 10056], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -3663,7 +3666,7 @@ Name: Depth_m, Length: 10057, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(9.6)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.6
 </pre></div>
 </div>
 </div>

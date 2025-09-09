@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -218,6 +218,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="wk06_intro.html">Week 6: File path; Introduction to pandas; Datetime values</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="file_path.html">Navigating file systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internet_files.html">Downloading files from the internet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_and_data.html">Pandas DataFrame and tabular data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_operations.html">DataFrame operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas_datetime.html">Handling datetime in pandas</a></li>
@@ -252,6 +253,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_intro.html">Appendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/local_python.html">Installing python locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/additional_packages.html">Installing additional python packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/database_apis.html">Database access via python</a></li>
 </ul>
 </details></li>
 </ul>
@@ -450,6 +453,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-resources">Online resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internet-download-functions">Internet download functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-functions">Pandas functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-attributes">Pandas DataFrame attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-methods">Pandas DataFrame methods</a><ul class="nav section-nav flex-column">
@@ -476,6 +480,14 @@ document.write(`
 <h2>Online resources<a class="headerlink" href="#online-resources" title="Link to this heading">#</a></h2>
 <p>The official pandas documentation page is at <a class="reference external" href="https://pandas.pydata.org/docs/reference/index.html">https://pandas.pydata.org/docs/reference/index.html</a>.</p>
 <p>The documentation of <code class="docutils literal notranslate"><span class="pre">matplolib.dates</span></code> submodule is at <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html">https://matplotlib.org/stable/api/dates_api.html</a></p>
+</section>
+<section id="internet-download-functions">
+<h2>Internet download functions<a class="headerlink" href="#internet-download-functions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">urlretrive()</span></code> (from <code class="docutils literal notranslate"><span class="pre">urllib.request</span></code>): retrieve a file from the internet to the local file system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gdown.download()</span></code>: download a public Google Drive file to the local file system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zipfile.Zipfile()</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;Zipfile&gt;.extractall()</span></code>: extract the content of a zip file.</p></li>
+</ul>
 </section>
 <section id="pandas-functions">
 <h2>Pandas functions<a class="headerlink" href="#pandas-functions" title="Link to this heading">#</a></h2>
@@ -616,6 +628,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-resources">Online resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internet-download-functions">Internet download functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-functions">Pandas functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-attributes">Pandas DataFrame attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe-methods">Pandas DataFrame methods</a><ul class="nav section-nav flex-column">
