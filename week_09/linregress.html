@@ -514,7 +514,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c38b27b8423dbe782c2d7966c8d8f7668036a871d74b590a11e9e2a194d0294a.png" src="../_images/c38b27b8423dbe782c2d7966c8d8f7668036a871d74b590a11e9e2a194d0294a.png" />
+<img alt="../_images/d0e013a4ded0458d624a3a9d584c4f1f38897352a586707b049f60453e1a5c3c.png" src="../_images/d0e013a4ded0458d624a3a9d584c4f1f38897352a586707b049f60453e1a5c3c.png" />
 </div>
 </div>
 <p>Notice that while the measurements don’t fall onto a literal straight line, there is a clear linear trend. So we may still want to associate the data with a <strong>“best fitted line”</strong>. But how do we do that?</p>
@@ -551,7 +551,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4b2652c56464caa37ca6c3056ee7b03a6c1945398e7a55c95fb795bc2f936067.png" src="../_images/4b2652c56464caa37ca6c3056ee7b03a6c1945398e7a55c95fb795bc2f936067.png" />
+<img alt="../_images/f20d9f3288943936008aed83b9a154aad779c2dbc997deff0983cfaa96979626.png" src="../_images/f20d9f3288943936008aed83b9a154aad779c2dbc997deff0983cfaa96979626.png" />
 </div>
 </div>
 </section>
@@ -575,7 +575,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=3.2126420454545452, intercept=-441.57812500000006, rvalue=0.9161407489976452, pvalue=0.00019534135276194468, stderr=0.4969862092877473, intercept_stderr=80.95232605206309)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=np.float64(3.2126420454545452), intercept=np.float64(-441.57812500000006), rvalue=np.float64(0.9161407489976452), pvalue=np.float64(0.00019534135276194468), stderr=np.float64(0.4969862092877473), intercept_stderr=np.float64(80.95232605206309))
 </pre></div>
 </div>
 </div>
@@ -612,7 +612,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fb584f7b2d74ac97a3b52e65101361306bbf76922503c053822ea035585992ea.png" src="../_images/fb584f7b2d74ac97a3b52e65101361306bbf76922503c053822ea035585992ea.png" />
+<img alt="../_images/d6fd7679edbad1aa39a4919356b4cbe28f4eb4eaba3575c3930ca50e33c0a827.png" src="../_images/d6fd7679edbad1aa39a4919356b4cbe28f4eb4eaba3575c3930ca50e33c0a827.png" />
 </div>
 </div>
 </section>
@@ -638,7 +638,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9161407489976452
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.9161407489976452)
 </pre></div>
 </div>
 </div>
@@ -669,7 +669,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8393138719739663
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.8393138719739663)
 </pre></div>
 </div>
 </div>
@@ -716,7 +716,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ef857986af7533f2c657a2219ab34732502971587aeac2bc2daf66a88d16d7df.png" src="../_images/ef857986af7533f2c657a2219ab34732502971587aeac2bc2daf66a88d16d7df.png" />
+<img alt="../_images/14f48d8fa06509440fb994d1a0d2b1dabf4fcc23d6bf9722a999b3953f7978f8.png" src="../_images/14f48d8fa06509440fb994d1a0d2b1dabf4fcc23d6bf9722a999b3953f7978f8.png" />
 </div>
 </div>
 <p>If we attempt to perform a linear regression as-is, we’ll get an error:</p>
@@ -728,48 +728,64 @@ memory usage: 5.6 KB
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">DTypePromotionError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="ne">UFuncTypeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">linregress</span><span class="p">(</span><span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;sst_anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
-<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\scipy\stats\_axis_nan_policy.py:543,</span> in <span class="ni">_axis_nan_policy_factory.&lt;locals&gt;.axis_nan_policy_decorator.&lt;locals&gt;.axis_nan_policy_wrapper</span><span class="nt">(***failed resolving arguments***)</span>
-<span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span>                <span class="k">for</span> <span class="n">sample</span><span class="p">,</span> <span class="n">new_shape</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">new_shapes</span><span class="p">)]</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span> <span class="n">axis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># work over the last axis</span>
-<span class="ne">--&gt; </span><span class="mi">543</span> <span class="n">NaN</span> <span class="o">=</span> <span class="n">_get_nan</span><span class="p">(</span><span class="o">*</span><span class="n">samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">samples</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span> <span class="c1"># if axis is not needed, just handle nan_policy and return</span>
-<span class="g g-Whitespace">    </span><span class="mi">546</span> <span class="n">ndims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">sample</span><span class="o">.</span><span class="n">ndim</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">])</span>
+<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\scipy\stats\_axis_nan_policy.py:579,</span> in <span class="ni">_axis_nan_policy_factory.&lt;locals&gt;.axis_nan_policy_decorator.&lt;locals&gt;.axis_nan_policy_wrapper</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">_add_reduced_axes</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">reduced_axes</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="k">return</span> <span class="n">tuple_to_result</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">579</span> <span class="n">res</span> <span class="o">=</span> <span class="n">hypotest_fun_out</span><span class="p">(</span><span class="o">*</span><span class="n">samples</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span> <span class="n">res</span> <span class="o">=</span> <span class="n">result_to_tuple</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">n_out</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span> <span class="n">res</span> <span class="o">=</span> <span class="n">_add_reduced_axes</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">reduced_axes</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span>
 
-<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\scipy\_lib\_util.py:1023,</span> in <span class="ni">_get_nan</span><span class="nt">(shape, xp, *data)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1021</span> <span class="n">xp</span> <span class="o">=</span> <span class="n">array_namespace</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span> <span class="k">if</span> <span class="n">xp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">xp</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span> <span class="c1"># Get NaN of appropriate dtype for data</span>
-<span class="ne">-&gt; </span><span class="mi">1023</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">xp_result_type</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">force_floating</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xp</span><span class="o">=</span><span class="n">xp</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">device</span> <span class="o">=</span> <span class="n">xp_result_device</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1025</span> <span class="n">res</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">xp</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\scipy\stats\_stats_py.py:10781,</span> in <span class="ni">linregress</span><span class="nt">(x, y, alternative)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10777</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot calculate a linear regression &quot;</span>
+<span class="g g-Whitespace">  </span><span class="mi">10778</span>                      <span class="s2">&quot;if all x values are identical&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10780</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="ne">&gt; </span><span class="mi">10781</span> <span class="n">xmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10782</span> <span class="n">ymean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10784</span> <span class="c1"># Average sums of square differences from the mean</span>
+<span class="g g-Whitespace">  </span><span class="mi">10785</span> <span class="c1">#   ssxm = mean( (x-mean(x))^2 )</span>
+<span class="g g-Whitespace">  </span><span class="mi">10786</span> <span class="c1">#   ssxym = mean( (x-mean(x)) * (y-mean(y)) )</span>
 
-<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\scipy\_lib\_array_api.py:533,</span> in <span class="ni">xp_result_type</span><span class="nt">(force_floating, xp, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="k">if</span> <span class="n">is_numpy</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span> <span class="ow">and</span> <span class="n">xp</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&lt;</span> <span class="s1">&#39;2.0&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">530</span>     <span class="c1"># Follow NEP 50 promotion rules anyway</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span>     <span class="n">args_not_none</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">arg</span>
-<span class="g g-Whitespace">    </span><span class="mi">532</span>                      <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args_not_none</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">533</span>     <span class="k">return</span> <span class="n">xp</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="o">*</span><span class="n">args_not_none</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">try</span><span class="p">:</span>  <span class="c1"># follow library&#39;s preferred promotion rules</span>
-<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="k">return</span> <span class="n">xp</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="o">*</span><span class="n">args_not_none</span><span class="p">)</span>
+<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\numpy\_core\fromnumeric.py:3860,</span> in <span class="ni">mean</span><span class="nt">(a, axis, dtype, out, keepdims, where)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3857</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3858</span>         <span class="k">return</span> <span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3860</span> <span class="k">return</span> <span class="n">_methods</span><span class="o">.</span><span class="n">_mean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3861</span>                       <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">DTypePromotionError: The DType &lt;class &#39;numpy.dtypes.DateTime64DType&#39;&gt; could not be promoted by &lt;class &#39;numpy.dtypes.Float64DType&#39;&gt;. This means that no common DType exists for the given inputs. For example they cannot be stored</span> in <span class="ni">a single array unless the dtype is `object`. The full list of DTypes is: </span><span class="nt">(&lt;class &#39;numpy.dtypes.DateTime64DType&#39;&gt;, &lt;class &#39;numpy.dtypes.Float64DType&#39;&gt;, &lt;class &#39;numpy._FloatAbstractDType&#39;&gt;)</span>
+<span class="nn">File ~\miniforge3\envs\learn\Lib\site-packages\numpy\_core\_methods.py:134,</span> in <span class="ni">_mean</span><span class="nt">(a, axis, dtype, out, keepdims, where)</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>         <span class="n">dtype</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>         <span class="n">is_float16_result</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">134</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">umr_sum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">where</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">mu</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="n">ret</span> <span class="o">=</span> <span class="n">um</span><span class="o">.</span><span class="n">true_divide</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>             <span class="n">ret</span><span class="p">,</span> <span class="n">rcount</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">ret</span><span class="p">,</span> <span class="n">casting</span><span class="o">=</span><span class="s1">&#39;unsafe&#39;</span><span class="p">,</span> <span class="n">subok</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">UFuncTypeError</span>: ufunc &#39;add&#39; cannot use operands with types dtype(&#39;&lt;M8[ns]&#39;) and dtype(&#39;&lt;M8[ns]&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Internally, pandas datetimes are stored as a 64-bit integers. So one way to get around the problem is to explicitly cast the datetime values into integers, like so:</p>
+<p>To perform linear regression on time series, we need to transform the x coordinates into pure numbers. One way to do so is to define:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regress</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int64&quot;</span><span class="p">),</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;sst_anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surf_time_diff</span> <span class="o">=</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">surf_days</span> <span class="o">=</span>  <span class="n">surf_time_diff</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now the regression runs without error but the fit results become quite hard to interpret:</p>
+<p>In the above code, <code class="docutils literal notranslate"><span class="pre">surf_temp[&quot;time&quot;].values</span></code> is a numpy array of timestamps. By subtracting the timestamps with an initial time <code class="docutils literal notranslate"><span class="pre">surf_temp[&quot;time&quot;].values[0]</span></code>, we obtain an array of <strong>time differences</strong> <code class="docutils literal notranslate"><span class="pre">surf_time_diff</span></code>. Then, to create an array of pure number, we divide the array of time differences with a time difference scalar, which we create using <code class="docutils literal notranslate"><span class="pre">np.timedelta64(1,</span> <span class="pre">'D')</span></code> (corresponding to the time difference of 1 day). The result is the array <code class="docutils literal notranslate"><span class="pre">surf_days</span></code>, which are pure numbers with implicit unit of days.</p>
+<p>Now we can use <code class="docutils literal notranslate"><span class="pre">surf_days</span></code> as the first argument and perform the linear regression:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regress</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">surf_days</span><span class="p">,</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;sst_anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">regress</span><span class="p">)</span>
@@ -777,12 +793,13 @@ memory usage: 5.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=4.719764222235653e-19, intercept=-0.49390245232186364, rvalue=0.8199546245386792, pvalue=7.749079818620153e-86, stderr=1.771388008211152e-20, intercept_stderr=0.021475751292749264)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=np.float64(4.077876288011608e-05), intercept=np.float64(-0.15074916268568736), rvalue=np.float64(0.8199546245386796), pvalue=np.float64(7.749079818617066e-86), stderr=np.float64(1.530479239094434e-06), intercept_stderr=np.float64(0.009337971552794585))
 </pre></div>
 </div>
 </div>
 </div>
-<p>Nevertheless, if we want to plot the best-fitted line all we have to do is to make sure that we perform the same conversion in our “prediction” step:</p>
+<p>We note that the slope now has an implicit unit of K/day.</p>
+<p>Next, to generate the regression line, we start with two time points, transform these into pure numbers, then use the regression equation to find the corresponding fitted temperature anomaly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
@@ -792,7 +809,14 @@ memory usage: 5.6 KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_range</span> <span class="o">=</span> <span class="n">date_range</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int64&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">regress</span><span class="o">.</span><span class="n">slope</span> <span class="o">+</span> <span class="n">regress</span><span class="o">.</span><span class="n">intercept</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day_range</span> <span class="o">=</span> <span class="p">(</span><span class="n">date_range</span> <span class="o">-</span> <span class="n">surf_temp</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_range</span> <span class="o">=</span> <span class="n">day_range</span> <span class="o">*</span> <span class="n">regress</span><span class="o">.</span><span class="n">slope</span> <span class="o">+</span> <span class="n">regress</span><span class="o">.</span><span class="n">intercept</span>
 </pre></div>
 </div>
 </div>
@@ -815,57 +839,25 @@ memory usage: 5.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e7f3ffca692cd146e92643a468f4c838f23177d180560abfead46a94c51950d8.png" src="../_images/e7f3ffca692cd146e92643a468f4c838f23177d180560abfead46a94c51950d8.png" />
+<img alt="../_images/3388513da292484832bd879e8164bc658582b873146ff79217b1331db3e0ffb1.png" src="../_images/3388513da292484832bd879e8164bc658582b873146ff79217b1331db3e0ffb1.png" />
 </div>
 </div>
-<p>To express the slope in a more meaningful way, we note that in-principle the slope is just the temperature change divided by the date change. Doing this calculation naively again produces an error:</p>
-<div class="cell tag_raises-exception docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">temp_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">temp_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">date_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">date_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">(</span><span class="n">temp_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">temp_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">date_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">date_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for /: &#39;numpy.float64&#39; and &#39;Timedelta&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>This time, the solution is to express the date change as (fractional) number of days. The object <code class="docutils literal notranslate"><span class="pre">(date_range[1]</span> <span class="pre">-</span> <span class="pre">date_range[0])</span></code> is a pandas <code class="docutils literal notranslate"><span class="pre">TimeDelta</span></code> object, which has a <code class="docutils literal notranslate"><span class="pre">.days</span></code> attribute (there are also <code class="docutils literal notranslate"><span class="pre">.hours</span></code> and <code class="docutils literal notranslate"><span class="pre">.minutes</span></code> attributes). So we can do:</p>
+<p>Now, we note that the regression slope is small as a number. It is more natural to represent the rate in per-year denominator. To do so we multiply the regression slope with the number of days in a year (which, on average, is 365.2425). From this we obtain:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_day</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">temp_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">date_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">date_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">days</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">slope_day</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.077876288011604e-05
-</pre></div>
-</div>
-</div>
-</div>
-<p>The slope above now has the more intuitive unit of K/day. Unfortunately, <code class="docutils literal notranslate"><span class="pre">TimeDelta</span></code> object does <em>not</em> have a <code class="docutils literal notranslate"><span class="pre">.year</span></code> attribute (because the length of a year is not uniform), but we can do the conversion ourselves to get the rate per year (note that in the Gregorian calendar a year is on average 365.2425 days):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_year</span> <span class="o">=</span> <span class="n">slope_day</span> <span class="o">*</span> <span class="mf">365.2425</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_year</span> <span class="o">=</span> <span class="n">regress</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="mf">365.2425</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">slope_year</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.014894137301240784
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.014894137301240798
 </pre></div>
 </div>
 </div>
 </div>
 <p>Thus the rate of ocean temperature increase is approximately 0.015 K per year.</p>
-<p>One final remark: because correlation is dimensionless, the value we obtained from the linear regression is immediately usable. For example, the correlation between temperature anomaly with date is simply:</p>
+<p>One final remark: because correlation is dimensionless, the transformation we perform has no effect on its value. Thus, the correlation between temperature anomaly with date is simply:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">regress</span><span class="o">.</span><span class="n">rvalue</span><span class="p">)</span>
@@ -873,7 +865,7 @@ memory usage: 5.6 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8199546245386792
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8199546245386796
 </pre></div>
 </div>
 </div>
