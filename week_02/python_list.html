@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -458,6 +458,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-values-through-indexing-and-slicing">Assigning values through indexing and slicing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appending-to-a-python-list">Appending to a python list</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-index-of-an-element">Finding the index of an element</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remark-mutable-versus-immutable-data-structure">Remark: mutable versus immutable data structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-functions-versus-methods">Note: functions versus methods</a></li>
 </ul>
             </nav>
@@ -803,6 +804,46 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="remark-mutable-versus-immutable-data-structure">
+<h2>Remark: mutable versus immutable data structure<a class="headerlink" href="#remark-mutable-versus-immutable-data-structure" title="Link to this heading">#</a></h2>
+<p>Unlike the “primitive” data structures (namely, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>) we saw in the previous sections, the Python <code class="docutils literal notranslate"><span class="pre">list</span></code> is <strong>mutable</strong>. This means that its content can change in the <em>absence</em> of reassignment. An important consequence is that when multiple variables reference the same internal object, a change in the internal object affects all references. An example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">y_list</span> <span class="o">=</span> <span class="n">x_list</span>
+<span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">y_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In pictures, the above can be illustrated as:</p>
+<p><img alt="mutation on Python list affects all references" src="../_images/mutable_list.svg" /></p>
+<p>In contrast, if a variable references an <strong>integer</strong>, there is no way to change the corresponding internal object. The only thing you can do is to <strong>reassign</strong> the variable to a different object. Thus, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> remains independent in the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again in picture:</p>
+<p><img alt="Python integer is immutable" src="../_images/immutable_int.svg" /></p>
+<p>To avoid confusion, it is often a good practice to <strong>avoid multiple references</strong> to the same internal object, regardless of whether the object is mutable or not.</p>
+</section>
 <section id="note-functions-versus-methods">
 <h2>Note: functions versus methods<a class="headerlink" href="#note-functions-versus-methods" title="Link to this heading">#</a></h2>
 <p>A <strong>function</strong> is invoked by its name, followed by the parentheses within which the <strong>arguments</strong> to the function is supplied. The <code class="docutils literal notranslate"><span class="pre">abs()</span></code> function is an example:</p>
@@ -926,6 +967,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-values-through-indexing-and-slicing">Assigning values through indexing and slicing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appending-to-a-python-list">Appending to a python list</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-index-of-an-element">Finding the index of an element</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remark-mutable-versus-immutable-data-structure">Remark: mutable versus immutable data structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-functions-versus-methods">Note: functions versus methods</a></li>
 </ul>
   </nav></div>
