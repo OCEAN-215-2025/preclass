@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7fa41cc3" />
@@ -475,7 +475,7 @@ document.write(`
 <h2>File retrieval via <code class="docutils literal notranslate"><span class="pre">urlretrieve()</span></code><a class="headerlink" href="#file-retrieval-via-urlretrieve" title="Link to this heading">#</a></h2>
 <p>If a file is available through a static link (usually, this means that you can right click to copy the link of the file from the web browser), we can use the <code class="docutils literal notranslate"><span class="pre">urlretrieve()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">urllib.request</span></code> submodule to directly save the file onto the JupyterHub file system. For example, on GitHub, the zip file of an entire repository is accessible from a static link.</p>
 <p><img alt="github zip file" src="../_images/preclass_github_zip.png" /></p>
-<p>To download this file onto the JupyterHub file system directly, we use the “copy link address” option in Chrome (or equivalent option in other web browsers) to copy the static link, then feed it as the first argument of the <code class="docutils literal notranslate"><span class="pre">urlretrieve()</span></code> function. The <code class="docutils literal notranslate"><span class="pre">urlretrieve()</span></code> function also requires a second argument, which save file location (specify using a string as explained in the previous section). For example:</p>
+<p>To download this file onto the JupyterHub file system directly, we use the “copy link address” option in Chrome (or equivalent option in other web browsers) to copy the static link, then feed it as the first argument of the <code class="docutils literal notranslate"><span class="pre">urlretrieve()</span></code> function. The <code class="docutils literal notranslate"><span class="pre">urlretrieve()</span></code> function also requires a second argument, which is the save file location (specify using a string as explained in the previous section). For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlretrieve</span>
@@ -486,7 +486,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;output/preclass.zip&#39;, &lt;http.client.HTTPMessage at 0x2444b8c9b50&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;output/preclass.zip&#39;, &lt;http.client.HTTPMessage at 0x28ab26002f0&gt;)
 </pre></div>
 </div>
 </div>
@@ -508,11 +508,11 @@ document.write(`
 </div>
 <p>In the above, the location of the zipfile is specified as the argument of the <code class="docutils literal notranslate"><span class="pre">zipfile.ZipFile()</span></code> call, while the location to unpack the contents to is specified as the first argument of the <code class="docutils literal notranslate"><span class="pre">zip_ref.extractall()</span></code> call.</p>
 <p>In our case, the zip file is located at <code class="docutils literal notranslate"><span class="pre">output/preclass.zip</span></code> relative to the working directory, while the unpacking location is the <code class="docutils literal notranslate"><span class="pre">output</span></code> subfolder.</p>
-<p>We note that the above code is a special case of the <code class="docutils literal notranslate"><span class="pre">when</span></code> python syntax. We’ll not go into the details of the <code class="docutils literal notranslate"><span class="pre">with</span></code> construct. However, do note that the colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>) and the indentation are part of the syntax.</p>
+<p>We note that the above code is a special case of the <code class="docutils literal notranslate"><span class="pre">with</span></code> python syntax. We’ll not go into the details of the <code class="docutils literal notranslate"><span class="pre">with</span></code> construct. However, do note that the colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>) and the indentation are part of the syntax.</p>
 </section>
 <section id="downloading-public-google-drive-files">
 <h2>Downloading “public” Google Drive files<a class="headerlink" href="#downloading-public-google-drive-files" title="Link to this heading">#</a></h2>
-<p>A typical Google Drive link does not point directly to the underlying file contents but to a web interface that then allows you to download the content. When you hover only the ultimate download button, you will notice that it is not a static link. The third-party <code class="docutils literal notranslate"><span class="pre">gdown</span></code> module provides a way for direct download in such circumstances.</p>
+<p>A typical Google Drive link does not point directly to the underlying file contents but to a web interface that then allows you to download the content. When you hover above the ultimate download button, you will notice that it is not a static link. The third-party <code class="docutils literal notranslate"><span class="pre">gdown</span></code> module provides a way for direct download in such circumstances.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">gdown</span></code> can only be used on “public” files, i.e., files that are shared so that whoever have the link can download its content. In this course we will occasionally work with large files that are shared this way, and if you have large files in your final project they should also be shared in a similar manner.</p>
 <p>To use <code class="docutils literal notranslate"><span class="pre">gdown</span></code>, we first need to extract the file id from the link. A typical Google Drive link may look as such:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://drive.google.com/file/d/1rF9ZTNkSYald4NbMcNpK-_ilFDYvbjZz/view?usp=sharing
